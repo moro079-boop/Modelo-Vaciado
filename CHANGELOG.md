@@ -4,6 +4,51 @@ Cada modificación agrega una entrada (`MV-NNN`) con motivo, resultado, evidenci
 
 ## 2026-11-24
 
+### MV-004: VaciaT 0.2.0-preliminar: diseño, icono y nombre elegidos; optimizaciones de la ventana y del ejecutable
+
+- Motivo: decisiones del usuario del 2026-11-24 sobre la primera propuesta (MV-003): diseño «Plano» con la estructura del diseño
+  «Turno»; icono del reloj en la paleta de «Plano», con fondo oscuro; nombre VaciaT; archivar lo demás como historial; subir la
+  versión (y, en adelante, subirla según los cambios); sumar este repositorio a la lista de `docs/estilo-de-documentos.md`; y
+  aplicar las optimizaciones que hagan falta, con las de LWD-EAF como referencia.
+- Diseño, icono y nombre:
+  - Un solo diseño, VaciaT: la paleta de «Plano» pasa a `interfaz/tema.py` (los roles de LWD-EAF se conservan) y el acomodo de
+    tablero de «Turno» (cabecera oscura con la marca y los pasos, cuatro indicadores grandes) a `ventana.py` y `tema_qt.py`.
+    Se retiraron el selector de diseño, `interfaz/disenos.py` y la opción `--diseno`.
+  - Icono: reloj de arena en la paleta VaciaT sobre la tinta oscura de la cabecera (`herramientas/iconos.py`); es el de la
+    ventana y el del ejecutable.
+  - Nombre: VaciaT en la ventana, el ejecutable (`dist/VaciaT/`) y los mensajes.
+  - Historial: rama `archivo/disenos-iniciales` (commit `f78fadf`, con los cuatro diseños y el selector) y, en
+    `docs/historial/disenos-iniciales/`, las capturas y la lámina de iconos.
+- Optimizaciones (equivalentes a las de LWD-EAF, EAF-017 a EAF-053):
+  - **Apertura de la ventana:** de 3,1 s a 0,7 s. La vista del horno con la cavidad 3D se arma al primer uso y un hilo, una sola
+    vez por proceso, prepara su tabla de niveles 1,5 s después de abrir la ventana (como el precalentado de EAF-053).
+  - **Recálculo en vivo** en las páginas del cálculo directo: 250 ms después del último cambio (cálculo y dibujo, unos 0,25 s
+    medidos). La vista con la cavidad 3D (0,6 s por cálculo) no recalcula sola: marca el resultado como desactualizado y la
+    franja del indicador pasa a gris hasta pulsar «Calcular» (equivalente a I1 de la auditoría de EAF-018). Un cálculo fallido
+    pone la franja en rojo.
+  - **Sólo se dibuja la pestaña visible;** las demás se dibujan al elegirlas.
+  - **Barra de las gráficas** (vista inicial, desplazar, ampliar, guardar la imagen) con ayudas en español e iconos en el color
+    del diseño (Matplotlib los pintaba blancos sobre el fondo claro).
+  - **Teclado:** F5, Ctrl+1 / Ctrl+2, Ctrl+O, Ctrl+S, Ctrl+E, Ctrl+P y Ctrl+Shift+C (copia el resumen del resultado); la barra de
+    estado los recuerda (como el pie de atajos de EAF-018).
+  - **1 280 × 720** (como EAF-052): la columna del resultado se desplaza si no cabe, los botones de archivo van en una rejilla
+    compacta, los selectores tienen textos cortos con la explicación en la ayuda emergente, el tiempo no se repite junto a los
+    indicadores y la ventana no baja de 1 180 × 680.
+  - **Unidades:** las series del horno con cavidad 3D pasan a minutos y t/min, como las del cálculo directo (sólo presentación).
+  - **Sesión:** la ventana recuerda su tamaño, su posición y el escenario activo entre sesiones.
+  - **Ejecutable:** deja fuera los módulos que no usa (SciPy, pandas, lxml, Qt Quick, QML, red y PDF de Qt); en Linux el `.zip`
+    bajó de 226 MB a 163 MB y el ejecutable pasa su propia prueba de ventana.
+- Versión 0.2.0-preliminar (`docs/versiones.md`, nuevo): capacidad nueva (cálculo directo), formato de escenario nuevo y alcance
+  redefinido. Los resultados heredados no cambian.
+- `docs/estilo-de-documentos.md`: Modelo-Vaciado se suma a la lista de proyectos («los cinco»).
+- Impacto numérico: ninguno.
+- Verificación (Linux, Python 3.13.18, PySide6 sin pantalla): `python -m pytest verificacion -q -p no:cacheprovider`:
+  `45 passed`, sin advertencias; `ruff check .`: limpio; `python vaciado.py --probar-ventana`: «ok, ventana abierta en 0.7 s»;
+  `python empaquetado/construir.py`: ejecutable de Linux construido y probado. Capturas a 1 440 × 880 y 1 280 × 720 revisadas.
+  **No se ha abierto en un escritorio de Windows.**
+- Pendientes: la lista de proyectos de `docs/estilo-de-documentos.md` debe cambiarse también en los otros cuatro repositorios
+  (no se modifican desde aquí); ver la ventana y el ejecutable en Windows.
+
 ### MV-003: Tres diseños nuevos de la ventana, opciones de icono y de nombre
 
 - Motivo: el usuario pidió tres diseños nuevos de interfaz con Qt como motor, y opciones de iconos y de nombres.

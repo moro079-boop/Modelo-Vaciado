@@ -1,70 +1,64 @@
-# Diseños de la ventana, iconos y nombres
+# Diseño de la ventana, icono y nombre
 
-Este documento presenta las propuestas de aspecto de la ventana, las opciones de icono y las opciones de nombre del programa. Ninguna
-está elegida: la elección es una decisión abierta (decisiones N1 a N3 de [pendientes.md](pendientes.md)).
+Este documento describe el aspecto de la ventana de VaciaT, su icono y su nombre, y conserva como historial la primera propuesta
+de la que salieron.
 
-## 1. Diseños
+## 1. Diseño VaciaT
 
-Los cuatro diseños usan Qt (PySide6, estilo Fusion) y los mismos componentes: tarjetas con el estado de cada dato, selectores,
-gráficas de Matplotlib y la columna de resultado. Cambian la paleta, el tamaño de la letra, la hoja de estilo y el acomodo de la
-ventana. Se eligen en el menú «Ver → Diseño de la ventana» o al abrir el programa con `python vaciado.py --diseno <nombre>`. El
-escenario en pantalla pasa al diseño nuevo.
+El diseño combina la paleta del diseño «Plano» de la primera propuesta con el acomodo del diseño «Turno». Usa Qt (PySide6, estilo
+Fusion) y los componentes heredados de LWD-EAF: tarjetas con el estado de cada dato, selectores, campos numéricos y gráficas de
+Matplotlib.
 
-| Diseño | Paleta | Acomodo | Uso previsto |
-|---|---|---|---|
-| Magnesita (actual) | Claro, arena y verde escoria | Pestañas arriba | El heredado de LWD-EAF, como referencia |
-| Colada | Oscuro, grafito y naranja de acero fundido | Navegación lateral e indicadores en la cabecera | Salas de control con poca luz |
-| Plano | Claro, blanco y azul de plano técnico | Barra de marca y pestañas planas | Escritorio de ingeniería y capturas para informes |
-| Turno | Alto contraste, negro, blanco, verde azulado y ámbar | Tablero: pasos numerados e indicadores grandes | Pantalla de piso de planta o de turno |
+- **Paleta:** fondo gris azulado claro, tarjetas blancas, texto en tinta azul oscura, acento azul de plano técnico y el acero en
+  ámbar. La cabecera es de la tinta oscura.
+- **Cabecera:** el icono, el nombre y el lema del programa, y los dos escenarios como pasos numerados («1 Horno (EAF) → olla» y
+  «2 Olla → distribuidor»); el paso activo va en ámbar.
+- **Indicadores:** cuatro cifras grandes de la página activa, siempre a la vista: tiempo de vaciado, caudal medio, acero vaciado y
+  la solución de Torricelli (en el horno con cavidad 3D, el ángulo final). La franja superior de cada indicador es azul con un
+  resultado al día, gris si los datos cambiaron sin recalcular y roja si el cálculo falló.
+- **Página:** a la izquierda, los datos en tarjetas, cada uno con la marca de su estado; al centro, las pestañas de gráficas con
+  su barra (vista inicial, desplazar, ampliar, guardar la imagen); a la derecha, la tabla del resultado, los avisos y los botones
+  de archivo. La columna derecha se desplaza si la pantalla es baja.
+- **Letra:** 10,5 puntos en los controles; columnas que crecen con la letra.
+- **Teclado:** F5 calcula; Ctrl+1 y Ctrl+2 cambian de escenario; Ctrl+O abre; Ctrl+S guarda; Ctrl+E y Ctrl+P exportan a Excel y a
+  PDF; Ctrl+Shift+C copia el resumen del resultado. La barra de estado los recuerda.
 
-**Indicadores.** Los diseños Colada y Turno muestran siempre cuatro cifras de la página activa: tiempo de vaciado, caudal medio,
-acero vaciado y la comprobación de Torricelli (en el horno con cavidad 3D, el ángulo final).
+Capturas (sin pantalla; se regeneran con `python -m herramientas.capturas`):
 
-**Letra.** El diseño Turno usa letra de 11,5 puntos (10 en los demás), bordes de 2 px y columnas más anchas.
+| Vista | 1 440 × 880 | 1 280 × 720 |
+|---|---|---|
+| Horno (EAF) → olla, cálculo directo | [captura](figuras/ventana/horno_1440x880.png) | [captura](figuras/ventana/horno_1280x720.png) |
+| Olla → distribuidor | [captura](figuras/ventana/olla_1440x880.png) | [captura](figuras/ventana/olla_1280x720.png) |
+| Horno con la cavidad 3D | [captura](figuras/ventana/horno_cavidad_3d_1440x880.png) | |
 
-Capturas (ventana de 1 480 × 900, sin pantalla; se regeneran con `python -m herramientas.capturas`):
+![VaciaT, horno a la olla](figuras/ventana/horno_1440x880.png)
+
+## 2. Icono
+
+El icono es un reloj de arena con acero fundido, que representa el tiempo de vaciado. Se dibuja con Qt, sin imágenes de terceros
+(`python -m herramientas.iconos`), con los colores del diseño: fondo de la tinta oscura de la cabecera, marco claro, tapas en azul
+y acero en ámbar. Está en `modelo_vaciado/interfaz/recursos/icono.png` (256 px) e `icono.ico` (16 a 256 px, el del ejecutable).
+
+![Icono de VaciaT](figuras/icono.png)
+
+## 3. Nombre
+
+El programa se llama **VaciaT** (de «vaciado» y «t», el tiempo). Es el nombre de la ventana y del ejecutable; el repositorio
+(Modelo-Vaciado) y el paquete de Python (`modelo_vaciado`) conservan los suyos.
+
+## 4. Historial: primera propuesta
+
+La primera propuesta tenía cuatro diseños (Magnesita, heredado de LWD-EAF; Colada, oscuro con navegación lateral; Plano,
+técnico con pestañas; y Turno, de alto contraste con tablero), cuatro iconos (Chorro, Torricelli, Reloj y Piquera) y seis opciones
+de nombre (Modelo-Vaciado, Torricelli, Caudal, VaciaT, Colada-T y Piquera). El código de esa propuesta, con el selector de diseño,
+está en la rama `archivo/disenos-iniciales` (commit `f78fadf`), que no se desarrolla. Las capturas y la lámina de iconos se
+conservan en `docs/historial/disenos-iniciales/`:
 
 | Diseño | Horno (EAF) → olla | Olla → distribuidor |
 |---|---|---|
-| Magnesita | [captura](figuras/disenos/magnesita_horno.png) | [captura](figuras/disenos/magnesita_olla.png) |
-| Colada | [captura](figuras/disenos/colada_horno.png) | [captura](figuras/disenos/colada_olla.png) |
-| Plano | [captura](figuras/disenos/plano_horno.png) | [captura](figuras/disenos/plano_olla.png) |
-| Turno | [captura](figuras/disenos/turno_horno.png) | [captura](figuras/disenos/turno_olla.png) |
+| Magnesita | [captura](historial/disenos-iniciales/magnesita_horno.png) | [captura](historial/disenos-iniciales/magnesita_olla.png) |
+| Colada | [captura](historial/disenos-iniciales/colada_horno.png) | [captura](historial/disenos-iniciales/colada_olla.png) |
+| Plano | [captura](historial/disenos-iniciales/plano_horno.png) | [captura](historial/disenos-iniciales/plano_olla.png) |
+| Turno | [captura](historial/disenos-iniciales/turno_horno.png) | [captura](historial/disenos-iniciales/turno_olla.png) |
 
-![Diseño Colada](figuras/disenos/colada_horno.png)
-
-![Diseño Plano](figuras/disenos/plano_horno.png)
-
-![Diseño Turno](figuras/disenos/turno_olla.png)
-
-## 2. Iconos
-
-Los iconos se dibujan con Qt, sin imágenes de terceros (`python -m herramientas.iconos`). Cada opción tiene un PNG de 256 px y un
-ICO de 16 a 256 px en `modelo_vaciado/interfaz/recursos/iconos/`. Cada diseño nuevo usa uno; el de Magnesita conserva el icono
-de LWD-EAF.
-
-![Opciones de icono](figuras/disenos/iconos.png)
-
-| Opción | Motivo | Diseño que lo usa |
-|---|---|---|
-| Chorro | Olla de colada vertiendo un chorro de acero | Colada |
-| Torricelli | Depósito con el orificio en el fondo, la parábola del chorro y la cota de la carga | Plano |
-| Reloj | Reloj de arena con acero fundido: el tiempo de vaciado | Turno |
-| Piquera | Horno basculado con el chorro por la piquera excéntrica | Ninguno (opción libre) |
-
-## 3. Nombres
-
-El nombre actual de la ventana y del ejecutable, «Modelo-Vaciado», es el del repositorio y es provisional. El nombre anterior,
-«Vaciado-EAF», ya no describe el alcance, que incluye la olla.
-
-| Nombre | Idea | Observación |
-|---|---|---|
-| Modelo-Vaciado | Descriptivo, igual que el repositorio | Neutro; no distingue el programa de otros modelos |
-| Torricelli | La ley en la que se basa el cálculo | Corto y fácil de recordar; es un nombre propio de uso común |
-| Caudal | La magnitud que el programa integra | Genérico |
-| VaciaT (tiempo de vaciado) | Abreviatura del objetivo | Corto para el ejecutable; poco descriptivo sin explicación |
-| Colada-T | Tiempo de colada, del horno a la olla y al distribuidor | Puede confundirse con la colada continua |
-| Piquera | El orificio del horno | No cubre la olla |
-
-Cambiar el nombre afecta a `NOMBRE_APP` (`modelo_vaciado/ventana.py`) y a `NOMBRE` (`empaquetado/construir.py`); el paquete de
-Python (`modelo_vaciado`) puede conservar su nombre.
+Iconos: [lámina](historial/disenos-iniciales/iconos.png).

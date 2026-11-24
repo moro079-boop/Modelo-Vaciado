@@ -1,7 +1,7 @@
-# Modelo de vaciado: tiempos de vaciado del horno y de la olla
+# VaciaT: tiempos de vaciado del horno y de la olla
 
-Documento de proyecto. Estado al 2026-11-24: versión del modelo 0.1.0-preliminar. El alcance actual son dos escenarios: horno
-(EAF) → olla y olla → distribuidor.
+Documento de proyecto. Estado al 2026-11-24: versión 0.2.0-preliminar. El alcance actual son dos escenarios: horno (EAF) → olla y
+olla → distribuidor.
 
 **Aviso general:** ningún parámetro hidráulico está validado con tiempos de vaciado medidos en planta. La geometría del horno y la de la olla proceden de planos; la válvula de la olla, el tundish y la máquina de colada continua se describen con valores supuestos o de ejemplo. Los resultados son escenarios, no pronósticos.
 
@@ -38,7 +38,7 @@ El plan ordena el trabajo de modo que cada fase entregue algo utilizable. Las fa
 | 1 | Modelo del horno: nivel por masa y ángulo, hidráulica del canal, basculado e integración en el tiempo | Hecha |
 | 2 | Aplicación propia con ventana, exportación a Excel, PDF y CSV, y ejecutable | Hecha |
 | 3 | Mapas del horno (tiempo por ángulo fijo y por vida de la piquera), olla con válvula deslizante, tundish con control de nivel, moldes y secuencia de ollas | Hecha, con datos supuestos fuera del horno y de la olla |
-| 4 | Interfaz Qt con los componentes de LWD-EAF: tarjetas, etiquetas de estado de cada dato, selectores y botones | Hecha en lo principal: dos escenarios, cálculo directo, indicadores y cuatro diseños; faltan la barra de herramientas de las gráficas y la prueba en un escritorio de Windows |
+| 4 | Interfaz Qt con los componentes de LWD-EAF: tarjetas, etiquetas de estado de cada dato, selectores y botones | Hecha: diseño VaciaT, indicadores, recálculo en vivo, barra de las gráficas, atajos y ajuste a 1 280 × 720; falta la prueba en un escritorio de Windows |
 | 4b | Cálculo directo con las variables del usuario y reducción del alcance a horno → olla y olla → distribuidor | Hecha (MV-002) |
 | 5 | Datos de planta: tiempos de vaciado medidos, diámetros de piquera y de válvula, geometría del tundish y de la máquina | Pendiente de datos |
 | 6 | Calibración: coeficiente de descarga del horno y de la válvula con tiempos medidos; ley de crecimiento de la piquera | Pendiente de la fase 5 |
@@ -241,9 +241,9 @@ Con la máquina a velocidad constante, el colado de una olla lo fija la demanda 
 | `artesa.py` | Tundish y moldes |
 | `colada_continua.py` | Secuencia acoplada olla–distribuidor–moldes (etapa posterior; sólo por consola) |
 | `escenario.py`, `reporte.py`, `reporte_colada.py` | Escenarios del horno con cavidad 3D y de la secuencia, y sus reportes |
-| `ventana.py`, `ventana_colada.py`, `ventana_formulario.py` | Ventana de PySide6, página del horno con cavidad 3D y página de la secuencia (fuera de la ventana) |
+| `ventana.py`, `ventana_colada.py`, `ventana_formulario.py` | Ventana de PySide6 (cabecera, indicadores, atajos), página del horno con cavidad 3D, página de la secuencia (fuera de la ventana) y piezas comunes |
 | `horno3d/` | Motor geométrico del horno copiado de LWD-EAF (cavidad 3D y niveles) |
-| `interfaz/` | Paleta, hoja de estilo, diseños y componentes de la ventana |
+| `interfaz/` | Paleta, hoja de estilo, componentes e icono de la ventana |
 
 Los datos viven en `datos/plantas/` (geometría del horno), `datos/vaciado/<planta>.json` (piquera y panel del horno) y
 `datos/vaciado/colada_continua/<planta>.json` (olla, válvula, distribuidor y moldes). Los escenarios de ejemplo están en
@@ -254,7 +254,6 @@ Los datos viven en `datos/plantas/` (geometría del horno), `datos/vaciado/<plan
 ```text
 python vaciado.py                          ventana
 python vaciado.py escenario.json           ventana con ese escenario
-python vaciado.py --diseno colada          ventana con otro diseño (magnesita, colada, plano o turno)
 python vaciado.py --tiempo [a.json ...]    cálculo directo de los dos escenarios, en texto
 python vaciado.py --consola [a.json ...]   horno con cavidad 3D, sin ventana: CSV y figura en reportes/vaciado/
 python vaciado.py --curvas pesqueria       límites del horno por ángulo
@@ -265,9 +264,11 @@ python empaquetado/construir.py            ejecutable sin Python
 
 La ventana tiene dos páginas, una por escenario. «Horno (EAF) → olla» tiene un conmutador entre el cálculo directo y la cavidad
 3D de la planta con basculado (pestañas Colada, Corte, Límites, Comparar y Mapas). «Olla → distribuidor» tiene el cálculo
-directo. Las páginas del cálculo directo tienen las pestañas Vaciado, Esquema, Sensibilidad y Comparar. En todas, la columna
-derecha muestra el resultado, los avisos y los botones para abrir, guardar y exportar. El menú «Ver» cambia el diseño de la
-ventana ([disenos.md](disenos.md)).
+directo. Las páginas del cálculo directo tienen las pestañas Vaciado, Esquema, Sensibilidad y Comparar, y recalculan solas
+250 ms después del último cambio. La vista con la cavidad 3D se arma al primer uso (un hilo la prepara en segundo plano al abrir
+la ventana) y, como tarda unos 0,6 s por cálculo, marca el resultado como desactualizado hasta pulsar «Calcular» (F5). Sobre
+las páginas, cuatro indicadores muestran el resultado de la página activa. El diseño y los atajos de teclado se describen en
+[disenos.md](disenos.md).
 
 ### Agregar una planta
 
@@ -280,7 +281,7 @@ ventana ([disenos.md](disenos.md)).
 ### Pruebas
 
 `verificacion/test_tiempo_vaciado.py` (cálculo directo, ventana y diseños), `verificacion/test_vaciado_ebt.py`,
-`verificacion/test_vaciado_modelo.py` y `verificacion/test_vaciado_colada_continua.py`: 43 pruebas en total.
+`verificacion/test_vaciado_modelo.py` y `verificacion/test_vaciado_colada_continua.py`: 45 pruebas en total.
 
 ## 10. Bitácora del proyecto
 
@@ -293,3 +294,4 @@ ventana ([disenos.md](disenos.md)).
 | 2026-11-24 | MV-001: traslado del modelo a este repositorio |
 | 2026-11-24 | MV-002: cálculo directo con las variables del usuario; alcance reducido a horno → olla y olla → distribuidor |
 | 2026-11-24 | MV-003: tres diseños nuevos de la ventana, opciones de icono y de nombre |
+| 2026-11-24 | MV-004: VaciaT 0.2.0-preliminar: diseño, icono y nombre elegidos; optimizaciones de la ventana y del ejecutable |

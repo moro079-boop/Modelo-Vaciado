@@ -1,5 +1,8 @@
 """Página de cálculo directo del tiempo de vaciado (PySide6), común a los dos escenarios: horno → olla y olla → distribuidor.
 
+El resultado se recalcula solo, 250 ms después del último cambio (el cálculo y el dibujo tardan unos 0,25 s), y sólo se dibuja
+la pestaña visible; las demás se dibujan al elegirlas.
+
 Izquierda: las variables que define el usuario (recipiente, tonelaje, altura metalostática, área de paso, hidráulica y, en la
 olla, la válvula y el distribuidor), cada una con la marca de su estado. Centro: pestañas «Vaciado» (series en el tiempo),
 «Esquema» (el recipiente equivalente con el nivel en el instante elegido), «Sensibilidad» (tiempo contra el diámetro y el
@@ -25,7 +28,7 @@ from .interfaz import tema
 from .interfaz.widgets import EtiquetaEstado, Selector, boton
 from .reporte_tiempo import AVISO, escribir_csv, escribir_excel, escribir_pdf, filas_de_resultado
 from .rutas import raiz
-from .ventana_formulario import formulario
+from .ventana_formulario import botonera, columna_derecha, con_barra, escala, formulario
 
 P = tema.PALETA
 
@@ -112,6 +115,13 @@ class PaginaTiempo(QWidget):
         self._rutas = {clave(c[0]): c[0] for c in CAMPOS if tipo in c[7]}
         self._base = es.nuevo(tipo)
         self._cargando = False
+        self._sucias: set = set()             # pestañas por redibujar
+        from PySide6.QtCore import QTimer
+
+        self._reloj = QTimer(self)
+        self._reloj.setSingleShot(True)
+        self._reloj.setInterval(250)
+        self._reloj.timeout.connect(self.calcular)
         self._armar()
         self.poner_escenario(escenario or es.nuevo(tipo))
         self.calcular()
@@ -127,23 +137,29 @@ class PaginaTiempo(QWidget):
         f.addRow("Nombre", self.nombre)
         self.geometria = Selector()
         if self.tipo == "olla_distribuidor":
-            self.geometria.addItem("Olla de la planta (regla del LWD)", "olla_de_planta")
-        self.geometria.addItem("Definido por el usuario", "simple")
+            self.geometria.addItem("Olla de la planta", "olla_de_planta")
+        self.geometria.addItem("Definida por el usuario", "simple")
         self.planta = Selector()
         self.planta.addItems(cc.plantas_con_datos())
         self.forma = Selector()
-        self.forma.addItem("Prismática (área constante)", "prismatica")
+        self.forma.addItem("Prismática", "prismatica")
         self.forma.addItem("Troncocónica", "troncoconica")
         self.definir_paso = Selector()
         self.definir_paso.addItem("el diámetro", "diametro")
         self.definir_paso.addItem("el área", "area")
         self.modo = Selector()
-        self.modo.addItem("Coeficiente de descarga (Torricelli)", "cd")
-        self.modo.addItem("Pérdidas explícitas (Bernoulli con fricción)", "perdidas")
+        self.modo.addItem("Coeficiente de descarga", "cd")
+        self.modo.addItem("Pérdidas explícitas", "perdidas")
         self.destino = Selector()
         self.destino.addItem("A nivel constante", "nivel_constante")
         self.destino.addItem("Se llena durante el vaciado", "llenado")
-        self.destino.addItem("Sin contrapresión (chorro libre)", "libre")
+        self.destino.addItem("Chorro libre", "libre")
+        for w, ayuda in ((self.geometria, "La olla de un archivo de planta (regla del LWD) o un recipiente definido por tonelaje y altura"),
+                         (self.forma, "Prismática: área de la superficie constante (Torricelli). Troncocónica: el diámetro cambia "
+                                      "linealmente con la altura"),
+                         (self.modo, "Coeficiente de descarga: v = C_d·√(2gH). Pérdidas explícitas: v = √(2gH / (1 + K + f·L/D))"),
+                         (self.destino, "Contrapresión del distribuidor sobre la salida del tubo largo")):
+            w.setToolTip(ayuda)
         extras = {"Recipiente": (("Geometría", self.geometria), ("Planta", self.planta), ("Forma", self.forma)),
                   "Área de paso": (("Se define por", self.definir_paso),),
                   "Hidráulica": (("Modelo", self.modo),),
@@ -187,13 +203,13 @@ class PaginaTiempo(QWidget):
         barra.setObjectName("Columna")
         barra.setWidget(panel)
         barra.setWidgetResizable(True)
-        barra.setFixedWidth(int(440 * max(QApplication.font().pointSizeF(), 10.0) / 10.0))
+        barra.setFixedWidth(escala(400))
         barra.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         fila.addWidget(barra)
 
         self.pestanas = QTabWidget()
         self.lienzo_series = self._lienzo(2, 2)
-        self.pestanas.addTab(self.lienzo_series, "Vaciado")
+        self.pestanas.addTab(con_barra(self.lienzo_series), "Vaciado")
         esquema = QWidget()
         ev = QVBoxLayout(esquema)
         self.lienzo_esquema = self._lienzo()
@@ -201,7 +217,7 @@ class PaginaTiempo(QWidget):
         self.instante.setRange(0, 1000)
         self.instante.valueChanged.connect(self._dibujar_esquema)
         self.rotulo_instante = QLabel()
-        ev.addWidget(self.lienzo_esquema, 1)
+        ev.addWidget(con_barra(self.lienzo_esquema), 1)
         ev.addWidget(self.rotulo_instante)
         ev.addWidget(self.instante)
         self.pestanas.addTab(esquema, "Esquema")
@@ -213,7 +229,7 @@ class PaginaTiempo(QWidget):
         sb.addStretch(1)
         sv.addLayout(sb)
         self.lienzo_sensibilidad = self._lienzo(1, 2)
-        sv.addWidget(self.lienzo_sensibilidad, 1)
+        sv.addWidget(con_barra(self.lienzo_sensibilidad), 1)
         self.sensibilidad = None
         self.pestanas.addTab(sens, "Sensibilidad")
         comparar = QWidget()
@@ -227,7 +243,7 @@ class PaginaTiempo(QWidget):
         kb.addStretch(1)
         kv.addLayout(kb)
         self.lienzo_comparar = self._lienzo(1, 2)
-        kv.addWidget(self.lienzo_comparar, 1)
+        kv.addWidget(con_barra(self.lienzo_comparar), 1)
         self.pestanas.addTab(comparar, "Comparar")
         fila.addWidget(self.pestanas, 1)
 
@@ -238,7 +254,6 @@ class PaginaTiempo(QWidget):
         self.rotulo_titular.setProperty("clase", "rotulo")
         self.titular = QLabel("—")
         self.titular.setObjectName("Titular")
-        self.titular.setStyleSheet(f"font-size: 30px; font-weight: 600; color: {P['TEXTO']};")
         self.subtitular = QLabel("")
         self.subtitular.setWordWrap(True)
         self.tabla = QLabel("")
@@ -253,18 +268,27 @@ class PaginaTiempo(QWidget):
         for w in (self.rotulo_titular, self.titular, self.subtitular, self.tabla, self.avisos):
             dv.addWidget(w)
         dv.addStretch(1)
-        for texto, accion in (("Abrir escenario…", self.abrir), ("Guardar escenario…", self.guardar),
-                              ("Restablecer los valores", self.restablecer),
-                              ("Exportar a Excel…", lambda: self.exportar("xlsx")), ("Exportar a PDF…", lambda: self.exportar("pdf")),
-                              ("Exportar la serie (CSV)…", lambda: self.exportar("csv"))):
-            dv.addWidget(boton(texto, accion))
+        dv.addWidget(botonera(((("Abrir…", "Abrir un escenario (Ctrl+O)", self.abrir),
+                                 ("Guardar…", "Guardar el escenario (Ctrl+S)", self.guardar)),
+                                (("Restablecer los valores", "Volver a los valores con que abre el escenario", self.restablecer),),
+                                (("Excel…", "Exportar a Excel (Ctrl+E)", lambda: self.exportar("xlsx")),
+                                 ("PDF…", "Exportar a PDF (Ctrl+P)", lambda: self.exportar("pdf")),
+                                 ("CSV…", "Exportar la serie en CSV", lambda: self.exportar("csv"))))))
         dv.addWidget(pie)
-        der.setFixedWidth(int(310 * max(QApplication.font().pointSizeF(), 10.0) / 10.0))   # el diseño Turno usa letra más grande
-        fila.addWidget(der)
+        fila.addWidget(columna_derecha(der))
 
         for w in (self.geometria, self.forma, self.definir_paso, self.modo, self.destino):
             w.currentIndexChanged.connect(self._habilitar)
+            w.currentIndexChanged.connect(self._programar)
         self.planta.currentIndexChanged.connect(lambda _i: self._marcar_todo())
+        self.planta.currentIndexChanged.connect(self._programar)
+        self.nombre.editingFinished.connect(self._programar)
+        self.pestanas.currentChanged.connect(lambda _i: self._dibujar_pendientes())
+
+    def _programar(self, *_):
+        """Recalcula 250 ms después del último cambio (si el usuario sigue escribiendo, espera)."""
+        if not self._cargando:
+            self._reloj.start()
 
     # -- escenario ↔ controles ---------------------------------------------------------------------------------------------
     def _mostrar(self, clave: str, visible: bool):
@@ -310,6 +334,7 @@ class PaginaTiempo(QWidget):
             self._marcar("diametro_mm")
             self._marcar("area_cm2")
         self._marcar(k)
+        self._programar()
 
     def _marcar(self, k: str):
         ruta = self._rutas[k]
@@ -389,6 +414,7 @@ class PaginaTiempo(QWidget):
 
     # -- cálculo y dibujo ---------------------------------------------------------------------------------------------------
     def calcular(self) -> bool:
+        self._reloj.stop()
         try:
             e = self.escenario()
             QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
@@ -417,10 +443,21 @@ class PaginaTiempo(QWidget):
             self.avisos.setText("".join(f"<p style='color:{P['ALARMA']}'><b>Aviso a los {t:.0f} s.</b> {x}</p>" for t, x in avisos))
         else:
             self.avisos.setText(f"<span style='color:{P['CORRECTO']}'><b>Sin avisos.</b> El recipiente llega al acero final.</span>")
-        self._dibujar_series(self.lienzo_series, [(r.nombre, r)])
-        self._dibujar_esquema()
+        self._sucias = {"series", "esquema"}
+        self._dibujar_pendientes()
         self._avisar()
         return True
+
+    def _dibujar_pendientes(self):
+        """Dibuja la pestaña visible si quedó por redibujar."""
+        visible = {0: "series", 1: "esquema"}.get(self.pestanas.currentIndex())
+        if self.resultado is None or visible not in self._sucias:
+            return
+        self._sucias.discard(visible)
+        if visible == "series":
+            self._dibujar_series(self.lienzo_series, [(self.resultado.nombre, self.resultado)])
+        else:
+            self._dibujar_esquema()
 
     def tiempo_texto(self) -> str:
         if self.resultado is None:

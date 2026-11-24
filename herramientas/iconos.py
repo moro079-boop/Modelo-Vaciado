@@ -1,12 +1,11 @@
-"""Dibuja las opciones de icono del programa con Qt (sin imágenes externas): ``python -m herramientas.iconos``.
+"""Dibuja el icono de VaciaT con Qt (sin imágenes externas): ``python -m herramientas.iconos``.
 
-Escribe en ``modelo_vaciado/interfaz/recursos/iconos/`` un PNG de 256 px y un ICO (16 a 256 px) por opción, y una lámina con
-todas en ``docs/figuras/disenos/iconos.png``:
+El icono es un reloj de arena con acero fundido (el tiempo de vaciado), en la paleta del diseño: fondo de tinta oscura, marco
+claro, tapas en azul y acero en ámbar. Escribe ``modelo_vaciado/interfaz/recursos/icono.png`` (256 px) e ``icono.ico`` (16 a
+256 px) y una muestra en ``docs/figuras/icono.png``.
 
-- ``chorro``      olla de colada vertiendo un chorro de acero (diseño Colada).
-- ``torricelli``  depósito con el orificio en el fondo y la parábola del chorro (diseño Plano).
-- ``reloj``       reloj de arena con acero fundido: el tiempo de vaciado (diseño Turno).
-- ``piquera``     horno basculado con el chorro saliendo por la piquera excéntrica (opción libre).
+Las otras opciones de la primera propuesta (Chorro, Torricelli, Piquera y el reloj de alto contraste) se conservan como historial
+en la rama ``archivo/disenos-iniciales`` y en ``docs/historial/disenos-iniciales/iconos.png``.
 """
 
 from __future__ import annotations
@@ -18,13 +17,13 @@ from pathlib import Path
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 from PySide6.QtCore import QPointF, QRectF, Qt  # noqa: E402
-from PySide6.QtGui import (QBrush, QColor, QFont, QGuiApplication, QImage, QLinearGradient, QPainter, QPainterPath,  # noqa: E402
-                           QPen, QPolygonF)
+from PySide6.QtGui import (QBrush, QColor, QFont, QGuiApplication, QImage, QLinearGradient, QPainter, QPen, QPolygonF)
 
 RAIZ = Path(__file__).resolve().parent.parent
-CARPETA = RAIZ / "modelo_vaciado" / "interfaz" / "recursos" / "iconos"
-LAMINA = RAIZ / "docs" / "figuras" / "disenos" / "iconos.png"
-NARANJA, AMARILLO = QColor("#F28C28"), QColor("#FFC14D")
+CARPETA = RAIZ / "modelo_vaciado" / "interfaz" / "recursos"
+MUESTRA = RAIZ / "docs" / "figuras" / "icono.png"
+NARANJA, AMARILLO = QColor("#F3A847"), QColor("#FFD27A")      # acero de la paleta VaciaT (ACERO_LIQUIDO) y su brillo
+TINTA, CLARO, AZUL = "#13203B", "#DCE6FA", "#5B8DEF"          # fondo (TINTA), marco (ACENTO_SUAVE) y tapas (azul del acento, aclarado)
 
 
 def _acero(p: QPainter, rect: QRectF) -> QBrush:
@@ -40,56 +39,13 @@ def _fondo(p: QPainter, color: str):
     p.drawRoundedRect(QRectF(8, 8, 240, 240), 52, 52)
 
 
-def chorro(p: QPainter):
-    _fondo(p, "#1E2227")
-    olla = QPolygonF([QPointF(52, 70), QPointF(150, 46), QPointF(168, 128), QPointF(86, 150)])
-    p.setBrush(QColor("#C9CED5"))
-    p.drawPolygon(olla)
-    p.setBrush(QColor("#1E2227"))
-    p.drawPolygon(QPolygonF([QPointF(66, 78), QPointF(142, 60), QPointF(154, 118), QPointF(92, 134)]))
-    p.setBrush(_acero(p, QRectF(70, 62, 86, 72)))
-    p.drawPolygon(QPolygonF([QPointF(72, 104), QPointF(146, 76), QPointF(154, 118), QPointF(92, 134)]))
-    camino = QPainterPath(QPointF(150, 52))
-    camino.cubicTo(QPointF(176, 60), QPointF(186, 120), QPointF(184, 214))
-    camino.lineTo(QPointF(166, 214))
-    camino.cubicTo(QPointF(168, 130), QPointF(160, 80), QPointF(146, 66))
-    camino.closeSubpath()
-    p.setBrush(_acero(p, QRectF(140, 50, 50, 170)))
-    p.drawPath(camino)
-    p.setBrush(QColor(NARANJA))
-    p.drawEllipse(QRectF(140, 206, 72, 18))
-
-
-def torricelli(p: QPainter):
-    _fondo(p, "#FFFFFF")
-    p.setPen(QPen(QColor("#1D4ED8"), 10, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
-    p.setBrush(Qt.BrushStyle.NoBrush)
-    p.drawPolyline(QPolygonF([QPointF(52, 44), QPointF(52, 170), QPointF(96, 170)]))
-    p.drawPolyline(QPolygonF([QPointF(124, 170), QPointF(168, 170), QPointF(168, 44)]))
-    p.setPen(Qt.PenStyle.NoPen)
-    p.setBrush(_acero(p, QRectF(57, 80, 106, 86)))
-    p.drawRect(QRectF(57, 82, 106, 84))
-    camino = QPainterPath(QPointF(97, 165))
-    camino.cubicTo(QPointF(100, 200), QPointF(150, 222), QPointF(214, 220))
-    camino.lineTo(QPointF(214, 206))
-    camino.cubicTo(QPointF(160, 206), QPointF(124, 194), QPointF(123, 165))
-    camino.closeSubpath()
-    p.setBrush(QColor(NARANJA))
-    p.drawPath(camino)
-    p.setPen(QPen(QColor("#13203B"), 5, Qt.PenStyle.DashLine))
-    p.drawLine(QPointF(186, 82), QPointF(186, 170))
-    p.setPen(QPen(QColor("#13203B"), 6))
-    p.drawLine(QPointF(176, 82), QPointF(196, 82))
-    p.drawLine(QPointF(176, 170), QPointF(196, 170))
-
-
 def reloj(p: QPainter):
-    _fondo(p, "#000000")
+    _fondo(p, TINTA)
     p.setPen(Qt.PenStyle.NoPen)
-    p.setBrush(QColor("#FFFFFF"))
-    p.drawRoundedRect(QRectF(60, 40, 136, 18), 6, 6)
-    p.drawRoundedRect(QRectF(60, 198, 136, 18), 6, 6)
-    p.setPen(QPen(QColor("#FFFFFF"), 9, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
+    p.setBrush(QColor(AZUL))
+    p.drawRoundedRect(QRectF(58, 38, 140, 20), 7, 7)
+    p.drawRoundedRect(QRectF(58, 198, 140, 20), 7, 7)
+    p.setPen(QPen(QColor(CLARO), 9, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
     p.setBrush(Qt.BrushStyle.NoBrush)
     p.drawPolyline(QPolygonF([QPointF(76, 60), QPointF(76, 80), QPointF(120, 128), QPointF(76, 176), QPointF(76, 196)]))
     p.drawPolyline(QPolygonF([QPointF(180, 60), QPointF(180, 80), QPointF(136, 128), QPointF(180, 176), QPointF(180, 196)]))
@@ -100,41 +56,7 @@ def reloj(p: QPainter):
     p.drawRect(QRectF(125, 120, 6, 50))
 
 
-def piquera(p: QPainter):
-    _fondo(p, "#2B3A4A")
-    p.save()
-    p.translate(118, 112)
-    p.rotate(12)
-    p.setPen(Qt.PenStyle.NoPen)
-    p.setBrush(QColor("#D5DAE0"))
-    camino = QPainterPath()
-    camino.moveTo(-78, -40)
-    camino.lineTo(78, -40)
-    camino.lineTo(78, 20)
-    camino.quadTo(78, 62, 0, 62)
-    camino.quadTo(-78, 62, -78, 20)
-    camino.closeSubpath()
-    p.drawPath(camino)
-    p.setBrush(_acero(p, QRectF(-66, -6, 132, 60)))
-    bano = QPainterPath()
-    bano.moveTo(-66, 0)
-    bano.lineTo(66, 0)
-    bano.lineTo(66, 20)
-    bano.quadTo(66, 50, 0, 50)
-    bano.quadTo(-66, 50, -66, 20)
-    bano.closeSubpath()
-    p.drawPath(bano)
-    p.setBrush(QColor("#2B3A4A"))
-    p.drawRect(QRectF(-58, 46, 14, 24))
-    p.restore()
-    p.setPen(Qt.PenStyle.NoPen)
-    p.setBrush(_acero(p, QRectF(44, 160, 24, 60)))
-    p.drawRect(QRectF(47, 160, 13, 58))
-    p.setBrush(QColor(NARANJA))
-    p.drawEllipse(QRectF(24, 212, 60, 14))
-
-
-OPCIONES = {"chorro": chorro, "torricelli": torricelli, "reloj": reloj, "piquera": piquera}
+OPCIONES = {"reloj": reloj}
 
 
 def dibujar(nombre: str, lado: int = 256) -> QImage:
@@ -170,20 +92,21 @@ def _ico(nombre: str, ruta: Path):
     ruta.write_bytes(cabecera + entradas + cuerpo)
 
 
-def lamina(ruta: Path):
-    ancho = 4 * 300
-    imagen = QImage(ancho, 360, QImage.Format.Format_ARGB32)
-    imagen.fill(QColor("#F4F4F0"))
+def muestra(ruta: Path):
+    """El icono a 256, 48 y 24 px sobre el fondo de la ventana, para ver cómo se lee a cada tamaño."""
+    imagen = QImage(460, 300, QImage.Format.Format_ARGB32)
+    imagen.fill(QColor("#EDF1F6"))
     p = QPainter(imagen)
     p.setRenderHint(QPainter.RenderHint.Antialiasing)
+    p.drawImage(QPointF(20, 22), dibujar("reloj"))
+    p.drawImage(QPointF(310, 60), dibujar("reloj", 48))
+    p.drawImage(QPointF(320, 140), dibujar("reloj", 24))
     fuente = QFont()
-    fuente.setPixelSize(26)
+    fuente.setPixelSize(22)
     fuente.setBold(True)
     p.setFont(fuente)
-    for i, nombre in enumerate(OPCIONES):
-        p.drawImage(QPointF(22 + 300 * i, 22), dibujar(nombre))
-        p.setPen(QColor("#13203B"))
-        p.drawText(QRectF(300 * i, 290, 300, 50), Qt.AlignmentFlag.AlignCenter, nombre.capitalize())
+    p.setPen(QColor(TINTA))
+    p.drawText(QRectF(290, 200, 160, 40), Qt.AlignmentFlag.AlignCenter, "VaciaT")
     p.end()
     ruta.parent.mkdir(parents=True, exist_ok=True)
     imagen.save(str(ruta))
@@ -191,12 +114,10 @@ def lamina(ruta: Path):
 
 def main() -> int:
     QGuiApplication.instance() or QGuiApplication(sys.argv[:1])
-    CARPETA.mkdir(parents=True, exist_ok=True)
-    for nombre in OPCIONES:
-        dibujar(nombre).save(str(CARPETA / f"{nombre}.png"))
-        _ico(nombre, CARPETA / f"{nombre}.ico")
-    lamina(LAMINA)
-    print(f"Iconos en {CARPETA} y lámina en {LAMINA}")
+    dibujar("reloj").save(str(CARPETA / "icono.png"))
+    _ico("reloj", CARPETA / "icono.ico")
+    muestra(MUESTRA)
+    print(f"Icono en {CARPETA} y muestra en {MUESTRA}")
     return 0
 
 

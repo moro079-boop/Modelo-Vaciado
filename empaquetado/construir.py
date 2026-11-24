@@ -22,7 +22,12 @@ sys.path.insert(0, str(RAIZ))
 
 from modelo_vaciado import VERSION_MODELO  # noqa: E402
 
-NOMBRE = "Modelo-Vaciado"   # provisional (decisión N1 de docs/pendientes.md)
+NOMBRE = "VaciaT"
+# Módulos que el programa no usa y que otras bibliotecas arrastran si están instalados (adelgazan el ejecutable; medido en Linux:
+# ver CHANGELOG, MV-004). Matplotlib necesita Pillow y fontTools (PDF), que se quedan.
+EXCLUIDOS = ("scipy", "pandas", "lxml", "IPython", "PySide6.QtQml", "PySide6.QtQuick", "PySide6.QtNetwork", "PySide6.QtPdf",
+             "matplotlib.backends.backend_gtk3agg", "matplotlib.backends.backend_gtk3cairo", "matplotlib.backends.backend_gtk4agg",
+             "gi")
 
 
 def construir() -> Path:
@@ -39,6 +44,7 @@ def construir() -> Path:
                "--distpath", str(RAIZ / "dist"), "--workpath", str(RAIZ / "build"), "--specpath", str(RAIZ / "build"),
                "--hidden-import", "matplotlib.backends.backend_qtagg", "--hidden-import", "matplotlib.backends.backend_pdf",
                "--hidden-import", "openpyxl", "--exclude-module", "tkinter", "--exclude-module", "matplotlib.backends.backend_tkagg",
+               *[a for m in EXCLUIDOS for a in ("--exclude-module", m)],
                "--collect-submodules", "modelo_vaciado"]
     for origen, destino in datos:
         comando += ["--add-data", f"{origen}{sep}{destino}"]

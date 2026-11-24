@@ -1,35 +1,33 @@
-"""El diseño de la ventana: **Magnesita** (claro), el definitivo.
+"""El diseño de la ventana: **VaciaT**, claro, con la paleta de plano técnico (blanco, azul y tinta) y el acero en ámbar.
 
-Plano sobre la mesa de dibujo: gris arena mate, hoja clara con marco y cajetín, hachurado por capa y
-verde escoria apagado como acento. Los colores, las familias tipográficas y las marcas de estado son
-los del prototipo de interfaz de la rama ``diseno/magnesita`` (EAF-002 y EAF-003, commit ``723edee``;
-ver ``PROCEDENCIA.md``), con los roles que hacen falta para lo que el programa ya calcula (nivel de
-escoria, capacidad, desgaste, campaña).
-
-Una paleta es un diccionario de roles (``ACENTO``, ``ACERO_LIQUIDO``, ``TRABAJO``…): la ventana y los
-dibujos no hablan de colores sino de roles. El diseño original, Arco (oscuro), se conserva en la rama
-``archivo/diseno-arco`` y no se desarrolla.
+Una paleta es un diccionario de roles (``ACENTO``, ``ACERO_LIQUIDO``, ``TINTA``…): la ventana y las gráficas no hablan de
+colores sino de roles. Los roles y las marcas de estado vienen del diseño Magnesita de LWD-EAF; los colores, del diseño «Plano»
+de la primera propuesta (MV-003). Los diseños de esa propuesta (Magnesita, Colada, Plano y Turno) se conservan como historial en
+la rama ``archivo/disenos-iniciales`` y en ``docs/historial/disenos-iniciales/``.
 """
 
 from __future__ import annotations
 
-DISENO = "magnesita"
-ETIQUETA = "Magnesita (claro)"
+DISENO = "vaciat"
+ETIQUETA = "VaciaT"
 
 PALETA = dict(
-    FONDO="#E3DFD6", SUPERFICIE="#F2F0EA", SUPERFICIE_2="#E8E4DB", SUPERFICIE_3="#DCE5C6",
-    BORDE="#C6C0B2", TEXTO="#25272A", TEXTO_2="#4F5154", TEXTO_3="#5F6164",
-    ACENTO="#4A6320", ACENTO_SUAVE="#DCE5C6", SOBRE_ACENTO="#FBFAF7",
-    ALARMA="#A93526", CORRECTO="#3F6A24", AVISO="#8A5D00",
-    ACERO_LIQUIDO="#E3B84F", ACERO_TEXTO="#8A5D00", SOBRE_ACERO="#3A2A05",
-    ESCORIA="#9DB26A", PAPEL="#FBFAF7", TINTA="#25272A",
+    FONDO="#EDF1F6", SUPERFICIE="#FFFFFF", SUPERFICIE_2="#E2E8F0", SUPERFICIE_3="#D7E4F6",
+    BORDE="#C2CCD8", TEXTO="#13203B", TEXTO_2="#3A4863", TEXTO_3="#55627A",
+    ACENTO="#1D4ED8", ACENTO_SUAVE="#DCE6FA", SOBRE_ACENTO="#FFFFFF", ACENTO_OSCURO="#173EA8",
+    PELIGRO_SUAVE="#FBE2DF", ENFOQUE="#FFFFFF",
+    ALARMA="#B42318", CORRECTO="#1E7B45", AVISO="#8A5A00",
+    ACERO_LIQUIDO="#F3A847", ACERO_TEXTO="#984C00", SOBRE_ACERO="#3A2A05",
+    ESCORIA="#9DB26A", PAPEL="#FFFFFF", TINTA="#13203B",
     TRABAJO="#EAD9B8", SEGURIDAD="#D5CDBB", CAPA32="#A8A190", FONDO_REF="#DDD2BC",
-    JUNTA="#A88E5C", CORAZA="#25272A", HACHURA="#B39560",
-    E_COTA="#25272A", E_LEIDO="#3F6A24", E_ESCALA="#4F5154", E_DERIVADO="#5F6164",
-    E_SUPUESTO="#8A5D00", E_HEREDADO="#5F6164", E_PENDIENTE="#A93526",
-    # Añadidos para lo que el programa calcula y el prototipo no tenía:
-    ESCORIA_TEXTO="#4F6B22", UMBRAL="#A93526", CONSUMIDO="#9A8F78", VERDE_TENUE="#B9C79A",
-    E_LWD="#4A6320", E_DECISION="#4A6320", E_USUARIO="#25272A", E_MODIFICADO="#8A5D00",
+    JUNTA="#A88E5C", CORAZA="#13203B", HACHURA="#B39560",
+    E_COTA="#13203B", E_LEIDO="#1E7B45", E_ESCALA="#3A4863", E_DERIVADO="#55627A",
+    E_SUPUESTO="#8A5A00", E_HEREDADO="#55627A", E_PENDIENTE="#B42318",
+    ESCORIA_TEXTO="#4F6B22", UMBRAL="#B42318", CONSUMIDO="#9A8F78", VERDE_TENUE="#B9CBF2",
+    E_LWD="#1D4ED8", E_DECISION="#1D4ED8", E_USUARIO="#13203B", E_MODIFICADO="#8A5A00",
+    # Series de las gráficas y la cabecera oscura del tablero
+    SERIE_2="#0E9AA7", SERIE_3="#D9480F", SERIE_5="#7048E8",
+    CABECERA="#13203B", SOBRE_CABECERA="#FFFFFF", CABECERA_2="#24345A", CABECERA_TENUE="#AFC3EA",
 )
 
 # Familias candidatas, en orden de preferencia; se usa la primera que haya instalada (la elige ``tema_qt.resolver_familias``).

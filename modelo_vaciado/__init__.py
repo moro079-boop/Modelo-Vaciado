@@ -15,5 +15,5 @@ Capas (separadas: el cálculo no importa Qt):
 **Preliminar:** ningún parámetro hidráulico está validado con tiempos de vaciado medidos en planta.
 """
 
-VERSION_MODELO = "0.1.0-preliminar"
+VERSION_MODELO = "0.2.0-preliminar"
 FORMATO_ESCENARIO = "lwd_eaf.vaciado/1"

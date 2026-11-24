@@ -1,8 +1,7 @@
-"""Modelo de vaciado: tiempos de vaciado del horno (EAF) a la olla y de la olla al distribuidor. Preliminar.
+"""VaciaT: tiempo de vaciado del horno (EAF) a la olla y de la olla al distribuidor. Preliminar.
 
     python vaciado.py                      abre la ventana
     python vaciado.py escenario.json       abre la ventana con ese escenario
-    python vaciado.py --diseno NOMBRE      abre la ventana con otro diseño (magnesita, colada, plano o turno)
     python vaciado.py --tiempo [a.json]    cálculo directo de los dos escenarios, en texto
     python vaciado.py --consola [...]      horno con cavidad 3D, sin ventana: CSV y figura (ver --consola --help)
     python vaciado.py --curvas PLANTA      toneladas límite por ángulo del horno, en texto
@@ -21,17 +20,12 @@ if __name__ == "__main__":
     if args[:1] == ["--version"]:
         from modelo_vaciado import VERSION_MODELO
 
-        print(f"Vaciado-EAF {VERSION_MODELO}")
+        print(f"VaciaT {VERSION_MODELO}")
         sys.exit(0)
-    diseno = None
-    if "--diseno" in args:
-        i = args.index("--diseno")
-        diseno = args[i + 1] if i + 1 < len(args) else None
-        del args[i:i + 2]
     if args[:1] == ["--probar-ventana"]:
         from modelo_vaciado.ventana import probar_ventana
 
-        sys.exit(probar_ventana(diseno))
+        sys.exit(probar_ventana())
     if args[:1] in (["--consola"], ["--curvas"], ["--colada"], ["--tiempo"], ["-h"], ["--help"]):
         if args[0] in ("-h", "--help"):
             print(__doc__)
@@ -41,4 +35,4 @@ if __name__ == "__main__":
         sys.exit(consola(args[1:] if args[0] == "--consola" else args))
     from modelo_vaciado.ventana import main
 
-    sys.exit(main(args[0] if args else None, diseno))
+    sys.exit(main(args[0] if args else None))

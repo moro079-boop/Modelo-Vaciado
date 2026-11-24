@@ -3,7 +3,7 @@
 
 Dos escenarios, uno por página: «Horno (EAF) → olla» (cálculo directo con los datos del usuario, o la cavidad 3D de la planta con
 basculado) y «Olla → distribuidor» (``ventana_tiempo.PaginaTiempo``). El aspecto y el acomodo los fija el diseño
-(``interfaz/disenos.py``).
+(``interfaz/tema.py`` y ``tema_qt.py``).
 
 Página del horno con la cavidad 3D. Izquierda: el escenario (planta, cargas, desgaste, piquera, hidráulica, basculado). Centro: pestañas «Colada» (las cuatro series
 en el tiempo), «Corte» (el horno inclinado en el instante elegido), «Límites» (toneladas límite por ángulo) y «Comparar» (los
@@ -32,7 +32,7 @@ from .horno3d import cavidad_general as cg
 from .horno3d.desgaste import Desgaste
 from .interfaz import tema, tema_qt
 from .interfaz.widgets import Selector, boton
-from .ventana_formulario import formulario
+from .ventana_formulario import botonera, columna_derecha, con_barra, escala, formulario
 from .rutas import raiz
 from . import FORMATO_ESCENARIO, VERSION_MODELO
 from .datos import cargar, plantas_con_datos
@@ -40,7 +40,7 @@ from .escenario import abrir, correr, planta_de
 from .reporte import AVISO, escribir_csv, escribir_excel, escribir_pdf, filas_de_resultado
 from .ventana_tiempo import PaginaTiempo, colores
 
-NOMBRE_APP = "Modelo-Vaciado"   # provisional: el nombre lo decide el usuario (docs/pendientes.md, decisión N1)
+NOMBRE_APP = "VaciaT"          # nombre del programa (decisión del usuario del 2026-11-24)
 RAIZ = raiz()
 RECURSOS = RAIZ / "modelo_vaciado" / "interfaz" / "recursos"
 P = tema.PALETA
@@ -88,7 +88,8 @@ class PaginaHorno(QWidget):
         self.resultado = None
         self.escenario_corrido: dict | None = None
         self.comparados: list = []          # (nombre, Resultado)
-        self.observadores: list = []        # funciones que reciben la página tras cada cálculo (indicadores del diseño)
+        self.observadores: list = []        # funciones que reciben la página tras cada cálculo (indicadores de la cabecera)
+        self.esta_obsoleto = False
         self._cargando = False
         self._armar()
         if ruta_escenario:
@@ -171,14 +172,14 @@ class PaginaHorno(QWidget):
         barra.setObjectName("Columna")
         barra.setWidget(panel)
         barra.setWidgetResizable(True)
-        barra.setFixedWidth(440)
+        barra.setFixedWidth(escala(400))
         barra.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         fila.addWidget(barra)
 
         # centro: pestañas
         self.pestanas = QTabWidget()
         self.lienzo_colada = Lienzo(2, 2)
-        self.pestanas.addTab(self.lienzo_colada, "Colada")
+        self.pestanas.addTab(con_barra(self.lienzo_colada), "Colada")
         corte = QWidget()
         cv = QVBoxLayout(corte)
         self.lienzo_corte = Lienzo()
@@ -186,12 +187,12 @@ class PaginaHorno(QWidget):
         self.instante.setRange(0, 1000)
         self.instante.valueChanged.connect(self._dibujar_corte)
         self.rotulo_instante = QLabel()
-        cv.addWidget(self.lienzo_corte, 1)
+        cv.addWidget(con_barra(self.lienzo_corte), 1)
         cv.addWidget(self.rotulo_instante)
         cv.addWidget(self.instante)
         self.pestanas.addTab(corte, "Corte")
         self.lienzo_limites = Lienzo()
-        self.pestanas.addTab(self.lienzo_limites, "Límites")
+        self.pestanas.addTab(con_barra(self.lienzo_limites), "Límites")
         comparar = QWidget()
         kv = QVBoxLayout(comparar)
         self.lienzo_comparar = Lienzo(2, 2)
@@ -203,7 +204,7 @@ class PaginaHorno(QWidget):
         kb.addWidget(b2)
         kb.addStretch(1)
         kv.addLayout(kb)
-        kv.addWidget(self.lienzo_comparar, 1)
+        kv.addWidget(con_barra(self.lienzo_comparar), 1)
         self.pestanas.addTab(comparar, "Comparar")
         self.pestanas.addTab(self._armar_mapas(), "Mapas")
         fila.addWidget(self.pestanas, 1)
@@ -212,7 +213,11 @@ class PaginaHorno(QWidget):
         der = QWidget()
         dv = QVBoxLayout(der)
         self.titular = QLabel("—")
-        self.titular.setStyleSheet(f"font-size: 30px; font-weight: 600; color: {P['TEXTO']};")
+        self.titular.setObjectName("Titular")
+        self.obsoleto = QLabel("Datos cambiados: pulse «Calcular» (F5) para actualizar el resultado.")
+        self.obsoleto.setObjectName("Obsoleto")
+        self.obsoleto.setWordWrap(True)
+        self.obsoleto.hide()
         self.subtitular = QLabel("")
         self.subtitular.setWordWrap(True)
         self.tabla = QLabel("")
@@ -224,25 +229,44 @@ class PaginaHorno(QWidget):
         pie = QLabel(AVISO)
         pie.setWordWrap(True)
         pie.setStyleSheet(f"color: {P['AVISO']}; font-size: 11px;")
-        dv.addWidget(QLabel("Tiempo de vaciado"))
+        self.rotulo_titular = QLabel("Tiempo de vaciado")
+        dv.addWidget(self.rotulo_titular)
         dv.addWidget(self.titular)
+        dv.addWidget(self.obsoleto)
         dv.addWidget(self.subtitular)
         dv.addWidget(self.tabla)
         dv.addWidget(self.avisos)
         dv.addStretch(1)
-        for texto, accion in (("Abrir escenario…", self.abrir), ("Guardar escenario…", self.guardar),
-                              ("Exportar a Excel…", lambda: self.exportar("xlsx")), ("Exportar a PDF…", lambda: self.exportar("pdf")),
-                              ("Exportar la serie (CSV)…", lambda: self.exportar("csv"))):
-            dv.addWidget(boton(texto, accion))
+        dv.addWidget(botonera(((("Abrir…", "Abrir un escenario (Ctrl+O)", self.abrir),
+                                 ("Guardar…", "Guardar el escenario (Ctrl+S)", self.guardar)),
+                                (("Excel…", "Exportar a Excel (Ctrl+E)", lambda: self.exportar("xlsx")),
+                                 ("PDF…", "Exportar a PDF (Ctrl+P)", lambda: self.exportar("pdf")),
+                                 ("CSV…", "Exportar la serie en CSV", lambda: self.exportar("csv"))))))
         dv.addWidget(pie)
-        der.setFixedWidth(int(300 * max(QApplication.font().pointSizeF(), 10.0) / 10.0))
-        fila.addWidget(der)
+        fila.addWidget(columna_derecha(der))
 
         self.planta.currentIndexChanged.connect(self._valores_de_la_planta)
         for w in (self.modo, self.tipo):
             w.currentIndexChanged.connect(self._habilitar)
         self.instantaneo.toggled.connect(self._habilitar)
         self._habilitar()
+        # un resultado que ya no corresponde a los datos en pantalla se marca (el cálculo con la cavidad tarda ~0,6 s: no se
+        # recalcula en cada cambio, como sí la página del cálculo directo)
+        for w in (self.acero_inicial, self.acero_final, self.escoria, self.pared, self.piso, self.diametro, self.acortamiento,
+                  self.cd, self.k_entrada, self.rugosidad, self.viscosidad, self.angulo_fijo, self.velocidad):
+            w.valueChanged.connect(self._marcar_obsoleto)
+        for w in (self.planta, self.modo, self.referencia, self.tipo):
+            w.currentIndexChanged.connect(self._marcar_obsoleto)
+        self.pasos.textChanged.connect(self._marcar_obsoleto)
+        self.instantaneo.toggled.connect(self._marcar_obsoleto)
+
+    def _marcar_obsoleto(self, *_):
+        if self._cargando or self.resultado is None:
+            return
+        self.obsoleto.show()
+        self.esta_obsoleto = True
+        for f in self.observadores:
+            f(self)
 
     def _armar_mapas(self) -> QWidget:
         """Pestaña «Mapas»: tiempo a ángulo fijo y tiempo por colada con el canal creciendo."""
@@ -262,7 +286,7 @@ class PaginaHorno(QWidget):
         nota.setStyleSheet(f"color: {P['AVISO']}; font-size: 11px;")
         v.addWidget(nota)
         self.lienzo_mapas = Lienzo(1, 2)
-        v.addWidget(self.lienzo_mapas, 1)
+        v.addWidget(con_barra(self.lienzo_mapas), 1)
         self.mapa_resultado = None
         return hoja
 
@@ -410,6 +434,8 @@ class PaginaHorno(QWidget):
                 f(self)
             return False
         self.resultado, self.escenario_corrido = r, e
+        self.obsoleto.hide()
+        self.esta_obsoleto = False
         self.titular.setText(f"{r.tiempo:.0f} s")
         self.subtitular.setText(f"{r.tiempo / 60:.2f} min para {r.colado:.0f} t · caudal medio {r.caudal_medio * 60:.1f} t/min")
         self.tabla.setText("<table cellspacing='3'>" + "".join(
@@ -435,11 +461,12 @@ class PaginaHorno(QWidget):
     def _dibujar_series(self, lienzo: Lienzo, lista):
         with matplotlib.rc_context(tema.estilo_matplotlib()):
             lienzo.limpiar()
-            paneles = (("masa", "acero en el horno, t"), ("angulo", "ángulo de basculado, grados"),
-                       ("altura", "acero sobre la boca, mm"), ("caudal", "caudal, t/s"))
-            for ax, (campo, rotulo) in zip(lienzo.ejes, paneles):
+            paneles = (("masa", 1, "acero en el horno, t"), ("angulo", 1, "ángulo de basculado, grados"),
+                       ("altura", 1, "acero sobre la boca, mm"), ("caudal", 60, "caudal, t/min"))
+            for ax, (campo, factor, rotulo) in zip(lienzo.ejes, paneles):
                 for i, (nombre, r) in enumerate(lista):
-                    ax.plot(r.t, getattr(r, campo), color=colores()[i % len(colores())], lw=1.8, label=f"{nombre} ({r.tiempo:.0f} s)")
+                    ax.plot(r.t / 60, getattr(r, campo) * factor, color=colores()[i % len(colores())], lw=1.8,
+                            label=f"{nombre} ({r.tiempo / 60:.1f} min)")
                 ax.set_ylabel(rotulo)
                 ax.set_ylim(bottom=0)
             if lista:
@@ -450,7 +477,7 @@ class PaginaHorno(QWidget):
                 if len(lista) > 1:
                     lienzo.ejes[0].legend(loc="lower left", fontsize=7.5)
             for ax in lienzo.ejes[2:]:
-                ax.set_xlabel("tiempo, s")
+                ax.set_xlabel("tiempo, min")
         lienzo.draw_idle()
 
     def _dibujar_limites(self):
@@ -578,9 +605,16 @@ class PaginaHorno(QWidget):
 
 
 class PaginaHornoOlla(QWidget):
-    """Escenario «Horno (EAF) → olla»: cálculo directo con los datos del usuario o la cavidad 3D de la planta con basculado."""
+    """Escenario «Horno (EAF) → olla»: cálculo directo con los datos del usuario o la cavidad 3D de la planta con basculado.
+
+    La vista con la cavidad 3D se arma la primera vez que se elige (armar la cavidad tarda unos segundos; ``precalentar`` la
+    adelanta en segundo plano al abrir la ventana)."""
 
     def __init__(self, ruta_escenario: Path | str | None = None):
+        from PySide6.QtWidgets import QStackedWidget
+
+        from . import escenarios as es
+
         super().__init__()
         v = QVBoxLayout(self)
         v.setContentsMargins(0, 0, 0, 0)
@@ -588,41 +622,51 @@ class PaginaHornoOlla(QWidget):
         fila.setContentsMargins(10, 8, 10, 0)
         fila.addWidget(QLabel("Modelo del horno:"))
         self.botones = []
-        for i, texto in enumerate(("Cálculo directo (datos del usuario)", "Cavidad 3D de la planta y basculado")):
+        for i, (texto, ayuda) in enumerate((
+                ("Cálculo directo (datos del usuario)", "Tonelaje, altura metalostática y área de paso: el horno como recipiente simple"),
+                ("Cavidad 3D de la planta y basculado", "La cavidad del horno de la planta, el ángulo de basculado y los límites del panel"))):
             b = QPushButton(texto)
             b.setObjectName("Subpestana")
             b.setCheckable(True)
+            b.setToolTip(ayuda)
             b.clicked.connect(lambda _=False, i=i: self.elegir(i))
             fila.addWidget(b)
             self.botones.append(b)
         fila.addStretch(1)
         v.addLayout(fila)
-        from PySide6.QtWidgets import QStackedWidget
-
         self.pila = QStackedWidget()
-        e = None
-        detallado = False
-        if ruta_escenario:
-            from . import escenarios as es
-
-            e = es.abrir(ruta_escenario)
-            detallado = e.get("formato") == FORMATO_ESCENARIO
-        self.directo = PaginaTiempo("horno_olla", Lienzo, None if detallado else e)
-        self.detallado = PaginaHorno(ruta_escenario if detallado else None)
-        self.pila.addWidget(self.directo)
-        self.pila.addWidget(self.detallado)
-        v.addWidget(self.pila, 1)
         self.observadores: list = []
-        for p in (self.directo, self.detallado):
-            p.observadores.append(lambda _p: self._avisar())
+        e = es.abrir(ruta_escenario) if ruta_escenario else None
+        detallado = e is not None and e.get("formato") == FORMATO_ESCENARIO
+        self.directo = PaginaTiempo("horno_olla", Lienzo, None if detallado else e)
+        self.directo.observadores.append(lambda _p: self._avisar())
+        self.pila.addWidget(self.directo)
+        self._detallado: PaginaHorno | None = None
+        self._ruta_detallado = ruta_escenario if detallado else None
+        v.addWidget(self.pila, 1)
         self.elegir(1 if detallado else 0)
+
+    @property
+    def detallado(self) -> PaginaHorno:
+        """La página con la cavidad 3D (se arma al primer uso)."""
+        if self._detallado is None:
+            QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
+            try:
+                self._detallado = PaginaHorno(self._ruta_detallado)
+            finally:
+                QApplication.restoreOverrideCursor()
+            self._detallado.observadores.append(lambda _p: self._avisar())
+            self._detallado.titular.hide()          # el tiempo ya está en los indicadores de la cabecera
+            self._detallado.rotulo_titular.hide()
+            self.pila.addWidget(self._detallado)
+        return self._detallado
 
     @property
     def actual(self):
         return self.pila.currentWidget()
 
     def elegir(self, i: int):
-        self.pila.setCurrentIndex(i)
+        self.pila.setCurrentWidget(self.directo if i == 0 else self.detallado)
         for k, b in enumerate(self.botones):
             b.setChecked(k == i)
         self._avisar()
@@ -632,33 +676,35 @@ class PaginaHornoOlla(QWidget):
             f(self)
 
 
-def indicadores_de(pagina) -> list[tuple[str, str]]:
-    """(rótulo, valor) de lo que la cabecera del diseño muestra de la página activa."""
+def indicadores_de(pagina) -> tuple[list[tuple[str, str]], str]:
+    """((rótulo, valor) × 4, estado) de lo que la cabecera muestra de la página activa. Estado: «ok», «obsoleto» o «error»."""
     p = pagina.actual if isinstance(pagina, PaginaHornoOlla) else pagina
     r = p.resultado
+    vacio = [("Tiempo de vaciado", "—"), ("Caudal medio", "—"), ("Acero vaciado", "—"), ("Comprobación", "—")]
     if r is None:
-        return [("Tiempo de vaciado", "—"), ("Caudal medio", "—"), ("Acero vaciado", "—"), ("Comprobación", "—")]
+        return vacio, "error"
+    estado = "obsoleto" if getattr(p, "esta_obsoleto", False) else ("error" if "No se pudo" in p.avisos.text() else "ok")
     if isinstance(p, PaginaHorno):
         return [("Tiempo de vaciado", p.tiempo_texto()), ("Caudal medio", f"{r.caudal_medio * 60:.1f} t/min"),
-                ("Acero vaciado", f"{r.colado:.0f} t"), ("Ángulo final", f"{r.angulo[-1]:.1f}°")]
+                ("Acero vaciado", f"{r.colado:.0f} t"), ("Ángulo final", f"{r.angulo[-1]:.1f}°")], estado
     from .flujo import torricelli
 
     t = torricelli(r.config)
     return [("Tiempo de vaciado", p.tiempo_texto()), ("Caudal medio", f"{r.caudal_medio * 60:.1f} t/min"),
-            ("Acero vaciado", f"{r.colado:.1f} t"), ("Torricelli", f"{t / 60:.1f} min" if t else "no aplica")]
+            ("Acero vaciado", f"{r.colado:.1f} t"), ("Solución de Torricelli", f"{t / 60:.1f} min" if t else "no aplica")], estado
 
 
 class _Kpi(QWidget):
-    def __init__(self, rotulo: str, acento: bool = False):
+    def __init__(self, acento: bool = False):
         from PySide6.QtWidgets import QFrame
 
         super().__init__()
-        marco = QFrame(self)
-        marco.setObjectName("Kpi")
-        v = QVBoxLayout(marco)
-        v.setContentsMargins(14, 8, 14, 8)
+        self.marco = QFrame(self)
+        self.marco.setObjectName("Kpi")
+        v = QVBoxLayout(self.marco)
+        v.setContentsMargins(14, 6, 14, 6)
         v.setSpacing(0)
-        self.rotulo = QLabel(rotulo.upper())
+        self.rotulo = QLabel("—")
         self.rotulo.setObjectName("KpiRotulo")
         self.valor = QLabel("—")
         self.valor.setObjectName("KpiValorAcento" if acento else "KpiValor")
@@ -666,29 +712,57 @@ class _Kpi(QWidget):
         v.addWidget(self.valor)
         capa = QVBoxLayout(self)
         capa.setContentsMargins(0, 0, 0, 0)
-        capa.addWidget(marco)
+        capa.addWidget(self.marco)
 
-    def poner(self, rotulo: str, valor: str):
+    def poner(self, rotulo: str, valor: str, estado: str = "ok"):
         self.rotulo.setText(rotulo.upper())
         self.valor.setText(valor)
+        if self.marco.property("estado") != estado:
+            self.marco.setProperty("estado", estado)
+            self.marco.style().unpolish(self.marco)
+            self.marco.style().polish(self.marco)
+        self.setToolTip({"obsoleto": "Los datos cambiaron: el resultado no está actualizado (F5 para calcular).",
+                         "error": "No se pudo calcular con los datos en pantalla."}.get(estado, ""))
+
+
+_HILO_PRECALENTADO = None
+
+
+def precalentar() -> None:
+    """Arma en segundo plano, una sola vez por proceso, la tabla de niveles del horno de cada planta con datos de vaciado (lo
+    que hace lenta la primera visita a la vista con la cavidad 3D)."""
+    global _HILO_PRECALENTADO
+    if _HILO_PRECALENTADO is not None:
+        return
+    import threading
+
+    def trabajo():
+        from .escenario import tabla_de
+
+        for planta in plantas_con_datos():
+            try:
+                tabla_de(planta, cargar(planta))
+            except Exception:  # noqa: BLE001  (si falla aquí, fallará con su mensaje al abrir la vista)
+                pass
+
+    _HILO_PRECALENTADO = threading.Thread(target=trabajo, name="precalentado", daemon=True)
+    _HILO_PRECALENTADO.start()
 
 
 class Ventana(QMainWindow):
-    """El programa: una página por escenario, con el acomodo del diseño (pestañas, navegación lateral o tablero)."""
+    """El programa: cabecera oscura con la marca y los dos escenarios como pasos, indicadores grandes de la página activa y,
+    debajo, la página del escenario."""
 
-    def __init__(self, ruta_escenario: Path | str | None = None, diseno: str | None = None):
+    def __init__(self, ruta_escenario: Path | str | None = None):
+        from PySide6.QtCore import QTimer
+        from PySide6.QtGui import QKeySequence, QShortcut
         from PySide6.QtWidgets import QButtonGroup, QFrame, QStackedWidget
 
         from . import escenarios as es
-        from .interfaz import disenos
 
         super().__init__()
-        nombre = diseno or tema.DISENO
-        self.diseno = disenos.DISENOS.get(nombre, disenos.DISENOS[disenos.POR_OMISION])
-        d = self.diseno
-        self.setWindowTitle(f"{NOMBRE_APP} {VERSION_MODELO}: tiempos de vaciado del horno a la olla y de la olla al distribuidor")
-        ruta_icono = RECURSOS / "iconos" / d.icono if d.icono != "../icono.png" else RECURSOS / "icono.png"
-        icono = QIcon(str(ruta_icono))
+        self.setWindowTitle(f"{NOMBRE_APP} {VERSION_MODELO}: tiempo de vaciado del horno a la olla y de la olla al distribuidor")
+        icono = QIcon(str(RECURSOS / "icono.png"))
         self.icono_cargado = not icono.isNull()
         self.setWindowIcon(icono)
 
@@ -705,226 +779,183 @@ class Ventana(QMainWindow):
         self.kpis: list[_Kpi] = []
         for p, _ in self.paginas_lista:
             p.observadores.append(lambda _p: self._actualizar_indicadores())
+        self.horno.directo.titular.hide()           # el tiempo ya está en los indicadores de la cabecera
+        self.horno.directo.rotulo_titular.hide()
+        self.olla.titular.hide()
+        self.olla.rotulo_titular.hide()
 
         central = QWidget()
         central.setObjectName("Fondo")
-        raiz_capa = QVBoxLayout(central)
-        raiz_capa.setContentsMargins(0, 0, 0, 0)
-        raiz_capa.setSpacing(0)
-        if d.acomodo == "pestanas":
-            if d.nombre == "plano":
-                barra = QFrame()
-                barra.setObjectName("Barra")
-                bh = QHBoxLayout(barra)
-                bh.setContentsMargins(16, 10, 16, 10)
-                logo = QLabel()
-                logo.setPixmap(icono.pixmap(34, 34))
-                bh.addWidget(logo)
-                marca = QLabel(NOMBRE_APP.upper())
-                marca.setObjectName("MarcaBarra")
-                lema = QLabel("Tiempos de vaciado · Bernoulli y Torricelli")
-                lema.setObjectName("LemaBarra")
-                bh.addWidget(marca)
-                bh.addSpacing(12)
-                bh.addWidget(lema)
-                bh.addStretch(1)
-                raiz_capa.addWidget(barra)
-            self.paginas = QTabWidget()
-            self.paginas.setObjectName("Paginas")
-            for p, texto in self.paginas_lista:
-                self.paginas.addTab(p, texto)
-            raiz_capa.addWidget(self.paginas, 1)
-            self._elegir = self.paginas.setCurrentIndex
-            self._actual = self.paginas.currentIndex
-            self.paginas.currentChanged.connect(lambda _i: self._actualizar_indicadores())
-        else:
-            self.pila = QStackedWidget()
-            for p, _ in self.paginas_lista:
-                self.pila.addWidget(p)
-            grupo = QButtonGroup(self)
-            self.botones_nav = []
-            if d.acomodo == "lateral":
-                cuerpo = QHBoxLayout()
-                cuerpo.setSpacing(0)
-                nav = QFrame()
-                nav.setObjectName("Navegacion")
-                nav.setFixedWidth(230)
-                nv = QVBoxLayout(nav)
-                nv.setContentsMargins(0, 18, 0, 14)
-                cab = QHBoxLayout()
-                cab.setContentsMargins(16, 0, 16, 14)
-                logo = QLabel()
-                logo.setPixmap(icono.pixmap(40, 40))
-                cab.addWidget(logo)
-                marca = QLabel(NOMBRE_APP)
-                marca.setObjectName("MarcaAcento")
-                cab.addWidget(marca, 1)
-                nv.addLayout(cab)
-                for i, (_, texto) in enumerate(self.paginas_lista):
-                    b = QPushButton(texto)
-                    b.setObjectName("Nav")
-                    b.setCheckable(True)
-                    grupo.addButton(b, i)
-                    nv.addWidget(b)
-                    self.botones_nav.append(b)
-                nv.addStretch(1)
-                nota = QLabel("Preliminar: sin validar con tiempos medidos en planta.")
-                nota.setWordWrap(True)
-                nota.setStyleSheet(f"color: {P['AVISO']}; font-size: 8.5pt; padding: 0 16px;")
-                nv.addWidget(nota)
-                cuerpo.addWidget(nav)
-                derecha = QVBoxLayout()
-                derecha.setSpacing(0)
-                derecha.addWidget(self._franja_indicadores())
-                derecha.addWidget(self.pila, 1)
-                cuerpo.addLayout(derecha, 1)
-                raiz_capa.addLayout(cuerpo, 1)
-            else:                                              # tablero
-                cab = QFrame()
-                cab.setObjectName("Cabecera")
-                ch = QHBoxLayout(cab)
-                ch.setContentsMargins(18, 12, 18, 12)
-                logo = QLabel()
-                logo.setPixmap(icono.pixmap(46, 46))
-                ch.addWidget(logo)
-                marca = QLabel(NOMBRE_APP)
-                marca.setObjectName("MarcaBarra")
-                ch.addWidget(marca)
-                ch.addSpacing(24)
-                for i, (_, texto) in enumerate(self.paginas_lista):
-                    b = QPushButton(f"{i + 1}  {texto}")
-                    b.setObjectName("Paso")
-                    b.setCheckable(True)
-                    grupo.addButton(b, i)
-                    ch.addWidget(b)
-                    self.botones_nav.append(b)
-                ch.addStretch(1)
-                raiz_capa.addWidget(cab)
-                raiz_capa.addWidget(self._franja_indicadores())
-                raiz_capa.addWidget(self.pila, 1)
-            grupo.idClicked.connect(self._ir)
-            self._elegir = self._ir
-            self._actual = self.pila.currentIndex
-        self.setCentralWidget(central)
-        self._menu()
-        self._elegir(1 if tipo == "olla_distribuidor" else 0)
-        self._actualizar_indicadores()
-        self.resize(1480, 900)
-
-    def _franja_indicadores(self):
-        from PySide6.QtWidgets import QFrame
-
+        capa = QVBoxLayout(central)
+        capa.setContentsMargins(0, 0, 0, 0)
+        capa.setSpacing(0)
+        cab = QFrame()
+        cab.setObjectName("Cabecera")
+        ch = QHBoxLayout(cab)
+        ch.setContentsMargins(16, 10, 16, 10)
+        logo = QLabel()
+        logo.setPixmap(icono.pixmap(42, 42))
+        ch.addWidget(logo)
+        marcas = QVBoxLayout()
+        marcas.setSpacing(0)
+        marca = QLabel(NOMBRE_APP)
+        marca.setObjectName("MarcaBarra")
+        lema = QLabel("Tiempo de vaciado · balance de masa, Bernoulli y Torricelli")
+        lema.setObjectName("LemaBarra")
+        marcas.addWidget(marca)
+        marcas.addWidget(lema)
+        ch.addLayout(marcas)
+        ch.addSpacing(28)
+        self.pila = QStackedWidget()
+        grupo = QButtonGroup(self)
+        self.botones_nav = []
+        for i, (p, texto) in enumerate(self.paginas_lista):
+            self.pila.addWidget(p)
+            b = QPushButton(f"{i + 1}  {texto}")
+            b.setObjectName("Paso")
+            b.setCheckable(True)
+            b.setToolTip(f"{texto} (Ctrl+{i + 1})")
+            grupo.addButton(b, i)
+            ch.addWidget(b)
+            self.botones_nav.append(b)
+        ch.addStretch(1)
+        grupo.idClicked.connect(self._elegir)
+        capa.addWidget(cab)
         franja = QFrame()
         franja.setObjectName("Indicadores")
-        h = QHBoxLayout(franja)
-        h.setContentsMargins(14, 10, 14, 10)
+        fh = QHBoxLayout(franja)
+        fh.setContentsMargins(12, 8, 12, 4)
         for i in range(4):
-            k = _Kpi("—", acento=i == 0)
+            k = _Kpi(acento=i == 0)
             self.kpis.append(k)
-            h.addWidget(k, 1)
-        return franja
+            fh.addWidget(k, 1)
+        capa.addWidget(franja)
+        capa.addWidget(self.pila, 1)
+        self.setCentralWidget(central)
+        self.statusBar().showMessage("F5 calcula · Ctrl+1 / Ctrl+2 cambian de escenario · Ctrl+O abre · Ctrl+S guarda · "
+                                     "Ctrl+E exporta a Excel · Ctrl+P exporta a PDF")
+        self._menu()
+        for tecla, accion in (("F5", lambda: self.pagina_activa().calcular()), ("Ctrl+1", lambda: self._elegir(0)),
+                              ("Ctrl+2", lambda: self._elegir(1))):
+            QShortcut(QKeySequence(tecla), self, activated=accion)
+        self._elegir(1 if tipo == "olla_distribuidor" else 0)
+        self.setMinimumSize(1180, 680)
+        self.resize(1440, 880)
+        if not ruta_escenario or tipo != "horno_olla":
+            QTimer.singleShot(1500, precalentar)
 
-    def _ir(self, i: int):
+    def _elegir(self, i: int):
         self.pila.setCurrentIndex(i)
         for k, b in enumerate(self.botones_nav):
             b.setChecked(k == i)
         self._actualizar_indicadores()
 
+    def _actual(self) -> int:
+        return self.pila.currentIndex()
+
     def pagina_actual(self):
         return self.paginas_lista[self._actual()][0]
 
+    def pagina_activa(self):
+        """La página de cálculo visible (en el horno, la vista elegida)."""
+        p = self.pagina_actual()
+        return p.actual if isinstance(p, PaginaHornoOlla) else p
+
     def _actualizar_indicadores(self):
-        if not self.kpis or not hasattr(self, "_actual"):
+        if not self.kpis or not hasattr(self, "pila"):
             return
-        for k, (rotulo, valor) in zip(self.kpis, indicadores_de(self.pagina_actual())):
-            k.poner(rotulo, valor)
+        filas, estado = indicadores_de(self.pagina_actual())
+        for k, (rotulo, valor) in zip(self.kpis, filas):
+            k.poner(rotulo, valor, estado)
 
     def _menu(self):
-        from PySide6.QtGui import QAction, QActionGroup
-
-        from .interfaz import disenos
-
-        def actual():
-            p = self.pagina_actual()
-            return p.actual if isinstance(p, PaginaHornoOlla) else p
+        from PySide6.QtGui import QAction, QKeySequence
 
         archivo = self.menuBar().addMenu("&Archivo")
-        for texto, accion in (("Abrir escenario…", lambda: actual().abrir()), ("Guardar escenario…", lambda: actual().guardar()),
-                              ("Exportar a Excel…", lambda: actual().exportar("xlsx")), ("Exportar a PDF…", lambda: actual().exportar("pdf"))):
+        for texto, tecla, accion in (("Abrir escenario…", QKeySequence.StandardKey.Open, lambda: self.pagina_activa().abrir()),
+                                     ("Guardar escenario…", QKeySequence.StandardKey.Save, lambda: self.pagina_activa().guardar()),
+                                     ("Exportar a Excel…", "Ctrl+E", lambda: self.pagina_activa().exportar("xlsx")),
+                                     ("Exportar a PDF…", "Ctrl+P", lambda: self.pagina_activa().exportar("pdf")),
+                                     ("Exportar la serie (CSV)…", None, lambda: self.pagina_activa().exportar("csv"))):
             a = QAction(texto, self)
+            if tecla is not None:
+                a.setShortcut(QKeySequence(tecla))
             a.triggered.connect(accion)
             archivo.addAction(a)
         archivo.addSeparator()
+        copiar = QAction("Copiar el resumen del resultado", self)
+        copiar.setShortcut(QKeySequence("Ctrl+Shift+C"))
+        copiar.triggered.connect(self.copiar_resumen)
+        archivo.addAction(copiar)
+        archivo.addSeparator()
         salir = QAction("Salir", self)
+        salir.setShortcut(QKeySequence.StandardKey.Quit)
         salir.triggered.connect(self.close)
         archivo.addAction(salir)
-        ver = self.menuBar().addMenu("&Ver")
-        sub = ver.addMenu("Diseño de la ventana")
-        grupo = QActionGroup(self)
-        for nombre, dis in disenos.DISENOS.items():
-            a = QAction(dis.etiqueta, self, checkable=True)
-            a.setChecked(nombre == self.diseno.nombre)
-            a.setToolTip(dis.descripcion)
-            a.triggered.connect(lambda _=False, n=nombre: cambiar_diseno(self, n))
-            grupo.addAction(a)
-            sub.addAction(a)
         ayuda = self.menuBar().addMenu("A&yuda")
-        acerca = QAction("Acerca del programa", self)
+        acerca = QAction(f"Acerca de {NOMBRE_APP}", self)
         acerca.triggered.connect(lambda: QMessageBox.about(
             self, NOMBRE_APP, f"<b>{NOMBRE_APP} {VERSION_MODELO}</b><br>Tiempo de vaciado del horno (EAF) a la olla y de la olla al "
-            f"distribuidor con las ecuaciones de flujo (balance de masa, Bernoulli y Torricelli).<br><br>{AVISO}<br>"
-            f"Diseño: {self.diseno.etiqueta}."))
+            f"distribuidor con las ecuaciones de flujo (balance de masa, Bernoulli y Torricelli).<br><br>{AVISO}"))
         ayuda.addAction(acerca)
 
 
-_VENTANAS: list = []          # las ventanas abiertas al cambiar de diseño (para que no las recoja el recolector)
+    def resumen_texto(self) -> str:
+        """El resultado de la página activa en texto (para pegarlo en un correo o un informe)."""
+        p = self.pagina_activa()
+        if p.resultado is None:
+            return ""
+        if isinstance(p, PaginaHorno):
+            from .reporte import resumen
 
+            return resumen(p.resultado)
+        from .reporte_tiempo import texto
 
-def preparar(qapp, diseno: str | None = None) -> str:
-    """Aplica el diseño (paleta, letra y hoja de estilo) a la aplicación y devuelve la hoja para la ventana."""
-    from .interfaz import disenos
+        return texto(p.escenario_corrido, p.resultado)
 
-    d = disenos.aplicar(diseno or disenos.POR_OMISION)
-    return tema_qt.aplicar(qapp, d.tamano) + disenos.hoja_adicional(d)
+    def copiar_resumen(self):
+        texto = self.resumen_texto()
+        if texto:
+            QApplication.clipboard().setText(f"{NOMBRE_APP} {VERSION_MODELO}. {AVISO}\n{texto}")
+            self.statusBar().showMessage("Resumen copiado al portapapeles.", 4000)
 
+    # -- tamaño, posición y escenario activo, recordados entre sesiones (sólo con ``main``) ------------------------------------
+    def recordar(self, ajustes) -> None:
+        ajustes.setValue("geometria", self.saveGeometry())
+        ajustes.setValue("pagina", self._actual())
 
-def cambiar_diseno(ventana: Ventana, nombre: str) -> Ventana:
-    """Cierra la ventana y abre otra con el diseño elegido y los escenarios que había en pantalla."""
-    from . import escenarios as es
-
-    guardados = {}
-    for clave, pagina in (("horno", ventana.horno.directo), ("olla", ventana.olla)):
+    def restaurar(self, ajustes) -> None:
+        geometria = ajustes.value("geometria")
+        if geometria is not None:
+            self.restoreGeometry(geometria)
         try:
-            guardados[clave] = pagina.escenario()
-        except ValueError:
-            guardados[clave] = None
-    indice = ventana._actual()
-    hoja = preparar(aplicacion_qt(), nombre)
-    nueva = Ventana(diseno=nombre)
-    for clave, pagina in (("horno", nueva.horno.directo), ("olla", nueva.olla)):
-        if guardados[clave]:
-            pagina.poner_escenario(es.completar(guardados[clave]))
-            pagina.calcular()
-    nueva.setStyleSheet(hoja)
-    nueva._elegir(indice)
-    nueva.resize(ventana.size())
-    nueva.show()
-    _VENTANAS.append(nueva)
-    ventana.close()
-    return nueva
+            self._elegir(int(ajustes.value("pagina", 0)))
+        except (TypeError, ValueError):
+            pass
 
 
-def probar_ventana(diseno: str | None = None) -> int:
+_VENTANAS: list = []          # ventanas abiertas por ``main`` (para que no las recoja el recolector)
+
+
+def preparar(qapp) -> str:
+    """Aplica el diseño (paleta, letra y hoja de estilo) a la aplicación y devuelve la hoja para la ventana."""
+    return tema_qt.aplicar(qapp)
+
+
+def probar_ventana() -> int:
     """Abre la ventana, calcula, recorre las páginas y pestañas, exporta a una carpeta temporal y cierra. 0 si todo funcionó."""
     import tempfile
+    import time
 
     try:
         qapp = aplicacion_qt()
-        hoja = preparar(qapp, diseno)
-        v = Ventana(diseno=diseno)
+        hoja = preparar(qapp)
+        inicio = time.perf_counter()
+        v = Ventana()
         v.setStyleSheet(hoja)
         v.show()
         qapp.processEvents()
+        apertura = time.perf_counter() - inicio
         h = v.horno
         h.elegir(1)
         for i in range(h.detallado.pestanas.count()):
@@ -955,20 +986,36 @@ def probar_ventana(diseno: str | None = None) -> int:
     if not icono:
         print("  NO: el icono de la ventana no se pudo cargar")
         return 1
-    print(f"  ok  ventana abierta con el diseño «{v.diseno.nombre}», calculada (horno directo {tiempos[0]:.0f} s; horno con cavidad 3D "
+    print(f"  ok  ventana abierta en {apertura:.1f} s, calculada (horno directo {tiempos[0]:.0f} s; horno con cavidad 3D "
           f"{tiempos[1]:.0f} s; olla {tiempos[2] / 60:.0f} min), exportada y cerrada")
     return 0
 
 
-def main(ruta_escenario: str | None = None, diseno: str | None = None) -> int:
+def main(ruta_escenario: str | None = None) -> int:
+    from PySide6.QtCore import QSettings
+
     qapp = aplicacion_qt()
-    hoja = preparar(qapp, diseno)
+    hoja = preparar(qapp)
     try:
-        v = Ventana(ruta_escenario, diseno)
+        v = Ventana(ruta_escenario)
     except ValueError as error:
         QMessageBox.warning(None, NOMBRE_APP, str(error))
-        v = Ventana(diseno=diseno)
+        v = Ventana()
+    ajustes = QSettings(NOMBRE_APP, NOMBRE_APP)
+    v.restaurar(ajustes)
+    if ruta_escenario:                      # un escenario abierto manda sobre la última página vista
+        v._elegir(1 if v.olla.escenario_corrido and es_de_olla(ruta_escenario) else 0)
     v.setStyleSheet(hoja)
     v.show()
     _VENTANAS.append(v)
+    qapp.aboutToQuit.connect(lambda: v.recordar(ajustes))
     return qapp.exec()
+
+
+def es_de_olla(ruta) -> bool:
+    from . import escenarios as es
+
+    try:
+        return es.abrir(ruta).get("tipo") == "olla_distribuidor"
+    except (OSError, ValueError):
+        return False

@@ -1,4 +1,4 @@
-"""El diseño Magnesita vestido con Qt: la paleta y los roles son los de ``tema.py``; aquí está la hoja de estilo.
+"""El diseño VaciaT vestido con Qt: la paleta y los roles son los de ``tema.py``; aquí está la hoja de estilo.
 
 Tarjetas con esquinas redondeadas, botones y campos con estados (sobre, foco, inhabilitado), deslizadores y barras de
 desplazamiento finos, pestañas con subrayado y tablas con filas alternas. Qt escala solo en pantallas de 125 a 200 %.
@@ -27,7 +27,10 @@ def resolver_familias() -> str:
     return _primera(_LETRA, instaladas)
 
 
-def aplicar(aplicacion, tamano: float = 10.0) -> str:
+TAMANO_LETRA = 10.5     # puntos de la letra de los controles
+
+
+def aplicar(aplicacion, tamano: float = TAMANO_LETRA) -> str:
     """Estilo Fusion (igual en Windows, Linux y macOS), paleta y letra; devuelve la hoja de estilo para la ventana."""
     P = tema.PALETA
     aplicacion.setStyle("Fusion")
@@ -49,26 +52,29 @@ def aplicar(aplicacion, tamano: float = 10.0) -> str:
 
 def hoja_de_estilo() -> str:
     P = dict(ACENTO_OSCURO="#3B5019", PELIGRO_SUAVE="#F3DCD8", ENFOQUE="#FFFFFF")
-    P.update(tema.PALETA, MONO=tema.FAMILIA_MONO, FLECHA=_flecha())
-    return _HOJA % P
+    P.update(tema.PALETA, MONO=tema.FAMILIA_MONO, FLECHA=_flecha(), ARRIBA=_flecha(arriba=True), ABAJO=_flecha(fina=True))
+    return (_HOJA + _HOJA_TABLERO) % P
 
 
-def _flecha() -> str:
-    """La flecha de las listas desplegables, dibujada en el color de acento (una hoja de estilo de Qt solo acepta imágenes)."""
+def _flecha(arriba: bool = False, fina: bool = False) -> str:
+    """Las flechas de las listas desplegables y de los campos numéricos, dibujadas en el color de acento (una hoja de estilo de
+    Qt sólo acepta imágenes)."""
     import tempfile
     from pathlib import Path
 
     from PySide6.QtCore import QPointF, Qt
     from PySide6.QtGui import QPainter, QPen, QPixmap, QPolygonF
 
-    ruta = Path(tempfile.gettempdir()) / f"modelo_vaciado_flecha_{tema.PALETA['ACENTO'].lstrip('#')}.png"
+    tipo = "arriba" if arriba else ("abajo" if fina else "lista")
+    ruta = Path(tempfile.gettempdir()) / f"modelo_vaciado_flecha_{tipo}_{tema.PALETA['ACENTO'].lstrip('#')}.png"
     if not ruta.is_file():
         imagen = QPixmap(48, 48)
         imagen.fill(Qt.GlobalColor.transparent)
         pincel = QPainter(imagen)
         pincel.setRenderHint(QPainter.RenderHint.Antialiasing)
         pincel.setPen(QPen(QColor(tema.PALETA["ACENTO"]), 7, Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
-        pincel.drawPolyline(QPolygonF([QPointF(8, 17), QPointF(24, 33), QPointF(40, 17)]))
+        puntos = [QPointF(8, 31), QPointF(24, 15), QPointF(40, 31)] if arriba else [QPointF(8, 17), QPointF(24, 33), QPointF(40, 17)]
+        pincel.drawPolyline(QPolygonF(puntos))
         pincel.end()
         imagen.save(str(ruta))
     return ruta.as_posix()
@@ -213,4 +219,35 @@ QToolBar QToolButton:hover { background: %(SUPERFICIE)s; border-color: %(BORDE)s
 QToolBar QToolButton:checked { background: %(ACENTO_SUAVE)s; border-color: %(ACENTO)s; }
 QToolBar QLabel { color: %(TEXTO_3)s; font-size: 9pt; }
 QToolTip { background: %(PAPEL)s; color: %(TEXTO)s; border: 1px solid %(BORDE)s; padding: 4px 6px; }
+"""
+
+
+# Acomodo de tablero (cabecera oscura con la marca y los pasos, indicadores grandes) y retoques de plano técnico.
+_HOJA_TABLERO = """
+QFrame#Cabecera { background: %(CABECERA)s; }
+QLabel#MarcaBarra { color: %(SOBRE_CABECERA)s; font-size: 17pt; font-weight: 800; letter-spacing: 1px; }
+QLabel#LemaBarra { color: %(CABECERA_TENUE)s; font-size: 9pt; }
+QPushButton#Paso { background: %(CABECERA_2)s; color: %(SOBRE_CABECERA)s; border: 2px solid %(CABECERA_2)s; border-radius: 8px;
+    padding: 9px 20px; font-size: 11.5pt; font-weight: 700; }
+QPushButton#Paso:hover, QPushButton#Paso:focus { border-color: %(ACERO_LIQUIDO)s; }
+QPushButton#Paso:checked { background: %(ACERO_LIQUIDO)s; color: %(TEXTO)s; border-color: %(ACERO_LIQUIDO)s; }
+QFrame#Indicadores { background: %(FONDO)s; }
+QFrame#Kpi { background: %(SUPERFICIE)s; border: 1px solid %(BORDE)s; border-top: 4px solid %(ACENTO)s; border-radius: 6px; }
+QFrame#Kpi[estado="obsoleto"] { border-top: 4px solid %(TEXTO_3)s; }
+QFrame#Kpi[estado="error"] { border-top: 4px solid %(ALARMA)s; }
+QLabel#KpiValor { font-size: 20pt; font-weight: 800; color: %(TEXTO)s; }
+QLabel#KpiValorAcento { font-size: 20pt; font-weight: 800; color: %(ACENTO)s; }
+QLabel#KpiRotulo { font-size: 8.5pt; font-weight: 700; color: %(TEXTO_3)s; letter-spacing: 1px; }
+QLabel#Titular { font-size: 24pt; font-weight: 700; color: %(TEXTO)s; }
+QLabel#Obsoleto { color: %(AVISO)s; font-size: 9pt; font-weight: 700; }
+QFrame#Tarjeta { border-radius: 4px; }
+QLabel#Encabezado { border-top-left-radius: 3px; border-top-right-radius: 3px; letter-spacing: 1px; }
+QPushButton { border-radius: 4px; padding: 6px 12px; }
+QDoubleSpinBox, QComboBox, QLineEdit { padding: 5px 8px; }
+QAbstractSpinBox::up-button, QAbstractSpinBox::down-button { width: 18px; border: none; background: transparent; }
+QAbstractSpinBox::up-arrow { image: url("%(ARRIBA)s"); width: 9px; height: 9px; }
+QAbstractSpinBox::down-arrow { image: url("%(ABAJO)s"); width: 9px; height: 9px; }
+QAbstractSpinBox::up-arrow:disabled, QAbstractSpinBox::down-arrow:disabled { image: none; }
+QStatusBar { background: %(SUPERFICIE)s; color: %(TEXTO_3)s; border-top: 1px solid %(BORDE)s; }
+QStatusBar QLabel { color: %(TEXTO_3)s; font-size: 9pt; }
 """
