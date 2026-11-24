@@ -1,0 +1,46 @@
+{
+ "formato": "lwd_eaf.vaciado/1",
+ "planta": "pesqueria",
+ "acero_inicial_t": 450,
+ "acero_final_t": 150,
+ "nombre": "6 · Como Magnesita, revestimiento gastado (hoja 8)",
+ "_nota": "Pared al 50 % y fondo 348 mm gastados (93.8 % de la capa de trabajo del archivo de planta, 371 mm); boca 252 mm más abajo; Cd 0.741. El plano da 413.8 s.",
+ "desgaste": {
+  "pared": 50,
+  "piso": 93.8
+ },
+ "piquera": {
+  "acortamiento": 252.4
+ },
+ "hidraulica": {
+  "modo": "cd",
+  "referencia": "boca",
+  "cd": 0.741
+ },
+ "basculado": {
+  "tipo": "escalones",
+  "pasos": [
+   [
+    2,
+    436
+   ],
+   [
+    5,
+    340
+   ],
+   [
+    8,
+    261
+   ],
+   [
+    11,
+    204
+   ],
+   [
+    15,
+    150
+   ]
+  ],
+  "velocidad": "instantaneo"
+ }
+}

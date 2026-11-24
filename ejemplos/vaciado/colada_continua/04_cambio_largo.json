@@ -1,0 +1,9 @@
+{
+ "formato": "lwd_eaf.vaciado.colada/1",
+ "planta": "pesqueria",
+ "nombre": "4 · Válvula de 80 mm y cambio de olla de 10 min",
+ "cambios": {
+  "valvula_diametro_mm": 80.0,
+  "cambio_de_olla_s": 600.0
+ }
+}

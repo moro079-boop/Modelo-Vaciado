@@ -1,0 +1,9949 @@
+{
+ "formato": "lwd_eaf.planta/1",
+ "planta": "Puebla",
+ "horno": "EAF CC con ánodos de fondo y nariz EBT inclinada 21° (Ternium San Miguel Xoxtla)",
+ "alcance": "niveles",
+ "_nota": "Plano CS22981 (Puebla), leído el 2026-10-20. Los PDF no están en el repositorio. Ver docs/plantas-nuevas.md.",
+ "plano": {
+  "proveedor": "Magnesita",
+  "numero": "CS22981",
+  "revision": "A01",
+  "fecha_revision": "2023-11-08",
+  "escala": "1:30.7 dibujada en A-A (el cajetín dice 1:33 1/3)",
+  "cliente": "Ternium México, San Miguel Xoxtla (Puebla)",
+  "capacidad_nominal_t": {
+   "valor": 200,
+   "estado": "cota_del_plano",
+   "vista": "cajetín (EAF - 200t)"
+  },
+  "calibracion_y": {
+   "estado": "medido_a_escala",
+   "nota": "0.0922 pt/mm; eje en 710.85 pt; Y = 0 en la línea de 525.3 pt; comprobado con las cotas 1013, 4582, 4745, 2961 y 520"
+  }
+ },
+ "unidades": {
+  "longitud": "mm",
+  "masa": "t",
+  "densidad": "t/m3",
+  "angulo": "grados"
+ },
+ "estados": {
+  "cota_del_plano": "Cota o rótulo numérico escrito en el plano.",
+  "leido_del_plano": "Información no numérica leída del plano.",
+  "medido_a_escala": "Medido sobre el raster del PDF con herramientas/plano_vista.py, calibrado contra cotas escritas de la propia vista; resolución de 1 a 3 mm. No es una cota del proveedor.",
+  "derivado": "Calculado a partir de otros datos de este archivo.",
+  "supuesto": "Regla o valor provisional sin respaldo en el plano.",
+  "calibrado_con_marcas": "Ajustado para que el volumen reproduzca las marcas de nivel del plano. No es una medición ni una validación independiente.",
+  "sin_calibrar": "Ajuste del piso en cero (Δ = 0, f = 1): manda la geometría dibujada en el plano, por decisión del usuario (2026-10-22, EAF-032). Las marcas de nivel quedan como comparación.",
+  "decision_del_usuario": "Valor o regla fijados por el usuario.",
+  "tomado_del_lwd": "Copiado del Ladle Wear Diagnosis v1.1 (revisión e19a0b4, referencia/lwd_v1_1/); sin verificar en el horno.",
+  "por_definir": "Falta el dato."
+ },
+ "coordenadas": {
+  "origen": "eje del horno",
+  "x_positivo": "puerta (lado opuesto a la nariz)",
+  "x_negativo": "nariz EBT (piquera), si la hay",
+  "y": "altura desde el fondo exterior de la coraza en el eje (Fuchs: línea provisional, ver plano.calibracion_y)",
+  "h": "profundidad del baño en el eje = y − cavidad.y_fondo (se calcula con el piso calibrado)"
+ },
+ "densidades": {
+  "acero_liquido": {
+   "valor": 6.9,
+   "estado": "cota_del_plano",
+   "vista": "A-A (ρ = 6,9 t/m³ junto a las marcas de nivel)"
+  },
+  "escoria": {
+   "valor": 3.0,
+   "estado": "tomado_del_lwd",
+   "fuente": "SLAG_DENSITY de referencia/lwd_v1_1/constantes.py",
+   "nota": "la del LWD, como en Largos Norte; el plano no la da"
+  },
+  "factor_de_espumado": {
+   "valor": 1.0,
+   "estado": "supuesto",
+   "nota": "factor sobre el volumen de escoria; sin dato medido"
+  }
+ },
+ "inclinacion": {
+  "paso": {
+   "valor": 1,
+   "estado": "decision_del_usuario",
+   "nota": "pasos de −1° y +1° en la interfaz, como en Largos Norte"
+  },
+  "minimo": {
+   "valor": -15,
+   "estado": "supuesto"
+  },
+  "maximo": {
+   "valor": 15,
+   "estado": "supuesto"
+  },
+  "nota": "rango propuesto (el de Largos Norte); falta el dato mecánico del horno"
+ },
+ "marcas_del_plano": {
+  "estado": "medido_a_escala",
+  "nota": "Y es la cota de la punta del símbolo de nivel; las toneladas y, en Puebla, el volumen son rótulos del plano.",
+  "lista": [
+   {
+    "nombre": "200 t",
+    "y": {
+     "valor": 2566,
+     "estado": "medido_a_escala"
+    },
+    "toneladas": {
+     "valor": 200,
+     "estado": "cota_del_plano"
+    },
+    "volumen_m3": {
+     "valor": 28.985,
+     "estado": "cota_del_plano"
+    }
+   },
+   {
+    "nombre": "65 t",
+    "y": {
+     "valor": 2021,
+     "estado": "medido_a_escala"
+    },
+    "toneladas": {
+     "valor": 65,
+     "estado": "cota_del_plano"
+    },
+    "volumen_m3": {
+     "valor": 9.42,
+     "estado": "cota_del_plano"
+    }
+   }
+  ]
+ },
+ "cavidad_general": {
+  "estado": "medido_a_escala",
+  "contorno": {
+   "estado": "derivado",
+   "nota": "R(θ) con las radios rotulados de la cara caliente en planta: cuerpo R3124 (A-A y C-C dan 3127–3129), nariz R1274 con centro en X = −3802 (la punta en A-A está en −5076) y arcos de unión R7474, tangentes. Junto a la puerta el anillo del plano trae piezas especiales y no se usó.",
+   "arcos": {
+    "radio_cuerpo": 3124,
+    "radio_nariz": 1274,
+    "x_centro_nariz": -3802,
+    "radio_arcos_de_union": 7474
+   },
+   "angulos_grados": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28,
+    30,
+    32,
+    34,
+    36,
+    38,
+    40,
+    42,
+    44,
+    46,
+    48,
+    50,
+    52,
+    54,
+    56,
+    58,
+    60,
+    62,
+    64,
+    66,
+    68,
+    70,
+    72,
+    74,
+    76,
+    78,
+    80,
+    82,
+    84,
+    86,
+    88,
+    90,
+    92,
+    94,
+    96,
+    98,
+    100,
+    102,
+    104,
+    106,
+    108,
+    110,
+    112,
+    114,
+    116,
+    118,
+    120,
+    122,
+    124,
+    126,
+    128,
+    130,
+    132,
+    134,
+    136,
+    138,
+    140,
+    142,
+    144,
+    146,
+    148,
+    150,
+    152,
+    154,
+    156,
+    158,
+    160,
+    162,
+    164,
+    166,
+    168,
+    170,
+    172,
+    174,
+    176,
+    178,
+    180
+   ],
+   "radios": [
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.0,
+    3124.4,
+    3126.8,
+    3131.5,
+    3138.4,
+    3147.5,
+    3158.9,
+    3172.6,
+    3188.6,
+    3207.0,
+    3227.7,
+    3250.9,
+    3276.6,
+    3304.8,
+    3335.6,
+    3369.1,
+    3405.3,
+    3444.3,
+    3486.2,
+    3531.0,
+    3578.9,
+    3629.9,
+    3684.1,
+    3741.6,
+    3802.5,
+    3867.0,
+    3935.1,
+    4006.8,
+    4082.4,
+    4161.9,
+    4245.4,
+    4333.0,
+    4424.8,
+    4520.9,
+    4621.3,
+    4726.0,
+    4833.8,
+    4923.9,
+    4991.6,
+    5038.8,
+    5066.8,
+    5076.0
+   ]
+  },
+  "piso": {
+   "cuenco": {
+    "estado": "medido_a_escala",
+    "nota": "promedio del perfil del lado puerta de A-A y del de C-C (casi esférico) EAF-032: se quitaron tres picos de lectura (r = 0: 1549.8 → 1498.0; r = 1000: 1577.1 → 1532.2; r = 2100: 1622.5 → 1653.8): puntos aislados donde la lectura cayó en el borde de un ánodo o de su pozo; se sustituyeron por la interpolación de sus vecinos (r = 0, por el valor de r = 100). El corte C-C dibuja ahí una curva lisa.",
+    "r": [
+     0.0,
+     100.0,
+     200.0,
+     300.0,
+     400.0,
+     500.0,
+     600.0,
+     700.0,
+     800.0,
+     900.0,
+     1000.0,
+     1100.0,
+     1200.0,
+     1300.0,
+     1400.0,
+     1500.0,
+     1600.0,
+     1700.0,
+     1800.0,
+     1900.0,
+     2000.0,
+     2100.0,
+     2200.0,
+     2300.0,
+     2400.0,
+     2500.0,
+     2600.0,
+     2700.0,
+     2800.0,
+     2900.0,
+     3000.0,
+     3100.0
+    ],
+    "y": [
+     1498.0,
+     1498.0,
+     1499.0,
+     1502.0,
+     1503.9,
+     1505.9,
+     1509.8,
+     1515.6,
+     1519.5,
+     1525.4,
+     1532.2,
+     1539.0,
+     1546.9,
+     1554.7,
+     1564.4,
+     1574.2,
+     1584.9,
+     1595.7,
+     1605.9,
+     1615.7,
+     1639.6,
+     1653.8,
+     1667.9,
+     1677.7,
+     1693.3,
+     1710.8,
+     1750.4,
+     1813.3,
+     1896.3,
+     1981.2,
+     2063.7,
+     2148.2
+    ]
+   },
+   "nariz": {
+    "estado": "medido_a_escala",
+    "nota": "repisa, rampa de 24° y meseta de la piquera de A-A, lado nariz, en función de |X| EAF-032: el punto de |X| = 0 (1511.7) era un pico de lectura en el eje y se igualó al de |X| = 100 (1498.0). EAF-034: el punto de |X| = 4 300 (1689.4) tampoco es piso: la lectura cayó en la tapa de la piquera, que el plano dibuja como una pieza sin relleno a ras de la plataforma; se sustituyó por la interpolación de sus vecinos (1925.6). (En EAF-032 se había tomado por la boca de la piquera y conservado: era un error.)",
+    "radio_cuerpo": 3124,
+    "x_abs": [
+     0.0,
+     100.0,
+     200.0,
+     300.0,
+     400.0,
+     500.0,
+     600.0,
+     700.0,
+     800.0,
+     900.0,
+     1000.0,
+     1100.0,
+     1200.0,
+     1300.0,
+     1400.0,
+     1500.0,
+     1600.0,
+     1700.0,
+     1800.0,
+     1900.0,
+     2000.0,
+     2100.0,
+     2200.0,
+     2300.0,
+     2400.0,
+     2500.0,
+     2600.0,
+     2700.0,
+     2800.0,
+     2900.0,
+     3000.0,
+     3100.0,
+     3200.0,
+     3300.0,
+     3400.0,
+     3500.0,
+     3600.0,
+     3700.0,
+     3800.0,
+     3900.0,
+     4000.0,
+     4100.0,
+     4200.0,
+     4300.0,
+     4400.0,
+     4500.0,
+     4600.0,
+     4700.0,
+     4800.0,
+     4900.0,
+     5000.0
+    ],
+    "y": [
+     1498.0,
+     1498.0,
+     1500.0,
+     1500.0,
+     1503.9,
+     1505.9,
+     1509.8,
+     1515.6,
+     1519.5,
+     1525.4,
+     1531.2,
+     1539.0,
+     1546.9,
+     1554.7,
+     1564.4,
+     1574.2,
+     1583.9,
+     1595.7,
+     1605.4,
+     1611.3,
+     1611.3,
+     1611.3,
+     1597.6,
+     1597.6,
+     1597.6,
+     1597.6,
+     1603.5,
+     1660.1,
+     1691.3,
+     1736.2,
+     1781.1,
+     1826.0,
+     1870.9,
+     1913.9,
+     1927.5,
+     1927.5,
+     1927.5,
+     1927.5,
+     1927.5,
+     1927.5,
+     1927.5,
+     1927.5,
+     1935.4,
+     1925.6,
+     1915.8,
+     1941.2,
+     1980.3,
+     2017.4,
+     2054.4,
+     2091.5,
+     2128.6
+    ]
+   },
+   "regla": {
+    "estado": "supuesto",
+    "texto": "hacia la puerta y los costados manda el cuenco de revolución (el lado puerta de A-A, que coincide con C-C); en la mitad de la piquera el piso pasa, según el ángulo, del cuenco (90°) a la rampa y la plataforma de A-A del lado de la nariz (180°) (EAF-032; antes el cuenco mandaba en todo el círculo del cuerpo y dejaba un escalón de hasta 500 mm que el plano no tiene). La forma del fondo fuera de los ejes de A-A y C-C no está en el plano."
+   }
+  },
+  "y_max": {
+   "valor": 3357,
+   "estado": "medido_a_escala",
+   "nota": "tope del refractario más alto medido; por encima de lo medido las paredes se suponen verticales con el contorno de la zona de escoria"
+  },
+  "y_fondo_medido": {
+   "valor": 1498,
+   "estado": "medido_a_escala",
+   "nota": "piso en el eje tal como lo dibuja el plano, SIN el desplazamiento de la calibración; h de los libros se mide desde aquí"
+  },
+  "puerta": {
+   "estado": "medido_a_escala",
+   "nota": "filas V3L-100 (rosadas) sobre la hilada 21 de A-A: las tres de abajo (2 667–2 956) quedan a ras de la pared (3 129) y la de arriba (2 966–3 058) sobresale hasta 3 180. Ancho 1600 (planta). Interpretación: el umbral es el tope de la fila de arriba.",
+   "ancho": {
+    "valor": 1600,
+    "estado": "cota_del_plano",
+    "vista": "planta"
+   },
+   "escalones": {
+    "estado": "medido_a_escala",
+    "lista": [
+     {
+      "y_inferior": 2966,
+      "y_superior": 3058,
+      "x_cara": 3180
+     }
+    ]
+   },
+   "y_umbral": {
+    "valor": 3058,
+    "estado": "medido_a_escala",
+    "nota": "tope de la fila de arriba del umbral"
+   },
+   "x_umbral": {
+    "valor": 3180,
+    "estado": "medido_a_escala",
+    "nota": "cara interior de esa fila: por ahí derrama (interpretación por confirmar)"
+   }
+  },
+  "fin_refractario": {
+   "estado": "medido_a_escala",
+   "nota": "nariz: tope de la columna de la hilada 28 en A-A (3 357); cuerpo: tope de la pared lateral en C-C (3 058); en la puerta manda el umbral.",
+   "cuerpo": {
+    "valor": 3058,
+    "estado": "medido_a_escala"
+   },
+   "nariz": {
+    "valor": 3357,
+    "estado": "medido_a_escala"
+   }
+  }
+ },
+ "limites": {
+  "estado": "por_definir",
+  "nota": "Umbral de la puerta y fin del refractario medidos a escala en los planos (interpretación por confirmar); la cavidad por encima de lo medido se supone con paredes verticales. Alcance «niveles»: se abre en la ventana en modo niveles; desgaste y campaña solo de la pared (sin dato de la capa de trabajo del piso)."
+ },
+ "calibracion": {
+  "estado": "calibrado_con_marcas",
+  "nota": "CALIBRADA CON LAS MARCAS DEL PLANO (decisión del usuario, 2026-11-04, EAF-050): el piso se desplaza Δ y, con dos parámetros, el cuenco se estira f para que el volumen reproduzca las marcas de nivel del plano. Reproduce el cálculo del proveedor; no es una medición ni una validación independiente. h se sigue midiendo desde el piso dibujado, como las profundidades que escribe el plano. Para volver a la geometría dibujada: `python -m herramientas.libros_plantas --sin-calibrar puebla`.",
+  "delta_y": {
+   "valor": -13.2,
+   "estado": "calibrado_con_marcas",
+   "unidad": "mm"
+  },
+  "estiramiento_cuenco": {
+   "valor": 0.92,
+   "estado": "calibrado_con_marcas"
+  },
+  "parametros_ajustados": 2,
+  "residuos": [
+   {
+    "marca": "200 t",
+    "calculado_m3": 28.999,
+    "marca_m3": 28.985,
+    "diferencia_relativa": 0.0005,
+    "y_marca": 2566.0,
+    "y_modelo": 2565.6,
+    "diferencia_nivel_mm": 0.4
+   },
+   {
+    "marca": "65 t",
+    "calculado_m3": 9.426,
+    "marca_m3": 9.42,
+    "diferencia_relativa": 0.0006,
+    "y_marca": 2021.0,
+    "y_modelo": 2020.8,
+    "diferencia_nivel_mm": 0.2
+   }
+  ]
+ },
+ "desgaste": {
+  "estado": "cota_del_plano",
+  "nota": "Desgaste manual de las plantas de solo niveles (EAF-026): solo la PARED (EAF-026); campaña de pared (EAF-027). Interpretación por confirmar: se toma como capa de trabajo el ladrillo del color del desarrollo (el espesor rotulado en el plano) y como capa de seguridad las capas oliva de afuera («ANKER 30» en la leyenda de Fuchs, «ANKER 30-K» en la de Puebla); el plano no rotula la función de las capas.",
+  "espesor_trabajo_pared": {
+   "estado": "cota_del_plano",
+   "nota": "500 mm en las hiladas bajas (azules, hasta Y = 1 356) y 450 mm de ahí hacia arriba, rótulos «500» y «450» del plano; el raster da 492 y 443 mm. El corte entre 500 y 450 se leyó a escala (a ±5 mm).",
+   "lista": [
+    {
+     "y_inferior": 564,
+     "y_superior": 1356,
+     "espesor": 500
+    },
+    {
+     "y_inferior": 1356,
+     "y_superior": 3357,
+     "espesor": 450
+    }
+   ]
+  },
+  "espesor_trabajo_piso": {
+   "valor": 1037,
+   "estado": "medido_a_escala",
+   "unidad": "mm",
+   "materiales_de_trabajo": [
+    "ANKERHARTH SB25",
+    "ANKERHARTH NN25",
+    "ANKERHARTH TLS2"
+   ],
+   "base": [
+    "ANKER 30-K"
+   ],
+   "funcion": {
+    "estado": "decision_del_usuario",
+    "nota": "qué es capa de trabajo del piso lo decidió el usuario el 2026-10-22 (EAF-035)"
+   },
+   "nota": "Espesor mínimo, perpendicular a la superficie (EAF-039), de la capa de trabajo del piso (ANKERHARTH SB25, ANKERHARTH NN25, ANKERHARTH TLS2) sobre su base (ANKER 30-K), medido cada 50 mm en las secciones del eje y lateral con herramientas/espesor_piso_plantas.py: 1037 mm (piquera, r = 2650); el máximo es 1395. No cuentan las columnas que terminan en un ánodo, su camisa o la piquera (sistemas aparte), ni las que están a menos de 150 mm de ellas. Con un retroceso igual en todo el piso, ese mínimo es donde se perfora primero. El espesor normal es el vertical dividido por 1 / cos α de la pendiente local (cavidad_general.factor_normal): el piso retrocede perpendicular a su superficie, como en Norte."
+  },
+  "hiladas": {
+   "estado": "medido_a_escala",
+   "nota": "28 hiladas de ~100 mm (rejilla de los rellenos vectoriales: 100.06 mm desde Y = 559.4, EAF-030; antes 564 del raster; se usa 100 porque el motor cuenta 10 líneas por hilada). La hilada 1 empieza en el lado puerta; la de la nariz es PM-GS, no ladrillo.",
+   "cantidad": 28,
+   "y_base_hilada_1": 559.4,
+   "altura_de_hilada": 100.0
+  },
+  "materiales_pared": {
+   "estado": "derivado",
+   "nota": "Derivado de `desarrollo` (cg.componentes_desarrollo, EAF-030): material dominante por hilada y lado (el que cubre más ancho de la tira; las zonas del marco de la puerta y los bloques de jamba «35/0» no cuentan). La lectura previa de las columnas de A-A coincide, salvo en lo que A-A ve en el marco de la puerta.",
+   "puerta": [
+    {
+     "hiladas": [
+      1,
+      8
+     ],
+     "material": "ANCARBON R F7E10"
+    },
+    {
+     "hiladas": [
+      9,
+      17
+     ],
+     "material": "ANCARBON R F5E14"
+    },
+    {
+     "hiladas": [
+      18,
+      21
+     ],
+     "material": "ANCARBON R F3E14"
+    },
+    {
+     "hiladas": [
+      22,
+      25
+     ],
+     "material": "ANCARBON R F5E14"
+    },
+    {
+     "hiladas": [
+      26,
+      27
+     ],
+     "material": "ANCARBON R TB256"
+    }
+   ],
+   "nariz": [
+    {
+     "hiladas": [
+      2,
+      8
+     ],
+     "material": "ANCARBON R F7E10"
+    },
+    {
+     "hiladas": [
+      9,
+      21
+     ],
+     "material": "ANCARBON R F3E14"
+    },
+    {
+     "hiladas": [
+      22,
+      28
+     ],
+     "material": "ANCARBON R TB256"
+    }
+   ]
+  }
+ },
+ "desarrollo": {
+  "estado": "medido_a_escala",
+  "vista": "DEVELOPMENT (hoja 2)",
+  "_nota": "Transcripción del desarrollo (EAF-029). Celdas y colores: rellenos vectoriales de la hoja 2 (herramientas/lectura_puebla.py, celdas_desarrollo): cada hilada cortada a media altura y partida en las líneas gruesas de zona (1.02 pt) y en los límites de sector. Material: color contra la leyenda. Rótulos: en el PDF son trazos, no texto: se leyeron a ojo del dibujo ampliado (400 ppp) y se copian tal cual, incluido el «18~21 (17°)» de las hiladas 9–17. `s` en mm a escala del desarrollo, supuesto 100 mm por hilada: la altura de hilada del dibujo es 8.387 pt y la cota de la pieza 100 mm, o sea 0.08387 pt/mm (la escala de A-A es 0.0922; la del desarrollo no está rotulada). Las longitudes de sector NO son proporcionales a su ángulo (cada arco se dibujó con su radio): el plano rotula los ángulos y aquí se copian.",
+  "sentido": "De izquierda a derecha: centro de la puerta, cuerpo (99°), unión (17°), nariz (20° + 88° + 20°), unión (17°), cuerpo (99°) y otra vez el centro de la puerta. Los ángulos suman 360°. La nariz queda en el centro de la tira; A-A corta por el centro de la puerta (los dos extremos) y el centro de la nariz.",
+  "longitud": 22452,
+  "sectores": [
+   {
+    "arco": "cuerpo y puerta",
+    "s": [
+     0,
+     5393
+    ],
+    "angulo_rotulado": "99°"
+   },
+   {
+    "arco": "unión",
+    "s": [
+     5393,
+     7393
+    ],
+    "angulo_rotulado": "17°"
+   },
+   {
+    "arco": "nariz (lado)",
+    "s": [
+     7393,
+     10247
+    ],
+    "angulo_rotulado": "20°"
+   },
+   {
+    "arco": "nariz (centro)",
+    "s": [
+     10247,
+     12203
+    ],
+    "angulo_rotulado": "88°"
+   },
+   {
+    "arco": "nariz (lado)",
+    "s": [
+     12203,
+     15057
+    ],
+    "angulo_rotulado": "20°"
+   },
+   {
+    "arco": "unión",
+    "s": [
+     15057,
+     17057
+    ],
+    "angulo_rotulado": "17°"
+   },
+   {
+    "arco": "cuerpo y puerta",
+    "s": [
+     17057,
+     22452
+    ],
+    "angulo_rotulado": "99°"
+   }
+  ],
+  "s_en_a_a": {
+   "nariz": 11225,
+   "puerta": [
+    0,
+    22452
+   ],
+   "nota": "centro del sector de 88° de la nariz y extremos de la tira"
+  },
+  "series": {
+   "35": 350,
+   "45": 450,
+   "50": 500,
+   "70": 700,
+   "estado": "derivado",
+   "nota": "la serie de la pieza coincide con el espesor de trabajo que dibuja A-A (50 → 500 en las hiladas 1–8, 45 → 450 arriba, 70/0 → 700 en el marco de la puerta); regla deducida, no cota"
+  },
+  "zonas": [
+   {
+    "id": "Z01",
+    "lugar": "puerta, extremo izquierdo de la tira",
+    "hiladas": [
+     22,
+     26
+    ],
+    "material": "ANCARBON C F3E10D",
+    "serie": 70,
+    "rotulos": [
+     "70/0",
+     "P7",
+     "P7",
+     "P7",
+     "V3L-100"
+    ],
+    "celdas": [
+     [
+      22,
+      0,
+      1132
+     ],
+     [
+      23,
+      0,
+      1180
+     ],
+     [
+      24,
+      0,
+      1132
+     ],
+     [
+      25,
+      0,
+      1180
+     ],
+     [
+      26,
+      900,
+      1000
+     ]
+    ],
+    "nota": "piezas del marco de la puerta: 70/0 (700 mm) y tres piezas P7 que sobresalen una a una (hiladas 22–26); V3L-100 señala una pieza con guía"
+   },
+   {
+    "id": "Z02",
+    "lugar": "cuerpo, lado izquierdo, bloque «35/0»",
+    "hiladas": [
+     24,
+     25
+    ],
+    "material": "ANCARBON R TB256",
+    "serie": 35,
+    "rotulos": [
+     "35/0"
+    ],
+    "celdas": [
+     [
+      24,
+      1670,
+      2012
+     ],
+     [
+      25,
+      1670,
+      2012
+     ]
+    ],
+    "nota": "bloque rojo encuadrado en un recuadro grueso en el plano: es un detalle; la pared de alrededor es F5E14"
+   },
+   {
+    "id": "Z03",
+    "lugar": "cuerpo, lado izquierdo, hiladas 22–25",
+    "hiladas": [
+     22,
+     25
+    ],
+    "material": "ANCARBON R F5E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 12pc",
+     "(45/8) 20pc",
+     "22~25 (83°)"
+    ],
+    "celdas": [
+     [
+      22,
+      1132,
+      5393
+     ],
+     [
+      23,
+      1180,
+      5393
+     ],
+     [
+      24,
+      1132,
+      1670
+     ],
+     [
+      24,
+      2012,
+      5393
+     ],
+     [
+      25,
+      1180,
+      1670
+     ],
+     [
+      25,
+      2012,
+      5393
+     ]
+    ],
+    "nota": "zona de 83° junto a la puerta"
+   },
+   {
+    "id": "Z04",
+    "lugar": "unión izquierda, hiladas 22–25, naranja",
+    "hiladas": [
+     22,
+     25
+    ],
+    "material": "ANCARBON R F5E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/8) 8pc",
+     "22~25 (9°)"
+    ],
+    "celdas": [
+     [
+      22,
+      5393,
+      6394
+     ],
+     [
+      23,
+      5393,
+      6394
+     ],
+     [
+      24,
+      5393,
+      6394
+     ],
+     [
+      25,
+      5393,
+      6394
+     ]
+    ],
+    "nota": "9°; el plano repite el rótulo en la parte roja contigua"
+   },
+   {
+    "id": "Z05",
+    "lugar": "unión izquierda, hiladas 22–25, rojo",
+    "hiladas": [
+     22,
+     27
+    ],
+    "material": "ANCARBON R TB256",
+    "serie": 45,
+    "rotulos": [
+     "(45/8) 8pc",
+     "22~25 (9°)",
+     "P7",
+     "P7",
+     "P7"
+    ],
+    "celdas": [
+     [
+      22,
+      6394,
+      7393
+     ],
+     [
+      23,
+      6394,
+      7393
+     ],
+     [
+      24,
+      6394,
+      7393
+     ],
+     [
+      25,
+      6394,
+      7393
+     ],
+     [
+      26,
+      7194,
+      7393
+     ],
+     [
+      27,
+      7293,
+      7393
+     ]
+    ],
+    "nota": "9°; las piezas P7 (hiladas 26 a 28) escalonan hacia la nariz y se agrupan aquí por contigüidad"
+   },
+   {
+    "id": "Z06",
+    "lugar": "nariz, lado izquierdo (20°), hiladas 22–28",
+    "hiladas": [
+     22,
+     28
+    ],
+    "material": "ANCARBON R TB256",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 1pc",
+     "(45/8) 17pc",
+     "22~28 (20°)"
+    ],
+    "celdas": [
+     [
+      22,
+      7393,
+      10247
+     ],
+     [
+      23,
+      7393,
+      10247
+     ],
+     [
+      24,
+      7393,
+      10247
+     ],
+     [
+      25,
+      7393,
+      10247
+     ],
+     [
+      26,
+      7393,
+      10247
+     ],
+     [
+      27,
+      7393,
+      10247
+     ],
+     [
+      28,
+      7393,
+      10247
+     ]
+    ],
+    "nota": ""
+   },
+   {
+    "id": "Z07",
+    "lugar": "nariz, centro (88°), hiladas 22–28",
+    "hiladas": [
+     22,
+     28
+    ],
+    "material": "ANCARBON R TB256",
+    "serie": 45,
+    "rotulos": [
+     "(45/90) 2pc",
+     "(45/40) 14pc",
+     "22~28 (88°)"
+    ],
+    "celdas": [
+     [
+      22,
+      10247,
+      12203
+     ],
+     [
+      23,
+      10247,
+      12203
+     ],
+     [
+      24,
+      10247,
+      12203
+     ],
+     [
+      25,
+      10247,
+      12203
+     ],
+     [
+      26,
+      10247,
+      12203
+     ],
+     [
+      27,
+      10247,
+      12203
+     ],
+     [
+      28,
+      10247,
+      12203
+     ]
+    ],
+    "nota": "el centro de la nariz está en el centro de la tira"
+   },
+   {
+    "id": "Z08",
+    "lugar": "nariz, lado derecho (20°), hiladas 22–28",
+    "hiladas": [
+     22,
+     28
+    ],
+    "material": "ANCARBON R TB256",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 1pc",
+     "(45/8) 17pc",
+     "22~28 (20°)"
+    ],
+    "celdas": [
+     [
+      22,
+      12203,
+      15057
+     ],
+     [
+      23,
+      12203,
+      15057
+     ],
+     [
+      24,
+      12203,
+      15057
+     ],
+     [
+      25,
+      12203,
+      15057
+     ],
+     [
+      26,
+      12203,
+      15057
+     ],
+     [
+      27,
+      12203,
+      15057
+     ],
+     [
+      28,
+      12203,
+      15057
+     ]
+    ],
+    "nota": ""
+   },
+   {
+    "id": "Z09",
+    "lugar": "unión derecha, hiladas 22–25, rojo",
+    "hiladas": [
+     22,
+     28
+    ],
+    "material": "ANCARBON R TB256",
+    "serie": 45,
+    "rotulos": [
+     "(45/8) 8pc",
+     "22~25 (9°)",
+     "P7",
+     "P7",
+     "P7"
+    ],
+    "celdas": [
+     [
+      22,
+      15057,
+      16057
+     ],
+     [
+      23,
+      15057,
+      16057
+     ],
+     [
+      24,
+      15057,
+      16057
+     ],
+     [
+      25,
+      15057,
+      16057
+     ],
+     [
+      26,
+      15057,
+      15257
+     ],
+     [
+      27,
+      15057,
+      15157
+     ]
+    ],
+    "nota": "9°; las piezas P7 (hiladas 26 a 28) escalonan desde la nariz y se agrupan aquí por contigüidad"
+   },
+   {
+    "id": "Z10",
+    "lugar": "unión derecha, hiladas 22–25, naranja",
+    "hiladas": [
+     22,
+     25
+    ],
+    "material": "ANCARBON R F5E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/8) 8pc",
+     "22~25 (9°)"
+    ],
+    "celdas": [
+     [
+      22,
+      16057,
+      17057
+     ],
+     [
+      23,
+      16057,
+      17057
+     ],
+     [
+      24,
+      16057,
+      17057
+     ],
+     [
+      25,
+      16057,
+      17057
+     ]
+    ],
+    "nota": "9°"
+   },
+   {
+    "id": "Z11",
+    "lugar": "cuerpo, lado derecho, hiladas 22–25",
+    "hiladas": [
+     22,
+     25
+    ],
+    "material": "ANCARBON R F5E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 8pc",
+     "(45/8) 13pc",
+     "22~25 (53°)"
+    ],
+    "celdas": [
+     [
+      22,
+      17057,
+      20122
+     ],
+     [
+      23,
+      17057,
+      20122
+     ],
+     [
+      24,
+      17057,
+      20122
+     ],
+     [
+      25,
+      17057,
+      20122
+     ]
+    ],
+    "nota": "zona de 53°"
+   },
+   {
+    "id": "Z12",
+    "lugar": "cuerpo, lado derecho, bloque «35/0» con piezas P7",
+    "hiladas": [
+     22,
+     25
+    ],
+    "material": "ANCARBON R TB256",
+    "serie": 35,
+    "rotulos": [
+     "35/0",
+     "P7",
+     "P7"
+    ],
+    "celdas": [
+     [
+      22,
+      20122,
+      20921
+     ],
+     [
+      23,
+      20122,
+      20921
+     ],
+     [
+      24,
+      20122,
+      20921
+     ],
+     [
+      25,
+      20122,
+      20222
+     ],
+     [
+      25,
+      20821,
+      20921
+     ]
+    ],
+    "nota": "bloque rojo «35/0» entre dos piezas P7, junto a la puerta"
+   },
+   {
+    "id": "Z13",
+    "lugar": "cuerpo, lado derecho, junto a la puerta (12°)",
+    "hiladas": [
+     22,
+     25
+    ],
+    "material": "ANCARBON R F5E14",
+    "serie": 45,
+    "rotulos": [
+     "22~28 (12°)",
+     "V3L-100"
+    ],
+    "celdas": [
+     [
+      22,
+      20921,
+      21319
+     ],
+     [
+      23,
+      20921,
+      21271
+     ],
+     [
+      24,
+      20921,
+      21319
+     ],
+     [
+      25,
+      20921,
+      21271
+     ]
+    ],
+    "nota": "rótulo «22~28 (12°)» con guía a la hilada 25 y V3L-100 (pieza con guía)"
+   },
+   {
+    "id": "Z14",
+    "lugar": "puerta, extremo derecho de la tira",
+    "hiladas": [
+     22,
+     25
+    ],
+    "material": "ANCARBON C F3E10D",
+    "serie": 70,
+    "rotulos": [
+     "70/0",
+     "P7",
+     "P7",
+     "V3L-100"
+    ],
+    "celdas": [
+     [
+      22,
+      21319,
+      22452
+     ],
+     [
+      23,
+      21271,
+      22452
+     ],
+     [
+      24,
+      21319,
+      22452
+     ],
+     [
+      25,
+      21271,
+      22452
+     ]
+    ],
+    "nota": "marco de la puerta, espejo del extremo izquierdo"
+   },
+   {
+    "id": "Z15",
+    "lugar": "cuerpo y puerta (198°, zona partida por el borde de la tira), hiladas 1–8",
+    "hiladas": [
+     1,
+     8
+    ],
+    "material": "ANCARBON R F7E10",
+    "serie": 50,
+    "rotulos": [
+     "(50/8) 37pc",
+     "(50/36) 40pc",
+     "1~8 (198°)"
+    ],
+    "celdas": [
+     [
+      1,
+      0,
+      5393
+     ],
+     [
+      1,
+      17057,
+      22452
+     ],
+     [
+      2,
+      0,
+      5393
+     ],
+     [
+      2,
+      17057,
+      22452
+     ],
+     [
+      3,
+      0,
+      5393
+     ],
+     [
+      3,
+      17057,
+      22452
+     ],
+     [
+      4,
+      0,
+      5393
+     ],
+     [
+      4,
+      17057,
+      22452
+     ],
+     [
+      5,
+      0,
+      5393
+     ],
+     [
+      5,
+      17057,
+      22452
+     ],
+     [
+      6,
+      0,
+      5393
+     ],
+     [
+      6,
+      17057,
+      22452
+     ],
+     [
+      7,
+      0,
+      5393
+     ],
+     [
+      7,
+      17057,
+      22452
+     ],
+     [
+      8,
+      0,
+      5393
+     ],
+     [
+      8,
+      17057,
+      22452
+     ]
+    ],
+    "nota": "una sola zona de 198° que el desarrollo parte en sus dos extremos (centro de la puerta); el rótulo está en el extremo derecho"
+   },
+   {
+    "id": "Z16",
+    "lugar": "unión y lado de la nariz izquierdo (37°), hiladas 1–8",
+    "hiladas": [
+     1,
+     8
+    ],
+    "material": "ANCARBON R F7E10",
+    "serie": 50,
+    "rotulos": [
+     "(50/8) 31pc",
+     "(50/36) 3pc",
+     "1~8 (37°)"
+    ],
+    "celdas": [
+     [
+      1,
+      5393,
+      7393
+     ],
+     [
+      2,
+      5393,
+      10247
+     ],
+     [
+      3,
+      5393,
+      10247
+     ],
+     [
+      4,
+      5393,
+      10247
+     ],
+     [
+      5,
+      5393,
+      10247
+     ],
+     [
+      6,
+      5393,
+      10247
+     ],
+     [
+      7,
+      5393,
+      10247
+     ],
+     [
+      8,
+      5393,
+      10247
+     ]
+    ],
+    "nota": "la hilada 1 no existe bajo la nariz (a partir de 846.3 pt): en A-A es PM-GS"
+   },
+   {
+    "id": "Z17",
+    "lugar": "nariz, centro (88°), hiladas 2–8",
+    "hiladas": [
+     1,
+     8
+    ],
+    "material": "ANCARBON R F7E10",
+    "serie": 50,
+    "rotulos": [
+     "(50/60) 9pc",
+     "(50/36) 7pc",
+     "2~8 (88°)"
+    ],
+    "celdas": [
+     [
+      2,
+      10247,
+      12203
+     ],
+     [
+      3,
+      10247,
+      12203
+     ],
+     [
+      4,
+      10247,
+      12203
+     ],
+     [
+      5,
+      10247,
+      12203
+     ],
+     [
+      6,
+      10247,
+      12203
+     ],
+     [
+      7,
+      10247,
+      12203
+     ],
+     [
+      8,
+      10247,
+      12203
+     ]
+    ],
+    "nota": ""
+   },
+   {
+    "id": "Z18",
+    "lugar": "unión y lado de la nariz derecho (37°), hiladas 1–8",
+    "hiladas": [
+     1,
+     8
+    ],
+    "material": "ANCARBON R F7E10",
+    "serie": 50,
+    "rotulos": [
+     "(50/8) 31pc",
+     "(50/36) 3pc",
+     "1~8 (37°)"
+    ],
+    "celdas": [
+     [
+      1,
+      15057,
+      17057
+     ],
+     [
+      2,
+      12203,
+      17057
+     ],
+     [
+      3,
+      12203,
+      17057
+     ],
+     [
+      4,
+      12203,
+      17057
+     ],
+     [
+      5,
+      12203,
+      17057
+     ],
+     [
+      6,
+      12203,
+      17057
+     ],
+     [
+      7,
+      12203,
+      17057
+     ],
+     [
+      8,
+      12203,
+      17057
+     ]
+    ],
+    "nota": "la hilada 1 no existe bajo la nariz (hasta 1489.1 pt)"
+   },
+   {
+    "id": "Z19",
+    "lugar": "cuerpo y puerta (198°, zona partida por el borde de la tira), hiladas 9–17",
+    "hiladas": [
+     9,
+     17
+    ],
+    "material": "ANCARBON R F5E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 30pc",
+     "(45/8) 48pc",
+     "9~17 (198°)"
+    ],
+    "celdas": [
+     [
+      9,
+      0,
+      5393
+     ],
+     [
+      9,
+      17057,
+      22452
+     ],
+     [
+      10,
+      0,
+      5393
+     ],
+     [
+      10,
+      17057,
+      22452
+     ],
+     [
+      11,
+      0,
+      5393
+     ],
+     [
+      11,
+      17057,
+      22452
+     ],
+     [
+      12,
+      0,
+      5393
+     ],
+     [
+      12,
+      17057,
+      22452
+     ],
+     [
+      13,
+      0,
+      5393
+     ],
+     [
+      13,
+      17057,
+      22452
+     ],
+     [
+      14,
+      0,
+      5393
+     ],
+     [
+      14,
+      17057,
+      22452
+     ],
+     [
+      15,
+      0,
+      5393
+     ],
+     [
+      15,
+      17057,
+      22452
+     ],
+     [
+      16,
+      0,
+      5393
+     ],
+     [
+      16,
+      17057,
+      22452
+     ],
+     [
+      17,
+      0,
+      5393
+     ],
+     [
+      17,
+      17057,
+      22452
+     ]
+    ],
+    "nota": "una sola zona de 198° partida en los dos extremos de la tira; el rótulo está en el extremo derecho"
+   },
+   {
+    "id": "Z20",
+    "lugar": "unión izquierda (17°), hiladas 9–17",
+    "hiladas": [
+     9,
+     17
+    ],
+    "material": "ANCARBON R F5E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 1pc",
+     "(45/8) 15pc",
+     "18~21 (17°)"
+    ],
+    "celdas": [
+     [
+      9,
+      5393,
+      7393
+     ],
+     [
+      10,
+      5393,
+      7393
+     ],
+     [
+      11,
+      5393,
+      7393
+     ],
+     [
+      12,
+      5393,
+      7393
+     ],
+     [
+      13,
+      5393,
+      7393
+     ],
+     [
+      14,
+      5393,
+      7393
+     ],
+     [
+      15,
+      5393,
+      7393
+     ],
+     [
+      16,
+      5393,
+      7393
+     ],
+     [
+      17,
+      5393,
+      7393
+     ]
+    ],
+    "nota": "el plano rotula «18~21 (17°)» en la zona de las hiladas 9–17 (sale de las hiladas del dibujo: 9 a 17); se copia tal cual"
+   },
+   {
+    "id": "Z21",
+    "lugar": "unión derecha (17°), hiladas 9–17",
+    "hiladas": [
+     9,
+     17
+    ],
+    "material": "ANCARBON R F5E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 1pc",
+     "(45/8) 15pc",
+     "18~21 (17°)"
+    ],
+    "celdas": [
+     [
+      9,
+      15057,
+      17057
+     ],
+     [
+      10,
+      15057,
+      17057
+     ],
+     [
+      11,
+      15057,
+      17057
+     ],
+     [
+      12,
+      15057,
+      17057
+     ],
+     [
+      13,
+      15057,
+      17057
+     ],
+     [
+      14,
+      15057,
+      17057
+     ],
+     [
+      15,
+      15057,
+      17057
+     ],
+     [
+      16,
+      15057,
+      17057
+     ],
+     [
+      17,
+      15057,
+      17057
+     ]
+    ],
+    "nota": "ídem: el plano rotula «18~21 (17°)» en las hiladas 9–17"
+   },
+   {
+    "id": "Z22",
+    "lugar": "cuerpo y puerta (198°, zona partida por el borde de la tira), hiladas 18–21",
+    "hiladas": [
+     18,
+     21
+    ],
+    "material": "ANCARBON R F3E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 30pc",
+     "(45/8) 48pc",
+     "18~21 (198°)"
+    ],
+    "celdas": [
+     [
+      18,
+      0,
+      5393
+     ],
+     [
+      18,
+      17057,
+      22452
+     ],
+     [
+      19,
+      0,
+      5393
+     ],
+     [
+      19,
+      17057,
+      22452
+     ],
+     [
+      20,
+      0,
+      5393
+     ],
+     [
+      20,
+      17057,
+      22452
+     ],
+     [
+      21,
+      0,
+      5393
+     ],
+     [
+      21,
+      17057,
+      22452
+     ]
+    ],
+    "nota": "una sola zona de 198° partida en los dos extremos de la tira; el rótulo está en el extremo derecho"
+   },
+   {
+    "id": "Z23",
+    "lugar": "unión izquierda (17°), hiladas 18–21",
+    "hiladas": [
+     18,
+     21
+    ],
+    "material": "ANCARBON R F3E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 1pc",
+     "(45/8) 15pc",
+     "18~21 (17°)"
+    ],
+    "celdas": [
+     [
+      18,
+      5393,
+      7393
+     ],
+     [
+      19,
+      5393,
+      7393
+     ],
+     [
+      20,
+      5393,
+      7393
+     ],
+     [
+      21,
+      5393,
+      7393
+     ]
+    ],
+    "nota": ""
+   },
+   {
+    "id": "Z24",
+    "lugar": "unión derecha (17°), hiladas 18–21",
+    "hiladas": [
+     18,
+     21
+    ],
+    "material": "ANCARBON R F3E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 1pc",
+     "(45/8) 15pc",
+     "18~21 (17°)"
+    ],
+    "celdas": [
+     [
+      18,
+      15057,
+      17057
+     ],
+     [
+      19,
+      15057,
+      17057
+     ],
+     [
+      20,
+      15057,
+      17057
+     ],
+     [
+      21,
+      15057,
+      17057
+     ]
+    ],
+    "nota": ""
+   },
+   {
+    "id": "Z25",
+    "lugar": "nariz izquierda (20°), hiladas 9–21",
+    "hiladas": [
+     9,
+     21
+    ],
+    "material": "ANCARBON R F3E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 1pc",
+     "(45/8) 17pc",
+     "9~21 (20°)"
+    ],
+    "celdas": [
+     [
+      9,
+      7393,
+      10247
+     ],
+     [
+      10,
+      7393,
+      10247
+     ],
+     [
+      11,
+      7393,
+      10247
+     ],
+     [
+      12,
+      7393,
+      10247
+     ],
+     [
+      13,
+      7393,
+      10247
+     ],
+     [
+      14,
+      7393,
+      10247
+     ],
+     [
+      15,
+      7393,
+      10247
+     ],
+     [
+      16,
+      7393,
+      10247
+     ],
+     [
+      17,
+      7393,
+      10247
+     ],
+     [
+      18,
+      7393,
+      10247
+     ],
+     [
+      19,
+      7393,
+      10247
+     ],
+     [
+      20,
+      7393,
+      10247
+     ],
+     [
+      21,
+      7393,
+      10247
+     ]
+    ],
+    "nota": ""
+   },
+   {
+    "id": "Z26",
+    "lugar": "nariz, centro (88°), hiladas 9–21",
+    "hiladas": [
+     9,
+     21
+    ],
+    "material": "ANCARBON R F3E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/90) 2pc",
+     "(45/40) 14pc",
+     "9~21 (88°)"
+    ],
+    "celdas": [
+     [
+      9,
+      10247,
+      12203
+     ],
+     [
+      10,
+      10247,
+      12203
+     ],
+     [
+      11,
+      10247,
+      12203
+     ],
+     [
+      12,
+      10247,
+      12203
+     ],
+     [
+      13,
+      10247,
+      12203
+     ],
+     [
+      14,
+      10247,
+      12203
+     ],
+     [
+      15,
+      10247,
+      12203
+     ],
+     [
+      16,
+      10247,
+      12203
+     ],
+     [
+      17,
+      10247,
+      12203
+     ],
+     [
+      18,
+      10247,
+      12203
+     ],
+     [
+      19,
+      10247,
+      12203
+     ],
+     [
+      20,
+      10247,
+      12203
+     ],
+     [
+      21,
+      10247,
+      12203
+     ]
+    ],
+    "nota": ""
+   },
+   {
+    "id": "Z27",
+    "lugar": "nariz derecha (20°), hiladas 9–21",
+    "hiladas": [
+     9,
+     21
+    ],
+    "material": "ANCARBON R F3E14",
+    "serie": 45,
+    "rotulos": [
+     "(45/40) 1pc",
+     "(45/8) 17pc",
+     "9~21 (20°)"
+    ],
+    "celdas": [
+     [
+      9,
+      12203,
+      15057
+     ],
+     [
+      10,
+      12203,
+      15057
+     ],
+     [
+      11,
+      12203,
+      15057
+     ],
+     [
+      12,
+      12203,
+      15057
+     ],
+     [
+      13,
+      12203,
+      15057
+     ],
+     [
+      14,
+      12203,
+      15057
+     ],
+     [
+      15,
+      12203,
+      15057
+     ],
+     [
+      16,
+      12203,
+      15057
+     ],
+     [
+      17,
+      12203,
+      15057
+     ],
+     [
+      18,
+      12203,
+      15057
+     ],
+     [
+      19,
+      12203,
+      15057
+     ],
+     [
+      20,
+      12203,
+      15057
+     ],
+     [
+      21,
+      12203,
+      15057
+     ]
+    ],
+    "nota": ""
+   }
+  ]
+ },
+ "seccion_aa": {
+  "estado": "medido_a_escala",
+  "nota": "Sección A-A completa como polígonos rellenos (EAF-029): la parte visible de cada color, sin solapes. Vista calibrada a 0.0922 pt/mm (eje X en 710.85 pt, Y = 0 en top = 525.3 pt; ver docs/plantas-nuevas.md §2). Los rellenos del PDF son teselas: se rasterizaron a 1 mm/píxel en el orden de pintado del PDF (lo que un relleno posterior tapa deja de ser del anterior), se unieron por color y se vectorizaron (±1.5 mm; huecos en `huecos`). Los ladrillos de pared se cortaron por hilada en la rejilla de los rellenos (100.06 mm desde Y = 559.4). `material`: la leyenda del plano por color. `funcion`: «trabajo» para el ladrillo de pared y «seguridad» para el olivo ANKER 30-K son SUPUESTOS (el plano no rotula la función de las capas); «monolitico» para los ANKERHARTH. Se omiten la marca de agua, las cotas, los símbolos y el rayado (RADEX, líneas). Los rótulos de la hoja (450, 500, números de hilada) son trazos y no texto: no se transcriben aquí.",
+  "poligonos": [
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 2,
+    "puntos": [
+     [
+      -5523.0,
+      760.0
+     ],
+     [
+      -5523.0,
+      661.0
+     ],
+     [
+      -5023.0,
+      661.0
+     ],
+     [
+      -5023.0,
+      760.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 3,
+    "puntos": [
+     [
+      -5523.0,
+      860.0
+     ],
+     [
+      -5523.0,
+      761.0
+     ],
+     [
+      -5023.0,
+      761.0
+     ],
+     [
+      -5023.0,
+      860.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 4,
+    "puntos": [
+     [
+      -5523.0,
+      960.0
+     ],
+     [
+      -5523.0,
+      861.0
+     ],
+     [
+      -5023.0,
+      861.0
+     ],
+     [
+      -5023.0,
+      960.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 5,
+    "puntos": [
+     [
+      -5523.0,
+      1060.0
+     ],
+     [
+      -5523.0,
+      961.0
+     ],
+     [
+      -5023.0,
+      961.0
+     ],
+     [
+      -5023.0,
+      1060.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 6,
+    "puntos": [
+     [
+      -5523.0,
+      1160.0
+     ],
+     [
+      -5523.0,
+      1061.0
+     ],
+     [
+      -5023.0,
+      1061.0
+     ],
+     [
+      -5023.0,
+      1160.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 7,
+    "puntos": [
+     [
+      -5523.0,
+      1260.0
+     ],
+     [
+      -5523.0,
+      1161.0
+     ],
+     [
+      -5023.0,
+      1161.0
+     ],
+     [
+      -5023.0,
+      1260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 8,
+    "puntos": [
+     [
+      -5523.0,
+      1360.0
+     ],
+     [
+      -5523.0,
+      1261.0
+     ],
+     [
+      -5023.0,
+      1261.0
+     ],
+     [
+      -5023.0,
+      1359.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 1,
+    "puntos": [
+     [
+      3076.0,
+      659.0
+     ],
+     [
+      3076.0,
+      561.0
+     ],
+     [
+      3574.0,
+      561.0
+     ],
+     [
+      3574.0,
+      659.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 2,
+    "puntos": [
+     [
+      3076.0,
+      760.0
+     ],
+     [
+      3076.0,
+      660.0
+     ],
+     [
+      3574.0,
+      660.0
+     ],
+     [
+      3574.0,
+      760.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 3,
+    "puntos": [
+     [
+      3076.0,
+      860.0
+     ],
+     [
+      3076.0,
+      761.0
+     ],
+     [
+      3574.0,
+      761.0
+     ],
+     [
+      3574.0,
+      860.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 4,
+    "puntos": [
+     [
+      3076.0,
+      960.0
+     ],
+     [
+      3076.0,
+      861.0
+     ],
+     [
+      3574.0,
+      861.0
+     ],
+     [
+      3574.0,
+      960.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 5,
+    "puntos": [
+     [
+      3076.0,
+      1060.0
+     ],
+     [
+      3076.0,
+      961.0
+     ],
+     [
+      3574.0,
+      961.0
+     ],
+     [
+      3574.0,
+      1060.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 6,
+    "puntos": [
+     [
+      3076.0,
+      1160.0
+     ],
+     [
+      3076.0,
+      1061.0
+     ],
+     [
+      3574.0,
+      1061.0
+     ],
+     [
+      3574.0,
+      1160.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 7,
+    "puntos": [
+     [
+      3076.0,
+      1260.0
+     ],
+     [
+      3076.0,
+      1161.0
+     ],
+     [
+      3574.0,
+      1161.0
+     ],
+     [
+      3574.0,
+      1260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 8,
+    "puntos": [
+     [
+      3076.0,
+      1359.0
+     ],
+     [
+      3076.0,
+      1261.0
+     ],
+     [
+      3574.0,
+      1261.0
+     ],
+     [
+      3574.0,
+      1359.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH SB25",
+    "funcion": "monolitico",
+    "color": "#31C4A9",
+    "hilada": null,
+    "puntos": [
+     [
+      3125.0,
+      2161.0
+     ],
+     [
+      2698.0,
+      1803.0
+     ],
+     [
+      2645.0,
+      1768.0
+     ],
+     [
+      2600.0,
+      1746.0
+     ],
+     [
+      3125.0,
+      1960.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH SB25",
+    "funcion": "monolitico",
+    "color": "#31C4A9",
+    "hilada": null,
+    "puntos": [
+     [
+      -5072.0,
+      2161.0
+     ],
+     [
+      -5072.0,
+      2061.0
+     ],
+     [
+      -4632.0,
+      1996.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30-K",
+    "funcion": "seguridad",
+    "color": "#53552B",
+    "hilada": null,
+    "puntos": [
+     [
+      -1566.0,
+      153.0
+     ],
+     [
+      -1559.0,
+      152.0
+     ],
+     [
+      -1566.0,
+      77.0
+     ],
+     [
+      -1429.0,
+      64.0
+     ],
+     [
+      -1006.0,
+      32.0
+     ],
+     [
+      -808.0,
+      20.0
+     ],
+     [
+      -412.0,
+      5.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      400.0,
+      5.0
+     ],
+     [
+      801.0,
+      20.0
+     ],
+     [
+      1200.0,
+      46.0
+     ],
+     [
+      1565.0,
+      77.0
+     ],
+     [
+      1558.0,
+      152.0
+     ],
+     [
+      1565.0,
+      153.0
+     ],
+     [
+      1558.0,
+      229.0
+     ],
+     [
+      1518.0,
+      224.0
+     ],
+     [
+      1509.0,
+      225.0
+     ],
+     [
+      1502.0,
+      299.0
+     ],
+     [
+      1144.0,
+      269.0
+     ],
+     [
+      954.0,
+      256.0
+     ],
+     [
+      572.0,
+      237.0
+     ],
+     [
+      399.0,
+      232.0
+     ],
+     [
+      0.0,
+      227.0
+     ],
+     [
+      -400.0,
+      232.0
+     ],
+     [
+      -764.0,
+      245.0
+     ],
+     [
+      -1216.0,
+      274.0
+     ],
+     [
+      -1503.0,
+      299.0
+     ],
+     [
+      -1510.0,
+      225.0
+     ],
+     [
+      -1519.0,
+      224.0
+     ],
+     [
+      -1559.0,
+      229.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30-K",
+    "funcion": "seguridad",
+    "color": "#53552B",
+    "hilada": null,
+    "puntos": [
+     [
+      -4102.0,
+      613.0
+     ],
+     [
+      -4127.0,
+      411.0
+     ],
+     [
+      -4103.0,
+      408.0
+     ],
+     [
+      -4105.0,
+      384.0
+     ],
+     [
+      -3097.0,
+      262.0
+     ],
+     [
+      -2469.0,
+      183.0
+     ],
+     [
+      -2457.0,
+      259.0
+     ],
+     [
+      -2470.0,
+      261.0
+     ],
+     [
+      -2458.0,
+      335.0
+     ],
+     [
+      -2471.0,
+      337.0
+     ],
+     [
+      -2459.0,
+      412.0
+     ],
+     [
+      -2595.0,
+      427.0
+     ],
+     [
+      -2637.0,
+      434.0
+     ],
+     [
+      -2749.0,
+      446.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30-K",
+    "funcion": "seguridad",
+    "color": "#53552B",
+    "hilada": null,
+    "puntos": [
+     [
+      -4971.0,
+      644.0
+     ],
+     [
+      -5103.0,
+      659.0
+     ],
+     [
+      -5113.0,
+      584.0
+     ],
+     [
+      -5513.0,
+      633.0
+     ],
+     [
+      -5523.0,
+      559.0
+     ],
+     [
+      -4988.0,
+      493.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30-K",
+    "funcion": "seguridad",
+    "color": "#53552B",
+    "hilada": null,
+    "puntos": [
+     [
+      4442.0,
+      2661.0
+     ],
+     [
+      3576.0,
+      2661.0
+     ],
+     [
+      3576.0,
+      483.0
+     ],
+     [
+      3574.0,
+      483.0
+     ],
+     [
+      3557.0,
+      556.0
+     ],
+     [
+      3231.0,
+      484.0
+     ],
+     [
+      3222.0,
+      518.0
+     ],
+     [
+      3215.0,
+      558.0
+     ],
+     [
+      3212.0,
+      559.0
+     ],
+     [
+      3156.0,
+      546.0
+     ],
+     [
+      2904.0,
+      497.0
+     ],
+     [
+      2878.0,
+      494.0
+     ],
+     [
+      2830.0,
+      483.0
+     ],
+     [
+      2583.0,
+      440.0
+     ],
+     [
+      2572.0,
+      440.0
+     ],
+     [
+      2502.0,
+      427.0
+     ],
+     [
+      2456.0,
+      421.0
+     ],
+     [
+      2468.0,
+      346.0
+     ],
+     [
+      2456.0,
+      343.0
+     ],
+     [
+      2467.0,
+      268.0
+     ],
+     [
+      2454.0,
+      266.0
+     ],
+     [
+      2466.0,
+      192.0
+     ],
+     [
+      2883.0,
+      262.0
+     ],
+     [
+      3233.0,
+      330.0
+     ],
+     [
+      3237.0,
+      333.0
+     ],
+     [
+      3309.0,
+      346.0
+     ],
+     [
+      3579.0,
+      406.0
+     ],
+     [
+      3576.0,
+      423.0
+     ],
+     [
+      3651.0,
+      423.0
+     ],
+     [
+      3651.0,
+      2128.0
+     ],
+     [
+      3828.0,
+      2129.0
+     ],
+     [
+      3829.0,
+      2204.0
+     ],
+     [
+      3971.0,
+      2204.0
+     ],
+     [
+      3972.0,
+      2281.0
+     ],
+     [
+      4114.0,
+      2281.0
+     ],
+     [
+      4115.0,
+      2357.0
+     ],
+     [
+      4539.0,
+      2357.0
+     ],
+     [
+      4539.0,
+      2433.0
+     ],
+     [
+      4480.0,
+      2433.0
+     ],
+     [
+      4479.0,
+      2509.0
+     ],
+     [
+      4450.0,
+      2510.0
+     ],
+     [
+      4450.0,
+      2585.0
+     ],
+     [
+      4442.0,
+      2586.0
+     ]
+    ],
+    "huecos": [
+     [
+      [
+       3572.0,
+       483.0
+      ],
+      [
+       3575.0,
+       482.0
+      ],
+      [
+       3574.0,
+       429.0
+      ],
+      [
+       3562.0,
+       479.0
+      ]
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30-K",
+    "funcion": "seguridad",
+    "color": "#53552B",
+    "hilada": null,
+    "puntos": [
+     [
+      -5598.0,
+      3365.0
+     ],
+     [
+      -5598.0,
+      568.0
+     ],
+     [
+      -5524.0,
+      568.0
+     ],
+     [
+      -5523.0,
+      3365.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX KS13-AT",
+    "funcion": null,
+    "color": "#58BA48",
+    "hilada": null,
+    "puntos": [
+     [
+      2281.0,
+      713.0
+     ],
+     [
+      2230.0,
+      713.0
+     ],
+     [
+      2230.0,
+      637.0
+     ],
+     [
+      2228.0,
+      636.0
+     ],
+     [
+      2228.0,
+      134.0
+     ],
+     [
+      2255.0,
+      134.0
+     ],
+     [
+      2255.0,
+      232.0
+     ],
+     [
+      2281.0,
+      233.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX KS13-AT",
+    "funcion": null,
+    "color": "#58BA48",
+    "hilada": null,
+    "puntos": [
+     [
+      1680.0,
+      713.0
+     ],
+     [
+      1680.0,
+      233.0
+     ],
+     [
+      1705.0,
+      232.0
+     ],
+     [
+      1705.0,
+      134.0
+     ],
+     [
+      1733.0,
+      134.0
+     ],
+     [
+      1733.0,
+      636.0
+     ],
+     [
+      1730.0,
+      637.0
+     ],
+     [
+      1730.0,
+      713.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX KS13-AT",
+    "funcion": null,
+    "color": "#58BA48",
+    "hilada": null,
+    "puntos": [
+     [
+      -1681.0,
+      713.0
+     ],
+     [
+      -1731.0,
+      713.0
+     ],
+     [
+      -1731.0,
+      637.0
+     ],
+     [
+      -1734.0,
+      636.0
+     ],
+     [
+      -1734.0,
+      134.0
+     ],
+     [
+      -1707.0,
+      134.0
+     ],
+     [
+      -1707.0,
+      232.0
+     ],
+     [
+      -1681.0,
+      233.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX KS13-AT",
+    "funcion": null,
+    "color": "#58BA48",
+    "hilada": null,
+    "puntos": [
+     [
+      -2282.0,
+      713.0
+     ],
+     [
+      -2282.0,
+      233.0
+     ],
+     [
+      -2257.0,
+      232.0
+     ],
+     [
+      -2257.0,
+      134.0
+     ],
+     [
+      -2229.0,
+      134.0
+     ],
+     [
+      -2229.0,
+      636.0
+     ],
+     [
+      -2232.0,
+      637.0
+     ],
+     [
+      -2232.0,
+      713.0
+     ]
+    ]
+   },
+   {
+    "material": "BY OTHERS",
+    "funcion": null,
+    "color": "#66FF8C",
+    "hilada": null,
+    "puntos": [
+     [
+      -4453.0,
+      1923.0
+     ],
+     [
+      -4673.0,
+      139.0
+     ],
+     [
+      -4673.0,
+      136.0
+     ],
+     [
+      -4503.0,
+      115.0
+     ],
+     [
+      -4496.0,
+      115.0
+     ],
+     [
+      -4480.0,
+      253.0
+     ],
+     [
+      -4467.0,
+      346.0
+     ],
+     [
+      -4277.0,
+      1902.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH TLS2",
+    "funcion": "monolitico",
+    "color": "#989898",
+    "hilada": null,
+    "puntos": [
+     [
+      2436.0,
+      1260.0
+     ],
+     [
+      2437.0,
+      1254.0
+     ],
+     [
+      2441.0,
+      1250.0
+     ],
+     [
+      2456.0,
+      1242.0
+     ],
+     [
+      2455.0,
+      1217.0
+     ],
+     [
+      2435.0,
+      1203.0
+     ],
+     [
+      2435.0,
+      1185.0
+     ],
+     [
+      2439.0,
+      1180.0
+     ],
+     [
+      2454.0,
+      1172.0
+     ],
+     [
+      2454.0,
+      1146.0
+     ],
+     [
+      2438.0,
+      1138.0
+     ],
+     [
+      2433.0,
+      1133.0
+     ],
+     [
+      2433.0,
+      1116.0
+     ],
+     [
+      2435.0,
+      1112.0
+     ],
+     [
+      2452.0,
+      1101.0
+     ],
+     [
+      2452.0,
+      1077.0
+     ],
+     [
+      2434.0,
+      1066.0
+     ],
+     [
+      2431.0,
+      1061.0
+     ],
+     [
+      2431.0,
+      1047.0
+     ],
+     [
+      2435.0,
+      1041.0
+     ],
+     [
+      2451.0,
+      1032.0
+     ],
+     [
+      2450.0,
+      1004.0
+     ],
+     [
+      2461.0,
+      1003.0
+     ],
+     [
+      2460.0,
+      976.0
+     ],
+     [
+      2443.0,
+      967.0
+     ],
+     [
+      2439.0,
+      961.0
+     ],
+     [
+      2439.0,
+      947.0
+     ],
+     [
+      2443.0,
+      941.0
+     ],
+     [
+      2459.0,
+      932.0
+     ],
+     [
+      2458.0,
+      906.0
+     ],
+     [
+      2440.0,
+      896.0
+     ],
+     [
+      2438.0,
+      877.0
+     ],
+     [
+      2441.0,
+      871.0
+     ],
+     [
+      2458.0,
+      861.0
+     ],
+     [
+      2457.0,
+      837.0
+     ],
+     [
+      2441.0,
+      828.0
+     ],
+     [
+      2437.0,
+      824.0
+     ],
+     [
+      2436.0,
+      819.0
+     ],
+     [
+      2437.0,
+      803.0
+     ],
+     [
+      2456.0,
+      792.0
+     ],
+     [
+      2455.0,
+      766.0
+     ],
+     [
+      2435.0,
+      753.0
+     ],
+     [
+      2435.0,
+      735.0
+     ],
+     [
+      2439.0,
+      730.0
+     ],
+     [
+      2454.0,
+      721.0
+     ],
+     [
+      2454.0,
+      697.0
+     ],
+     [
+      2435.0,
+      686.0
+     ],
+     [
+      2433.0,
+      682.0
+     ],
+     [
+      2433.0,
+      665.0
+     ],
+     [
+      2452.0,
+      651.0
+     ],
+     [
+      2452.0,
+      626.0
+     ],
+     [
+      2435.0,
+      617.0
+     ],
+     [
+      2432.0,
+      613.0
+     ],
+     [
+      2431.0,
+      597.0
+     ],
+     [
+      2435.0,
+      591.0
+     ],
+     [
+      2451.0,
+      581.0
+     ],
+     [
+      2450.0,
+      553.0
+     ],
+     [
+      2461.0,
+      552.0
+     ],
+     [
+      2460.0,
+      526.0
+     ],
+     [
+      2445.0,
+      518.0
+     ],
+     [
+      2439.0,
+      510.0
+     ],
+     [
+      2439.0,
+      497.0
+     ],
+     [
+      2442.0,
+      492.0
+     ],
+     [
+      2459.0,
+      481.0
+     ],
+     [
+      2458.0,
+      456.0
+     ],
+     [
+      2441.0,
+      447.0
+     ],
+     [
+      2438.0,
+      441.0
+     ],
+     [
+      2438.0,
+      427.0
+     ],
+     [
+      2441.0,
+      421.0
+     ],
+     [
+      2444.0,
+      419.0
+     ],
+     [
+      2492.0,
+      428.0
+     ],
+     [
+      2502.0,
+      428.0
+     ],
+     [
+      2830.0,
+      484.0
+     ],
+     [
+      2878.0,
+      495.0
+     ],
+     [
+      3000.0,
+      516.0
+     ],
+     [
+      3006.0,
+      519.0
+     ],
+     [
+      3215.0,
+      560.0
+     ],
+     [
+      3075.0,
+      561.0
+     ],
+     [
+      3075.0,
+      1260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH TLS2",
+    "funcion": "monolitico",
+    "color": "#989898",
+    "hilada": null,
+    "puntos": [
+     [
+      -1526.0,
+      1260.0
+     ],
+     [
+      -1521.0,
+      1250.0
+     ],
+     [
+      -1506.0,
+      1242.0
+     ],
+     [
+      -1507.0,
+      1217.0
+     ],
+     [
+      -1522.0,
+      1208.0
+     ],
+     [
+      -1527.0,
+      1201.0
+     ],
+     [
+      -1526.0,
+      1184.0
+     ],
+     [
+      -1508.0,
+      1172.0
+     ],
+     [
+      -1508.0,
+      1146.0
+     ],
+     [
+      -1527.0,
+      1135.0
+     ],
+     [
+      -1528.0,
+      1116.0
+     ],
+     [
+      -1524.0,
+      1110.0
+     ],
+     [
+      -1509.0,
+      1101.0
+     ],
+     [
+      -1510.0,
+      1077.0
+     ],
+     [
+      -1528.0,
+      1066.0
+     ],
+     [
+      -1530.0,
+      1062.0
+     ],
+     [
+      -1530.0,
+      1045.0
+     ],
+     [
+      -1511.0,
+      1032.0
+     ],
+     [
+      -1511.0,
+      1004.0
+     ],
+     [
+      -1501.0,
+      1003.0
+     ],
+     [
+      -1502.0,
+      976.0
+     ],
+     [
+      -1519.0,
+      967.0
+     ],
+     [
+      -1523.0,
+      961.0
+     ],
+     [
+      -1523.0,
+      947.0
+     ],
+     [
+      -1519.0,
+      941.0
+     ],
+     [
+      -1503.0,
+      932.0
+     ],
+     [
+      -1504.0,
+      906.0
+     ],
+     [
+      -1522.0,
+      896.0
+     ],
+     [
+      -1524.0,
+      877.0
+     ],
+     [
+      -1521.0,
+      871.0
+     ],
+     [
+      -1504.0,
+      861.0
+     ],
+     [
+      -1505.0,
+      837.0
+     ],
+     [
+      -1521.0,
+      828.0
+     ],
+     [
+      -1526.0,
+      819.0
+     ],
+     [
+      -1524.0,
+      803.0
+     ],
+     [
+      -1506.0,
+      792.0
+     ],
+     [
+      -1507.0,
+      766.0
+     ],
+     [
+      -1522.0,
+      758.0
+     ],
+     [
+      -1527.0,
+      751.0
+     ],
+     [
+      -1525.0,
+      732.0
+     ],
+     [
+      -1508.0,
+      721.0
+     ],
+     [
+      -1508.0,
+      697.0
+     ],
+     [
+      -1526.0,
+      686.0
+     ],
+     [
+      -1528.0,
+      682.0
+     ],
+     [
+      -1528.0,
+      665.0
+     ],
+     [
+      -1524.0,
+      660.0
+     ],
+     [
+      -1509.0,
+      651.0
+     ],
+     [
+      -1510.0,
+      626.0
+     ],
+     [
+      -1530.0,
+      613.0
+     ],
+     [
+      -1530.0,
+      595.0
+     ],
+     [
+      -1511.0,
+      581.0
+     ],
+     [
+      -1511.0,
+      553.0
+     ],
+     [
+      -1501.0,
+      552.0
+     ],
+     [
+      -1502.0,
+      526.0
+     ],
+     [
+      -1517.0,
+      518.0
+     ],
+     [
+      -1523.0,
+      510.0
+     ],
+     [
+      -1523.0,
+      497.0
+     ],
+     [
+      -1519.0,
+      491.0
+     ],
+     [
+      -1503.0,
+      481.0
+     ],
+     [
+      -1504.0,
+      456.0
+     ],
+     [
+      -1523.0,
+      444.0
+     ],
+     [
+      -1524.0,
+      427.0
+     ],
+     [
+      -1521.0,
+      421.0
+     ],
+     [
+      -1504.0,
+      411.0
+     ],
+     [
+      -1505.0,
+      386.0
+     ],
+     [
+      -1521.0,
+      378.0
+     ],
+     [
+      -1526.0,
+      369.0
+     ],
+     [
+      -1526.0,
+      358.0
+     ],
+     [
+      -1522.0,
+      350.0
+     ],
+     [
+      -1506.0,
+      341.0
+     ],
+     [
+      -1507.0,
+      316.0
+     ],
+     [
+      -1524.0,
+      306.0
+     ],
+     [
+      -1526.0,
+      302.0
+     ],
+     [
+      -1146.0,
+      270.0
+     ],
+     [
+      -764.0,
+      246.0
+     ],
+     [
+      -574.0,
+      238.0
+     ],
+     [
+      -192.0,
+      229.0
+     ],
+     [
+      0.0,
+      228.0
+     ],
+     [
+      382.0,
+      233.0
+     ],
+     [
+      572.0,
+      238.0
+     ],
+     [
+      954.0,
+      257.0
+     ],
+     [
+      1144.0,
+      270.0
+     ],
+     [
+      1525.0,
+      302.0
+     ],
+     [
+      1522.0,
+      306.0
+     ],
+     [
+      1505.0,
+      316.0
+     ],
+     [
+      1505.0,
+      341.0
+     ],
+     [
+      1520.0,
+      350.0
+     ],
+     [
+      1524.0,
+      355.0
+     ],
+     [
+      1524.0,
+      373.0
+     ],
+     [
+      1504.0,
+      386.0
+     ],
+     [
+      1503.0,
+      411.0
+     ],
+     [
+      1521.0,
+      423.0
+     ],
+     [
+      1522.0,
+      442.0
+     ],
+     [
+      1519.0,
+      447.0
+     ],
+     [
+      1502.0,
+      456.0
+     ],
+     [
+      1502.0,
+      481.0
+     ],
+     [
+      1519.0,
+      492.0
+     ],
+     [
+      1521.0,
+      510.0
+     ],
+     [
+      1516.0,
+      518.0
+     ],
+     [
+      1501.0,
+      526.0
+     ],
+     [
+      1500.0,
+      552.0
+     ],
+     [
+      1510.0,
+      553.0
+     ],
+     [
+      1509.0,
+      581.0
+     ],
+     [
+      1526.0,
+      591.0
+     ],
+     [
+      1529.0,
+      597.0
+     ],
+     [
+      1528.0,
+      614.0
+     ],
+     [
+      1508.0,
+      626.0
+     ],
+     [
+      1508.0,
+      651.0
+     ],
+     [
+      1526.0,
+      663.0
+     ],
+     [
+      1528.0,
+      679.0
+     ],
+     [
+      1524.0,
+      687.0
+     ],
+     [
+      1521.0,
+      687.0
+     ],
+     [
+      1507.0,
+      697.0
+     ],
+     [
+      1506.0,
+      721.0
+     ],
+     [
+      1524.0,
+      732.0
+     ],
+     [
+      1526.0,
+      751.0
+     ],
+     [
+      1520.0,
+      758.0
+     ],
+     [
+      1505.0,
+      766.0
+     ],
+     [
+      1505.0,
+      792.0
+     ],
+     [
+      1523.0,
+      803.0
+     ],
+     [
+      1524.0,
+      822.0
+     ],
+     [
+      1519.0,
+      828.0
+     ],
+     [
+      1504.0,
+      837.0
+     ],
+     [
+      1503.0,
+      861.0
+     ],
+     [
+      1520.0,
+      872.0
+     ],
+     [
+      1522.0,
+      876.0
+     ],
+     [
+      1522.0,
+      892.0
+     ],
+     [
+      1518.0,
+      898.0
+     ],
+     [
+      1502.0,
+      906.0
+     ],
+     [
+      1502.0,
+      932.0
+     ],
+     [
+      1520.0,
+      944.0
+     ],
+     [
+      1521.0,
+      961.0
+     ],
+     [
+      1516.0,
+      968.0
+     ],
+     [
+      1501.0,
+      976.0
+     ],
+     [
+      1500.0,
+      1003.0
+     ],
+     [
+      1510.0,
+      1004.0
+     ],
+     [
+      1509.0,
+      1032.0
+     ],
+     [
+      1526.0,
+      1041.0
+     ],
+     [
+      1529.0,
+      1047.0
+     ],
+     [
+      1528.0,
+      1064.0
+     ],
+     [
+      1508.0,
+      1077.0
+     ],
+     [
+      1508.0,
+      1101.0
+     ],
+     [
+      1525.0,
+      1112.0
+     ],
+     [
+      1528.0,
+      1119.0
+     ],
+     [
+      1528.0,
+      1129.0
+     ],
+     [
+      1524.0,
+      1137.0
+     ],
+     [
+      1507.0,
+      1146.0
+     ],
+     [
+      1506.0,
+      1172.0
+     ],
+     [
+      1521.0,
+      1180.0
+     ],
+     [
+      1526.0,
+      1187.0
+     ],
+     [
+      1526.0,
+      1201.0
+     ],
+     [
+      1522.0,
+      1207.0
+     ],
+     [
+      1505.0,
+      1217.0
+     ],
+     [
+      1505.0,
+      1242.0
+     ],
+     [
+      1519.0,
+      1250.0
+     ],
+     [
+      1523.0,
+      1254.0
+     ],
+     [
+      1524.0,
+      1260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH TLS2",
+    "funcion": "monolitico",
+    "color": "#989898",
+    "hilada": null,
+    "puntos": [
+     [
+      -4187.0,
+      1098.0
+     ],
+     [
+      -4192.0,
+      1072.0
+     ],
+     [
+      -4209.0,
+      919.0
+     ],
+     [
+      -4227.0,
+      787.0
+     ],
+     [
+      -4237.0,
+      692.0
+     ],
+     [
+      -4287.0,
+      292.0
+     ],
+     [
+      -4296.0,
+      291.0
+     ],
+     [
+      -4317.0,
+      294.0
+     ],
+     [
+      -4334.0,
+      276.0
+     ],
+     [
+      -4176.0,
+      257.0
+     ],
+     [
+      -4175.0,
+      251.0
+     ],
+     [
+      -4178.0,
+      235.0
+     ],
+     [
+      -4162.0,
+      233.0
+     ],
+     [
+      -4148.0,
+      246.0
+     ],
+     [
+      -4102.0,
+      614.0
+     ],
+     [
+      -2458.0,
+      412.0
+     ],
+     [
+      -2439.0,
+      425.0
+     ],
+     [
+      -2441.0,
+      433.0
+     ],
+     [
+      -2439.0,
+      442.0
+     ],
+     [
+      -2441.0,
+      445.0
+     ],
+     [
+      -2460.0,
+      456.0
+     ],
+     [
+      -2460.0,
+      481.0
+     ],
+     [
+      -2445.0,
+      490.0
+     ],
+     [
+      -2441.0,
+      495.0
+     ],
+     [
+      -2441.0,
+      512.0
+     ],
+     [
+      -2446.0,
+      518.0
+     ],
+     [
+      -2461.0,
+      526.0
+     ],
+     [
+      -2462.0,
+      559.0
+     ],
+     [
+      -2452.0,
+      560.0
+     ],
+     [
+      -2452.0,
+      581.0
+     ],
+     [
+      -2435.0,
+      592.0
+     ],
+     [
+      -2433.0,
+      611.0
+     ],
+     [
+      -2438.0,
+      618.0
+     ],
+     [
+      -2453.0,
+      626.0
+     ],
+     [
+      -2454.0,
+      651.0
+     ],
+     [
+      -2436.0,
+      663.0
+     ],
+     [
+      -2434.0,
+      679.0
+     ],
+     [
+      -2438.0,
+      687.0
+     ],
+     [
+      -2455.0,
+      697.0
+     ],
+     [
+      -2456.0,
+      721.0
+     ],
+     [
+      -2438.0,
+      732.0
+     ],
+     [
+      -2436.0,
+      751.0
+     ],
+     [
+      -2441.0,
+      758.0
+     ],
+     [
+      -2456.0,
+      766.0
+     ],
+     [
+      -2457.0,
+      792.0
+     ],
+     [
+      -2440.0,
+      802.0
+     ],
+     [
+      -2437.0,
+      807.0
+     ],
+     [
+      -2439.0,
+      813.0
+     ],
+     [
+      -2437.0,
+      821.0
+     ],
+     [
+      -2441.0,
+      827.0
+     ],
+     [
+      -2458.0,
+      837.0
+     ],
+     [
+      -2458.0,
+      861.0
+     ],
+     [
+      -2441.0,
+      872.0
+     ],
+     [
+      -2439.0,
+      876.0
+     ],
+     [
+      -2441.0,
+      883.0
+     ],
+     [
+      -2439.0,
+      892.0
+     ],
+     [
+      -2441.0,
+      896.0
+     ],
+     [
+      -2460.0,
+      906.0
+     ],
+     [
+      -2460.0,
+      932.0
+     ],
+     [
+      -2445.0,
+      940.0
+     ],
+     [
+      -2441.0,
+      945.0
+     ],
+     [
+      -2441.0,
+      963.0
+     ],
+     [
+      -2461.0,
+      976.0
+     ],
+     [
+      -2462.0,
+      1003.0
+     ],
+     [
+      -2452.0,
+      1004.0
+     ],
+     [
+      -2452.0,
+      1032.0
+     ],
+     [
+      -2436.0,
+      1041.0
+     ],
+     [
+      -2433.0,
+      1047.0
+     ],
+     [
+      -2434.0,
+      1064.0
+     ],
+     [
+      -2453.0,
+      1077.0
+     ],
+     [
+      -2454.0,
+      1101.0
+     ],
+     [
+      -2437.0,
+      1112.0
+     ],
+     [
+      -2434.0,
+      1119.0
+     ],
+     [
+      -2436.0,
+      1123.0
+     ],
+     [
+      -2434.0,
+      1129.0
+     ],
+     [
+      -2439.0,
+      1138.0
+     ],
+     [
+      -2455.0,
+      1146.0
+     ],
+     [
+      -2456.0,
+      1172.0
+     ],
+     [
+      -2437.0,
+      1184.0
+     ],
+     [
+      -2436.0,
+      1201.0
+     ],
+     [
+      -2439.0,
+      1207.0
+     ],
+     [
+      -2456.0,
+      1217.0
+     ],
+     [
+      -2457.0,
+      1242.0
+     ],
+     [
+      -2439.0,
+      1253.0
+     ],
+     [
+      -2437.0,
+      1260.0
+     ],
+     [
+      -4168.0,
+      1260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH TLS2",
+    "funcion": "monolitico",
+    "color": "#989898",
+    "hilada": null,
+    "puntos": [
+     [
+      -5022.0,
+      1260.0
+     ],
+     [
+      -5022.0,
+      661.0
+     ],
+     [
+      -5103.0,
+      660.0
+     ],
+     [
+      -4970.0,
+      644.0
+     ],
+     [
+      -4985.0,
+      516.0
+     ],
+     [
+      -4960.0,
+      513.0
+     ],
+     [
+      -4981.0,
+      350.0
+     ],
+     [
+      -4972.0,
+      334.0
+     ],
+     [
+      -4906.0,
+      324.0
+     ],
+     [
+      -4904.0,
+      337.0
+     ],
+     [
+      -4881.0,
+      335.0
+     ],
+     [
+      -4880.0,
+      328.0
+     ],
+     [
+      -4885.0,
+      290.0
+     ],
+     [
+      -4796.0,
+      279.0
+     ],
+     [
+      -4789.0,
+      331.0
+     ],
+     [
+      -4783.0,
+      332.0
+     ],
+     [
+      -4761.0,
+      328.0
+     ],
+     [
+      -4745.0,
+      463.0
+     ],
+     [
+      -4818.0,
+      471.0
+     ],
+     [
+      -4819.0,
+      476.0
+     ],
+     [
+      -4722.0,
+      1260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON C F4E14",
+    "funcion": null,
+    "color": "#A953A0",
+    "hilada": null,
+    "puntos": [
+     [
+      2106.0,
+      1243.0
+     ],
+     [
+      2106.0,
+      724.0
+     ],
+     [
+      2195.0,
+      724.0
+     ],
+     [
+      2210.0,
+      749.0
+     ],
+     [
+      2230.0,
+      749.0
+     ],
+     [
+      2230.0,
+      1010.0
+     ],
+     [
+      2171.0,
+      1242.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON C F4E14",
+    "funcion": null,
+    "color": "#A953A0",
+    "hilada": null,
+    "puntos": [
+     [
+      1791.0,
+      1243.0
+     ],
+     [
+      1730.0,
+      1010.0
+     ],
+     [
+      1730.0,
+      749.0
+     ],
+     [
+      1750.0,
+      749.0
+     ],
+     [
+      1765.0,
+      724.0
+     ],
+     [
+      1854.0,
+      724.0
+     ],
+     [
+      1854.0,
+      1243.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON C F4E14",
+    "funcion": null,
+    "color": "#A953A0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1856.0,
+      1244.0
+     ],
+     [
+      -1856.0,
+      724.0
+     ],
+     [
+      -1767.0,
+      724.0
+     ],
+     [
+      -1752.0,
+      749.0
+     ],
+     [
+      -1731.0,
+      749.0
+     ],
+     [
+      -1731.0,
+      1010.0
+     ],
+     [
+      -1791.0,
+      1244.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON C F4E14",
+    "funcion": null,
+    "color": "#A953A0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2172.0,
+      1244.0
+     ],
+     [
+      -2232.0,
+      1010.0
+     ],
+     [
+      -2232.0,
+      749.0
+     ],
+     [
+      -2212.0,
+      749.0
+     ],
+     [
+      -2197.0,
+      724.0
+     ],
+     [
+      -2108.0,
+      724.0
+     ],
+     [
+      -2108.0,
+      1244.0
+     ]
+    ]
+   },
+   {
+    "material": "PERMASIT GS",
+    "funcion": null,
+    "color": "#B88A00",
+    "hilada": null,
+    "puntos": [
+     [
+      3215.0,
+      559.0
+     ],
+     [
+      3231.0,
+      485.0
+     ],
+     [
+      3557.0,
+      557.0
+     ],
+     [
+      3575.0,
+      483.0
+     ],
+     [
+      3575.0,
+      560.0
+     ]
+    ]
+   },
+   {
+    "material": "PERMASIT GS",
+    "funcion": null,
+    "color": "#B88A00",
+    "hilada": null,
+    "puntos": [
+     [
+      -5523.0,
+      568.0
+     ],
+     [
+      -5513.0,
+      634.0
+     ],
+     [
+      -5113.0,
+      585.0
+     ],
+     [
+      -5104.0,
+      660.0
+     ],
+     [
+      -5523.0,
+      660.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#DBDBDB",
+    "hilada": null,
+    "puntos": [
+     [
+      -1856.0,
+      1599.0
+     ],
+     [
+      -1856.0,
+      1260.0
+     ],
+     [
+      -1681.0,
+      1260.0
+     ],
+     [
+      -1680.0,
+      1454.0
+     ],
+     [
+      -1501.0,
+      1453.0
+     ],
+     [
+      -1502.0,
+      1427.0
+     ],
+     [
+      -1519.0,
+      1417.0
+     ],
+     [
+      -1523.0,
+      1411.0
+     ],
+     [
+      -1523.0,
+      1397.0
+     ],
+     [
+      -1520.0,
+      1392.0
+     ],
+     [
+      -1503.0,
+      1382.0
+     ],
+     [
+      -1504.0,
+      1356.0
+     ],
+     [
+      -1521.0,
+      1347.0
+     ],
+     [
+      -1524.0,
+      1341.0
+     ],
+     [
+      -1524.0,
+      1327.0
+     ],
+     [
+      -1521.0,
+      1321.0
+     ],
+     [
+      -1504.0,
+      1312.0
+     ],
+     [
+      -1505.0,
+      1287.0
+     ],
+     [
+      -1523.0,
+      1276.0
+     ],
+     [
+      -1526.0,
+      1269.0
+     ],
+     [
+      -1526.0,
+      1261.0
+     ],
+     [
+      1524.0,
+      1261.0
+     ],
+     [
+      1524.0,
+      1273.0
+     ],
+     [
+      1522.0,
+      1276.0
+     ],
+     [
+      1504.0,
+      1287.0
+     ],
+     [
+      1503.0,
+      1312.0
+     ],
+     [
+      1518.0,
+      1320.0
+     ],
+     [
+      1522.0,
+      1325.0
+     ],
+     [
+      1522.0,
+      1343.0
+     ],
+     [
+      1518.0,
+      1348.0
+     ],
+     [
+      1502.0,
+      1356.0
+     ],
+     [
+      1501.0,
+      1427.0
+     ],
+     [
+      1453.0,
+      1453.0
+     ],
+     [
+      1679.0,
+      1454.0
+     ],
+     [
+      1680.0,
+      1114.0
+     ],
+     [
+      1757.0,
+      1114.0
+     ],
+     [
+      1789.0,
+      1242.0
+     ],
+     [
+      1791.0,
+      1244.0
+     ],
+     [
+      1855.0,
+      1244.0
+     ],
+     [
+      1855.0,
+      1599.0
+     ],
+     [
+      1817.0,
+      1608.0
+     ],
+     [
+      1770.0,
+      1608.0
+     ],
+     [
+      1602.0,
+      1587.0
+     ],
+     [
+      1416.0,
+      1568.0
+     ],
+     [
+      1063.0,
+      1538.0
+     ],
+     [
+      886.0,
+      1527.0
+     ],
+     [
+      531.0,
+      1510.0
+     ],
+     [
+      235.0,
+      1502.0
+     ],
+     [
+      -296.0,
+      1503.0
+     ],
+     [
+      -532.0,
+      1510.0
+     ],
+     [
+      -709.0,
+      1518.0
+     ],
+     [
+      -1087.0,
+      1540.0
+     ],
+     [
+      -1417.0,
+      1568.0
+     ],
+     [
+      -1612.0,
+      1588.0
+     ],
+     [
+      -1771.0,
+      1608.0
+     ],
+     [
+      -1818.0,
+      1608.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#DBDBDB",
+    "hilada": null,
+    "puntos": [
+     [
+      -4188.0,
+      1921.0
+     ],
+     [
+      -4389.0,
+      287.0
+     ],
+     [
+      -4388.0,
+      283.0
+     ],
+     [
+      -4365.0,
+      280.0
+     ],
+     [
+      -4163.0,
+      1918.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#DBDBDB",
+    "hilada": null,
+    "puntos": [
+     [
+      -4086.0,
+      1929.0
+     ],
+     [
+      -4168.0,
+      1261.0
+     ],
+     [
+      -2437.0,
+      1261.0
+     ],
+     [
+      -2437.0,
+      1271.0
+     ],
+     [
+      -2440.0,
+      1276.0
+     ],
+     [
+      -2458.0,
+      1287.0
+     ],
+     [
+      -2458.0,
+      1312.0
+     ],
+     [
+      -2439.0,
+      1325.0
+     ],
+     [
+      -2439.0,
+      1343.0
+     ],
+     [
+      -2444.0,
+      1348.0
+     ],
+     [
+      -2460.0,
+      1356.0
+     ],
+     [
+      -2460.0,
+      1382.0
+     ],
+     [
+      -2443.0,
+      1392.0
+     ],
+     [
+      -2441.0,
+      1396.0
+     ],
+     [
+      -2441.0,
+      1413.0
+     ],
+     [
+      -2461.0,
+      1427.0
+     ],
+     [
+      -2462.0,
+      1453.0
+     ],
+     [
+      -2283.0,
+      1454.0
+     ],
+     [
+      -2282.0,
+      1260.0
+     ],
+     [
+      -2107.0,
+      1260.0
+     ],
+     [
+      -2107.0,
+      1599.0
+     ],
+     [
+      -2582.0,
+      1599.0
+     ],
+     [
+      -3322.0,
+      1929.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#DBDBDB",
+    "hilada": null,
+    "puntos": [
+     [
+      3125.0,
+      1959.0
+     ],
+     [
+      2720.0,
+      1795.0
+     ],
+     [
+      2620.0,
+      1752.0
+     ],
+     [
+      2564.0,
+      1731.0
+     ],
+     [
+      2509.0,
+      1715.0
+     ],
+     [
+      2210.0,
+      1666.0
+     ],
+     [
+      2189.0,
+      1660.0
+     ],
+     [
+      2152.0,
+      1641.0
+     ],
+     [
+      2121.0,
+      1617.0
+     ],
+     [
+      2105.0,
+      1599.0
+     ],
+     [
+      2105.0,
+      1244.0
+     ],
+     [
+      2170.0,
+      1244.0
+     ],
+     [
+      2172.0,
+      1242.0
+     ],
+     [
+      2204.0,
+      1114.0
+     ],
+     [
+      2281.0,
+      1114.0
+     ],
+     [
+      2282.0,
+      1454.0
+     ],
+     [
+      2507.0,
+      1453.0
+     ],
+     [
+      2460.0,
+      1427.0
+     ],
+     [
+      2458.0,
+      1356.0
+     ],
+     [
+      2441.0,
+      1347.0
+     ],
+     [
+      2438.0,
+      1341.0
+     ],
+     [
+      2438.0,
+      1327.0
+     ],
+     [
+      2441.0,
+      1321.0
+     ],
+     [
+      2458.0,
+      1312.0
+     ],
+     [
+      2457.0,
+      1287.0
+     ],
+     [
+      2437.0,
+      1274.0
+     ],
+     [
+      2436.0,
+      1261.0
+     ],
+     [
+      3075.0,
+      1261.0
+     ],
+     [
+      3075.0,
+      1359.0
+     ],
+     [
+      3125.0,
+      1360.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#DBDBDB",
+    "hilada": null,
+    "puntos": [
+     [
+      -4560.0,
+      1967.0
+     ],
+     [
+      -4760.0,
+      328.0
+     ],
+     [
+      -4737.0,
+      325.0
+     ],
+     [
+      -4536.0,
+      1964.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#DBDBDB",
+    "hilada": null,
+    "puntos": [
+     [
+      -5072.0,
+      2060.0
+     ],
+     [
+      -5072.0,
+      1360.0
+     ],
+     [
+      -5022.0,
+      1359.0
+     ],
+     [
+      -5022.0,
+      1261.0
+     ],
+     [
+      -4722.0,
+      1261.0
+     ],
+     [
+      -4632.0,
+      1995.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": "trabajo",
+    "color": "#FF0000",
+    "hilada": 22,
+    "puntos": [
+     [
+      -5523.0,
+      2761.0
+     ],
+     [
+      -5523.0,
+      2662.0
+     ],
+     [
+      -5072.0,
+      2662.0
+     ],
+     [
+      -5072.0,
+      2761.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": "trabajo",
+    "color": "#FF0000",
+    "hilada": 23,
+    "puntos": [
+     [
+      -5523.0,
+      2861.0
+     ],
+     [
+      -5523.0,
+      2762.0
+     ],
+     [
+      -5072.0,
+      2762.0
+     ],
+     [
+      -5072.0,
+      2861.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": "trabajo",
+    "color": "#FF0000",
+    "hilada": 24,
+    "puntos": [
+     [
+      -5523.0,
+      2961.0
+     ],
+     [
+      -5523.0,
+      2862.0
+     ],
+     [
+      -5072.0,
+      2862.0
+     ],
+     [
+      -5072.0,
+      2961.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": "trabajo",
+    "color": "#FF0000",
+    "hilada": 25,
+    "puntos": [
+     [
+      -5523.0,
+      3061.0
+     ],
+     [
+      -5523.0,
+      2962.0
+     ],
+     [
+      -5072.0,
+      2962.0
+     ],
+     [
+      -5072.0,
+      3061.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": "trabajo",
+    "color": "#FF0000",
+    "hilada": 26,
+    "puntos": [
+     [
+      -5523.0,
+      3161.0
+     ],
+     [
+      -5523.0,
+      3062.0
+     ],
+     [
+      -5072.0,
+      3062.0
+     ],
+     [
+      -5072.0,
+      3161.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": "trabajo",
+    "color": "#FF0000",
+    "hilada": 27,
+    "puntos": [
+     [
+      -5523.0,
+      3261.0
+     ],
+     [
+      -5523.0,
+      3162.0
+     ],
+     [
+      -5072.0,
+      3162.0
+     ],
+     [
+      -5072.0,
+      3261.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": "trabajo",
+    "color": "#FF0000",
+    "hilada": 28,
+    "puntos": [
+     [
+      -5523.0,
+      3361.0
+     ],
+     [
+      -5523.0,
+      3262.0
+     ],
+     [
+      -5072.0,
+      3262.0
+     ],
+     [
+      -5072.0,
+      3361.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#FF0000",
+    "hilada": null,
+    "puntos": [
+     [
+      2299.0,
+      3036.0
+     ],
+     [
+      2299.0,
+      2661.0
+     ],
+     [
+      2799.0,
+      2661.0
+     ],
+     [
+      2799.0,
+      3036.0
+     ],
+     [
+      2736.0,
+      3036.0
+     ],
+     [
+      2735.0,
+      2961.0
+     ],
+     [
+      2362.0,
+      2961.0
+     ],
+     [
+      2361.0,
+      3036.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 9,
+    "puntos": [
+     [
+      3126.0,
+      1460.0
+     ],
+     [
+      3126.0,
+      1361.0
+     ],
+     [
+      3574.0,
+      1361.0
+     ],
+     [
+      3574.0,
+      1460.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 10,
+    "puntos": [
+     [
+      3126.0,
+      1560.0
+     ],
+     [
+      3126.0,
+      1461.0
+     ],
+     [
+      3574.0,
+      1461.0
+     ],
+     [
+      3574.0,
+      1560.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 11,
+    "puntos": [
+     [
+      3126.0,
+      1660.0
+     ],
+     [
+      3126.0,
+      1561.0
+     ],
+     [
+      3574.0,
+      1561.0
+     ],
+     [
+      3574.0,
+      1660.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 12,
+    "puntos": [
+     [
+      3126.0,
+      1760.0
+     ],
+     [
+      3126.0,
+      1661.0
+     ],
+     [
+      3574.0,
+      1661.0
+     ],
+     [
+      3574.0,
+      1760.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 13,
+    "puntos": [
+     [
+      3126.0,
+      1860.0
+     ],
+     [
+      3126.0,
+      1761.0
+     ],
+     [
+      3574.0,
+      1761.0
+     ],
+     [
+      3574.0,
+      1860.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 14,
+    "puntos": [
+     [
+      3126.0,
+      1960.0
+     ],
+     [
+      3126.0,
+      1861.0
+     ],
+     [
+      3574.0,
+      1861.0
+     ],
+     [
+      3574.0,
+      1960.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 15,
+    "puntos": [
+     [
+      3126.0,
+      2060.0
+     ],
+     [
+      3126.0,
+      1961.0
+     ],
+     [
+      3574.0,
+      1961.0
+     ],
+     [
+      3574.0,
+      2060.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 16,
+    "puntos": [
+     [
+      3126.0,
+      2160.0
+     ],
+     [
+      3126.0,
+      2061.0
+     ],
+     [
+      3574.0,
+      2061.0
+     ],
+     [
+      3574.0,
+      2160.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 17,
+    "puntos": [
+     [
+      3125.0,
+      2260.0
+     ],
+     [
+      3126.0,
+      2161.0
+     ],
+     [
+      3574.0,
+      2161.0
+     ],
+     [
+      3574.0,
+      2260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAR NT02-AT",
+    "funcion": null,
+    "color": "#FF7FFF",
+    "hilada": null,
+    "puntos": [
+     [
+      2205.0,
+      1113.0
+     ],
+     [
+      2231.0,
+      1010.0
+     ],
+     [
+      2230.0,
+      714.0
+     ],
+     [
+      2281.0,
+      714.0
+     ],
+     [
+      2281.0,
+      1113.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAR NT02-AT",
+    "funcion": null,
+    "color": "#FF7FFF",
+    "hilada": null,
+    "puntos": [
+     [
+      1680.0,
+      1113.0
+     ],
+     [
+      1680.0,
+      714.0
+     ],
+     [
+      1730.0,
+      714.0
+     ],
+     [
+      1729.0,
+      1010.0
+     ],
+     [
+      1756.0,
+      1113.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAR NT02-AT",
+    "funcion": null,
+    "color": "#FF7FFF",
+    "hilada": null,
+    "puntos": [
+     [
+      -1757.0,
+      1114.0
+     ],
+     [
+      -1730.0,
+      1010.0
+     ],
+     [
+      -1731.0,
+      714.0
+     ],
+     [
+      -1681.0,
+      714.0
+     ],
+     [
+      -1681.0,
+      1114.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAR NT02-AT",
+    "funcion": null,
+    "color": "#FF7FFF",
+    "hilada": null,
+    "puntos": [
+     [
+      -2282.0,
+      1114.0
+     ],
+     [
+      -2282.0,
+      714.0
+     ],
+     [
+      -2232.0,
+      714.0
+     ],
+     [
+      -2233.0,
+      1010.0
+     ],
+     [
+      -2206.0,
+      1114.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 18,
+    "puntos": [
+     [
+      3125.0,
+      2360.0
+     ],
+     [
+      3125.0,
+      2261.0
+     ],
+     [
+      3575.0,
+      2261.0
+     ],
+     [
+      3575.0,
+      2360.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 19,
+    "puntos": [
+     [
+      3125.0,
+      2460.0
+     ],
+     [
+      3125.0,
+      2361.0
+     ],
+     [
+      3575.0,
+      2361.0
+     ],
+     [
+      3575.0,
+      2460.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 20,
+    "puntos": [
+     [
+      3125.0,
+      2561.0
+     ],
+     [
+      3125.0,
+      2461.0
+     ],
+     [
+      3575.0,
+      2461.0
+     ],
+     [
+      3575.0,
+      2561.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 21,
+    "puntos": [
+     [
+      3125.0,
+      2661.0
+     ],
+     [
+      3125.0,
+      2562.0
+     ],
+     [
+      3575.0,
+      2562.0
+     ],
+     [
+      3575.0,
+      2661.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 9,
+    "puntos": [
+     [
+      -5523.0,
+      1460.0
+     ],
+     [
+      -5523.0,
+      1361.0
+     ],
+     [
+      -5073.0,
+      1361.0
+     ],
+     [
+      -5073.0,
+      1460.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 10,
+    "puntos": [
+     [
+      -5523.0,
+      1560.0
+     ],
+     [
+      -5523.0,
+      1461.0
+     ],
+     [
+      -5073.0,
+      1461.0
+     ],
+     [
+      -5073.0,
+      1560.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 11,
+    "puntos": [
+     [
+      -5523.0,
+      1660.0
+     ],
+     [
+      -5523.0,
+      1561.0
+     ],
+     [
+      -5073.0,
+      1561.0
+     ],
+     [
+      -5073.0,
+      1660.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 12,
+    "puntos": [
+     [
+      -5523.0,
+      1760.0
+     ],
+     [
+      -5523.0,
+      1661.0
+     ],
+     [
+      -5073.0,
+      1661.0
+     ],
+     [
+      -5073.0,
+      1760.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 13,
+    "puntos": [
+     [
+      -5523.0,
+      1860.0
+     ],
+     [
+      -5523.0,
+      1761.0
+     ],
+     [
+      -5073.0,
+      1761.0
+     ],
+     [
+      -5073.0,
+      1860.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 14,
+    "puntos": [
+     [
+      -5523.0,
+      1960.0
+     ],
+     [
+      -5523.0,
+      1861.0
+     ],
+     [
+      -5073.0,
+      1861.0
+     ],
+     [
+      -5073.0,
+      1960.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 15,
+    "puntos": [
+     [
+      -5523.0,
+      2060.0
+     ],
+     [
+      -5523.0,
+      1961.0
+     ],
+     [
+      -5073.0,
+      1961.0
+     ],
+     [
+      -5073.0,
+      2060.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 16,
+    "puntos": [
+     [
+      -5523.0,
+      2160.0
+     ],
+     [
+      -5523.0,
+      2061.0
+     ],
+     [
+      -5073.0,
+      2061.0
+     ],
+     [
+      -5073.0,
+      2160.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 17,
+    "puntos": [
+     [
+      -5523.0,
+      2260.0
+     ],
+     [
+      -5523.0,
+      2161.0
+     ],
+     [
+      -5072.0,
+      2162.0
+     ],
+     [
+      -5072.0,
+      2260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 18,
+    "puntos": [
+     [
+      -5523.0,
+      2360.0
+     ],
+     [
+      -5523.0,
+      2261.0
+     ],
+     [
+      -5072.0,
+      2261.0
+     ],
+     [
+      -5072.0,
+      2360.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 19,
+    "puntos": [
+     [
+      -5523.0,
+      2460.0
+     ],
+     [
+      -5523.0,
+      2361.0
+     ],
+     [
+      -5072.0,
+      2361.0
+     ],
+     [
+      -5072.0,
+      2460.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 20,
+    "puntos": [
+     [
+      -5523.0,
+      2560.0
+     ],
+     [
+      -5523.0,
+      2461.0
+     ],
+     [
+      -5072.0,
+      2461.0
+     ],
+     [
+      -5072.0,
+      2561.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 21,
+    "puntos": [
+     [
+      -5522.0,
+      2660.0
+     ],
+     [
+      -5522.0,
+      2562.0
+     ],
+     [
+      -5072.0,
+      2562.0
+     ],
+     [
+      -5072.0,
+      2660.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON C F3E10D",
+    "funcion": "trabajo",
+    "color": "#FFB3B3",
+    "hilada": 22,
+    "puntos": [
+     [
+      3125.0,
+      2662.0
+     ],
+     [
+      4442.0,
+      2662.0
+     ],
+     [
+      4442.0,
+      2760.0
+     ],
+     [
+      4461.0,
+      2761.0
+     ],
+     [
+      3125.0,
+      2761.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON C F3E10D",
+    "funcion": "trabajo",
+    "color": "#FFB3B3",
+    "hilada": 23,
+    "puntos": [
+     [
+      3125.0,
+      2762.0
+     ],
+     [
+      4461.0,
+      2762.0
+     ],
+     [
+      4461.0,
+      2860.0
+     ],
+     [
+      4521.0,
+      2861.0
+     ],
+     [
+      3125.0,
+      2861.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON C F3E10D",
+    "funcion": "trabajo",
+    "color": "#FFB3B3",
+    "hilada": 24,
+    "puntos": [
+     [
+      3125.0,
+      2862.0
+     ],
+     [
+      4521.0,
+      2862.0
+     ],
+     [
+      4521.0,
+      2960.0
+     ],
+     [
+      4576.0,
+      2961.0
+     ],
+     [
+      3125.0,
+      2961.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON C F3E10D",
+    "funcion": "trabajo",
+    "color": "#FFB3B3",
+    "hilada": 25,
+    "puntos": [
+     [
+      3175.0,
+      3061.0
+     ],
+     [
+      3175.0,
+      2962.0
+     ],
+     [
+      4576.0,
+      2962.0
+     ],
+     [
+      4576.0,
+      3061.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAP HMC193X",
+    "funcion": null,
+    "color": "#FFFF1A",
+    "hilada": null,
+    "puntos": [
+     [
+      -4087.0,
+      1929.0
+     ],
+     [
+      -4116.0,
+      1932.0
+     ],
+     [
+      -4133.0,
+      1915.0
+     ],
+     [
+      -4162.0,
+      1917.0
+     ],
+     [
+      -4363.0,
+      287.0
+     ],
+     [
+      -4363.0,
+      280.0
+     ],
+     [
+      -4334.0,
+      277.0
+     ],
+     [
+      -4317.0,
+      295.0
+     ],
+     [
+      -4288.0,
+      292.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAP HMC193X",
+    "funcion": null,
+    "color": "#FFFF1A",
+    "hilada": null,
+    "puntos": [
+     [
+      -4631.0,
+      1995.0
+     ],
+     [
+      -4818.0,
+      476.0
+     ],
+     [
+      -4818.0,
+      472.0
+     ],
+     [
+      -4745.0,
+      464.0
+     ],
+     [
+      -4561.0,
+      1960.0
+     ],
+     [
+      -4561.0,
+      1967.0
+     ],
+     [
+      -4589.0,
+      1970.0
+     ],
+     [
+      -4603.0,
+      1992.0
+     ]
+    ]
+   },
+   {
+    "material": null,
+    "funcion": null,
+    "color": "#FFFF66",
+    "hilada": null,
+    "puntos": [
+     [
+      -4189.0,
+      1921.0
+     ],
+     [
+      -4203.0,
+      1923.0
+     ],
+     [
+      -4236.0,
+      1897.0
+     ],
+     [
+      -4276.0,
+      1902.0
+     ],
+     [
+      -4476.0,
+      263.0
+     ],
+     [
+      -4437.0,
+      259.0
+     ],
+     [
+      -4404.0,
+      286.0
+     ],
+     [
+      -4390.0,
+      284.0
+     ]
+    ]
+   },
+   {
+    "material": null,
+    "funcion": null,
+    "color": "#FFFF66",
+    "hilada": null,
+    "puntos": [
+     [
+      -4529.0,
+      1963.0
+     ],
+     [
+      -4535.0,
+      1963.0
+     ],
+     [
+      -4736.0,
+      326.0
+     ],
+     [
+      -4722.0,
+      325.0
+     ],
+     [
+      -4695.0,
+      290.0
+     ],
+     [
+      -4656.0,
+      286.0
+     ],
+     [
+      -4580.0,
+      910.0
+     ],
+     [
+      -4570.0,
+      976.0
+     ],
+     [
+      -4515.0,
+      1424.0
+     ],
+     [
+      -4511.0,
+      1471.0
+     ],
+     [
+      -4454.0,
+      1924.0
+     ],
+     [
+      -4494.0,
+      1927.0
+     ],
+     [
+      -4519.0,
+      1960.0
+     ]
+    ]
+   },
+   {
+    "material": null,
+    "funcion": null,
+    "color": "#FFFFB3",
+    "hilada": null,
+    "puntos": [
+     [
+      -4336.0,
+      276.0
+     ],
+     [
+      -4404.0,
+      285.0
+     ],
+     [
+      -4437.0,
+      258.0
+     ],
+     [
+      -4477.0,
+      263.0
+     ],
+     [
+      -4495.0,
+      114.0
+     ],
+     [
+      -4387.0,
+      102.0
+     ],
+     [
+      -4347.0,
+      185.0
+     ]
+    ]
+   },
+   {
+    "material": null,
+    "funcion": null,
+    "color": "#FFFFB3",
+    "hilada": null,
+    "puntos": [
+     [
+      -4788.0,
+      331.0
+     ],
+     [
+      -4800.0,
+      240.0
+     ],
+     [
+      -4782.0,
+      149.0
+     ],
+     [
+      -4674.0,
+      136.0
+     ],
+     [
+      -4656.0,
+      285.0
+     ],
+     [
+      -4695.0,
+      289.0
+     ],
+     [
+      -4722.0,
+      324.0
+     ],
+     [
+      -4737.0,
+      324.0
+     ]
+    ]
+   }
+  ],
+  "etiquetas": []
+ },
+ "seccion_cc": {
+  "estado": "medido_a_escala",
+  "nota": "Sección C-C completa como polígonos rellenos (EAF-029): la parte visible de cada color, sin solapes. Vista calibrada a 0.0922 pt/mm (eje X en 1796.1 pt, Y = 0 en top = 525.3 pt; ver docs/plantas-nuevas.md §2). Los rellenos del PDF son teselas: se rasterizaron a 1 mm/píxel en el orden de pintado del PDF (lo que un relleno posterior tapa deja de ser del anterior), se unieron por color y se vectorizaron (±1.5 mm; huecos en `huecos`). Los ladrillos de pared se cortaron por hilada en la rejilla de los rellenos (100.06 mm desde Y = 559.4). `material`: la leyenda del plano por color. `funcion`: «trabajo» para el ladrillo de pared y «seguridad» para el olivo ANKER 30-K son SUPUESTOS (el plano no rotula la función de las capas); «monolitico» para los ANKERHARTH. Se omiten la marca de agua, las cotas, los símbolos y el rayado (RADEX, líneas). Los rótulos de la hoja (450, 500, números de hilada) son trazos y no texto: no se transcriben aquí. C-C pasa por el eje de la puerta (X + hacia la puerta); su eje está en 1 796.1 pt y su Y comparte el cero de A-A.",
+  "poligonos": [
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 1,
+    "puntos": [
+     [
+      -3576.0,
+      659.0
+     ],
+     [
+      -3576.0,
+      561.0
+     ],
+     [
+      -3077.0,
+      561.0
+     ],
+     [
+      -3077.0,
+      659.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 2,
+    "puntos": [
+     [
+      -3576.0,
+      760.0
+     ],
+     [
+      -3576.0,
+      660.0
+     ],
+     [
+      -3077.0,
+      660.0
+     ],
+     [
+      -3077.0,
+      760.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 3,
+    "puntos": [
+     [
+      -3576.0,
+      860.0
+     ],
+     [
+      -3576.0,
+      761.0
+     ],
+     [
+      -3077.0,
+      761.0
+     ],
+     [
+      -3077.0,
+      860.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 4,
+    "puntos": [
+     [
+      -3576.0,
+      960.0
+     ],
+     [
+      -3576.0,
+      861.0
+     ],
+     [
+      -3077.0,
+      861.0
+     ],
+     [
+      -3077.0,
+      960.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 5,
+    "puntos": [
+     [
+      -3576.0,
+      1060.0
+     ],
+     [
+      -3576.0,
+      961.0
+     ],
+     [
+      -3077.0,
+      961.0
+     ],
+     [
+      -3077.0,
+      1060.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 6,
+    "puntos": [
+     [
+      -3576.0,
+      1160.0
+     ],
+     [
+      -3576.0,
+      1061.0
+     ],
+     [
+      -3077.0,
+      1061.0
+     ],
+     [
+      -3077.0,
+      1160.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 7,
+    "puntos": [
+     [
+      -3576.0,
+      1260.0
+     ],
+     [
+      -3576.0,
+      1161.0
+     ],
+     [
+      -3077.0,
+      1161.0
+     ],
+     [
+      -3077.0,
+      1260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 8,
+    "puntos": [
+     [
+      -3576.0,
+      1360.0
+     ],
+     [
+      -3576.0,
+      1261.0
+     ],
+     [
+      -3077.0,
+      1261.0
+     ],
+     [
+      -3077.0,
+      1359.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 1,
+    "puntos": [
+     [
+      3076.0,
+      659.0
+     ],
+     [
+      3076.0,
+      561.0
+     ],
+     [
+      3576.0,
+      561.0
+     ],
+     [
+      3576.0,
+      659.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 2,
+    "puntos": [
+     [
+      3076.0,
+      760.0
+     ],
+     [
+      3076.0,
+      660.0
+     ],
+     [
+      3576.0,
+      660.0
+     ],
+     [
+      3576.0,
+      760.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 3,
+    "puntos": [
+     [
+      3076.0,
+      860.0
+     ],
+     [
+      3076.0,
+      761.0
+     ],
+     [
+      3576.0,
+      761.0
+     ],
+     [
+      3576.0,
+      860.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 4,
+    "puntos": [
+     [
+      3076.0,
+      960.0
+     ],
+     [
+      3076.0,
+      861.0
+     ],
+     [
+      3576.0,
+      861.0
+     ],
+     [
+      3576.0,
+      960.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 5,
+    "puntos": [
+     [
+      3076.0,
+      1060.0
+     ],
+     [
+      3076.0,
+      961.0
+     ],
+     [
+      3576.0,
+      961.0
+     ],
+     [
+      3576.0,
+      1060.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 6,
+    "puntos": [
+     [
+      3076.0,
+      1160.0
+     ],
+     [
+      3076.0,
+      1061.0
+     ],
+     [
+      3576.0,
+      1061.0
+     ],
+     [
+      3576.0,
+      1160.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 7,
+    "puntos": [
+     [
+      3076.0,
+      1260.0
+     ],
+     [
+      3076.0,
+      1161.0
+     ],
+     [
+      3576.0,
+      1161.0
+     ],
+     [
+      3576.0,
+      1260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F7E10",
+    "funcion": "trabajo",
+    "color": "#007FFF",
+    "hilada": 8,
+    "puntos": [
+     [
+      3076.0,
+      1359.0
+     ],
+     [
+      3076.0,
+      1261.0
+     ],
+     [
+      3576.0,
+      1261.0
+     ],
+     [
+      3576.0,
+      1360.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH SB25",
+    "funcion": "monolitico",
+    "color": "#31C4A9",
+    "hilada": null,
+    "puntos": [
+     [
+      3126.0,
+      2161.0
+     ],
+     [
+      2699.0,
+      1803.0
+     ],
+     [
+      2645.0,
+      1768.0
+     ],
+     [
+      2600.0,
+      1746.0
+     ],
+     [
+      3126.0,
+      1960.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH SB25",
+    "funcion": "monolitico",
+    "color": "#31C4A9",
+    "hilada": null,
+    "puntos": [
+     [
+      -3126.0,
+      2161.0
+     ],
+     [
+      -3126.0,
+      1960.0
+     ],
+     [
+      -2607.0,
+      1747.0
+     ],
+     [
+      -2650.0,
+      1769.0
+     ],
+     [
+      -2687.0,
+      1793.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30-K",
+    "funcion": "seguridad",
+    "color": "#53552B",
+    "hilada": null,
+    "puntos": [
+     [
+      3652.0,
+      2660.0
+     ],
+     [
+      3577.0,
+      2660.0
+     ],
+     [
+      3576.0,
+      482.0
+     ],
+     [
+      3558.0,
+      556.0
+     ],
+     [
+      3396.0,
+      519.0
+     ],
+     [
+      3232.0,
+      485.0
+     ],
+     [
+      3223.0,
+      518.0
+     ],
+     [
+      3216.0,
+      558.0
+     ],
+     [
+      3212.0,
+      559.0
+     ],
+     [
+      3013.0,
+      518.0
+     ],
+     [
+      2625.0,
+      447.0
+     ],
+     [
+      2419.0,
+      414.0
+     ],
+     [
+      2011.0,
+      356.0
+     ],
+     [
+      1611.0,
+      310.0
+     ],
+     [
+      1310.0,
+      282.0
+     ],
+     [
+      1011.0,
+      260.0
+     ],
+     [
+      607.0,
+      239.0
+     ],
+     [
+      202.0,
+      229.0
+     ],
+     [
+      0.0,
+      228.0
+     ],
+     [
+      -376.0,
+      232.0
+     ],
+     [
+      -564.0,
+      238.0
+     ],
+     [
+      -940.0,
+      256.0
+     ],
+     [
+      -1302.0,
+      281.0
+     ],
+     [
+      -1502.0,
+      299.0
+     ],
+     [
+      -1509.0,
+      227.0
+     ],
+     [
+      -1511.0,
+      225.0
+     ],
+     [
+      -1559.0,
+      229.0
+     ],
+     [
+      -1566.0,
+      154.0
+     ],
+     [
+      -1559.0,
+      153.0
+     ],
+     [
+      -1559.0,
+      140.0
+     ],
+     [
+      -1566.0,
+      78.0
+     ],
+     [
+      -1201.0,
+      46.0
+     ],
+     [
+      -800.0,
+      20.0
+     ],
+     [
+      -392.0,
+      5.0
+     ],
+     [
+      0.0,
+      1.0
+     ],
+     [
+      401.0,
+      5.0
+     ],
+     [
+      759.0,
+      20.0
+     ],
+     [
+      802.0,
+      20.0
+     ],
+     [
+      1002.0,
+      32.0
+     ],
+     [
+      1402.0,
+      62.0
+     ],
+     [
+      1786.0,
+      100.0
+     ],
+     [
+      2025.0,
+      129.0
+     ],
+     [
+      2398.0,
+      181.0
+     ],
+     [
+      2794.0,
+      246.0
+     ],
+     [
+      2942.0,
+      275.0
+     ],
+     [
+      3016.0,
+      287.0
+     ],
+     [
+      3275.0,
+      339.0
+     ],
+     [
+      3580.0,
+      406.0
+     ],
+     [
+      3576.0,
+      420.0
+     ],
+     [
+      3577.0,
+      423.0
+     ],
+     [
+      3652.0,
+      423.0
+     ]
+    ],
+    "huecos": [
+     [
+      [
+       3572.0,
+       483.0
+      ],
+      [
+       3576.0,
+       482.0
+      ],
+      [
+       3575.0,
+       429.0
+      ],
+      [
+       3563.0,
+       477.0
+      ],
+      [
+       3564.0,
+       481.0
+      ]
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30-K",
+    "funcion": "seguridad",
+    "color": "#53552B",
+    "hilada": null,
+    "puntos": [
+     [
+      -3652.0,
+      2660.0
+     ],
+     [
+      -3652.0,
+      423.0
+     ],
+     [
+      -3578.0,
+      423.0
+     ],
+     [
+      -3580.0,
+      406.0
+     ],
+     [
+      -3232.0,
+      330.0
+     ],
+     [
+      -3224.0,
+      330.0
+     ],
+     [
+      -3117.0,
+      307.0
+     ],
+     [
+      -2918.0,
+      269.0
+     ],
+     [
+      -2659.0,
+      223.0
+     ],
+     [
+      -2466.0,
+      192.0
+     ],
+     [
+      -2455.0,
+      267.0
+     ],
+     [
+      -2468.0,
+      269.0
+     ],
+     [
+      -2456.0,
+      344.0
+     ],
+     [
+      -2468.0,
+      346.0
+     ],
+     [
+      -2458.0,
+      421.0
+     ],
+     [
+      -2606.0,
+      444.0
+     ],
+     [
+      -2642.0,
+      452.0
+     ],
+     [
+      -2670.0,
+      455.0
+     ],
+     [
+      -2812.0,
+      480.0
+     ],
+     [
+      -2916.0,
+      501.0
+     ],
+     [
+      -2978.0,
+      511.0
+     ],
+     [
+      -3212.0,
+      559.0
+     ],
+     [
+      -3216.0,
+      558.0
+     ],
+     [
+      -3232.0,
+      485.0
+     ],
+     [
+      -3396.0,
+      519.0
+     ],
+     [
+      -3558.0,
+      556.0
+     ],
+     [
+      -3574.0,
+      486.0
+     ],
+     [
+      -3577.0,
+      483.0
+     ],
+     [
+      -3577.0,
+      2660.0
+     ]
+    ],
+    "huecos": [
+     [
+      [
+       -3570.0,
+       483.0
+      ],
+      [
+       -3563.0,
+       479.0
+      ],
+      [
+       -3575.0,
+       429.0
+      ],
+      [
+       -3576.0,
+       482.0
+      ]
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX KS13-AT",
+    "funcion": null,
+    "color": "#58BA48",
+    "hilada": null,
+    "puntos": [
+     [
+      -1681.0,
+      713.0
+     ],
+     [
+      -1731.0,
+      713.0
+     ],
+     [
+      -1731.0,
+      638.0
+     ],
+     [
+      -1734.0,
+      637.0
+     ],
+     [
+      -1734.0,
+      134.0
+     ],
+     [
+      -1706.0,
+      134.0
+     ],
+     [
+      -1706.0,
+      233.0
+     ],
+     [
+      -1681.0,
+      234.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX KS13-AT",
+    "funcion": null,
+    "color": "#58BA48",
+    "hilada": null,
+    "puntos": [
+     [
+      -2281.0,
+      713.0
+     ],
+     [
+      -2281.0,
+      234.0
+     ],
+     [
+      -2256.0,
+      233.0
+     ],
+     [
+      -2256.0,
+      134.0
+     ],
+     [
+      -2229.0,
+      134.0
+     ],
+     [
+      -2229.0,
+      637.0
+     ],
+     [
+      -2232.0,
+      638.0
+     ],
+     [
+      -2232.0,
+      713.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH TLS2",
+    "funcion": "monolitico",
+    "color": "#989898",
+    "hilada": null,
+    "puntos": [
+     [
+      -3076.0,
+      1259.0
+     ],
+     [
+      -3076.0,
+      561.0
+     ],
+     [
+      -3215.0,
+      560.0
+     ],
+     [
+      -2995.0,
+      517.0
+     ],
+     [
+      -2978.0,
+      512.0
+     ],
+     [
+      -2888.0,
+      497.0
+     ],
+     [
+      -2812.0,
+      481.0
+     ],
+     [
+      -2670.0,
+      456.0
+     ],
+     [
+      -2642.0,
+      453.0
+     ],
+     [
+      -2606.0,
+      445.0
+     ],
+     [
+      -2588.0,
+      444.0
+     ],
+     [
+      -2502.0,
+      428.0
+     ],
+     [
+      -2458.0,
+      422.0
+     ],
+     [
+      -2458.0,
+      412.0
+     ],
+     [
+      -2442.0,
+      421.0
+     ],
+     [
+      -2438.0,
+      428.0
+     ],
+     [
+      -2439.0,
+      443.0
+     ],
+     [
+      -2442.0,
+      447.0
+     ],
+     [
+      -2459.0,
+      456.0
+     ],
+     [
+      -2460.0,
+      481.0
+     ],
+     [
+      -2442.0,
+      492.0
+     ],
+     [
+      -2440.0,
+      511.0
+     ],
+     [
+      -2442.0,
+      516.0
+     ],
+     [
+      -2461.0,
+      527.0
+     ],
+     [
+      -2461.0,
+      553.0
+     ],
+     [
+      -2451.0,
+      554.0
+     ],
+     [
+      -2452.0,
+      581.0
+     ],
+     [
+      -2437.0,
+      590.0
+     ],
+     [
+      -2433.0,
+      596.0
+     ],
+     [
+      -2433.0,
+      613.0
+     ],
+     [
+      -2436.0,
+      617.0
+     ],
+     [
+      -2453.0,
+      626.0
+     ],
+     [
+      -2453.0,
+      652.0
+     ],
+     [
+      -2435.0,
+      664.0
+     ],
+     [
+      -2434.0,
+      681.0
+     ],
+     [
+      -2439.0,
+      688.0
+     ],
+     [
+      -2455.0,
+      697.0
+     ],
+     [
+      -2455.0,
+      721.0
+     ],
+     [
+      -2438.0,
+      732.0
+     ],
+     [
+      -2436.0,
+      736.0
+     ],
+     [
+      -2436.0,
+      753.0
+     ],
+     [
+      -2440.0,
+      758.0
+     ],
+     [
+      -2456.0,
+      766.0
+     ],
+     [
+      -2457.0,
+      792.0
+     ],
+     [
+      -2438.0,
+      804.0
+     ],
+     [
+      -2437.0,
+      821.0
+     ],
+     [
+      -2442.0,
+      828.0
+     ],
+     [
+      -2457.0,
+      837.0
+     ],
+     [
+      -2458.0,
+      862.0
+     ],
+     [
+      -2441.0,
+      872.0
+     ],
+     [
+      -2438.0,
+      879.0
+     ],
+     [
+      -2440.0,
+      884.0
+     ],
+     [
+      -2438.0,
+      889.0
+     ],
+     [
+      -2442.0,
+      897.0
+     ],
+     [
+      -2459.0,
+      907.0
+     ],
+     [
+      -2460.0,
+      932.0
+     ],
+     [
+      -2442.0,
+      943.0
+     ],
+     [
+      -2440.0,
+      947.0
+     ],
+     [
+      -2442.0,
+      953.0
+     ],
+     [
+      -2440.0,
+      961.0
+     ],
+     [
+      -2442.0,
+      966.0
+     ],
+     [
+      -2461.0,
+      976.0
+     ],
+     [
+      -2461.0,
+      1003.0
+     ],
+     [
+      -2451.0,
+      1004.0
+     ],
+     [
+      -2452.0,
+      1032.0
+     ],
+     [
+      -2437.0,
+      1040.0
+     ],
+     [
+      -2433.0,
+      1045.0
+     ],
+     [
+      -2433.0,
+      1063.0
+     ],
+     [
+      -2436.0,
+      1067.0
+     ],
+     [
+      -2453.0,
+      1077.0
+     ],
+     [
+      -2453.0,
+      1102.0
+     ],
+     [
+      -2435.0,
+      1114.0
+     ],
+     [
+      -2434.0,
+      1131.0
+     ],
+     [
+      -2435.0,
+      1135.0
+     ],
+     [
+      -2455.0,
+      1147.0
+     ],
+     [
+      -2455.0,
+      1172.0
+     ],
+     [
+      -2440.0,
+      1180.0
+     ],
+     [
+      -2437.0,
+      1184.0
+     ],
+     [
+      -2436.0,
+      1203.0
+     ],
+     [
+      -2440.0,
+      1208.0
+     ],
+     [
+      -2456.0,
+      1217.0
+     ],
+     [
+      -2457.0,
+      1242.0
+     ],
+     [
+      -2442.0,
+      1250.0
+     ],
+     [
+      -2437.0,
+      1259.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH TLS2",
+    "funcion": "monolitico",
+    "color": "#989898",
+    "hilada": null,
+    "puntos": [
+     [
+      -1525.0,
+      1260.0
+     ],
+     [
+      -1523.0,
+      1252.0
+     ],
+     [
+      -1505.0,
+      1242.0
+     ],
+     [
+      -1506.0,
+      1217.0
+     ],
+     [
+      -1522.0,
+      1208.0
+     ],
+     [
+      -1527.0,
+      1201.0
+     ],
+     [
+      -1526.0,
+      1185.0
+     ],
+     [
+      -1522.0,
+      1180.0
+     ],
+     [
+      -1507.0,
+      1172.0
+     ],
+     [
+      -1508.0,
+      1147.0
+     ],
+     [
+      -1525.0,
+      1137.0
+     ],
+     [
+      -1528.0,
+      1131.0
+     ],
+     [
+      -1526.0,
+      1112.0
+     ],
+     [
+      -1509.0,
+      1102.0
+     ],
+     [
+      -1509.0,
+      1077.0
+     ],
+     [
+      -1525.0,
+      1068.0
+     ],
+     [
+      -1530.0,
+      1059.0
+     ],
+     [
+      -1529.0,
+      1044.0
+     ],
+     [
+      -1510.0,
+      1032.0
+     ],
+     [
+      -1511.0,
+      1004.0
+     ],
+     [
+      -1501.0,
+      1003.0
+     ],
+     [
+      -1501.0,
+      976.0
+     ],
+     [
+      -1517.0,
+      968.0
+     ],
+     [
+      -1522.0,
+      963.0
+     ],
+     [
+      -1522.0,
+      945.0
+     ],
+     [
+      -1503.0,
+      932.0
+     ],
+     [
+      -1503.0,
+      907.0
+     ],
+     [
+      -1520.0,
+      897.0
+     ],
+     [
+      -1523.0,
+      892.0
+     ],
+     [
+      -1523.0,
+      876.0
+     ],
+     [
+      -1521.0,
+      872.0
+     ],
+     [
+      -1504.0,
+      862.0
+     ],
+     [
+      -1505.0,
+      837.0
+     ],
+     [
+      -1522.0,
+      827.0
+     ],
+     [
+      -1525.0,
+      821.0
+     ],
+     [
+      -1525.0,
+      807.0
+     ],
+     [
+      -1522.0,
+      801.0
+     ],
+     [
+      -1505.0,
+      792.0
+     ],
+     [
+      -1506.0,
+      766.0
+     ],
+     [
+      -1522.0,
+      758.0
+     ],
+     [
+      -1527.0,
+      751.0
+     ],
+     [
+      -1527.0,
+      737.0
+     ],
+     [
+      -1524.0,
+      732.0
+     ],
+     [
+      -1507.0,
+      721.0
+     ],
+     [
+      -1508.0,
+      697.0
+     ],
+     [
+      -1525.0,
+      687.0
+     ],
+     [
+      -1528.0,
+      681.0
+     ],
+     [
+      -1526.0,
+      662.0
+     ],
+     [
+      -1509.0,
+      652.0
+     ],
+     [
+      -1509.0,
+      626.0
+     ],
+     [
+      -1525.0,
+      618.0
+     ],
+     [
+      -1530.0,
+      609.0
+     ],
+     [
+      -1529.0,
+      594.0
+     ],
+     [
+      -1510.0,
+      581.0
+     ],
+     [
+      -1511.0,
+      554.0
+     ],
+     [
+      -1501.0,
+      553.0
+     ],
+     [
+      -1501.0,
+      527.0
+     ],
+     [
+      -1520.0,
+      516.0
+     ],
+     [
+      -1522.0,
+      512.0
+     ],
+     [
+      -1522.0,
+      496.0
+     ],
+     [
+      -1520.0,
+      492.0
+     ],
+     [
+      -1503.0,
+      481.0
+     ],
+     [
+      -1503.0,
+      456.0
+     ],
+     [
+      -1520.0,
+      447.0
+     ],
+     [
+      -1523.0,
+      443.0
+     ],
+     [
+      -1523.0,
+      425.0
+     ],
+     [
+      -1520.0,
+      421.0
+     ],
+     [
+      -1504.0,
+      412.0
+     ],
+     [
+      -1505.0,
+      386.0
+     ],
+     [
+      -1523.0,
+      376.0
+     ],
+     [
+      -1525.0,
+      371.0
+     ],
+     [
+      -1523.0,
+      352.0
+     ],
+     [
+      -1505.0,
+      341.0
+     ],
+     [
+      -1506.0,
+      317.0
+     ],
+     [
+      -1523.0,
+      307.0
+     ],
+     [
+      -1527.0,
+      301.0
+     ],
+     [
+      -1527.0,
+      287.0
+     ],
+     [
+      -1525.0,
+      283.0
+     ],
+     [
+      -1507.0,
+      271.0
+     ],
+     [
+      -1508.0,
+      246.0
+     ],
+     [
+      -1502.0,
+      300.0
+     ],
+     [
+      -1155.0,
+      271.0
+     ],
+     [
+      -884.0,
+      254.0
+     ],
+     [
+      -564.0,
+      239.0
+     ],
+     [
+      -188.0,
+      230.0
+     ],
+     [
+      202.0,
+      230.0
+     ],
+     [
+      607.0,
+      240.0
+     ],
+     [
+      1011.0,
+      261.0
+     ],
+     [
+      1415.0,
+      292.0
+     ],
+     [
+      1800.0,
+      332.0
+     ],
+     [
+      2019.0,
+      358.0
+     ],
+     [
+      2419.0,
+      415.0
+     ],
+     [
+      2625.0,
+      448.0
+     ],
+     [
+      2829.0,
+      484.0
+     ],
+     [
+      3215.0,
+      560.0
+     ],
+     [
+      3075.0,
+      561.0
+     ],
+     [
+      3075.0,
+      1260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON C F4E14",
+    "funcion": null,
+    "color": "#A953A0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1855.0,
+      1245.0
+     ],
+     [
+      -1855.0,
+      724.0
+     ],
+     [
+      -1767.0,
+      724.0
+     ],
+     [
+      -1751.0,
+      750.0
+     ],
+     [
+      -1731.0,
+      749.0
+     ],
+     [
+      -1731.0,
+      1010.0
+     ],
+     [
+      -1791.0,
+      1245.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON C F4E14",
+    "funcion": null,
+    "color": "#A953A0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2171.0,
+      1245.0
+     ],
+     [
+      -2232.0,
+      1010.0
+     ],
+     [
+      -2232.0,
+      749.0
+     ],
+     [
+      -2211.0,
+      749.0
+     ],
+     [
+      -2196.0,
+      724.0
+     ],
+     [
+      -2107.0,
+      724.0
+     ],
+     [
+      -2107.0,
+      1245.0
+     ]
+    ]
+   },
+   {
+    "material": "PERMASIT GS",
+    "funcion": null,
+    "color": "#B88A00",
+    "hilada": null,
+    "puntos": [
+     [
+      3216.0,
+      560.0
+     ],
+     [
+      3232.0,
+      486.0
+     ],
+     [
+      3396.0,
+      520.0
+     ],
+     [
+      3558.0,
+      557.0
+     ],
+     [
+      3576.0,
+      483.0
+     ],
+     [
+      3576.0,
+      560.0
+     ]
+    ]
+   },
+   {
+    "material": "PERMASIT GS",
+    "funcion": null,
+    "color": "#B88A00",
+    "hilada": null,
+    "puntos": [
+     [
+      -3576.0,
+      483.0
+     ],
+     [
+      -3558.0,
+      557.0
+     ],
+     [
+      -3396.0,
+      520.0
+     ],
+     [
+      -3232.0,
+      486.0
+     ],
+     [
+      -3216.0,
+      560.0
+     ],
+     [
+      -3576.0,
+      560.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#DBDBDB",
+    "hilada": null,
+    "puntos": [
+     [
+      3126.0,
+      1959.0
+     ],
+     [
+      2590.0,
+      1740.0
+     ],
+     [
+      2509.0,
+      1715.0
+     ],
+     [
+      2246.0,
+      1672.0
+     ],
+     [
+      1818.0,
+      1613.0
+     ],
+     [
+      1531.0,
+      1580.0
+     ],
+     [
+      1341.0,
+      1561.0
+     ],
+     [
+      1149.0,
+      1545.0
+     ],
+     [
+      766.0,
+      1520.0
+     ],
+     [
+      383.0,
+      1505.0
+     ],
+     [
+      191.0,
+      1502.0
+     ],
+     [
+      -236.0,
+      1502.0
+     ],
+     [
+      -354.0,
+      1504.0
+     ],
+     [
+      -709.0,
+      1518.0
+     ],
+     [
+      -1063.0,
+      1539.0
+     ],
+     [
+      -1417.0,
+      1568.0
+     ],
+     [
+      -1611.0,
+      1588.0
+     ],
+     [
+      -1771.0,
+      1608.0
+     ],
+     [
+      -1817.0,
+      1608.0
+     ],
+     [
+      -1856.0,
+      1599.0
+     ],
+     [
+      -1856.0,
+      1360.0
+     ],
+     [
+      -1681.0,
+      1360.0
+     ],
+     [
+      -1680.0,
+      1454.0
+     ],
+     [
+      -1502.0,
+      1454.0
+     ],
+     [
+      -1501.0,
+      1427.0
+     ],
+     [
+      -1522.0,
+      1413.0
+     ],
+     [
+      -1521.0,
+      1394.0
+     ],
+     [
+      -1503.0,
+      1382.0
+     ],
+     [
+      -1503.0,
+      1357.0
+     ],
+     [
+      -1520.0,
+      1347.0
+     ],
+     [
+      -1523.0,
+      1343.0
+     ],
+     [
+      -1522.0,
+      1324.0
+     ],
+     [
+      -1504.0,
+      1312.0
+     ],
+     [
+      -1505.0,
+      1287.0
+     ],
+     [
+      -1523.0,
+      1276.0
+     ],
+     [
+      -1525.0,
+      1261.0
+     ],
+     [
+      3075.0,
+      1261.0
+     ],
+     [
+      3075.0,
+      1359.0
+     ],
+     [
+      3126.0,
+      1360.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#DBDBDB",
+    "hilada": null,
+    "puntos": [
+     [
+      -3126.0,
+      1959.0
+     ],
+     [
+      -3126.0,
+      1360.0
+     ],
+     [
+      -3076.0,
+      1359.0
+     ],
+     [
+      -3076.0,
+      1260.0
+     ],
+     [
+      -2437.0,
+      1260.0
+     ],
+     [
+      -2438.0,
+      1274.0
+     ],
+     [
+      -2457.0,
+      1287.0
+     ],
+     [
+      -2458.0,
+      1312.0
+     ],
+     [
+      -2442.0,
+      1321.0
+     ],
+     [
+      -2438.0,
+      1329.0
+     ],
+     [
+      -2438.0,
+      1340.0
+     ],
+     [
+      -2442.0,
+      1347.0
+     ],
+     [
+      -2459.0,
+      1357.0
+     ],
+     [
+      -2460.0,
+      1382.0
+     ],
+     [
+      -2442.0,
+      1393.0
+     ],
+     [
+      -2440.0,
+      1397.0
+     ],
+     [
+      -2440.0,
+      1411.0
+     ],
+     [
+      -2442.0,
+      1416.0
+     ],
+     [
+      -2461.0,
+      1427.0
+     ],
+     [
+      -2460.0,
+      1454.0
+     ],
+     [
+      -2282.0,
+      1454.0
+     ],
+     [
+      -2281.0,
+      1360.0
+     ],
+     [
+      -2106.0,
+      1360.0
+     ],
+     [
+      -2106.0,
+      1599.0
+     ],
+     [
+      -2131.0,
+      1625.0
+     ],
+     [
+      -2158.0,
+      1644.0
+     ],
+     [
+      -2191.0,
+      1660.0
+     ],
+     [
+      -2210.0,
+      1666.0
+     ],
+     [
+      -2502.0,
+      1714.0
+     ],
+     [
+      -2557.0,
+      1727.0
+     ],
+     [
+      -2594.0,
+      1740.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#FF0000",
+    "hilada": null,
+    "puntos": [
+     [
+      -2264.0,
+      3036.0
+     ],
+     [
+      -2264.0,
+      2661.0
+     ],
+     [
+      -1632.0,
+      2661.0
+     ],
+     [
+      -1632.0,
+      3036.0
+     ],
+     [
+      -1710.0,
+      3036.0
+     ],
+     [
+      -1711.0,
+      2961.0
+     ],
+     [
+      -2185.0,
+      2961.0
+     ],
+     [
+      -2186.0,
+      3036.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 22,
+    "puntos": [
+     [
+      -3705.0,
+      2761.0
+     ],
+     [
+      -3652.0,
+      2760.0
+     ],
+     [
+      -3652.0,
+      2662.0
+     ],
+     [
+      -3202.0,
+      2662.0
+     ],
+     [
+      -3202.0,
+      2761.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 23,
+    "puntos": [
+     [
+      -3705.0,
+      2861.0
+     ],
+     [
+      -3705.0,
+      2762.0
+     ],
+     [
+      -3255.0,
+      2762.0
+     ],
+     [
+      -3255.0,
+      2861.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 24,
+    "puntos": [
+     [
+      -3705.0,
+      2961.0
+     ],
+     [
+      -3705.0,
+      2862.0
+     ],
+     [
+      -3255.0,
+      2862.0
+     ],
+     [
+      -3255.0,
+      2961.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 25,
+    "puntos": [
+     [
+      -3705.0,
+      3061.0
+     ],
+     [
+      -3705.0,
+      2962.0
+     ],
+     [
+      -3255.0,
+      2962.0
+     ],
+     [
+      -3255.0,
+      3061.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 22,
+    "puntos": [
+     [
+      3202.0,
+      2662.0
+     ],
+     [
+      3652.0,
+      2662.0
+     ],
+     [
+      3652.0,
+      2760.0
+     ],
+     [
+      3705.0,
+      2761.0
+     ],
+     [
+      3202.0,
+      2761.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 23,
+    "puntos": [
+     [
+      3254.0,
+      2861.0
+     ],
+     [
+      3254.0,
+      2762.0
+     ],
+     [
+      3705.0,
+      2762.0
+     ],
+     [
+      3705.0,
+      2861.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 24,
+    "puntos": [
+     [
+      3254.0,
+      2961.0
+     ],
+     [
+      3254.0,
+      2862.0
+     ],
+     [
+      3705.0,
+      2862.0
+     ],
+     [
+      3705.0,
+      2961.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 25,
+    "puntos": [
+     [
+      3254.0,
+      3061.0
+     ],
+     [
+      3254.0,
+      2962.0
+     ],
+     [
+      3705.0,
+      2962.0
+     ],
+     [
+      3705.0,
+      3061.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 9,
+    "puntos": [
+     [
+      -3576.0,
+      1460.0
+     ],
+     [
+      -3576.0,
+      1361.0
+     ],
+     [
+      -3127.0,
+      1361.0
+     ],
+     [
+      -3127.0,
+      1460.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 10,
+    "puntos": [
+     [
+      -3576.0,
+      1560.0
+     ],
+     [
+      -3576.0,
+      1461.0
+     ],
+     [
+      -3127.0,
+      1461.0
+     ],
+     [
+      -3127.0,
+      1560.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 11,
+    "puntos": [
+     [
+      -3576.0,
+      1660.0
+     ],
+     [
+      -3576.0,
+      1561.0
+     ],
+     [
+      -3127.0,
+      1561.0
+     ],
+     [
+      -3127.0,
+      1660.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 12,
+    "puntos": [
+     [
+      -3576.0,
+      1760.0
+     ],
+     [
+      -3576.0,
+      1661.0
+     ],
+     [
+      -3127.0,
+      1661.0
+     ],
+     [
+      -3127.0,
+      1760.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 13,
+    "puntos": [
+     [
+      -3576.0,
+      1860.0
+     ],
+     [
+      -3576.0,
+      1761.0
+     ],
+     [
+      -3127.0,
+      1761.0
+     ],
+     [
+      -3127.0,
+      1860.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 14,
+    "puntos": [
+     [
+      -3576.0,
+      1960.0
+     ],
+     [
+      -3576.0,
+      1861.0
+     ],
+     [
+      -3127.0,
+      1861.0
+     ],
+     [
+      -3127.0,
+      1960.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 15,
+    "puntos": [
+     [
+      -3576.0,
+      2060.0
+     ],
+     [
+      -3576.0,
+      1961.0
+     ],
+     [
+      -3127.0,
+      1961.0
+     ],
+     [
+      -3127.0,
+      2060.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 16,
+    "puntos": [
+     [
+      -3576.0,
+      2160.0
+     ],
+     [
+      -3576.0,
+      2061.0
+     ],
+     [
+      -3127.0,
+      2061.0
+     ],
+     [
+      -3127.0,
+      2160.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 17,
+    "puntos": [
+     [
+      -3576.0,
+      2260.0
+     ],
+     [
+      -3576.0,
+      2161.0
+     ],
+     [
+      -3126.0,
+      2162.0
+     ],
+     [
+      -3126.0,
+      2260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 9,
+    "puntos": [
+     [
+      3127.0,
+      1460.0
+     ],
+     [
+      3127.0,
+      1361.0
+     ],
+     [
+      3576.0,
+      1361.0
+     ],
+     [
+      3576.0,
+      1460.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 10,
+    "puntos": [
+     [
+      3127.0,
+      1560.0
+     ],
+     [
+      3127.0,
+      1461.0
+     ],
+     [
+      3576.0,
+      1461.0
+     ],
+     [
+      3576.0,
+      1560.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 11,
+    "puntos": [
+     [
+      3127.0,
+      1660.0
+     ],
+     [
+      3127.0,
+      1561.0
+     ],
+     [
+      3576.0,
+      1561.0
+     ],
+     [
+      3576.0,
+      1660.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 12,
+    "puntos": [
+     [
+      3127.0,
+      1760.0
+     ],
+     [
+      3127.0,
+      1661.0
+     ],
+     [
+      3576.0,
+      1661.0
+     ],
+     [
+      3576.0,
+      1760.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 13,
+    "puntos": [
+     [
+      3127.0,
+      1860.0
+     ],
+     [
+      3127.0,
+      1761.0
+     ],
+     [
+      3576.0,
+      1761.0
+     ],
+     [
+      3576.0,
+      1860.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 14,
+    "puntos": [
+     [
+      3127.0,
+      1960.0
+     ],
+     [
+      3127.0,
+      1861.0
+     ],
+     [
+      3576.0,
+      1861.0
+     ],
+     [
+      3576.0,
+      1960.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 15,
+    "puntos": [
+     [
+      3127.0,
+      2060.0
+     ],
+     [
+      3127.0,
+      1961.0
+     ],
+     [
+      3576.0,
+      1961.0
+     ],
+     [
+      3576.0,
+      2060.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 16,
+    "puntos": [
+     [
+      3127.0,
+      2160.0
+     ],
+     [
+      3127.0,
+      2061.0
+     ],
+     [
+      3576.0,
+      2061.0
+     ],
+     [
+      3576.0,
+      2160.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F5E14",
+    "funcion": "trabajo",
+    "color": "#FF7F00",
+    "hilada": 17,
+    "puntos": [
+     [
+      3126.0,
+      2260.0
+     ],
+     [
+      3127.0,
+      2161.0
+     ],
+     [
+      3576.0,
+      2161.0
+     ],
+     [
+      3576.0,
+      2260.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAR NT02-AT",
+    "funcion": null,
+    "color": "#FF7FFF",
+    "hilada": null,
+    "puntos": [
+     [
+      -1757.0,
+      1114.0
+     ],
+     [
+      -1730.0,
+      1010.0
+     ],
+     [
+      -1731.0,
+      714.0
+     ],
+     [
+      -1681.0,
+      714.0
+     ],
+     [
+      -1681.0,
+      1114.0
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAR NT02-AT",
+    "funcion": null,
+    "color": "#FF7FFF",
+    "hilada": null,
+    "puntos": [
+     [
+      -2281.0,
+      1114.0
+     ],
+     [
+      -2281.0,
+      714.0
+     ],
+     [
+      -2232.0,
+      714.0
+     ],
+     [
+      -2233.0,
+      1010.0
+     ],
+     [
+      -2206.0,
+      1114.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 18,
+    "puntos": [
+     [
+      -3576.0,
+      2360.0
+     ],
+     [
+      -3576.0,
+      2261.0
+     ],
+     [
+      -3126.0,
+      2261.0
+     ],
+     [
+      -3126.0,
+      2360.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 19,
+    "puntos": [
+     [
+      -3576.0,
+      2460.0
+     ],
+     [
+      -3576.0,
+      2361.0
+     ],
+     [
+      -3126.0,
+      2361.0
+     ],
+     [
+      -3126.0,
+      2460.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 20,
+    "puntos": [
+     [
+      -3576.0,
+      2561.0
+     ],
+     [
+      -3576.0,
+      2461.0
+     ],
+     [
+      -3126.0,
+      2461.0
+     ],
+     [
+      -3126.0,
+      2561.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 21,
+    "puntos": [
+     [
+      -3576.0,
+      2661.0
+     ],
+     [
+      -3576.0,
+      2562.0
+     ],
+     [
+      -3126.0,
+      2562.0
+     ],
+     [
+      -3126.0,
+      2661.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 18,
+    "puntos": [
+     [
+      3126.0,
+      2360.0
+     ],
+     [
+      3126.0,
+      2261.0
+     ],
+     [
+      3576.0,
+      2261.0
+     ],
+     [
+      3576.0,
+      2360.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 19,
+    "puntos": [
+     [
+      3126.0,
+      2460.0
+     ],
+     [
+      3126.0,
+      2361.0
+     ],
+     [
+      3576.0,
+      2361.0
+     ],
+     [
+      3576.0,
+      2460.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 20,
+    "puntos": [
+     [
+      3126.0,
+      2561.0
+     ],
+     [
+      3126.0,
+      2461.0
+     ],
+     [
+      3576.0,
+      2461.0
+     ],
+     [
+      3576.0,
+      2561.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14",
+    "funcion": "trabajo",
+    "color": "#FFB366",
+    "hilada": 21,
+    "puntos": [
+     [
+      3126.0,
+      2661.0
+     ],
+     [
+      3126.0,
+      2562.0
+     ],
+     [
+      3576.0,
+      2562.0
+     ],
+     [
+      3576.0,
+      2661.0
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON C F3E10D",
+    "funcion": null,
+    "color": "#FFB3B3",
+    "hilada": null,
+    "puntos": [
+     [
+      1000.0,
+      3136.0
+     ],
+     [
+      901.0,
+      3136.0
+     ],
+     [
+      900.0,
+      3036.0
+     ],
+     [
+      801.0,
+      3036.0
+     ],
+     [
+      800.0,
+      3061.0
+     ],
+     [
+      650.0,
+      3061.0
+     ],
+     [
+      650.0,
+      2961.0
+     ],
+     [
+      700.0,
+      2960.0
+     ],
+     [
+      700.0,
+      2862.0
+     ],
+     [
+      650.0,
+      2861.0
+     ],
+     [
+      649.0,
+      2761.0
+     ],
+     [
+      -699.0,
+      2761.0
+     ],
+     [
+      -700.0,
+      2860.0
+     ],
+     [
+      -650.0,
+      2861.0
+     ],
+     [
+      -650.0,
+      2961.0
+     ],
+     [
+      -700.0,
+      2962.0
+     ],
+     [
+      -700.0,
+      3061.0
+     ],
+     [
+      -800.0,
+      3061.0
+     ],
+     [
+      -801.0,
+      3036.0
+     ],
+     [
+      -1001.0,
+      3036.0
+     ],
+     [
+      -1001.0,
+      2661.0
+     ],
+     [
+      901.0,
+      2661.0
+     ],
+     [
+      901.0,
+      2760.0
+     ],
+     [
+      1000.0,
+      2761.0
+     ]
+    ]
+   }
+  ],
+  "etiquetas": []
+ },
+ "puerta_detalle": {
+  "estado": "medido_a_escala",
+  "nota": "Umbral y marco de la puerta en A-A (EAF-029). Las filas son los rellenos ANCARBON C F3E10D de las hiladas 22–25 a la derecha del eje (cada fila: cara hacia el baño, extremo exterior y alturas, en mm del horno). La cota de 494 mm es escrita en el plano. No se da el ancho del hueco de la puerta: A-A y C-C no lo acotan y en el desarrollo las piezas 70/0 ocupan los dos extremos de la tira sin hueco distinguible. «Interpretación por confirmar» del umbral: la de `cavidad_general.puerta` (arista interior de la fila de arriba).",
+  "cota_umbral_a_linea_200t": {
+   "valor": 494,
+   "estado": "cota_del_plano",
+   "nota": "escrita en A-A entre la línea de 200 t y el tope del marco de la puerta; leída a ojo del dibujo (trazos)"
+  },
+  "filas_de_pieza_larga": {
+   "estado": "medido_a_escala",
+   "lista": [
+    {
+     "hilada": 22,
+     "x_cara": 3125,
+     "x_exterior": 4461,
+     "y_inferior": 2662,
+     "y_superior": 2761
+    },
+    {
+     "hilada": 23,
+     "x_cara": 3125,
+     "x_exterior": 4521,
+     "y_inferior": 2762,
+     "y_superior": 2861
+    },
+    {
+     "hilada": 24,
+     "x_cara": 3125,
+     "x_exterior": 4576,
+     "y_inferior": 2862,
+     "y_superior": 2961
+    },
+    {
+     "hilada": 25,
+     "x_cara": 3175,
+     "x_exterior": 4576,
+     "y_inferior": 2962,
+     "y_superior": 3061
+    }
+   ]
+  }
+ }
+}

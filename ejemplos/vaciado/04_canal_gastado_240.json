@@ -1,0 +1,20 @@
+{
+ "formato": "lwd_eaf.vaciado/1",
+ "planta": "pesqueria",
+ "acero_inicial_t": 450,
+ "acero_final_t": 150,
+ "nombre": "4 · Como el 3, con el canal en Ø240 mm",
+ "_nota": "El canal se ensancha con las coladas; 240 mm es un ejemplo, no un dato.",
+ "piquera": {
+  "diametro": 240
+ },
+ "hidraulica": {
+  "modo": "cd",
+  "referencia": "boca",
+  "cd": 0.731
+ },
+ "basculado": {
+  "tipo": "carga_segura",
+  "velocidad": 1.0
+ }
+}

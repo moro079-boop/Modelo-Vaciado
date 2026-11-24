@@ -1,0 +1,7 @@
+# Lint de la CI: sólo reglas que detectan errores reales (nombres sin definir, imports y variables sin usar, errores de
+# sintaxis, trampas de Python como argumentos por defecto mutables). No impone estilo. Uso: ruff check .
+extend-exclude = ["modelo_vaciado/horno3d"]     # copia del motor de LWD-EAF: no se toca
+
+[lint]
+select = ["F", "E9", "PLE", "B"]
+ignore = ["B905", "B007", "B023"]

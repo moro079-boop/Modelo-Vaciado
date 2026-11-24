@@ -1,0 +1,4 @@
+-r requirements.txt
+pytest>=7.4
+pytest-xdist>=3.5   # pruebas en paralelo: python -m pytest -n auto
+ruff>=0.5           # lint de errores reales: ruff check . (configuración en ruff.toml)

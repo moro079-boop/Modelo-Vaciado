@@ -1,0 +1,16 @@
+{
+ "formato": "lwd_eaf.vaciado/1",
+ "planta": "pesqueria",
+ "acero_inicial_t": 450,
+ "acero_final_t": 150,
+ "nombre": "5 · Como el 3, con pérdidas explícitas y carga hasta la salida",
+ "_nota": "K de entrada 0.5, rugosidad 1 mm, viscosidad 0.006 Pa·s: valores de manual, sin validar. Da más caudal que el Cd del proveedor; solo los tiempos medidos en planta dirán cuál se acerca.",
+ "hidraulica": {
+  "modo": "perdidas",
+  "referencia": "salida"
+ },
+ "basculado": {
+  "tipo": "carga_segura",
+  "velocidad": 1.0
+ }
+}

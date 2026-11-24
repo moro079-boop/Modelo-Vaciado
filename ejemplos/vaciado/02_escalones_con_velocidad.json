@@ -1,0 +1,39 @@
+{
+ "formato": "lwd_eaf.vaciado/1",
+ "planta": "pesqueria",
+ "acero_inicial_t": 450,
+ "acero_final_t": 150,
+ "nombre": "2 · Los mismos escalones, basculando a 1 °/s",
+ "_nota": "La velocidad de basculado es un supuesto (falta el dato mecánico).",
+ "hidraulica": {
+  "modo": "cd",
+  "referencia": "boca",
+  "cd": 0.731
+ },
+ "basculado": {
+  "tipo": "escalones",
+  "pasos": [
+   [
+    2,
+    380
+   ],
+   [
+    5,
+    292
+   ],
+   [
+    8,
+    222
+   ],
+   [
+    11,
+    173
+   ],
+   [
+    15,
+    150
+   ]
+  ],
+  "velocidad": 1.0
+ }
+}

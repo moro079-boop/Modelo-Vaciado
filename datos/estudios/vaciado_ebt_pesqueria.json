@@ -1,0 +1,295 @@
+{
+ "formato": "lwd_eaf.estudio_vaciado/1",
+ "planta": "pesqueria",
+ "_nota": "Transcripción del estudio de vaciado por el EBT que Magnesita dibujó en el plano AV00025170 (EAF-064). Es el cálculo de Magnesita, no una medición de planta. El PDF no está en el repositorio. Lo reproduce herramientas/vaciado_ebt.py; el análisis está en docs/vaciado-ebt.md.",
+ "fuente": {
+  "proveedor": "Magnesita Refratários S.A.",
+  "plano": "AV00025170",
+  "revision": "A",
+  "antes": "AV00014279_F",
+  "documento": "CRM 73899",
+  "fecha_del_cajetin": "22.09.2026",
+  "hojas": 9,
+  "cliente": "cajetín: Ternium México, Pesquería; EAF 450 t",
+  "estado_del_plano": "for approval",
+  "notas_del_plano": [
+   "Los cálculos de basculado y de tiempo de vaciado son totalmente teóricos, en condiciones ideales, con revestimiento gastado y EBT nuevo (nota 1 de las hojas 7 a 9).",
+   "Desde 9° de inclinación el horno puede drenarse por completo (nota 2)."
+  ]
+ },
+ "estados": {
+  "cota_del_plano": "Cota, rótulo o valor de tabla escrito en el plano.",
+  "leido_de_la_grafica": "Leído a ojo de una gráfica del plano (±5 t); no es un valor escrito.",
+  "medido_a_escala": "Medido sobre el trazo vectorial del PDF, calibrado con cotas de la propia vista (resolución 2 mm). No es una cota del proveedor.",
+  "derivado": "Calculado a partir de otros datos de este archivo."
+ },
+ "densidad_acero": {
+  "valor": 6.9,
+  "estado": "cota_del_plano",
+  "vista": "ρ = 6,9 t/m³ junto a cada marca de nivel"
+ },
+ "piquera": {
+  "diametro_salida": {
+   "valor": 200,
+   "estado": "cota_del_plano",
+   "vista": "detalle «2» de la hoja 1 (Ø200)"
+  },
+  "x_eje": {
+   "valor": -5000.0,
+   "estado": "cota_del_plano",
+   "vista": "cota 5000 de A-A, hoja 1"
+  },
+  "y_boca": {
+   "valor": 1699.0,
+   "estado": "medido_a_escala",
+   "nota": "primera junta horizontal del canal (200 mm de ancho) en A-A de la hoja 1: 608.7 mm sobre la base de la hilada 1 (1 090). En las vistas inclinadas la línea de referencia de los niveles pasa por el centro de esa junta (a ±2 mm en las diez vistas)."
+  },
+  "acortamiento_gastado": {
+   "valor": 252.4,
+   "estado": "medido_a_escala",
+   "nota": "en la hoja 8 la boca está 252 a 253 mm más abajo a lo largo del eje del canal que en la hoja 7 (cinco vistas)"
+  }
+ },
+ "panel": {
+  "x": -3914.0,
+  "y": 3089.0,
+  "estado": "medido_a_escala",
+  "nota": "esquina inferior del panel refrigerado del lado de la piquera, de la que parte la cota «304» (2°, hoja 7). La línea de cota termina a 2 mm de papel (80 mm reales) de la esquina; corregido eso, las cinco vistas de la hoja 7 dan el mismo punto a ±1 mm."
+ },
+ "desgaste": {
+  "nuevo": {
+   "hoja": 7,
+   "piso_mm": 0.0,
+   "pared_mm": 0.0,
+   "nota": "paredes rotuladas 450; el fondo mide 696 perpendicular (hoja 9, izquierda)"
+  },
+  "gastado": {
+   "hoja": 8,
+   "piso_mm": 348.0,
+   "pared_mm": 225.0,
+   "y_pared_desde": 1590.0,
+   "estado": "cota_del_plano",
+   "nota": "fondo de 348 (la mitad de 696) y paredes rotuladas 225 desde la hilada 6; las hiladas 1 a 5 siguen rotuladas 450"
+  }
+ },
+ "marcas_a_0_grados": {
+  "estado": "cota_del_plano",
+  "nota": "cotas desde el tope de la zona de escoria (Y = 3 290) a las marcas «150+300 mt» y «150 mt (Hot Heel)»; el desgaste del fondo y el espesor que queda en la pared de la zona de escoria (hiladas 6 a 22), como los rotula cada hoja",
+  "y_referencia": 3290.0,
+  "lista": [
+   {
+    "hoja": 1,
+    "piso_gastado": 0,
+    "pared_restante": 450,
+    "cota_450": 625,
+    "cota_150": 1424
+   },
+   {
+    "hoja": 3,
+    "piso_gastado": 246,
+    "pared_restante": 450,
+    "cota_450": 886,
+    "cota_150": 1688
+   },
+   {
+    "hoja": 4,
+    "piso_gastado": 50,
+    "pared_restante": 406,
+    "cota_450": 697,
+    "cota_150": 1485
+   },
+   {
+    "hoja": 5,
+    "piso_gastado": 200,
+    "pared_restante": 304.8,
+    "cota_450": 889,
+    "cota_150": 1641
+   },
+   {
+    "hoja": 6,
+    "piso_gastado": 400,
+    "pared_restante": 203.2,
+    "cota_450": 1129,
+    "cota_150": 1849
+   }
+  ]
+ },
+ "escenarios": {
+  "estado": "cota_del_plano",
+  "nota": "niveles en mm sobre la boca del EBT (cotas verticales de cada vista inclinada); toneladas que quedan en el horno al inicio y al final de cada ángulo; altura ferrostática, flujo y tiempo de la tabla de la hoja",
+  "nuevo": {
+   "hoja": 7,
+   "tiempo_total_s": 411.54,
+   "pasos": [
+    {
+     "angulo": 2,
+     "t_inicio": 450,
+     "t_fin": 380,
+     "nivel_inicio": 1124,
+     "nivel_fin": 938,
+     "altura_ferrostatica": 1031,
+     "flujo_t_s": 0.713,
+     "tiempo_s": 98.23
+    },
+    {
+     "angulo": 5,
+     "t_inicio": 380,
+     "t_fin": 292,
+     "nivel_inicio": 1179,
+     "nivel_fin": 943,
+     "altura_ferrostatica": 1061,
+     "flujo_t_s": 0.723,
+     "tiempo_s": 121.73
+    },
+    {
+     "angulo": 8,
+     "t_inicio": 292,
+     "t_fin": 222,
+     "nivel_inicio": 1179,
+     "nivel_fin": 980,
+     "altura_ferrostatica": 1079.5,
+     "flujo_t_s": 0.729,
+     "tiempo_s": 96.0
+    },
+    {
+     "angulo": 11,
+     "t_inicio": 222,
+     "t_fin": 173,
+     "nivel_inicio": 1192,
+     "nivel_fin": 1034,
+     "altura_ferrostatica": 1113,
+     "flujo_t_s": 0.74,
+     "tiempo_s": 66.18
+    },
+    {
+     "angulo": 15,
+     "t_inicio": 173,
+     "t_fin": 150,
+     "nivel_inicio": 1285,
+     "nivel_fin": 1200,
+     "altura_ferrostatica": 1242.5,
+     "flujo_t_s": 0.782,
+     "tiempo_s": 29.4
+    }
+   ]
+  },
+  "gastado": {
+   "hoja": 8,
+   "tiempo_total_s": 413.82,
+   "pasos": [
+    {
+     "angulo": 2,
+     "t_inicio": 450,
+     "t_fin": 436,
+     "nivel_inicio": 930,
+     "nivel_fin": 898,
+     "altura_ferrostatica": 914,
+     "flujo_t_s": 0.68,
+     "tiempo_s": 20.58
+    },
+    {
+     "angulo": 5,
+     "t_inicio": 436,
+     "t_fin": 340,
+     "nivel_inicio": 1133,
+     "nivel_fin": 902,
+     "altura_ferrostatica": 1017.5,
+     "flujo_t_s": 0.718,
+     "tiempo_s": 133.77
+    },
+    {
+     "angulo": 8,
+     "t_inicio": 340,
+     "t_fin": 261,
+     "nivel_inicio": 1130,
+     "nivel_fin": 929,
+     "altura_ferrostatica": 1029.5,
+     "flujo_t_s": 0.722,
+     "tiempo_s": 109.44
+    },
+    {
+     "angulo": 11,
+     "t_inicio": 261,
+     "t_fin": 204,
+     "nivel_inicio": 1134,
+     "nivel_fin": 969,
+     "altura_ferrostatica": 1051.5,
+     "flujo_t_s": 0.73,
+     "tiempo_s": 78.13
+    },
+    {
+     "angulo": 15,
+     "t_inicio": 204,
+     "t_fin": 150,
+     "nivel_inicio": 1208,
+     "nivel_fin": 1021,
+     "altura_ferrostatica": 1114.5,
+     "flujo_t_s": 0.751,
+     "tiempo_s": 71.9
+    }
+   ]
+  }
+ },
+ "talon": {
+  "estado": "cota_del_plano",
+  "hoja": 9,
+  "nota": "drenado del talón de 150 t a 15°; la hoja no acota niveles",
+  "nuevo": {
+   "angulo": 15,
+   "toneladas": 150,
+   "altura_ferrostatica": 469,
+   "flujo_t_s": 0.481,
+   "tiempo_s": 312.09
+  },
+  "gastado": {
+   "angulo": 15,
+   "toneladas": 150,
+   "altura_ferrostatica": 449,
+   "flujo_t_s": 0.477,
+   "tiempo_s": 314.65
+  }
+ },
+ "curvas": {
+  "estado": "leido_de_la_grafica",
+  "angulos": [
+   2,
+   5,
+   8,
+   11,
+   15
+  ],
+  "nuevo": {
+   "carga_segura_t": [
+    453,
+    385,
+    316,
+    255,
+    192
+   ],
+   "carga_minima_t": [
+    290,
+    202,
+    132,
+    83,
+    43
+   ]
+  },
+  "gastado": {
+   "carga_segura_t": [
+    638,
+    560,
+    484,
+    408,
+    323
+   ],
+   "carga_minima_t": [
+    353,
+    257,
+    178,
+    122,
+    72
+   ]
+  },
+  "nota": "«Recommended Safe Load Capacity – 300 mm from the Cooled Panel» (amarilla) y «Minimum Load – Onset of Slag Carryover (New EBT)» (roja) de la gráfica «Tapping over time»"
+ }
+}

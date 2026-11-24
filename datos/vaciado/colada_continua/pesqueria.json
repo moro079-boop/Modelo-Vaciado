@@ -1,0 +1,189 @@
+{
+ "formato": "lwd_eaf.vaciado.colada_continua/1",
+ "planta": "pesqueria",
+ "_nota": "Olla, válvula deslizante, tundish y moldes para el modelo de vaciado en la colada continua (EAF-069). PRELIMINAR. La geometría de la olla se copió del Ladle Wear Diagnosis (LWD), que la midió del plano CS129722 de la olla de Pesquería. Todo lo demás es SUPUESTO o EJEMPLO: no hay datos de planta de la válvula, del tundish ni de la máquina. Cada valor lleva su estado.",
+ "estados": {
+  "heredado_sin_verificar": "Copiado del repositorio Ladle-Wear-Diagnosis- (revisión bce1cda, datos/ollas_de_planos.json y datos/niveles_planos_ternium.json); medido allí del plano CS129722 rev. A05 (estado R, «for approval»). No se volvió a contrastar contra el plano en este proyecto.",
+  "tomado_del_sgw": "Valor del modelo de desgaste de la válvula deslizante (repositorio Slide-Gate-Wear-Model, datos/coeficientes.xlsx). Corresponde a la válvula LG22L de otra olla: no es un dato de la olla de Pesquería.",
+  "supuesto": "Valor provisional sin dato de planta ni de plano.",
+  "ejemplo": "Valor de ejemplo para que el programa corra. Debe sustituirse por el dato de la máquina antes de usar los resultados."
+ },
+ "olla": {
+  "nombre": "TX Mx Pesquería",
+  "plano": "20250828 CS129722 rev. A05, estado R (for approval, no liberado). Pesquería",
+  "estado": "heredado_sin_verificar",
+  "radio_coraza_superior_mm": 2311.7,
+  "radio_coraza_inferior_mm": 2145.6,
+  "espesor_aislante_mm": 12.7,
+  "espesor_seguridad_mm": 111.6,
+  "espesor_piso_mm": 560.7,
+  "altura_de_hilada_mm": 100.0,
+  "hiladas": [
+   {
+    "desde": 1,
+    "hasta": 37,
+    "espesor_mm": 152.4
+   },
+   {
+    "desde": 38,
+    "hasta": 48,
+    "espesor_mm": 177.8
+   }
+  ],
+  "capacidad_nominal_t": 300.0,
+  "densidad_acero": {
+   "valor": 6.9,
+   "estado": "heredado_sin_verificar",
+   "nota": "densidad impresa en el plano de la olla"
+  },
+  "regla_geometrica": "Como el LWD: la coraza es un tronco de cono de radio lineal entre la base (Y = 0) y el tope (n_hiladas × 100 mm); la cara caliente es la coraza menos el aislante, la capa de seguridad y el espesor de trabajo de la hilada; el acero empieza sobre el piso.",
+  "marcas": {
+   "estado": "heredado_sin_verificar",
+   "nota": "Las marcas van acotadas desde el borde superior de la coraza (cota total 4810 mm); el '~' del plano indica cotas aproximadas. z = 4810 - cota. Hoja 1: olla nueva, 300 t a ~555 mm y 255 t a ~1101 mm. Hojas 2 y 3: cuatro estados desgastados (espesor que queda de pared / de fondo), cada uno con su llenado a ~555 mm y la marca de 300 t «(OUTPUT)» a otra cota.",
+   "lista": [
+    {
+     "toneladas": 300.0,
+     "z_mm": 4255
+    },
+    {
+     "toneladas": 255.0,
+     "z_mm": 3709
+    }
+   ],
+   "desgastados": [
+    {
+     "nombre": "pared 3\" / fondo 6\"",
+     "espesor_pared_mm": 76.2,
+     "espesor_fondo_mm": 152.4,
+     "marcas": [
+      {
+       "toneladas": 346.0,
+       "z_mm": 4255
+      },
+      {
+       "toneladas": 300.0,
+       "z_mm": 3766
+      }
+     ]
+    },
+    {
+     "nombre": "pared 5,5\" / fondo 9\"",
+     "espesor_pared_mm": 139.7,
+     "espesor_fondo_mm": 228.6,
+     "marcas": [
+      {
+       "toneladas": 319.0,
+       "z_mm": 4255
+      },
+      {
+       "toneladas": 300.0,
+       "z_mm": 4046
+      }
+     ]
+    },
+    {
+     "nombre": "pared 5\" / fondo 8\"",
+     "espesor_pared_mm": 127.0,
+     "espesor_fondo_mm": 203.2,
+     "marcas": [
+      {
+       "toneladas": 325.0,
+       "z_mm": 4255
+      },
+      {
+       "toneladas": 300.0,
+       "z_mm": 3980
+      }
+     ]
+    },
+    {
+     "nombre": "pared 4\" / fondo 7\"",
+     "espesor_pared_mm": 101.6,
+     "espesor_fondo_mm": 177.8,
+     "marcas": [
+      {
+       "toneladas": 340.0,
+       "z_mm": 4255
+      },
+      {
+       "toneladas": 300.0,
+       "z_mm": 3933
+      }
+     ]
+    },
+    {
+     "nombre": "pared 3,5\" / fondo 7\" (lo que sugieren sus pesos y toneladas)",
+     "espesor_pared_mm": 88.9,
+     "espesor_fondo_mm": 177.8,
+     "marcas": [
+      {
+       "toneladas": 340.0,
+       "z_mm": 4255
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "valvula": {
+  "diametro_mm": {
+   "valor": 55.0,
+   "estado": "tomado_del_sgw",
+   "nota": "D0 nominal del orificio de las placas LG22L del SGW (otra olla). Para la olla de Pesquería es SUPUESTO."
+  },
+  "coeficiente_de_descarga": {
+   "valor": 0.75,
+   "estado": "tomado_del_sgw",
+   "nota": "«por calibrar» en el SGW"
+  },
+  "carrera_mm": {
+   "valor": null,
+   "estado": "tomado_del_sgw",
+   "nota": "carrera efectiva; sin dato, el SGW usa C = D (la válvula cierra justo al recorrer un diámetro)"
+  },
+  "caida_bajo_el_piso_mm": {
+   "valor": 900.0,
+   "estado": "supuesto",
+   "nota": "del piso interior de la olla a la salida del tubo largo (pozo, placas, buza colectora y tubo). En el SGW es «h_salida», pendiente de planta"
+  },
+  "acero_remanente_t": {
+   "valor": 3.0,
+   "estado": "supuesto",
+   "nota": "acero que queda en la olla al cerrar (para no pasar escoria)"
+  }
+ },
+ "tundish": {
+  "estado": "ejemplo",
+  "largo_fondo_mm": 7000.0,
+  "ancho_fondo_mm": 1000.0,
+  "talud_grados": 10.0,
+  "nivel_operacion_mm": 1100.0,
+  "nivel_minimo_mm": 500.0,
+  "nivel_maximo_mm": 1300.0,
+  "nivel_inicial_mm": 1100.0,
+  "altura_salida_tubo_mm": 300.0,
+  "constante_de_control_s": 30.0,
+  "nota": "Tundish de prisma con paredes en talud. Ningún valor es de la máquina de Pesquería."
+ },
+ "moldes": {
+  "estado": "ejemplo",
+  "lineas": 1,
+  "ancho_mm": 1600.0,
+  "espesor_mm": 250.0,
+  "velocidad_m_min": 1.2,
+  "densidad_solido": 7.6,
+  "buza_sumergida": {
+   "diametro_mm": 80.0,
+   "coeficiente_de_descarga": 0.8,
+   "largo_bajo_el_fondo_mm": 900.0,
+   "inmersion_mm": 150.0
+  },
+  "nota": "Una línea de planchón como ejemplo. La densidad del acero sólido convierte la velocidad de colada en caudal."
+ },
+ "secuencia": {
+  "estado": "ejemplo",
+  "ollas": 4,
+  "acero_por_olla_t": 300.0,
+  "cambio_de_olla_s": 180.0
+ }
+}

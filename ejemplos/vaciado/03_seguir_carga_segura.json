@@ -1,0 +1,17 @@
+{
+ "formato": "lwd_eaf.vaciado/1",
+ "planta": "pesqueria",
+ "acero_inicial_t": 450,
+ "acero_final_t": 150,
+ "nombre": "3 · Basculado continuo: todo lo que permite el panel",
+ "_nota": "El horno se inclina tanto como deja la distancia de 300 mm al panel, a 1 °/s.",
+ "hidraulica": {
+  "modo": "cd",
+  "referencia": "boca",
+  "cd": 0.731
+ },
+ "basculado": {
+  "tipo": "carga_segura",
+  "velocidad": 1.0
+ }
+}

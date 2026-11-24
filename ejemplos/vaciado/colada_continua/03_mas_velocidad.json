@@ -1,0 +1,9 @@
+{
+ "formato": "lwd_eaf.vaciado.colada/1",
+ "planta": "pesqueria",
+ "nombre": "3 · Válvula de 80 mm y 1.6 m/min",
+ "cambios": {
+  "valvula_diametro_mm": 80.0,
+  "velocidad_m_min": 1.6
+ }
+}

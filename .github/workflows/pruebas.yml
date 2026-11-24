@@ -1,0 +1,60 @@
+# Pruebas en Linux y en Windows, y el ejecutable de Windows como artefacto. Corre en cada push y a mano
+# (Actions → Pruebas → Run workflow).
+name: Pruebas
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Bibliotecas que Qt necesita aun sin pantalla
+        run: |
+          for intento in 1 2 3; do
+            sudo apt-get update && sudo apt-get install -y libegl1 libgl1 libxkbcommon0 libfontconfig1 libdbus-1-3 && break
+            [ "$intento" = 3 ] && exit 1
+            sleep 30
+          done
+      - name: Dependencias
+        run: python -m pip install -r requirements-dev.txt
+      - name: Lint (errores reales; ruff.toml)
+        run: ruff check .
+      - name: Pruebas en paralelo (Qt sin pantalla, ver conftest.py)
+        run: python -m pytest verificacion -q -p no:cacheprovider -n auto
+      - name: La ventana abre, calcula, exporta y cierra
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: python vaciado.py --probar-ventana
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Dependencias
+        run: python -m pip install -r requirements-dev.txt pyinstaller
+      - name: Pruebas en paralelo (Qt sin pantalla, ver conftest.py)
+        run: python -m pytest verificacion -q -p no:cacheprovider -n auto
+      - name: La ventana abre, calcula, exporta y cierra
+        run: python vaciado.py --probar-ventana
+      - name: Ejecutable
+        run: python empaquetado/construir.py
+      - name: Guardar el ejecutable
+        uses: actions/upload-artifact@v4
+        with:
+          name: Modelo-Vaciado-windows
+          path: dist/*-windows.zip
+          if-no-files-found: error

@@ -1,0 +1,26 @@
+{
+ "formato": "lwd_eaf.vaciado.planta/1",
+ "planta": "pesqueria",
+ "_nota": "Datos para el modelo de vaciado (EAF-065). PRELIMINAR: ningún parámetro está validado con tiempos de vaciado medidos. La geometría del horno sigue en datos/plantas/pesqueria.json; lo de aquí sale del plano AV00025170 de Magnesita (datos/estudios/vaciado_ebt_pesqueria.json) o es un supuesto declarado.",
+ "estados": {
+  "cota_del_plano": "Cota o rótulo escrito en el plano.",
+  "medido_a_escala": "Medido sobre el trazo vectorial del PDF; no es una cota del proveedor.",
+  "calculo_del_proveedor": "Valor que usa o del que se deduce el cálculo teórico de Magnesita; no es una medición.",
+  "deducido": "No está escrito en el plano: es el valor que reproduce una curva del proveedor.",
+  "supuesto": "Valor provisional sin respaldo de planta ni de plano."
+ },
+ "piquera": {
+  "tipo": {"valor": "EBT", "estado": "cota_del_plano"},
+  "x": {"valor": -5000.0, "estado": "cota_del_plano", "vista": "cota 5000 de A-A, hoja 1 del plano AV00025170"},
+  "y_boca": {"valor": 1699.0, "estado": "medido_a_escala", "nota": "primera junta del canal en A-A; Magnesita acota los niveles desde su centro"},
+  "y_salida": {"valor": 340.0, "estado": "medido_a_escala", "nota": "extremo inferior de la pieza de salida (ANKERTAP HAR198) en A-A del plano CS128936; el detalle de la piquera acota 1 380 de largo total"},
+  "diametro": {"valor": 200.0, "estado": "cota_del_plano", "vista": "detalle «2», Ø200"},
+  "inclinacion_canal": {"valor": 0.0, "estado": "cota_del_plano", "nota": "canal vertical con el horno a 0°"}
+ },
+ "panel": {"x": -3914.0, "y": 3089.0, "estado": "medido_a_escala", "nota": "esquina inferior del panel refrigerado del lado de la piquera, de la que parte la cota «304» de la hoja 7"},
+ "distancia_panel": {"valor": 300.0, "estado": "calculo_del_proveedor", "unidad": "mm", "nota": "«Recommended Safe Load Capacity – 300 mm from the Cooled Panel»"},
+ "factor_altura_minima": {"valor": 3.5, "estado": "deducido", "unidad": "diámetros", "nota": "la curva de carga mínima (arrastre de escoria) del plano se reproduce con 700 mm de acero sobre la boca: 3.5 × Ø200"},
+ "coeficiente_de_descarga": {"valor": 0.731, "estado": "calculo_del_proveedor", "nota": "implícito en la tabla de la hoja 7 (revestimiento nuevo), referido a la altura sobre la boca; con el gastado, 0.741. Sin validar con tiempos de vaciado"},
+ "velocidad_basculado": {"valor": 1.0, "estado": "supuesto", "unidad": "grados/s", "nota": "PROVISIONAL: falta el dato mecánico del horno"},
+ "angulo_maximo": {"valor": 15.0, "estado": "supuesto", "unidad": "grados", "nota": "el mayor ángulo del estudio de Magnesita y el rango del archivo de planta; falta el dato mecánico"}
+}

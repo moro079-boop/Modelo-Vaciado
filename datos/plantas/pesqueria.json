@@ -1,0 +1,13824 @@
+{
+ "formato": "lwd_eaf.planta/1",
+ "planta": "Pesquería",
+ "horno": "EAF de 450 t con piquera EBT y puerta de 1 500 mm (cajetín: Ternium México, Pesquería; «150+300 mt»: talón de 150 t y colada de 300 t)",
+ "alcance": "niveles",
+ "_nota": "Plano CS128936 (Magnesita), leído el 2026-10-27 con herramientas/lectura_pesqueria.py (EAF-040): A-A y C-C de la hoja 1; la planta (B-B) por sus cotas. El desarrollo (hoja 2) no se transcribió. Los PDF no están en el repositorio. Ver docs/plantas-nuevas.md §14.",
+ "plano": {
+  "proveedor": "Magnesita",
+  "numero": "CS128936",
+  "revision": "B01",
+  "fecha_revision": "2025-08-08",
+  "escala": "1:35",
+  "cliente": "cajetín: Ternium México, Pesquería (México)",
+  "capacidad_nominal_t": {
+   "valor": 450,
+   "estado": "cota_del_plano",
+   "vista": "cajetín («450t») y marca «150+300 mt»"
+  },
+  "calibracion_y": {
+   "estado": "cota_del_plano",
+   "nota": "1:35 (0.080990 pt/mm), comprobada con 11 120, Ø9 100 y Ø7 844; Y = 0 en el fondo exterior de la coraza en el eje (cotas 254 + 250 + 446 hasta el piso y 3 139 hasta el tope, 4 089)"
+  }
+ },
+ "unidades": {
+  "longitud": "mm",
+  "masa": "t",
+  "densidad": "t/m3",
+  "angulo": "grados"
+ },
+ "estados": {
+  "cota_del_plano": "Cota o rótulo numérico escrito en el plano.",
+  "leido_del_plano": "Información no numérica leída del plano.",
+  "medido_a_escala": "Medido sobre los rellenos vectoriales del PDF (herramientas/lectura_pesqueria.py), calibrado con cotas escritas de la propia vista; resolución de 1 a 2 mm. No es una cota del proveedor.",
+  "derivado": "Calculado a partir de otros datos de este archivo.",
+  "supuesto": "Regla o valor provisional sin respaldo en el plano.",
+  "sin_calibrar": "Ajuste del piso en cero (Δ = 0, f = 1): manda la geometría dibujada en el plano, como en las demás plantas nuevas (decisión del usuario del 2026-10-22, EAF-032).",
+  "decision_del_usuario": "Valor o regla fijados por el usuario.",
+  "tomado_del_lwd": "Copiado del Ladle Wear Diagnosis v1.1 (revisión e19a0b4, referencia/lwd_v1_1/); sin verificar en el horno.",
+  "por_definir": "Falta el dato.",
+  "calibrado_con_marcas": "Ajustado para que el volumen reproduzca las marcas de nivel del plano. No es una medición ni una validación independiente."
+ },
+ "coordenadas": {
+  "origen": "eje del horno (centro del círculo R 3 922)",
+  "x_positivo": "puerta",
+  "x_negativo": "nariz EBT (piquera)",
+  "y": "altura desde el fondo exterior de la coraza en el eje",
+  "h": "profundidad del baño en el eje = y − cavidad.y_fondo (950, cota)"
+ },
+ "densidades": {
+  "acero_liquido": {
+   "valor": 6.9,
+   "estado": "cota_del_plano",
+   "vista": "A-A (ρ = 6,9 t/m³ junto a las marcas de nivel)"
+  },
+  "escoria": {
+   "valor": 3.0,
+   "estado": "tomado_del_lwd",
+   "fuente": "SLAG_DENSITY de referencia/lwd_v1_1/constantes.py",
+   "nota": "la del LWD, como en las demás plantas; el plano no la da"
+  },
+  "factor_de_espumado": {
+   "valor": 1.0,
+   "estado": "supuesto",
+   "nota": "factor sobre el volumen de escoria; sin dato medido"
+  }
+ },
+ "inclinacion": {
+  "paso": {
+   "valor": 1,
+   "estado": "decision_del_usuario",
+   "nota": "pasos de −1° y +1° en la interfaz, como en Largos Norte"
+  },
+  "minimo": {
+   "valor": -15,
+   "estado": "supuesto"
+  },
+  "maximo": {
+   "valor": 15,
+   "estado": "supuesto"
+  },
+  "nota": "rango de las demás plantas; falta el dato mecánico del horno"
+ },
+ "marcas_del_plano": {
+  "estado": "cota_del_plano",
+  "nota": "las dos marcas de A-A («150 mt (Hot Heel)» y «150+300 mt»), por sus cotas a la línea de la zona de escoria",
+  "lista": [
+   {
+    "nombre": "150 t (talón)",
+    "y": {
+     "valor": 1866.0,
+     "estado": "derivado",
+     "nota": "1 090 + 2 200 − 1424 (cotas de A-A); la punta del símbolo está a ±2 mm"
+    },
+    "toneladas": {
+     "valor": 150,
+     "estado": "cota_del_plano"
+    }
+   },
+   {
+    "nombre": "450 t (150 + 300)",
+    "y": {
+     "valor": 2665.0,
+     "estado": "derivado",
+     "nota": "1 090 + 2 200 − 625 (cotas de A-A); la punta del símbolo está a ±2 mm"
+    },
+    "toneladas": {
+     "valor": 450,
+     "estado": "cota_del_plano"
+    }
+   }
+  ]
+ },
+ "cavidad_general": {
+  "estado": "medido_a_escala",
+  "contorno": {
+   "estado": "cota_del_plano",
+   "simetrico_en_z": true,
+   "nota": "Cara caliente en planta por las cotas de B-B: círculo R 3 922 hasta θ = 113.0°, arco de unión R 9 372 hasta 170.6° y nariz R 1 372 con centro en X = −4 100 (la punta en X = −5 472). A-A y C-C la dibujan igual en la zona de escoria: 3 922 en la puerta y en los costados, 5 474 en la nariz (medido). Sobre la hilada 22 la pared de la nariz sale a 5 575 y la puerta tiene los escalones del umbral.",
+   "arcos": {
+    "radio_cuerpo": 3922.0,
+    "radio_nariz": 1372.0,
+    "x_centro_nariz": -4100.0,
+    "radio_arcos_de_union": 9372.0,
+    "centro_arco_union": [
+     2132.6,
+     -5015.4
+    ]
+   },
+   "angulos_grados": [
+    0.0,
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0,
+    6.0,
+    7.0,
+    8.0,
+    9.0,
+    10.0,
+    11.0,
+    12.0,
+    13.0,
+    14.0,
+    15.0,
+    16.0,
+    17.0,
+    18.0,
+    19.0,
+    20.0,
+    21.0,
+    22.0,
+    23.0,
+    24.0,
+    25.0,
+    26.0,
+    27.0,
+    28.0,
+    29.0,
+    30.0,
+    31.0,
+    32.0,
+    33.0,
+    34.0,
+    35.0,
+    36.0,
+    37.0,
+    38.0,
+    39.0,
+    40.0,
+    41.0,
+    42.0,
+    43.0,
+    44.0,
+    45.0,
+    46.0,
+    47.0,
+    48.0,
+    49.0,
+    50.0,
+    51.0,
+    52.0,
+    53.0,
+    54.0,
+    55.0,
+    56.0,
+    57.0,
+    58.0,
+    59.0,
+    60.0,
+    61.0,
+    62.0,
+    63.0,
+    64.0,
+    65.0,
+    66.0,
+    67.0,
+    68.0,
+    69.0,
+    70.0,
+    71.0,
+    72.0,
+    73.0,
+    74.0,
+    75.0,
+    76.0,
+    77.0,
+    78.0,
+    79.0,
+    80.0,
+    81.0,
+    82.0,
+    83.0,
+    84.0,
+    85.0,
+    86.0,
+    87.0,
+    88.0,
+    89.0,
+    90.0,
+    91.0,
+    92.0,
+    93.0,
+    94.0,
+    95.0,
+    96.0,
+    97.0,
+    98.0,
+    99.0,
+    100.0,
+    101.0,
+    102.0,
+    103.0,
+    104.0,
+    105.0,
+    106.0,
+    107.0,
+    108.0,
+    109.0,
+    110.0,
+    111.0,
+    112.0,
+    113.0,
+    114.0,
+    115.0,
+    116.0,
+    117.0,
+    118.0,
+    119.0,
+    120.0,
+    121.0,
+    122.0,
+    123.0,
+    124.0,
+    125.0,
+    126.0,
+    127.0,
+    128.0,
+    129.0,
+    130.0,
+    131.0,
+    132.0,
+    133.0,
+    134.0,
+    135.0,
+    136.0,
+    137.0,
+    138.0,
+    139.0,
+    140.0,
+    141.0,
+    142.0,
+    143.0,
+    144.0,
+    145.0,
+    146.0,
+    147.0,
+    148.0,
+    149.0,
+    150.0,
+    151.0,
+    152.0,
+    153.0,
+    154.0,
+    155.0,
+    156.0,
+    157.0,
+    158.0,
+    159.0,
+    160.0,
+    161.0,
+    162.0,
+    163.0,
+    164.0,
+    165.0,
+    166.0,
+    167.0,
+    168.0,
+    169.0,
+    170.0,
+    171.0,
+    172.0,
+    173.0,
+    174.0,
+    175.0,
+    176.0,
+    177.0,
+    178.0,
+    179.0,
+    180.0
+   ],
+   "radios": [
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.0,
+    3922.3,
+    3923.3,
+    3925.1,
+    3927.5,
+    3930.6,
+    3934.4,
+    3938.9,
+    3944.1,
+    3950.0,
+    3956.6,
+    3964.0,
+    3972.0,
+    3980.8,
+    3990.3,
+    4000.6,
+    4011.5,
+    4023.3,
+    4035.7,
+    4048.9,
+    4062.9,
+    4077.7,
+    4093.2,
+    4109.5,
+    4126.6,
+    4144.5,
+    4163.3,
+    4182.8,
+    4203.2,
+    4224.4,
+    4246.4,
+    4269.4,
+    4293.2,
+    4317.9,
+    4343.5,
+    4370.0,
+    4397.4,
+    4425.7,
+    4455.0,
+    4485.3,
+    4516.6,
+    4548.8,
+    4582.0,
+    4616.3,
+    4651.6,
+    4688.0,
+    4725.4,
+    4763.9,
+    4803.5,
+    4844.2,
+    4886.0,
+    4929.0,
+    4973.1,
+    5018.4,
+    5064.9,
+    5112.6,
+    5161.6,
+    5211.7,
+    5262.4,
+    5307.8,
+    5347.2,
+    5380.9,
+    5409.0,
+    5431.9,
+    5449.5,
+    5462.0,
+    5469.5,
+    5472.0
+   ]
+  },
+  "piso": {
+   "cuenco": {
+    "estado": "medido_a_escala",
+    "nota": "cara caliente de C-C (promedio de los dos costados) cada 100 mm: el casquete R 8 750 rotulado, de 950 en el eje (cota) hasta la pared; A-A del lado puerta coincide (diferencia mediana 0 mm, máxima 11)",
+    "r": [
+     0.0,
+     100.0,
+     200.0,
+     300.0,
+     400.0,
+     500.0,
+     600.0,
+     700.0,
+     800.0,
+     900.0,
+     1000.0,
+     1100.0,
+     1200.0,
+     1300.0,
+     1400.0,
+     1500.0,
+     1600.0,
+     1700.0,
+     1800.0,
+     1900.0,
+     2000.0,
+     2100.0,
+     2200.0,
+     2300.0,
+     2400.0,
+     2500.0,
+     2600.0,
+     2700.0,
+     2800.0,
+     2900.0,
+     3000.0,
+     3100.0,
+     3200.0,
+     3300.0,
+     3400.0,
+     3500.0,
+     3600.0,
+     3700.0,
+     3800.0,
+     3900.0
+    ],
+    "y": [
+     950.0,
+     950.0,
+     951.5,
+     954.0,
+     958.5,
+     964.0,
+     970.0,
+     978.0,
+     986.5,
+     995.5,
+     1007.5,
+     1019.0,
+     1032.5,
+     1046.0,
+     1062.0,
+     1079.0,
+     1097.5,
+     1116.5,
+     1136.5,
+     1158.0,
+     1181.0,
+     1205.5,
+     1231.0,
+     1257.0,
+     1285.5,
+     1314.5,
+     1344.0,
+     1376.5,
+     1410.5,
+     1444.5,
+     1480.0,
+     1517.0,
+     1556.5,
+     1596.5,
+     1636.5,
+     1681.0,
+     1724.0,
+     1770.5,
+     1818.0,
+     1867.0
+    ]
+   },
+   "nariz": {
+    "estado": "medido_a_escala",
+    "nota": "A-A del lado de la piquera, en función de |X|: rampa recta (9°) desde el eje y, desde |X| ≈ 4 300, más empinada hasta la pared de la nariz; sin el agujero de la piquera EBT (|X| 4 850–5 150).",
+    "radio_cuerpo": 3922.0,
+    "x_abs": [
+     0.0,
+     100.0,
+     200.0,
+     300.0,
+     400.0,
+     500.0,
+     600.0,
+     700.0,
+     800.0,
+     900.0,
+     1000.0,
+     1100.0,
+     1200.0,
+     1300.0,
+     1400.0,
+     1500.0,
+     1600.0,
+     1700.0,
+     1800.0,
+     1900.0,
+     2000.0,
+     2100.0,
+     2200.0,
+     2300.0,
+     2400.0,
+     2500.0,
+     2600.0,
+     2700.0,
+     2800.0,
+     2900.0,
+     3000.0,
+     3100.0,
+     3200.0,
+     3300.0,
+     3400.0,
+     3500.0,
+     3600.0,
+     3700.0,
+     3800.0,
+     3900.0,
+     4000.0,
+     4100.0,
+     4200.0,
+     4300.0,
+     4400.0,
+     4500.0,
+     4600.0,
+     4700.0,
+     4800.0,
+     5200.0,
+     5300.0,
+     5400.0
+    ],
+    "y": [
+     961.0,
+     979.0,
+     994.0,
+     1010.0,
+     1026.0,
+     1042.0,
+     1058.0,
+     1074.0,
+     1089.0,
+     1105.0,
+     1121.0,
+     1137.0,
+     1153.0,
+     1168.0,
+     1184.0,
+     1200.0,
+     1216.0,
+     1232.0,
+     1247.0,
+     1263.0,
+     1279.0,
+     1295.0,
+     1311.0,
+     1326.0,
+     1342.0,
+     1358.0,
+     1374.0,
+     1390.0,
+     1405.0,
+     1421.0,
+     1437.0,
+     1453.0,
+     1469.0,
+     1485.0,
+     1500.0,
+     1516.0,
+     1532.0,
+     1548.0,
+     1564.0,
+     1579.0,
+     1595.0,
+     1611.0,
+     1627.0,
+     1643.0,
+     1663.0,
+     1687.0,
+     1711.0,
+     1734.0,
+     1720.0,
+     1741.0,
+     1782.0,
+     1812.0
+    ]
+   },
+   "regla": {
+    "estado": "supuesto",
+    "texto": "como en Danieli: hacia la puerta y los costados manda el casquete de revolución (C-C, que coincide con A-A del lado puerta); en la mitad de la piquera el piso pasa, según el ángulo, del casquete (90°) a la rampa de A-A (180°). Fuera de los ejes el plano no dibuja el fondo."
+   }
+  },
+  "y_max": {
+   "valor": 3990.0,
+   "estado": "derivado",
+   "nota": "tope de la hilada 29 de la nariz (1 090 + 2 900)"
+  },
+  "y_fondo_medido": {
+   "valor": 950.0,
+   "estado": "cota_del_plano",
+   "nota": "254 + 250 + 446 (cotas de A-A); h de los libros se mide desde aquí"
+  },
+  "puerta": {
+   "estado": "medido_a_escala",
+   "nota": "Puerta de 1 500 mm (cota de la planta) con el umbral de bloques ANCARBON R F1E10D («70/0», «35/0») sobre la hilada 17 de A-A: cada fila sale un poco más que la de abajo. El tope está 886 mm sobre la marca de 450 t (cota de la hoja 3): Y 3551 (la hoja 1 lo dibuja en 3540; por la cota 1 688 sobre la de 150 t daría 3 554). La arista es la cara interior de la fila de arriba (interpretación por confirmar).",
+   "ancho": {
+    "valor": 1500.0,
+    "estado": "cota_del_plano",
+    "vista": "planta (B-B)"
+   },
+   "escalones": {
+    "estado": "medido_a_escala",
+    "lista": [
+     {
+      "y_inferior": 2790,
+      "y_superior": 2990,
+      "x_cara": 3922
+     },
+     {
+      "y_inferior": 2990,
+      "y_superior": 3090,
+      "x_cara": 3947
+     },
+     {
+      "y_inferior": 3090,
+      "y_superior": 3240,
+      "x_cara": 3974
+     },
+     {
+      "y_inferior": 3240,
+      "y_superior": 3390,
+      "x_cara": 4025
+     },
+     {
+      "y_inferior": 3390,
+      "y_superior": 3540,
+      "x_cara": 4074
+     }
+    ]
+   },
+   "y_umbral": {
+    "valor": 3551.0,
+    "estado": "derivado",
+    "nota": "3 290 − 625 + 886 (cotas)"
+   },
+   "x_umbral": {
+    "valor": 4074,
+    "estado": "medido_a_escala",
+    "nota": "cara interior de la fila de arriba del umbral: por ahí derrama (interpretación por confirmar)"
+   }
+  },
+  "fin_refractario": {
+   "estado": "derivado",
+   "nota": "cuerpo: tope de la pared lateral de C-C (1 290 + 2 040, cotas); nariz: tope de la hilada 29 de A-A (1 090 + 2 900); en la puerta manda el umbral.",
+   "cuerpo": {
+    "valor": 3330.0,
+    "estado": "derivado"
+   },
+   "nariz": {
+    "valor": 3990.0,
+    "estado": "derivado"
+   }
+  },
+  "seccion_del_eje": {
+   "estado": "leido_del_plano",
+   "clave": "seccion_aa",
+   "vista": "A-A",
+   "lateral": "seccion_cc",
+   "nota": "A-A pasa por el eje puerta–piquera (la nariz EBT a la izquierda); C-C es la sección transversal por el centro."
+  }
+ },
+ "limites": {
+  "estado": "por_definir",
+  "nota": "Umbral por cotas (con 10 mm de diferencia con lo dibujado); arista y fin del refractario, derivados del plano (interpretación por confirmar). La cavidad por encima de lo medido se supone con paredes verticales."
+ },
+ "calibracion": {
+  "estado": "calibrado_con_marcas",
+  "nota": "CALIBRADA CON LAS MARCAS DEL PLANO (decisión del usuario, 2026-11-04, EAF-050): el piso se desplaza Δ y, con dos parámetros, el cuenco se estira f para que el volumen reproduzca las marcas de nivel del plano. Reproduce el cálculo del proveedor; no es una medición ni una validación independiente. h se sigue midiendo desde el piso dibujado, como las profundidades que escribe el plano. Para volver a la geometría dibujada: `python -m herramientas.libros_plantas --sin-calibrar pesqueria`.",
+  "delta_y": {
+   "valor": 32.9,
+   "estado": "calibrado_con_marcas",
+   "unidad": "mm"
+  },
+  "estiramiento_cuenco": {
+   "valor": 1.0,
+   "estado": "calibrado_con_marcas"
+  },
+  "parametros_ajustados": 1,
+  "residuos": [
+   {
+    "marca": "150 t (talón)",
+    "calculado_m3": 21.758,
+    "marca_m3": 21.739,
+    "diferencia_relativa": 0.0009,
+    "y_marca": 1866.0,
+    "y_modelo": 1865.6,
+    "diferencia_nivel_mm": 0.4
+   },
+   {
+    "marca": "450 t (150 + 300)",
+    "calculado_m3": 65.033,
+    "marca_m3": 65.217,
+    "diferencia_relativa": -0.0028,
+    "y_marca": 2665.0,
+    "y_modelo": 2668.4,
+    "diferencia_nivel_mm": -3.4
+   }
+  ]
+ },
+ "desgaste": {
+  "estado": "cota_del_plano",
+  "nota": "Capa de trabajo de la pared = el ladrillo de la cavidad (rótulo «450»); por fuera, las capas ANKER 30 (amarillo) se toman como de seguridad (supuesto: el plano no rotula la función).",
+  "espesor_trabajo_pared": {
+   "estado": "cota_del_plano",
+   "nota": "450 mm, rótulo «450» de A-A y C-C en las hiladas 1 a 29. En la puerta, detrás del ladrillo de 450, A-A dibuja otro de 550 (rótulo); no se usa.",
+   "lista": [
+    {
+     "y_inferior": 1090.0,
+     "y_superior": 3990.0,
+     "espesor": 450
+    }
+   ]
+  },
+  "hiladas": {
+   "estado": "cota_del_plano",
+   "nota": "29 hiladas de 100 mm desde Y = 1 090 (cota de la zona baja; la zona de escoria de 2 200 son las hiladas 1 a 22)",
+   "cantidad": 29,
+   "y_base_hilada_1": 1090.0,
+   "altura_de_hilada": 100.0
+  },
+  "materiales_pared": {
+   "estado": "derivado",
+   "nota": "Derivado de `desarrollo` (cg.componentes_desarrollo, EAF-042): material dominante por hilada; lado «nariz» = el sector de la nariz (78°), lado «puerta» = el cuerpo y los arcos de unión. Sin contar el marco de la puerta.",
+   "puerta": [
+    {
+     "hiladas": [
+      1,
+      5
+     ],
+     "material": "ANCARBON R F6E10"
+    },
+    {
+     "hiladas": [
+      6,
+      19
+     ],
+     "material": "ANCARBON R F1E14D"
+    },
+    {
+     "hiladas": [
+      20,
+      29
+     ],
+     "material": "ANCARBON R TB256"
+    }
+   ],
+   "nariz": [
+    {
+     "hiladas": [
+      1,
+      5
+     ],
+     "material": "ANCARBON R F6E10"
+    },
+    {
+     "hiladas": [
+      6,
+      19
+     ],
+     "material": "ANCARBON R F1E14D"
+    },
+    {
+     "hiladas": [
+      20,
+      22
+     ],
+     "material": "ANCARBON R TB256"
+    },
+    {
+     "hiladas": [
+      23,
+      29
+     ],
+     "material": "ANCARBON R F3E14D"
+    }
+   ]
+  },
+  "espesor_trabajo_piso": {
+   "valor": 371,
+   "estado": "medido_a_escala",
+   "unidad": "mm",
+   "materiales_de_trabajo": [
+    "ANKERHARTH NN25"
+   ],
+   "base": [
+    "ANCARBON C F7E10",
+    "ANKER 30"
+   ],
+   "funcion": {
+    "estado": "supuesto",
+    "nota": "PROVISIONAL (EAF-040): solo el apisonado, sin los ladrillos ANCARBON C F7E10 de abajo, por analogía con la decisión del usuario para Fuchs (EAF-035); falta que el usuario la confirme"
+   },
+   "nota": "Espesor mínimo, perpendicular a la superficie (EAF-039), de la capa de trabajo del piso (ANKERHARTH NN25) sobre su base (ANCARBON C F7E10, ANKER 30), medido cada 50 mm en las secciones del eje y lateral con herramientas/espesor_piso_plantas.py: 371 mm (piquera, r = 0); el máximo es 700. No cuentan las columnas que terminan en un ánodo, su camisa o la piquera (sistemas aparte), ni las que están a menos de 150 mm de ellas. Con un retroceso igual en todo el piso, ese mínimo es donde se perfora primero. El espesor normal es el vertical dividido por 1 / cos α de la pendiente local (cavidad_general.factor_normal): el piso retrocede perpendicular a su superficie, como en Norte."
+  }
+ },
+ "seccion_aa": {
+  "estado": "medido_a_escala",
+  "vista": "A-A, hoja 1 (1:35)",
+  "calibracion": {
+   "pt_por_mm": 0.08099,
+   "eje_pt": 729.9,
+   "y0_pt": 526.5,
+   "nota": "1:35 comprobada con la cota 11 120; Y = 0 en el fondo exterior de la coraza en el eje"
+  },
+  "nota": "Polígonos de lo que se VE en la hoja (rellenos vectoriales en orden de pintado; 1 mm por píxel; vértices a ≤ 1.5 mm). Los ladrillos de pared se cortan por hilada con la rejilla de 100 mm desde 1 090. x es la X del archivo: la piquera EBT a la izquierda (X < 0) y la puerta a la derecha.",
+  "poligonos": [
+   {
+    "material": "ANCARBON C F7E10",
+    "funcion": null,
+    "color": "#ffbf7f",
+    "hilada": null,
+    "puntos": [
+     [
+      -3444.1,
+      802.7
+     ],
+     [
+      -3420.1,
+      951.7
+     ],
+     [
+      -2927.1,
+      872.7
+     ],
+     [
+      -2927.1,
+      971.7
+     ],
+     [
+      -2775.1,
+      971.7
+     ],
+     [
+      -2775.1,
+      947.7
+     ],
+     [
+      -2626.1,
+      947.7
+     ],
+     [
+      -2626.1,
+      923.7
+     ],
+     [
+      -2475.1,
+      923.7
+     ],
+     [
+      -2475.1,
+      900.7
+     ],
+     [
+      -2326.1,
+      900.7
+     ],
+     [
+      -2326.1,
+      875.7
+     ],
+     [
+      -2175.1,
+      875.7
+     ],
+     [
+      -2175.1,
+      851.7
+     ],
+     [
+      -2026.1,
+      851.7
+     ],
+     [
+      -2026.1,
+      828.7
+     ],
+     [
+      -1875.1,
+      828.7
+     ],
+     [
+      -1875.1,
+      804.7
+     ],
+     [
+      -1726.1,
+      804.7
+     ],
+     [
+      -1726.1,
+      780.7
+     ],
+     [
+      -1575.1,
+      780.7
+     ],
+     [
+      -1575.1,
+      757.7
+     ],
+     [
+      -1426.1,
+      757.7
+     ],
+     [
+      -1426.1,
+      733.7
+     ],
+     [
+      -1275.1,
+      733.7
+     ],
+     [
+      -1275.1,
+      709.7
+     ],
+     [
+      -1125.1,
+      709.7
+     ],
+     [
+      -1125.1,
+      686.7
+     ],
+     [
+      -975.1,
+      686.7
+     ],
+     [
+      -975.1,
+      662.7
+     ],
+     [
+      -825.1,
+      662.7
+     ],
+     [
+      -825.1,
+      638.7
+     ],
+     [
+      -675.1,
+      638.7
+     ],
+     [
+      -675.1,
+      614.7
+     ],
+     [
+      -525.1,
+      614.7
+     ],
+     [
+      -525.1,
+      591.7
+     ],
+     [
+      -375.1,
+      591.7
+     ],
+     [
+      -375.1,
+      567.7
+     ],
+     [
+      -225.1,
+      567.7
+     ],
+     [
+      -225.1,
+      543.7
+     ],
+     [
+      -75.1,
+      543.7
+     ],
+     [
+      -75.1,
+      519.7
+     ],
+     [
+      74.9,
+      519.7
+     ],
+     [
+      74.9,
+      506.7
+     ],
+     [
+      223.9,
+      506.7
+     ],
+     [
+      223.9,
+      511.7
+     ],
+     [
+      373.9,
+      511.7
+     ],
+     [
+      373.9,
+      518.7
+     ],
+     [
+      523.9,
+      518.7
+     ],
+     [
+      523.9,
+      528.7
+     ],
+     [
+      673.9,
+      528.7
+     ],
+     [
+      673.9,
+      540.7
+     ],
+     [
+      823.9,
+      540.7
+     ],
+     [
+      823.9,
+      554.7
+     ],
+     [
+      973.9,
+      554.7
+     ],
+     [
+      973.9,
+      571.7
+     ],
+     [
+      1123.9,
+      571.7
+     ],
+     [
+      1123.9,
+      590.7
+     ],
+     [
+      1273.9,
+      590.7
+     ],
+     [
+      1273.9,
+      611.7
+     ],
+     [
+      1423.9,
+      611.7
+     ],
+     [
+      1423.9,
+      636.7
+     ],
+     [
+      1573.9,
+      636.7
+     ],
+     [
+      1573.9,
+      663.7
+     ],
+     [
+      1723.9,
+      663.7
+     ],
+     [
+      1723.9,
+      691.7
+     ],
+     [
+      1873.9,
+      691.7
+     ],
+     [
+      1873.9,
+      723.7
+     ],
+     [
+      2023.9,
+      723.7
+     ],
+     [
+      2023.9,
+      757.7
+     ],
+     [
+      2173.9,
+      757.7
+     ],
+     [
+      2173.9,
+      794.7
+     ],
+     [
+      2323.9,
+      794.7
+     ],
+     [
+      2323.9,
+      833.7
+     ],
+     [
+      2473.9,
+      833.7
+     ],
+     [
+      2473.9,
+      875.7
+     ],
+     [
+      2624.9,
+      875.7
+     ],
+     [
+      2624.9,
+      782.7
+     ],
+     [
+      2626.9,
+      782.7
+     ],
+     [
+      2848.9,
+      849.7
+     ],
+     [
+      3028.9,
+      910.7
+     ],
+     [
+      3101.9,
+      935.7
+     ],
+     [
+      3333.9,
+      1022.7
+     ],
+     [
+      3386.9,
+      882.7
+     ],
+     [
+      3386.9,
+      880.7
+     ],
+     [
+      3381.9,
+      878.7
+     ],
+     [
+      3178.9,
+      805.7
+     ],
+     [
+      3151.9,
+      793.7
+     ],
+     [
+      3125.9,
+      862.7
+     ],
+     [
+      3147.9,
+      792.7
+     ],
+     [
+      2911.9,
+      712.7
+     ],
+     [
+      2907.9,
+      718.7
+     ],
+     [
+      2880.9,
+      800.7
+     ],
+     [
+      2907.9,
+      711.7
+     ],
+     [
+      2668.9,
+      637.7
+     ],
+     [
+      2661.9,
+      653.7
+     ],
+     [
+      2630.9,
+      761.7
+     ],
+     [
+      2624.9,
+      775.7
+     ],
+     [
+      2624.9,
+      624.7
+     ],
+     [
+      2474.9,
+      624.7
+     ],
+     [
+      2474.9,
+      582.7
+     ],
+     [
+      2324.9,
+      582.7
+     ],
+     [
+      2324.9,
+      542.7
+     ],
+     [
+      2174.9,
+      542.7
+     ],
+     [
+      2174.9,
+      506.7
+     ],
+     [
+      2024.9,
+      506.7
+     ],
+     [
+      2024.9,
+      472.7
+     ],
+     [
+      1874.9,
+      472.7
+     ],
+     [
+      1874.9,
+      440.7
+     ],
+     [
+      1724.9,
+      440.7
+     ],
+     [
+      1724.9,
+      411.7
+     ],
+     [
+      1574.9,
+      411.7
+     ],
+     [
+      1574.9,
+      385.7
+     ],
+     [
+      1424.9,
+      385.7
+     ],
+     [
+      1424.9,
+      361.7
+     ],
+     [
+      1274.9,
+      361.7
+     ],
+     [
+      1274.9,
+      339.7
+     ],
+     [
+      1124.9,
+      339.7
+     ],
+     [
+      1124.9,
+      320.7
+     ],
+     [
+      974.9,
+      320.7
+     ],
+     [
+      974.9,
+      303.7
+     ],
+     [
+      824.9,
+      303.7
+     ],
+     [
+      824.9,
+      289.7
+     ],
+     [
+      674.9,
+      289.7
+     ],
+     [
+      674.9,
+      277.7
+     ],
+     [
+      524.9,
+      277.7
+     ],
+     [
+      524.9,
+      267.7
+     ],
+     [
+      374.9,
+      267.7
+     ],
+     [
+      374.9,
+      260.7
+     ],
+     [
+      224.9,
+      260.7
+     ],
+     [
+      224.9,
+      256.7
+     ],
+     [
+      73.9,
+      256.7
+     ],
+     [
+      73.9,
+      268.7
+     ],
+     [
+      -76.1,
+      268.7
+     ],
+     [
+      -76.1,
+      292.7
+     ],
+     [
+      -226.1,
+      292.7
+     ],
+     [
+      -226.1,
+      316.7
+     ],
+     [
+      -376.1,
+      316.7
+     ],
+     [
+      -376.1,
+      339.7
+     ],
+     [
+      -526.1,
+      339.7
+     ],
+     [
+      -526.1,
+      363.7
+     ],
+     [
+      -676.1,
+      363.7
+     ],
+     [
+      -676.1,
+      387.7
+     ],
+     [
+      -826.1,
+      387.7
+     ],
+     [
+      -826.1,
+      410.7
+     ],
+     [
+      -976.1,
+      410.7
+     ],
+     [
+      -976.1,
+      434.7
+     ],
+     [
+      -1126.1,
+      434.7
+     ],
+     [
+      -1126.1,
+      458.7
+     ],
+     [
+      -1276.1,
+      458.7
+     ],
+     [
+      -1276.1,
+      482.7
+     ],
+     [
+      -1427.1,
+      482.7
+     ],
+     [
+      -1427.1,
+      506.7
+     ],
+     [
+      -1576.1,
+      506.7
+     ],
+     [
+      -1576.1,
+      530.7
+     ],
+     [
+      -1727.1,
+      530.7
+     ],
+     [
+      -1727.1,
+      553.7
+     ],
+     [
+      -1876.1,
+      553.7
+     ],
+     [
+      -1876.1,
+      577.7
+     ],
+     [
+      -2027.1,
+      577.7
+     ],
+     [
+      -2027.1,
+      601.7
+     ],
+     [
+      -2176.1,
+      601.7
+     ],
+     [
+      -2176.1,
+      625.7
+     ],
+     [
+      -2327.1,
+      625.7
+     ],
+     [
+      -2327.1,
+      648.7
+     ],
+     [
+      -2476.1,
+      648.7
+     ],
+     [
+      -2476.1,
+      672.7
+     ],
+     [
+      -2627.1,
+      672.7
+     ],
+     [
+      -2627.1,
+      696.7
+     ],
+     [
+      -2776.1,
+      696.7
+     ],
+     [
+      -2776.1,
+      719.7
+     ],
+     [
+      -2927.1,
+      719.7
+     ],
+     [
+      -2927.1,
+      859.7
+     ],
+     [
+      -2949.1,
+      723.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E10D",
+    "funcion": null,
+    "color": "#007ca5",
+    "hilada": null,
+    "puntos": [
+     [
+      3921.9,
+      2789.7
+     ],
+     [
+      3921.9,
+      2990.7
+     ],
+     [
+      3946.9,
+      2990.7
+     ],
+     [
+      3946.9,
+      3090.7
+     ],
+     [
+      3973.9,
+      3090.7
+     ],
+     [
+      3973.9,
+      3240.7
+     ],
+     [
+      4024.9,
+      3240.7
+     ],
+     [
+      4024.9,
+      3390.7
+     ],
+     [
+      4073.9,
+      3390.7
+     ],
+     [
+      4073.9,
+      3540.7
+     ],
+     [
+      5769.9,
+      3540.7
+     ],
+     [
+      5769.9,
+      3239.7
+     ],
+     [
+      5019.9,
+      3239.7
+     ],
+     [
+      5019.9,
+      3090.7
+     ],
+     [
+      4997.9,
+      3090.7
+     ],
+     [
+      4997.9,
+      2989.7
+     ],
+     [
+      4922.9,
+      2989.7
+     ],
+     [
+      4922.9,
+      2789.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 6,
+    "puntos": [
+     [
+      -5924.1,
+      1590.7
+     ],
+     [
+      -5924.1,
+      1690.7
+     ],
+     [
+      -5473.1,
+      1690.7
+     ],
+     [
+      -5473.1,
+      1590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 6,
+    "puntos": [
+     [
+      3921.9,
+      1590.7
+     ],
+     [
+      3921.9,
+      1690.7
+     ],
+     [
+      4370.9,
+      1690.7
+     ],
+     [
+      4370.9,
+      1590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 7,
+    "puntos": [
+     [
+      -5924.1,
+      1690.7
+     ],
+     [
+      -5924.1,
+      1790.7
+     ],
+     [
+      -5473.1,
+      1790.7
+     ],
+     [
+      -5473.1,
+      1690.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 7,
+    "puntos": [
+     [
+      3921.9,
+      1690.7
+     ],
+     [
+      3921.9,
+      1790.7
+     ],
+     [
+      4370.9,
+      1790.7
+     ],
+     [
+      4370.9,
+      1690.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 8,
+    "puntos": [
+     [
+      -5924.1,
+      1790.7
+     ],
+     [
+      -5924.1,
+      1890.7
+     ],
+     [
+      -5473.1,
+      1890.7
+     ],
+     [
+      -5473.1,
+      1790.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 8,
+    "puntos": [
+     [
+      3921.9,
+      1790.7
+     ],
+     [
+      3921.9,
+      1890.7
+     ],
+     [
+      4370.9,
+      1890.7
+     ],
+     [
+      4370.9,
+      1790.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 9,
+    "puntos": [
+     [
+      -5924.1,
+      1890.7
+     ],
+     [
+      -5924.1,
+      1990.7
+     ],
+     [
+      -5473.1,
+      1990.7
+     ],
+     [
+      -5473.1,
+      1890.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 9,
+    "puntos": [
+     [
+      3921.9,
+      1890.7
+     ],
+     [
+      3921.9,
+      1990.7
+     ],
+     [
+      4370.9,
+      1990.7
+     ],
+     [
+      4370.9,
+      1890.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 10,
+    "puntos": [
+     [
+      -5924.1,
+      1990.7
+     ],
+     [
+      -5924.1,
+      2090.7
+     ],
+     [
+      -5473.1,
+      2090.7
+     ],
+     [
+      -5473.1,
+      1990.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 10,
+    "puntos": [
+     [
+      3921.9,
+      1990.7
+     ],
+     [
+      3921.9,
+      2090.7
+     ],
+     [
+      4370.9,
+      2090.7
+     ],
+     [
+      4370.9,
+      1990.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 11,
+    "puntos": [
+     [
+      -5924.1,
+      2090.7
+     ],
+     [
+      -5924.1,
+      2190.7
+     ],
+     [
+      -5473.1,
+      2190.7
+     ],
+     [
+      -5473.1,
+      2090.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 11,
+    "puntos": [
+     [
+      3921.9,
+      2090.7
+     ],
+     [
+      3921.9,
+      2190.7
+     ],
+     [
+      4370.9,
+      2190.7
+     ],
+     [
+      4370.9,
+      2090.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 12,
+    "puntos": [
+     [
+      -5924.1,
+      2190.7
+     ],
+     [
+      -5924.1,
+      2290.7
+     ],
+     [
+      -5473.1,
+      2290.7
+     ],
+     [
+      -5473.1,
+      2190.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 12,
+    "puntos": [
+     [
+      3921.9,
+      2190.7
+     ],
+     [
+      3921.9,
+      2290.7
+     ],
+     [
+      4370.9,
+      2290.7
+     ],
+     [
+      4370.9,
+      2190.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 13,
+    "puntos": [
+     [
+      -5924.1,
+      2290.7
+     ],
+     [
+      -5924.1,
+      2390.7
+     ],
+     [
+      -5473.1,
+      2390.7
+     ],
+     [
+      -5473.1,
+      2290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 13,
+    "puntos": [
+     [
+      3921.9,
+      2290.7
+     ],
+     [
+      3921.9,
+      2390.7
+     ],
+     [
+      4370.9,
+      2390.7
+     ],
+     [
+      4370.9,
+      2290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 14,
+    "puntos": [
+     [
+      -5924.1,
+      2390.7
+     ],
+     [
+      -5924.1,
+      2490.7
+     ],
+     [
+      -5473.1,
+      2490.7
+     ],
+     [
+      -5473.1,
+      2390.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 14,
+    "puntos": [
+     [
+      3921.9,
+      2390.7
+     ],
+     [
+      3921.9,
+      2490.7
+     ],
+     [
+      4370.9,
+      2490.7
+     ],
+     [
+      4370.9,
+      2390.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 15,
+    "puntos": [
+     [
+      -5924.1,
+      2490.7
+     ],
+     [
+      -5924.1,
+      2590.7
+     ],
+     [
+      -5473.1,
+      2590.7
+     ],
+     [
+      -5473.1,
+      2490.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 15,
+    "puntos": [
+     [
+      3921.9,
+      2490.7
+     ],
+     [
+      3921.9,
+      2590.7
+     ],
+     [
+      4370.9,
+      2590.7
+     ],
+     [
+      4370.9,
+      2490.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 16,
+    "puntos": [
+     [
+      -5924.1,
+      2590.7
+     ],
+     [
+      -5924.1,
+      2690.7
+     ],
+     [
+      -5473.1,
+      2690.7
+     ],
+     [
+      -5473.1,
+      2590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 16,
+    "puntos": [
+     [
+      3921.9,
+      2590.7
+     ],
+     [
+      3921.9,
+      2690.7
+     ],
+     [
+      4922.9,
+      2690.7
+     ],
+     [
+      4370.9,
+      2689.7
+     ],
+     [
+      4370.9,
+      2590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 17,
+    "puntos": [
+     [
+      -5924.1,
+      2690.7
+     ],
+     [
+      -5924.1,
+      2790.7
+     ],
+     [
+      -5473.1,
+      2790.7
+     ],
+     [
+      -5473.1,
+      2690.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 17,
+    "puntos": [
+     [
+      3921.9,
+      2690.7
+     ],
+     [
+      3921.9,
+      2789.7
+     ],
+     [
+      4922.9,
+      2789.7
+     ],
+     [
+      4922.9,
+      2690.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 18,
+    "puntos": [
+     [
+      -5924.1,
+      2790.7
+     ],
+     [
+      -5924.1,
+      2890.7
+     ],
+     [
+      -5473.1,
+      2890.7
+     ],
+     [
+      -5473.1,
+      2790.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 19,
+    "puntos": [
+     [
+      -5924.1,
+      2890.7
+     ],
+     [
+      -5924.1,
+      2989.7
+     ],
+     [
+      -5473.1,
+      2989.7
+     ],
+     [
+      -5473.1,
+      2890.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14D",
+    "funcion": null,
+    "color": "#91a552",
+    "hilada": 23,
+    "puntos": [
+     [
+      -6026.1,
+      3290.7
+     ],
+     [
+      -6026.1,
+      3390.7
+     ],
+     [
+      -5574.1,
+      3390.7
+     ],
+     [
+      -5574.1,
+      3290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14D",
+    "funcion": null,
+    "color": "#91a552",
+    "hilada": 24,
+    "puntos": [
+     [
+      -6026.1,
+      3390.7
+     ],
+     [
+      -6026.1,
+      3490.7
+     ],
+     [
+      -5574.1,
+      3490.7
+     ],
+     [
+      -5574.1,
+      3390.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14D",
+    "funcion": null,
+    "color": "#91a552",
+    "hilada": 25,
+    "puntos": [
+     [
+      -6026.1,
+      3490.7
+     ],
+     [
+      -6026.1,
+      3590.7
+     ],
+     [
+      -5574.1,
+      3590.7
+     ],
+     [
+      -5574.1,
+      3490.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14D",
+    "funcion": null,
+    "color": "#91a552",
+    "hilada": 26,
+    "puntos": [
+     [
+      -6026.1,
+      3590.7
+     ],
+     [
+      -6026.1,
+      3690.7
+     ],
+     [
+      -5574.1,
+      3690.7
+     ],
+     [
+      -5574.1,
+      3590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14D",
+    "funcion": null,
+    "color": "#91a552",
+    "hilada": 27,
+    "puntos": [
+     [
+      -6026.1,
+      3690.7
+     ],
+     [
+      -6026.1,
+      3790.7
+     ],
+     [
+      -5574.1,
+      3790.7
+     ],
+     [
+      -5574.1,
+      3690.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14D",
+    "funcion": null,
+    "color": "#91a552",
+    "hilada": 28,
+    "puntos": [
+     [
+      -6026.1,
+      3790.7
+     ],
+     [
+      -6026.1,
+      3890.7
+     ],
+     [
+      -5574.1,
+      3890.7
+     ],
+     [
+      -5574.1,
+      3790.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F3E14D",
+    "funcion": null,
+    "color": "#91a552",
+    "hilada": 29,
+    "puntos": [
+     [
+      -6026.1,
+      3890.7
+     ],
+     [
+      -6026.1,
+      3990.7
+     ],
+     [
+      -5574.1,
+      3990.7
+     ],
+     [
+      -5574.1,
+      3890.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 1,
+    "puntos": [
+     [
+      -5924.1,
+      1090.7
+     ],
+     [
+      -5924.1,
+      1190.7
+     ],
+     [
+      -5473.1,
+      1190.7
+     ],
+     [
+      -5473.1,
+      1090.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 2,
+    "puntos": [
+     [
+      -5924.1,
+      1190.7
+     ],
+     [
+      -5924.1,
+      1290.7
+     ],
+     [
+      -5473.1,
+      1290.7
+     ],
+     [
+      -5473.1,
+      1190.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 3,
+    "puntos": [
+     [
+      -5924.1,
+      1290.7
+     ],
+     [
+      -5924.1,
+      1390.7
+     ],
+     [
+      -5473.1,
+      1390.7
+     ],
+     [
+      -5473.1,
+      1290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 3,
+    "puntos": [
+     [
+      3921.9,
+      1290.7
+     ],
+     [
+      3921.9,
+      1390.7
+     ],
+     [
+      4370.9,
+      1390.7
+     ],
+     [
+      4370.9,
+      1290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 4,
+    "puntos": [
+     [
+      -5924.1,
+      1390.7
+     ],
+     [
+      -5924.1,
+      1490.7
+     ],
+     [
+      -5473.1,
+      1490.7
+     ],
+     [
+      -5473.1,
+      1390.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 4,
+    "puntos": [
+     [
+      3921.9,
+      1390.7
+     ],
+     [
+      3921.9,
+      1490.7
+     ],
+     [
+      4370.9,
+      1490.7
+     ],
+     [
+      4370.9,
+      1390.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 5,
+    "puntos": [
+     [
+      -5924.1,
+      1490.7
+     ],
+     [
+      -5924.1,
+      1589.7
+     ],
+     [
+      -5473.1,
+      1589.7
+     ],
+     [
+      -5473.1,
+      1490.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 5,
+    "puntos": [
+     [
+      3921.9,
+      1490.7
+     ],
+     [
+      3921.9,
+      1589.7
+     ],
+     [
+      4523.9,
+      1590.7
+     ],
+     [
+      4370.9,
+      1589.7
+     ],
+     [
+      4370.9,
+      1490.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 6,
+    "puntos": [
+     [
+      4370.9,
+      1590.7
+     ],
+     [
+      4370.9,
+      1690.7
+     ],
+     [
+      4922.9,
+      1690.7
+     ],
+     [
+      4922.9,
+      1590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 7,
+    "puntos": [
+     [
+      4370.9,
+      1690.7
+     ],
+     [
+      4370.9,
+      1790.7
+     ],
+     [
+      4922.9,
+      1790.7
+     ],
+     [
+      4922.9,
+      1690.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 8,
+    "puntos": [
+     [
+      4370.9,
+      1790.7
+     ],
+     [
+      4370.9,
+      1890.7
+     ],
+     [
+      4922.9,
+      1890.7
+     ],
+     [
+      4922.9,
+      1790.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 9,
+    "puntos": [
+     [
+      4370.9,
+      1890.7
+     ],
+     [
+      4370.9,
+      1990.7
+     ],
+     [
+      4922.9,
+      1990.7
+     ],
+     [
+      4922.9,
+      1890.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 10,
+    "puntos": [
+     [
+      4370.9,
+      1990.7
+     ],
+     [
+      4370.9,
+      2090.7
+     ],
+     [
+      4922.9,
+      2090.7
+     ],
+     [
+      4922.9,
+      1990.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 11,
+    "puntos": [
+     [
+      4370.9,
+      2090.7
+     ],
+     [
+      4370.9,
+      2190.7
+     ],
+     [
+      4922.9,
+      2190.7
+     ],
+     [
+      4922.9,
+      2090.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 12,
+    "puntos": [
+     [
+      4370.9,
+      2190.7
+     ],
+     [
+      4370.9,
+      2290.7
+     ],
+     [
+      4922.9,
+      2290.7
+     ],
+     [
+      4922.9,
+      2190.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 13,
+    "puntos": [
+     [
+      4370.9,
+      2290.7
+     ],
+     [
+      4370.9,
+      2390.7
+     ],
+     [
+      4922.9,
+      2390.7
+     ],
+     [
+      4922.9,
+      2290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 14,
+    "puntos": [
+     [
+      4370.9,
+      2390.7
+     ],
+     [
+      4370.9,
+      2490.7
+     ],
+     [
+      4922.9,
+      2490.7
+     ],
+     [
+      4922.9,
+      2390.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 15,
+    "puntos": [
+     [
+      4370.9,
+      2490.7
+     ],
+     [
+      4370.9,
+      2590.7
+     ],
+     [
+      4922.9,
+      2590.7
+     ],
+     [
+      4922.9,
+      2490.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 16,
+    "puntos": [
+     [
+      4370.9,
+      2590.7
+     ],
+     [
+      4370.9,
+      2689.7
+     ],
+     [
+      4922.9,
+      2689.7
+     ],
+     [
+      4922.9,
+      2590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 20,
+    "puntos": [
+     [
+      -5924.1,
+      2990.7
+     ],
+     [
+      -5924.1,
+      3090.7
+     ],
+     [
+      -5473.1,
+      3090.7
+     ],
+     [
+      -5473.1,
+      2990.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 21,
+    "puntos": [
+     [
+      -5924.1,
+      3090.7
+     ],
+     [
+      -5924.1,
+      3190.7
+     ],
+     [
+      -5473.1,
+      3190.7
+     ],
+     [
+      -5473.1,
+      3090.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 22,
+    "puntos": [
+     [
+      -5924.1,
+      3190.7
+     ],
+     [
+      -5924.1,
+      3289.7
+     ],
+     [
+      -5473.1,
+      3290.7
+     ],
+     [
+      -5473.1,
+      3190.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30",
+    "funcion": "seguridad",
+    "color": "#ffff7f",
+    "hilada": null,
+    "puntos": [
+     [
+      -6102.1,
+      3290.7
+     ],
+     [
+      -6102.1,
+      3952.7
+     ],
+     [
+      -6026.1,
+      3952.7
+     ],
+     [
+      -6026.1,
+      3289.7
+     ],
+     [
+      -5924.1,
+      3289.7
+     ],
+     [
+      -5924.1,
+      1040.7
+     ],
+     [
+      -6075.1,
+      1040.7
+     ],
+     [
+      -6075.1,
+      3290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30",
+    "funcion": "seguridad",
+    "color": "#ffff7f",
+    "hilada": null,
+    "puntos": [
+     [
+      -5936.1,
+      966.7
+     ],
+     [
+      -5923.1,
+      1041.7
+     ],
+     [
+      -5755.1,
+      1014.7
+     ],
+     [
+      -5752.1,
+      1043.7
+     ],
+     [
+      -5743.1,
+      1089.7
+     ],
+     [
+      -5277.1,
+      1016.7
+     ],
+     [
+      -5277.1,
+      1005.7
+     ],
+     [
+      -5287.1,
+      944.7
+     ],
+     [
+      -5287.1,
+      939.7
+     ],
+     [
+      -5277.1,
+      939.7
+     ],
+     [
+      -5277.1,
+      923.7
+     ],
+     [
+      -5287.1,
+      862.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30",
+    "funcion": "seguridad",
+    "color": "#ffff7f",
+    "hilada": null,
+    "puntos": [
+     [
+      -4725.1,
+      773.7
+     ],
+     [
+      -4725.1,
+      783.7
+     ],
+     [
+      -4714.1,
+      845.7
+     ],
+     [
+      -4714.1,
+      849.7
+     ],
+     [
+      -4725.1,
+      850.7
+     ],
+     [
+      -4725.1,
+      865.7
+     ],
+     [
+      -4714.1,
+      924.7
+     ],
+     [
+      -4714.1,
+      927.7
+     ],
+     [
+      -4725.1,
+      928.7
+     ],
+     [
+      -4725.1,
+      938.7
+     ],
+     [
+      -4713.1,
+      1004.7
+     ],
+     [
+      -2927.1,
+      719.7
+     ],
+     [
+      -2306.1,
+      623.7
+     ],
+     [
+      -1809.1,
+      542.7
+     ],
+     [
+      -1719.1,
+      530.7
+     ],
+     [
+      -1427.1,
+      482.7
+     ],
+     [
+      -1276.1,
+      460.7
+     ],
+     [
+      -1276.1,
+      458.7
+     ],
+     [
+      -1126.1,
+      436.7
+     ],
+     [
+      -1126.1,
+      434.7
+     ],
+     [
+      -985.1,
+      413.7
+     ],
+     [
+      -976.1,
+      410.7
+     ],
+     [
+      -369.1,
+      316.7
+     ],
+     [
+      16.9,
+      253.7
+     ],
+     [
+      123.9,
+      253.7
+     ],
+     [
+      377.9,
+      260.7
+     ],
+     [
+      604.9,
+      272.7
+     ],
+     [
+      837.9,
+      290.7
+     ],
+     [
+      1151.9,
+      323.7
+     ],
+     [
+      1424.9,
+      361.7
+     ],
+     [
+      1724.9,
+      411.7
+     ],
+     [
+      1845.9,
+      436.7
+     ],
+     [
+      1874.9,
+      440.7
+     ],
+     [
+      1874.9,
+      442.7
+     ],
+     [
+      1878.9,
+      443.7
+     ],
+     [
+      2016.9,
+      472.7
+     ],
+     [
+      2024.9,
+      472.7
+     ],
+     [
+      2063.9,
+      483.7
+     ],
+     [
+      2174.9,
+      506.7
+     ],
+     [
+      2177.9,
+      509.7
+     ],
+     [
+      2238.9,
+      524.7
+     ],
+     [
+      2311.9,
+      541.7
+     ],
+     [
+      2324.9,
+      542.7
+     ],
+     [
+      2324.9,
+      544.7
+     ],
+     [
+      2463.9,
+      581.7
+     ],
+     [
+      2474.9,
+      582.7
+     ],
+     [
+      2474.9,
+      584.7
+     ],
+     [
+      2488.9,
+      588.7
+     ],
+     [
+      2617.9,
+      624.7
+     ],
+     [
+      2624.9,
+      624.7
+     ],
+     [
+      2627.9,
+      627.7
+     ],
+     [
+      2675.9,
+      639.7
+     ],
+     [
+      2825.9,
+      685.7
+     ],
+     [
+      2907.9,
+      711.7
+     ],
+     [
+      2909.9,
+      714.7
+     ],
+     [
+      2911.9,
+      712.7
+     ],
+     [
+      2924.9,
+      716.7
+     ],
+     [
+      3147.9,
+      792.7
+     ],
+     [
+      3147.9,
+      794.7
+     ],
+     [
+      3151.9,
+      793.7
+     ],
+     [
+      3189.9,
+      809.7
+     ],
+     [
+      3381.9,
+      878.7
+     ],
+     [
+      3390.9,
+      884.7
+     ],
+     [
+      3513.9,
+      931.7
+     ],
+     [
+      3541.9,
+      944.7
+     ],
+     [
+      3624.9,
+      976.7
+     ],
+     [
+      3652.9,
+      990.7
+     ],
+     [
+      3690.9,
+      1004.7
+     ],
+     [
+      3704.9,
+      1012.7
+     ],
+     [
+      3780.9,
+      1043.7
+     ],
+     [
+      4037.9,
+      1159.7
+     ],
+     [
+      4056.9,
+      1170.7
+     ],
+     [
+      4195.9,
+      1236.7
+     ],
+     [
+      4297.9,
+      1289.7
+     ],
+     [
+      4301.9,
+      1289.7
+     ],
+     [
+      4334.9,
+      1222.7
+     ],
+     [
+      4382.9,
+      1245.7
+     ],
+     [
+      4370.9,
+      1246.7
+     ],
+     [
+      4370.9,
+      1589.7
+     ],
+     [
+      4523.9,
+      1589.7
+     ],
+     [
+      4523.9,
+      1132.7
+     ],
+     [
+      4448.9,
+      1132.7
+     ],
+     [
+      4458.9,
+      1114.7
+     ],
+     [
+      4456.9,
+      1111.7
+     ],
+     [
+      4452.9,
+      1111.7
+     ],
+     [
+      4434.9,
+      1102.7
+     ],
+     [
+      4322.9,
+      1043.7
+     ],
+     [
+      4299.9,
+      1034.7
+     ],
+     [
+      4191.9,
+      979.7
+     ],
+     [
+      4108.9,
+      942.7
+     ],
+     [
+      4049.9,
+      912.7
+     ],
+     [
+      3773.9,
+      790.7
+     ],
+     [
+      3653.9,
+      742.7
+     ],
+     [
+      3636.9,
+      733.7
+     ],
+     [
+      3478.9,
+      671.7
+     ],
+     [
+      3216.9,
+      574.7
+     ],
+     [
+      3076.9,
+      526.7
+     ],
+     [
+      3058.9,
+      522.7
+     ],
+     [
+      2913.9,
+      473.7
+     ],
+     [
+      2766.9,
+      428.7
+     ],
+     [
+      2663.9,
+      400.7
+     ],
+     [
+      2578.9,
+      374.7
+     ],
+     [
+      2327.9,
+      308.7
+     ],
+     [
+      2191.9,
+      277.7
+     ],
+     [
+      2160.9,
+      268.7
+     ],
+     [
+      1954.9,
+      224.7
+     ],
+     [
+      1700.9,
+      175.7
+     ],
+     [
+      1552.9,
+      149.7
+     ],
+     [
+      1391.9,
+      124.7
+     ],
+     [
+      1220.9,
+      103.7
+     ],
+     [
+      1209.9,
+      100.7
+     ],
+     [
+      929.9,
+      69.7
+     ],
+     [
+      621.9,
+      44.7
+     ],
+     [
+      467.9,
+      36.7
+     ],
+     [
+      159.9,
+      25.7
+     ],
+     [
+      4.9,
+      24.7
+     ],
+     [
+      -4436.1,
+      727.7
+     ],
+     [
+      -4513.1,
+      741.7
+     ]
+    ],
+    "huecos": [
+     [
+      [
+       4386.9,
+       1244.7
+      ],
+      [
+       4418.9,
+       1180.7
+      ],
+      [
+       4424.9,
+       1180.7
+      ],
+      [
+       4447.9,
+       1134.7
+      ],
+      [
+       4447.9,
+       1246.7
+      ],
+      [
+       4386.9,
+       1246.7
+      ]
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30",
+    "funcion": "seguridad",
+    "color": "#ffff7f",
+    "hilada": null,
+    "puntos": [
+     [
+      4922.9,
+      1569.7
+     ],
+     [
+      4922.9,
+      2989.7
+     ],
+     [
+      4997.9,
+      2989.7
+     ],
+     [
+      4997.9,
+      1569.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30",
+    "funcion": "seguridad",
+    "color": "#ffff7f",
+    "hilada": null,
+    "puntos": [
+     [
+      5098.9,
+      2509.7
+     ],
+     [
+      5098.9,
+      3240.7
+     ],
+     [
+      5176.9,
+      3240.7
+     ],
+     [
+      5176.9,
+      2586.7
+     ],
+     [
+      5632.9,
+      2586.7
+     ],
+     [
+      5632.9,
+      3240.7
+     ],
+     [
+      5709.9,
+      3240.7
+     ],
+     [
+      5709.9,
+      2509.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -5506.1,
+      549.7
+     ],
+     [
+      -5505.1,
+      897.7
+     ],
+     [
+      -5277.1,
+      861.7
+     ],
+     [
+      -5277.1,
+      539.7
+     ],
+     [
+      -5245.1,
+      539.7
+     ],
+     [
+      -5230.1,
+      519.7
+     ],
+     [
+      -5230.1,
+      428.7
+     ],
+     [
+      -5200.1,
+      339.7
+     ],
+     [
+      -5252.1,
+      339.7
+     ],
+     [
+      -5283.1,
+      428.7
+     ],
+     [
+      -5283.1,
+      513.7
+     ],
+     [
+      -5289.1,
+      519.7
+     ],
+     [
+      -5305.1,
+      519.7
+     ],
+     [
+      -5305.1,
+      484.7
+     ],
+     [
+      -5317.1,
+      484.7
+     ],
+     [
+      -5317.1,
+      549.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -5473.1,
+      1046.7
+     ],
+     [
+      -5473.1,
+      1828.7
+     ],
+     [
+      -5468.1,
+      1828.7
+     ],
+     [
+      -5377.1,
+      1807.7
+     ],
+     [
+      -5287.1,
+      1778.7
+     ],
+     [
+      -5199.1,
+      1740.7
+     ],
+     [
+      -5162.1,
+      1719.7
+     ],
+     [
+      -5176.1,
+      1720.7
+     ],
+     [
+      -5176.1,
+      519.7
+     ],
+     [
+      -5202.1,
+      519.7
+     ],
+     [
+      -5202.1,
+      1720.7
+     ],
+     [
+      -5231.1,
+      1720.7
+     ],
+     [
+      -5245.1,
+      1740.7
+     ],
+     [
+      -5277.1,
+      1740.7
+     ],
+     [
+      -5277.1,
+      1016.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -4826.1,
+      519.7
+     ],
+     [
+      -4826.1,
+      1720.7
+     ],
+     [
+      -4801.1,
+      1720.7
+     ],
+     [
+      -4801.1,
+      519.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -4802.1,
+      339.7
+     ],
+     [
+      -4772.1,
+      428.7
+     ],
+     [
+      -4772.1,
+      520.7
+     ],
+     [
+      -4757.1,
+      539.7
+     ],
+     [
+      -4725.1,
+      539.7
+     ],
+     [
+      -4725.1,
+      773.7
+     ],
+     [
+      -4496.1,
+      738.7
+     ],
+     [
+      -4496.1,
+      549.7
+     ],
+     [
+      -4685.1,
+      549.7
+     ],
+     [
+      -4685.1,
+      484.7
+     ],
+     [
+      -4697.1,
+      484.7
+     ],
+     [
+      -4697.1,
+      519.7
+     ],
+     [
+      -4713.1,
+      519.7
+     ],
+     [
+      -4719.1,
+      513.7
+     ],
+     [
+      -4719.1,
+      428.7
+     ],
+     [
+      -4750.1,
+      339.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -4725.1,
+      1005.7
+     ],
+     [
+      -4725.1,
+      1740.7
+     ],
+     [
+      -4340.1,
+      1649.7
+     ],
+     [
+      -4310.1,
+      1644.7
+     ],
+     [
+      -59.1,
+      972.7
+     ],
+     [
+      -0.1,
+      961.7
+     ],
+     [
+      76.9,
+      951.7
+     ],
+     [
+      166.9,
+      951.7
+     ],
+     [
+      263.9,
+      953.7
+     ],
+     [
+      553.9,
+      966.7
+     ],
+     [
+      844.9,
+      990.7
+     ],
+     [
+      988.9,
+      1005.7
+     ],
+     [
+      1117.9,
+      1022.7
+     ],
+     [
+      1133.9,
+      1022.7
+     ],
+     [
+      1277.9,
+      1042.7
+     ],
+     [
+      1283.9,
+      1045.7
+     ],
+     [
+      1420.9,
+      1065.7
+     ],
+     [
+      1702.9,
+      1116.7
+     ],
+     [
+      1927.9,
+      1164.7
+     ],
+     [
+      2125.9,
+      1211.7
+     ],
+     [
+      2421.9,
+      1291.7
+     ],
+     [
+      2689.9,
+      1373.7
+     ],
+     [
+      2844.9,
+      1425.7
+     ],
+     [
+      3099.9,
+      1517.7
+     ],
+     [
+      3264.9,
+      1581.7
+     ],
+     [
+      3528.9,
+      1692.7
+     ],
+     [
+      3784.9,
+      1810.7
+     ],
+     [
+      3921.9,
+      1877.7
+     ],
+     [
+      3921.9,
+      1289.7
+     ],
+     [
+      4297.9,
+      1289.7
+     ],
+     [
+      4197.9,
+      1237.7
+     ],
+     [
+      4056.9,
+      1170.7
+     ],
+     [
+      4037.9,
+      1159.7
+     ],
+     [
+      3937.9,
+      1115.7
+     ],
+     [
+      3886.9,
+      1090.7
+     ],
+     [
+      3704.9,
+      1012.7
+     ],
+     [
+      3690.9,
+      1004.7
+     ],
+     [
+      3388.9,
+      882.7
+     ],
+     [
+      3385.9,
+      882.7
+     ],
+     [
+      3383.9,
+      887.7
+     ],
+     [
+      3333.9,
+      1022.7
+     ],
+     [
+      3101.9,
+      935.7
+     ],
+     [
+      3028.9,
+      910.7
+     ],
+     [
+      2847.9,
+      849.7
+     ],
+     [
+      2626.9,
+      782.7
+     ],
+     [
+      2624.9,
+      782.7
+     ],
+     [
+      2624.9,
+      875.7
+     ],
+     [
+      2473.9,
+      875.7
+     ],
+     [
+      2473.9,
+      833.7
+     ],
+     [
+      2323.9,
+      833.7
+     ],
+     [
+      2323.9,
+      794.7
+     ],
+     [
+      2173.9,
+      794.7
+     ],
+     [
+      2173.9,
+      757.7
+     ],
+     [
+      2023.9,
+      757.7
+     ],
+     [
+      2023.9,
+      723.7
+     ],
+     [
+      1873.9,
+      723.7
+     ],
+     [
+      1873.9,
+      691.7
+     ],
+     [
+      1723.9,
+      691.7
+     ],
+     [
+      1723.9,
+      663.7
+     ],
+     [
+      1573.9,
+      663.7
+     ],
+     [
+      1573.9,
+      636.7
+     ],
+     [
+      1423.9,
+      636.7
+     ],
+     [
+      1423.9,
+      611.7
+     ],
+     [
+      1273.9,
+      611.7
+     ],
+     [
+      1273.9,
+      590.7
+     ],
+     [
+      1123.9,
+      590.7
+     ],
+     [
+      1123.9,
+      571.7
+     ],
+     [
+      973.9,
+      571.7
+     ],
+     [
+      973.9,
+      554.7
+     ],
+     [
+      823.9,
+      554.7
+     ],
+     [
+      823.9,
+      540.7
+     ],
+     [
+      673.9,
+      540.7
+     ],
+     [
+      673.9,
+      528.7
+     ],
+     [
+      523.9,
+      528.7
+     ],
+     [
+      523.9,
+      518.7
+     ],
+     [
+      373.9,
+      518.7
+     ],
+     [
+      373.9,
+      511.7
+     ],
+     [
+      223.9,
+      511.7
+     ],
+     [
+      223.9,
+      506.7
+     ],
+     [
+      74.9,
+      506.7
+     ],
+     [
+      74.9,
+      519.7
+     ],
+     [
+      -75.1,
+      519.7
+     ],
+     [
+      -75.1,
+      543.7
+     ],
+     [
+      -225.1,
+      543.7
+     ],
+     [
+      -225.1,
+      567.7
+     ],
+     [
+      -375.1,
+      567.7
+     ],
+     [
+      -375.1,
+      591.7
+     ],
+     [
+      -525.1,
+      591.7
+     ],
+     [
+      -525.1,
+      614.7
+     ],
+     [
+      -675.1,
+      614.7
+     ],
+     [
+      -675.1,
+      638.7
+     ],
+     [
+      -825.1,
+      638.7
+     ],
+     [
+      -825.1,
+      662.7
+     ],
+     [
+      -975.1,
+      662.7
+     ],
+     [
+      -975.1,
+      686.7
+     ],
+     [
+      -1125.1,
+      686.7
+     ],
+     [
+      -1125.1,
+      709.7
+     ],
+     [
+      -1275.1,
+      709.7
+     ],
+     [
+      -1275.1,
+      733.7
+     ],
+     [
+      -1426.1,
+      733.7
+     ],
+     [
+      -1426.1,
+      757.7
+     ],
+     [
+      -1575.1,
+      757.7
+     ],
+     [
+      -1575.1,
+      780.7
+     ],
+     [
+      -1726.1,
+      780.7
+     ],
+     [
+      -1726.1,
+      804.7
+     ],
+     [
+      -1875.1,
+      804.7
+     ],
+     [
+      -1875.1,
+      828.7
+     ],
+     [
+      -2026.1,
+      828.7
+     ],
+     [
+      -2026.1,
+      851.7
+     ],
+     [
+      -2175.1,
+      851.7
+     ],
+     [
+      -2175.1,
+      875.7
+     ],
+     [
+      -2326.1,
+      875.7
+     ],
+     [
+      -2326.1,
+      900.7
+     ],
+     [
+      -2475.1,
+      900.7
+     ],
+     [
+      -2475.1,
+      923.7
+     ],
+     [
+      -2626.1,
+      923.7
+     ],
+     [
+      -2626.1,
+      947.7
+     ],
+     [
+      -2775.1,
+      947.7
+     ],
+     [
+      -2775.1,
+      971.7
+     ],
+     [
+      -2927.1,
+      971.7
+     ],
+     [
+      -2927.1,
+      872.7
+     ],
+     [
+      -3420.1,
+      951.7
+     ],
+     [
+      -3443.1,
+      806.7
+     ],
+     [
+      -3444.1,
+      803.7
+     ],
+     [
+      -3454.1,
+      803.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2949.1,
+      723.7
+     ],
+     [
+      -2927.1,
+      859.7
+     ],
+     [
+      -2927.1,
+      720.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2919.1,
+      718.7
+     ],
+     [
+      -2776.1,
+      719.7
+     ],
+     [
+      -2776.1,
+      697.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2770.1,
+      695.7
+     ],
+     [
+      -2627.1,
+      696.7
+     ],
+     [
+      -2627.1,
+      673.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2619.1,
+      671.7
+     ],
+     [
+      -2476.1,
+      672.7
+     ],
+     [
+      -2476.1,
+      649.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2470.1,
+      647.7
+     ],
+     [
+      -2327.1,
+      648.7
+     ],
+     [
+      -2327.1,
+      626.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2319.1,
+      624.7
+     ],
+     [
+      -2176.1,
+      625.7
+     ],
+     [
+      -2176.1,
+      602.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2170.1,
+      600.7
+     ],
+     [
+      -2027.1,
+      601.7
+     ],
+     [
+      -2027.1,
+      578.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2019.1,
+      576.7
+     ],
+     [
+      -1876.1,
+      577.7
+     ],
+     [
+      -1876.1,
+      554.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1869.1,
+      552.7
+     ],
+     [
+      -1727.1,
+      553.7
+     ],
+     [
+      -1727.1,
+      531.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1719.1,
+      529.7
+     ],
+     [
+      -1576.1,
+      530.7
+     ],
+     [
+      -1576.1,
+      506.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1569.1,
+      505.7
+     ],
+     [
+      -1427.1,
+      506.7
+     ],
+     [
+      -1427.1,
+      483.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1419.1,
+      481.7
+     ],
+     [
+      -1276.1,
+      482.7
+     ],
+     [
+      -1276.1,
+      460.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1269.1,
+      457.7
+     ],
+     [
+      -1126.1,
+      458.7
+     ],
+     [
+      -1126.1,
+      436.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1119.1,
+      433.7
+     ],
+     [
+      -976.1,
+      434.7
+     ],
+     [
+      -976.1,
+      411.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -969.1,
+      409.7
+     ],
+     [
+      -826.1,
+      410.7
+     ],
+     [
+      -826.1,
+      388.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -818.1,
+      386.7
+     ],
+     [
+      -676.1,
+      387.7
+     ],
+     [
+      -676.1,
+      364.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -667.1,
+      362.7
+     ],
+     [
+      -526.1,
+      363.7
+     ],
+     [
+      -526.1,
+      340.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -519.1,
+      338.7
+     ],
+     [
+      -376.1,
+      339.7
+     ],
+     [
+      -376.1,
+      317.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -369.1,
+      315.7
+     ],
+     [
+      -226.1,
+      316.7
+     ],
+     [
+      -226.1,
+      293.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -219.1,
+      291.7
+     ],
+     [
+      -76.1,
+      292.7
+     ],
+     [
+      -76.1,
+      269.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -69.1,
+      267.7
+     ],
+     [
+      73.9,
+      268.7
+     ],
+     [
+      73.9,
+      256.7
+     ],
+     [
+      190.9,
+      255.7
+     ],
+     [
+      16.9,
+      253.7
+     ],
+     [
+      9.9,
+      256.7
+     ],
+     [
+      -1.1,
+      256.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      224.9,
+      256.7
+     ],
+     [
+      224.9,
+      260.7
+     ],
+     [
+      338.9,
+      260.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      374.9,
+      260.7
+     ],
+     [
+      374.9,
+      267.7
+     ],
+     [
+      503.9,
+      267.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      524.9,
+      267.7
+     ],
+     [
+      524.9,
+      277.7
+     ],
+     [
+      659.9,
+      277.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      674.9,
+      277.7
+     ],
+     [
+      674.9,
+      289.7
+     ],
+     [
+      812.9,
+      289.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      824.9,
+      289.7
+     ],
+     [
+      824.9,
+      303.7
+     ],
+     [
+      963.9,
+      303.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      974.9,
+      303.7
+     ],
+     [
+      974.9,
+      320.7
+     ],
+     [
+      1115.9,
+      320.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      1124.9,
+      321.7
+     ],
+     [
+      1124.9,
+      339.7
+     ],
+     [
+      1265.9,
+      339.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      1274.9,
+      340.7
+     ],
+     [
+      1274.9,
+      361.7
+     ],
+     [
+      1415.9,
+      361.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      1424.9,
+      362.7
+     ],
+     [
+      1424.9,
+      385.7
+     ],
+     [
+      1566.9,
+      385.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      1574.9,
+      386.7
+     ],
+     [
+      1574.9,
+      411.7
+     ],
+     [
+      1716.9,
+      411.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      1724.9,
+      412.7
+     ],
+     [
+      1724.9,
+      440.7
+     ],
+     [
+      1866.9,
+      440.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      1874.9,
+      442.7
+     ],
+     [
+      1874.9,
+      472.7
+     ],
+     [
+      2016.9,
+      472.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2024.9,
+      473.7
+     ],
+     [
+      2024.9,
+      506.7
+     ],
+     [
+      2167.9,
+      506.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2174.9,
+      508.7
+     ],
+     [
+      2174.9,
+      542.7
+     ],
+     [
+      2316.9,
+      542.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2324.9,
+      544.7
+     ],
+     [
+      2324.9,
+      582.7
+     ],
+     [
+      2467.9,
+      582.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2474.9,
+      584.7
+     ],
+     [
+      2474.9,
+      624.7
+     ],
+     [
+      2617.9,
+      624.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2624.9,
+      626.7
+     ],
+     [
+      2625.9,
+      775.7
+     ],
+     [
+      2667.9,
+      638.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      5176.9,
+      2586.7
+     ],
+     [
+      5176.9,
+      3240.7
+     ],
+     [
+      5632.9,
+      3240.7
+     ],
+     [
+      5632.9,
+      2586.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      5768.9,
+      2319.7
+     ],
+     [
+      5769.9,
+      3540.7
+     ],
+     [
+      5929.9,
+      3540.7
+     ],
+     [
+      5929.9,
+      2319.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      -6102.1,
+      992.7
+     ],
+     [
+      -6102.1,
+      1039.7
+     ],
+     [
+      -5924.1,
+      1040.7
+     ],
+     [
+      -5924.1,
+      1089.7
+     ],
+     [
+      -5743.1,
+      1089.7
+     ],
+     [
+      -5752.1,
+      1043.7
+     ],
+     [
+      -5755.1,
+      1014.7
+     ],
+     [
+      -5923.1,
+      1041.7
+     ],
+     [
+      -5936.1,
+      966.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      -6102.1,
+      3952.7
+     ],
+     [
+      -6102.1,
+      4050.7
+     ],
+     [
+      -5886.1,
+      4050.7
+     ],
+     [
+      -5886.1,
+      4090.7
+     ],
+     [
+      -5577.1,
+      3991.7
+     ],
+     [
+      -6026.1,
+      3990.7
+     ],
+     [
+      -6026.1,
+      3952.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      -5737.1,
+      1088.7
+     ],
+     [
+      -5473.1,
+      1089.7
+     ],
+     [
+      -5473.1,
+      1046.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      4301.9,
+      1287.7
+     ],
+     [
+      4301.9,
+      1289.7
+     ],
+     [
+      4370.9,
+      1289.7
+     ],
+     [
+      4370.9,
+      1246.7
+     ],
+     [
+      4382.9,
+      1245.7
+     ],
+     [
+      4334.9,
+      1222.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      4386.9,
+      1244.7
+     ],
+     [
+      4386.9,
+      1246.7
+     ],
+     [
+      4447.9,
+      1246.7
+     ],
+     [
+      4447.9,
+      1134.7
+     ],
+     [
+      4424.9,
+      1180.7
+     ],
+     [
+      4418.9,
+      1180.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      4448.9,
+      1131.7
+     ],
+     [
+      4493.9,
+      1132.7
+     ],
+     [
+      4460.9,
+      1114.7
+     ],
+     [
+      4457.9,
+      1114.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      4495.9,
+      1130.7
+     ],
+     [
+      4495.9,
+      1132.7
+     ],
+     [
+      4520.9,
+      1132.7
+     ],
+     [
+      4501.9,
+      1121.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      4523.9,
+      1539.7
+     ],
+     [
+      4523.9,
+      1590.7
+     ],
+     [
+      4922.9,
+      1590.7
+     ],
+     [
+      4922.9,
+      1569.7
+     ],
+     [
+      4585.9,
+      1569.7
+     ],
+     [
+      4585.9,
+      1539.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      4997.9,
+      1569.7
+     ],
+     [
+      4997.9,
+      3090.7
+     ],
+     [
+      5019.9,
+      3090.7
+     ],
+     [
+      5019.9,
+      1569.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAP HAR198",
+    "funcion": null,
+    "color": "#7a00a3",
+    "hilada": null,
+    "puntos": [
+     [
+      -5230.1,
+      428.7
+     ],
+     [
+      -5230.1,
+      519.7
+     ],
+     [
+      -5160.1,
+      519.7
+     ],
+     [
+      -5140.1,
+      498.7
+     ],
+     [
+      -5090.1,
+      498.7
+     ],
+     [
+      -5090.1,
+      339.7
+     ],
+     [
+      -5200.1,
+      339.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAP HAR198",
+    "funcion": null,
+    "color": "#7a00a3",
+    "hilada": null,
+    "puntos": [
+     [
+      -4911.1,
+      339.7
+     ],
+     [
+      -4911.1,
+      497.7
+     ],
+     [
+      -4862.1,
+      498.7
+     ],
+     [
+      -4843.1,
+      519.7
+     ],
+     [
+      -4772.1,
+      519.7
+     ],
+     [
+      -4772.1,
+      428.7
+     ],
+     [
+      -4802.1,
+      339.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAP HMC153",
+    "funcion": null,
+    "color": "#7f7fff",
+    "hilada": null,
+    "puntos": [
+     [
+      -5277.1,
+      539.7
+     ],
+     [
+      -5277.1,
+      1740.7
+     ],
+     [
+      -5245.1,
+      1740.7
+     ],
+     [
+      -5231.1,
+      1720.7
+     ],
+     [
+      -5202.1,
+      1720.7
+     ],
+     [
+      -5202.1,
+      519.7
+     ],
+     [
+      -5231.1,
+      519.7
+     ],
+     [
+      -5245.1,
+      539.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAP HMC153",
+    "funcion": null,
+    "color": "#7f7fff",
+    "hilada": null,
+    "puntos": [
+     [
+      -4801.1,
+      519.7
+     ],
+     [
+      -4801.1,
+      1720.7
+     ],
+     [
+      -4770.1,
+      1720.7
+     ],
+     [
+      -4757.1,
+      1740.7
+     ],
+     [
+      -4725.1,
+      1740.7
+     ],
+     [
+      -4725.1,
+      539.7
+     ],
+     [
+      -4757.1,
+      539.7
+     ],
+     [
+      -4772.1,
+      519.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAP HMC193X",
+    "funcion": null,
+    "color": "#ff7fdf",
+    "hilada": null,
+    "puntos": [
+     [
+      -5176.1,
+      519.7
+     ],
+     [
+      -5176.1,
+      1720.7
+     ],
+     [
+      -5164.1,
+      1720.7
+     ],
+     [
+      -5150.1,
+      1715.7
+     ],
+     [
+      -5143.1,
+      1709.7
+     ],
+     [
+      -5131.1,
+      1686.7
+     ],
+     [
+      -5122.1,
+      1656.7
+     ],
+     [
+      -5119.1,
+      1623.7
+     ],
+     [
+      -5116.1,
+      1621.7
+     ],
+     [
+      -5113.1,
+      1578.7
+     ],
+     [
+      -5105.1,
+      1429.7
+     ],
+     [
+      -5106.1,
+      1379.7
+     ],
+     [
+      -5101.1,
+      1141.7
+     ],
+     [
+      -5090.1,
+      954.7
+     ],
+     [
+      -5090.1,
+      498.7
+     ],
+     [
+      -5140.1,
+      498.7
+     ],
+     [
+      -5159.1,
+      519.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERTAP HMC193X",
+    "funcion": null,
+    "color": "#ff7fdf",
+    "hilada": null,
+    "puntos": [
+     [
+      -4911.1,
+      498.7
+     ],
+     [
+      -4911.1,
+      959.7
+     ],
+     [
+      -4901.1,
+      1159.7
+     ],
+     [
+      -4897.1,
+      1430.7
+     ],
+     [
+      -4887.1,
+      1610.7
+     ],
+     [
+      -4886.1,
+      1621.7
+     ],
+     [
+      -4883.1,
+      1623.7
+     ],
+     [
+      -4883.1,
+      1641.7
+     ],
+     [
+      -4877.1,
+      1668.7
+     ],
+     [
+      -4862.1,
+      1705.7
+     ],
+     [
+      -4857.1,
+      1711.7
+     ],
+     [
+      -4845.1,
+      1718.7
+     ],
+     [
+      -4826.1,
+      1720.7
+     ],
+     [
+      -4826.1,
+      519.7
+     ],
+     [
+      -4843.1,
+      519.7
+     ],
+     [
+      -4862.1,
+      498.7
+     ]
+    ]
+   },
+   {
+    "material": "ISOMAG 70 XCO",
+    "funcion": null,
+    "color": "#ff0000",
+    "hilada": null,
+    "puntos": [
+     [
+      -6102.1,
+      920.7
+     ],
+     [
+      -6101.1,
+      992.7
+     ],
+     [
+      -5505.1,
+      898.7
+     ],
+     [
+      -5505.1,
+      871.7
+     ],
+     [
+      -6089.1,
+      965.7
+     ],
+     [
+      -6094.1,
+      965.7
+     ],
+     [
+      -6095.1,
+      962.7
+     ]
+    ]
+   },
+   {
+    "material": "ISOMAG 70 XCO",
+    "funcion": null,
+    "color": "#ff0000",
+    "hilada": null,
+    "puntos": [
+     [
+      -6102.1,
+      1039.7
+     ],
+     [
+      -6102.1,
+      3290.7
+     ],
+     [
+      -6075.1,
+      3290.7
+     ],
+     [
+      -6075.1,
+      1039.7
+     ]
+    ]
+   },
+   {
+    "material": "ISOMAG 70 XCO",
+    "funcion": null,
+    "color": "#ff0000",
+    "hilada": null,
+    "puntos": [
+     [
+      -4496.1,
+      711.7
+     ],
+     [
+      -4496.1,
+      737.7
+     ],
+     [
+      -4492.1,
+      737.7
+     ],
+     [
+      4.9,
+      24.7
+     ],
+     [
+      290.9,
+      28.7
+     ],
+     [
+      433.9,
+      34.7
+     ],
+     [
+      621.9,
+      44.7
+     ],
+     [
+      898.9,
+      66.7
+     ],
+     [
+      1005.9,
+      76.7
+     ],
+     [
+      1209.9,
+      100.7
+     ],
+     [
+      1220.9,
+      103.7
+     ],
+     [
+      1391.9,
+      124.7
+     ],
+     [
+      1552.9,
+      149.7
+     ],
+     [
+      1758.9,
+      185.7
+     ],
+     [
+      1915.9,
+      216.7
+     ],
+     [
+      2160.9,
+      268.7
+     ],
+     [
+      2191.9,
+      277.7
+     ],
+     [
+      2315.9,
+      305.7
+     ],
+     [
+      2578.9,
+      374.7
+     ],
+     [
+      2913.9,
+      473.7
+     ],
+     [
+      3216.9,
+      574.7
+     ],
+     [
+      3478.9,
+      671.7
+     ],
+     [
+      3636.9,
+      733.7
+     ],
+     [
+      3653.9,
+      742.7
+     ],
+     [
+      3799.9,
+      801.7
+     ],
+     [
+      4049.9,
+      912.7
+     ],
+     [
+      4089.9,
+      933.7
+     ],
+     [
+      4191.9,
+      979.7
+     ],
+     [
+      4234.9,
+      1002.7
+     ],
+     [
+      4320.9,
+      1042.7
+     ],
+     [
+      4434.9,
+      1102.7
+     ],
+     [
+      4452.9,
+      1111.7
+     ],
+     [
+      4456.9,
+      1111.7
+     ],
+     [
+      4465.9,
+      1118.7
+     ],
+     [
+      4493.9,
+      1132.7
+     ],
+     [
+      4495.9,
+      1132.7
+     ],
+     [
+      4500.9,
+      1121.7
+     ],
+     [
+      4523.9,
+      1132.7
+     ],
+     [
+      4523.9,
+      1539.7
+     ],
+     [
+      4549.9,
+      1539.7
+     ],
+     [
+      4549.9,
+      1132.7
+     ],
+     [
+      4413.9,
+      1063.7
+     ],
+     [
+      4406.9,
+      1057.7
+     ],
+     [
+      4118.9,
+      916.7
+     ],
+     [
+      3867.9,
+      803.7
+     ],
+     [
+      3721.9,
+      743.7
+     ],
+     [
+      3700.9,
+      732.7
+     ],
+     [
+      3431.9,
+      626.7
+     ],
+     [
+      3296.9,
+      576.7
+     ],
+     [
+      3090.9,
+      504.7
+     ],
+     [
+      2859.9,
+      430.7
+     ],
+     [
+      2673.9,
+      374.7
+     ],
+     [
+      2369.9,
+      292.7
+     ],
+     [
+      2279.9,
+      272.7
+     ],
+     [
+      2223.9,
+      257.7
+     ],
+     [
+      2128.9,
+      237.7
+     ],
+     [
+      2072.9,
+      222.7
+     ],
+     [
+      1982.9,
+      205.7
+     ],
+     [
+      1920.9,
+      190.7
+     ],
+     [
+      1615.9,
+      134.7
+     ],
+     [
+      1401.9,
+      101.7
+     ],
+     [
+      1343.9,
+      94.7
+     ],
+     [
+      1308.9,
+      87.7
+     ],
+     [
+      1163.9,
+      68.7
+     ],
+     [
+      868.9,
+      38.7
+     ],
+     [
+      725.9,
+      26.7
+     ],
+     [
+      655.9,
+      23.7
+     ],
+     [
+      581.9,
+      16.7
+     ],
+     [
+      512.9,
+      14.7
+     ],
+     [
+      490.9,
+      11.7
+     ],
+     [
+      294.9,
+      3.7
+     ],
+     [
+      5.9,
+      -1.3
+     ]
+    ]
+   }
+  ],
+  "etiquetas": [
+   {
+    "texto": "S9X41/2X3",
+    "x": 5929.0,
+    "y": 656.2
+   },
+   {
+    "texto": "450",
+    "x": -5826.0,
+    "y": 1133.8
+   },
+   {
+    "texto": "01",
+    "x": -5532.0,
+    "y": 1134.0
+   },
+   {
+    "texto": "450",
+    "x": 4285.6,
+    "y": 1333.8
+   },
+   {
+    "texto": "03",
+    "x": 3991.4,
+    "y": 1334.0
+   },
+   {
+    "texto": "55/0",
+    "x": 6032.6,
+    "y": 1465.9
+   },
+   {
+    "texto": "450",
+    "x": -5826.0,
+    "y": 1533.8
+   },
+   {
+    "texto": "450",
+    "x": 4276.7,
+    "y": 1533.8
+   },
+   {
+    "texto": "05",
+    "x": -5532.0,
+    "y": 1534.0
+   },
+   {
+    "texto": "05",
+    "x": 3991.4,
+    "y": 1534.0
+   },
+   {
+    "texto": "450",
+    "x": -5826.0,
+    "y": 1633.8
+   },
+   {
+    "texto": "450",
+    "x": 4276.7,
+    "y": 1633.8
+   },
+   {
+    "texto": "550",
+    "x": 4789.4,
+    "y": 1633.8
+   },
+   {
+    "texto": "06",
+    "x": -5532.0,
+    "y": 1634.0
+   },
+   {
+    "texto": "06",
+    "x": 3991.4,
+    "y": 1634.0
+   },
+   {
+    "texto": "6,9t/m³",
+    "x": 1254.2,
+    "y": 1945.9
+   },
+   {
+    "texto": "10",
+    "x": -5532.0,
+    "y": 2034.1
+   },
+   {
+    "texto": "10",
+    "x": 3982.5,
+    "y": 2034.1
+   },
+   {
+    "texto": "150mt",
+    "x": 1019.7,
+    "y": 2155.7
+   },
+   {
+    "texto": "(Hot",
+    "x": 1547.9,
+    "y": 2155.7
+   },
+   {
+    "texto": "Heel)",
+    "x": 2020.6,
+    "y": 2155.7
+   },
+   {
+    "texto": "15",
+    "x": -5532.0,
+    "y": 2534.2
+   },
+   {
+    "texto": "15",
+    "x": 3982.5,
+    "y": 2534.2
+   },
+   {
+    "texto": "550",
+    "x": 4789.4,
+    "y": 2635.5
+   },
+   {
+    "texto": "17",
+    "x": 3982.5,
+    "y": 2734.2
+   },
+   {
+    "texto": "550",
+    "x": 4789.4,
+    "y": 2735.5
+   },
+   {
+    "texto": "6,9t/m³",
+    "x": 2085.8,
+    "y": 2745.2
+   },
+   {
+    "texto": "70/0",
+    "x": 4526.7,
+    "y": 2834.0
+   },
+   {
+    "texto": "35/0",
+    "x": 4826.0,
+    "y": 2834.0
+   },
+   {
+    "texto": "150+300mt",
+    "x": 1955.8,
+    "y": 2930.7
+   },
+   {
+    "texto": "450",
+    "x": -5826.0,
+    "y": 2934.0
+   },
+   {
+    "texto": "70/0",
+    "x": 4526.7,
+    "y": 2934.0
+   },
+   {
+    "texto": "19",
+    "x": -5532.0,
+    "y": 2934.2
+   },
+   {
+    "texto": "35/0",
+    "x": 4826.0,
+    "y": 2935.5
+   },
+   {
+    "texto": "450",
+    "x": -5826.0,
+    "y": 3034.0
+   },
+   {
+    "texto": "70/0",
+    "x": 4551.9,
+    "y": 3034.0
+   },
+   {
+    "texto": "35/0",
+    "x": 4902.3,
+    "y": 3034.0
+   },
+   {
+    "texto": "20",
+    "x": -5532.0,
+    "y": 3034.2
+   },
+   {
+    "texto": "70/0",
+    "x": 4579.3,
+    "y": 3159.2
+   },
+   {
+    "texto": "35/0",
+    "x": 4899.3,
+    "y": 3159.2
+   },
+   {
+    "texto": "450",
+    "x": -5826.0,
+    "y": 3234.0
+   },
+   {
+    "texto": "22",
+    "x": -5532.0,
+    "y": 3234.2
+   },
+   {
+    "texto": "70/0",
+    "x": 4629.7,
+    "y": 3308.9
+   },
+   {
+    "texto": "70/0",
+    "x": 5329.7,
+    "y": 3308.9
+   },
+   {
+    "texto": "70/0",
+    "x": 5674.2,
+    "y": 3308.9
+   },
+   {
+    "texto": "450",
+    "x": -5927.5,
+    "y": 3334.1
+   },
+   {
+    "texto": "23",
+    "x": -5633.5,
+    "y": 3334.3
+   },
+   {
+    "texto": "70/0",
+    "x": 4679.3,
+    "y": 3459.3
+   },
+   {
+    "texto": "70/0",
+    "x": 5379.4,
+    "y": 3459.3
+   },
+   {
+    "texto": "70/0",
+    "x": 5674.2,
+    "y": 3459.3
+   },
+   {
+    "texto": "25",
+    "x": -5633.5,
+    "y": 3534.3
+   },
+   {
+    "texto": "450",
+    "x": -5927.5,
+    "y": 3934.1
+   },
+   {
+    "texto": "29",
+    "x": -5633.5,
+    "y": 3934.3
+   },
+   {
+    "texto": "C/C",
+    "x": 6319.2,
+    "y": 4473.7
+   }
+  ]
+ },
+ "seccion_cc": {
+  "estado": "medido_a_escala",
+  "vista": "C-C, hoja 1 (1:35)",
+  "calibracion": {
+   "pt_por_mm": 0.08099,
+   "eje_pt": 1806.05,
+   "y0_pt": 526.5,
+   "nota": "1:35 comprobada con Ø9 100 y Ø7 844; Y = 0 como en A-A"
+  },
+  "nota": "Sección transversal por el centro; x es la Z del archivo tal como la dibuja la hoja (simétrica). Mismo método que A-A.",
+  "poligonos": [
+   {
+    "material": "ANCARBON C F7E10",
+    "funcion": null,
+    "color": "#ffbf7f",
+    "hilada": null,
+    "puntos": [
+     [
+      -3351.8,
+      865.7
+     ],
+     [
+      -3351.8,
+      1116.7
+     ],
+     [
+      -3250.8,
+      1116.7
+     ],
+     [
+      -3250.8,
+      1079.7
+     ],
+     [
+      -3150.8,
+      1079.7
+     ],
+     [
+      -3150.8,
+      1043.7
+     ],
+     [
+      -3050.8,
+      1043.7
+     ],
+     [
+      -3050.8,
+      1009.7
+     ],
+     [
+      -2950.8,
+      1009.7
+     ],
+     [
+      -2950.8,
+      975.7
+     ],
+     [
+      -2850.8,
+      975.7
+     ],
+     [
+      -2850.8,
+      943.7
+     ],
+     [
+      -2750.8,
+      943.7
+     ],
+     [
+      -2750.8,
+      912.7
+     ],
+     [
+      -2650.8,
+      912.7
+     ],
+     [
+      -2650.8,
+      882.7
+     ],
+     [
+      -2550.8,
+      882.7
+     ],
+     [
+      -2550.8,
+      854.7
+     ],
+     [
+      -2450.8,
+      854.7
+     ],
+     [
+      -2450.8,
+      826.7
+     ],
+     [
+      -2350.8,
+      826.7
+     ],
+     [
+      -2350.8,
+      800.7
+     ],
+     [
+      -2250.8,
+      800.7
+     ],
+     [
+      -2250.8,
+      775.7
+     ],
+     [
+      -2150.8,
+      775.7
+     ],
+     [
+      -2150.8,
+      751.7
+     ],
+     [
+      -2050.8,
+      751.7
+     ],
+     [
+      -2050.8,
+      729.7
+     ],
+     [
+      -1950.8,
+      729.7
+     ],
+     [
+      -1950.8,
+      707.7
+     ],
+     [
+      -1850.8,
+      707.7
+     ],
+     [
+      -1850.8,
+      686.7
+     ],
+     [
+      -1750.8,
+      686.7
+     ],
+     [
+      -1750.8,
+      667.7
+     ],
+     [
+      -1650.8,
+      667.7
+     ],
+     [
+      -1650.8,
+      649.7
+     ],
+     [
+      -1550.8,
+      649.7
+     ],
+     [
+      -1550.8,
+      631.7
+     ],
+     [
+      -1450.8,
+      631.7
+     ],
+     [
+      -1450.8,
+      615.7
+     ],
+     [
+      -1350.8,
+      615.7
+     ],
+     [
+      -1350.8,
+      600.7
+     ],
+     [
+      -1250.8,
+      600.7
+     ],
+     [
+      -1250.8,
+      586.7
+     ],
+     [
+      -1150.8,
+      586.7
+     ],
+     [
+      -1150.8,
+      574.7
+     ],
+     [
+      -1050.8,
+      574.7
+     ],
+     [
+      -1050.8,
+      562.7
+     ],
+     [
+      -950.8,
+      562.7
+     ],
+     [
+      -950.8,
+      551.7
+     ],
+     [
+      -850.8,
+      551.7
+     ],
+     [
+      -850.8,
+      542.7
+     ],
+     [
+      -750.8,
+      542.7
+     ],
+     [
+      -750.8,
+      534.7
+     ],
+     [
+      -650.8,
+      534.7
+     ],
+     [
+      -650.8,
+      526.7
+     ],
+     [
+      -550.8,
+      526.7
+     ],
+     [
+      -550.8,
+      520.7
+     ],
+     [
+      -450.8,
+      520.7
+     ],
+     [
+      -450.8,
+      514.7
+     ],
+     [
+      -350.8,
+      514.7
+     ],
+     [
+      -350.8,
+      510.7
+     ],
+     [
+      -250.8,
+      510.7
+     ],
+     [
+      -250.8,
+      507.7
+     ],
+     [
+      -150.8,
+      507.7
+     ],
+     [
+      -150.8,
+      505.7
+     ],
+     [
+      148.2,
+      505.7
+     ],
+     [
+      148.2,
+      507.7
+     ],
+     [
+      248.2,
+      507.7
+     ],
+     [
+      248.2,
+      510.7
+     ],
+     [
+      348.2,
+      510.7
+     ],
+     [
+      348.2,
+      514.7
+     ],
+     [
+      448.2,
+      514.7
+     ],
+     [
+      448.2,
+      520.7
+     ],
+     [
+      548.2,
+      520.7
+     ],
+     [
+      548.2,
+      526.7
+     ],
+     [
+      648.2,
+      526.7
+     ],
+     [
+      648.2,
+      534.7
+     ],
+     [
+      748.2,
+      534.7
+     ],
+     [
+      748.2,
+      542.7
+     ],
+     [
+      848.2,
+      542.7
+     ],
+     [
+      848.2,
+      551.7
+     ],
+     [
+      948.2,
+      551.7
+     ],
+     [
+      948.2,
+      562.7
+     ],
+     [
+      1048.2,
+      562.7
+     ],
+     [
+      1048.2,
+      574.7
+     ],
+     [
+      1148.2,
+      574.7
+     ],
+     [
+      1148.2,
+      586.7
+     ],
+     [
+      1248.2,
+      586.7
+     ],
+     [
+      1248.2,
+      600.7
+     ],
+     [
+      1348.2,
+      600.7
+     ],
+     [
+      1348.2,
+      615.7
+     ],
+     [
+      1448.2,
+      615.7
+     ],
+     [
+      1448.2,
+      631.7
+     ],
+     [
+      1548.2,
+      631.7
+     ],
+     [
+      1548.2,
+      649.7
+     ],
+     [
+      1648.2,
+      649.7
+     ],
+     [
+      1648.2,
+      667.7
+     ],
+     [
+      1749.2,
+      667.7
+     ],
+     [
+      1749.2,
+      686.7
+     ],
+     [
+      1849.2,
+      686.7
+     ],
+     [
+      1849.2,
+      707.7
+     ],
+     [
+      1949.2,
+      707.7
+     ],
+     [
+      1949.2,
+      729.7
+     ],
+     [
+      2049.2,
+      729.7
+     ],
+     [
+      2049.2,
+      751.7
+     ],
+     [
+      2149.2,
+      751.7
+     ],
+     [
+      2149.2,
+      775.7
+     ],
+     [
+      2249.2,
+      775.7
+     ],
+     [
+      2249.2,
+      800.7
+     ],
+     [
+      2349.2,
+      800.7
+     ],
+     [
+      2349.2,
+      826.7
+     ],
+     [
+      2449.2,
+      826.7
+     ],
+     [
+      2449.2,
+      854.7
+     ],
+     [
+      2549.2,
+      854.7
+     ],
+     [
+      2549.2,
+      882.7
+     ],
+     [
+      2649.2,
+      882.7
+     ],
+     [
+      2649.2,
+      912.7
+     ],
+     [
+      2749.2,
+      912.7
+     ],
+     [
+      2749.2,
+      943.7
+     ],
+     [
+      2849.2,
+      943.7
+     ],
+     [
+      2849.2,
+      975.7
+     ],
+     [
+      2949.2,
+      975.7
+     ],
+     [
+      2949.2,
+      1009.7
+     ],
+     [
+      3049.2,
+      1009.7
+     ],
+     [
+      3049.2,
+      1043.7
+     ],
+     [
+      3149.2,
+      1043.7
+     ],
+     [
+      3149.2,
+      1079.7
+     ],
+     [
+      3249.2,
+      1079.7
+     ],
+     [
+      3249.2,
+      1116.7
+     ],
+     [
+      3350.2,
+      1116.7
+     ],
+     [
+      3350.2,
+      865.7
+     ],
+     [
+      3249.2,
+      866.7
+     ],
+     [
+      3250.2,
+      828.7
+     ],
+     [
+      3149.2,
+      829.7
+     ],
+     [
+      3150.2,
+      792.7
+     ],
+     [
+      3049.2,
+      793.7
+     ],
+     [
+      3050.2,
+      757.7
+     ],
+     [
+      2949.2,
+      758.7
+     ],
+     [
+      2950.2,
+      724.7
+     ],
+     [
+      2849.2,
+      725.7
+     ],
+     [
+      2850.2,
+      692.7
+     ],
+     [
+      2749.2,
+      693.7
+     ],
+     [
+      2750.2,
+      661.7
+     ],
+     [
+      2649.2,
+      662.7
+     ],
+     [
+      2650.2,
+      631.7
+     ],
+     [
+      2549.2,
+      632.7
+     ],
+     [
+      2550.2,
+      602.7
+     ],
+     [
+      2449.2,
+      603.7
+     ],
+     [
+      2450.2,
+      575.7
+     ],
+     [
+      2349.2,
+      576.7
+     ],
+     [
+      2350.2,
+      549.7
+     ],
+     [
+      2249.2,
+      550.7
+     ],
+     [
+      2250.2,
+      524.7
+     ],
+     [
+      2149.2,
+      525.7
+     ],
+     [
+      2150.2,
+      500.7
+     ],
+     [
+      2049.2,
+      501.7
+     ],
+     [
+      2050.2,
+      477.7
+     ],
+     [
+      1949.2,
+      478.7
+     ],
+     [
+      1949.2,
+      456.7
+     ],
+     [
+      1849.2,
+      457.7
+     ],
+     [
+      1850.2,
+      435.7
+     ],
+     [
+      1749.2,
+      436.7
+     ],
+     [
+      1749.2,
+      416.7
+     ],
+     [
+      1648.2,
+      417.7
+     ],
+     [
+      1648.2,
+      398.7
+     ],
+     [
+      1548.2,
+      399.7
+     ],
+     [
+      1548.2,
+      382.7
+     ],
+     [
+      1448.2,
+      382.7
+     ],
+     [
+      1448.2,
+      366.7
+     ],
+     [
+      1348.2,
+      366.7
+     ],
+     [
+      1348.2,
+      351.7
+     ],
+     [
+      1248.2,
+      351.7
+     ],
+     [
+      1248.2,
+      337.7
+     ],
+     [
+      1148.2,
+      337.7
+     ],
+     [
+      1148.2,
+      324.7
+     ],
+     [
+      1048.2,
+      324.7
+     ],
+     [
+      1048.2,
+      312.7
+     ],
+     [
+      948.2,
+      312.7
+     ],
+     [
+      948.2,
+      302.7
+     ],
+     [
+      848.2,
+      302.7
+     ],
+     [
+      848.2,
+      292.7
+     ],
+     [
+      748.2,
+      292.7
+     ],
+     [
+      748.2,
+      283.7
+     ],
+     [
+      648.2,
+      283.7
+     ],
+     [
+      648.2,
+      275.7
+     ],
+     [
+      549.2,
+      275.7
+     ],
+     [
+      549.2,
+      269.7
+     ],
+     [
+      449.2,
+      269.7
+     ],
+     [
+      449.2,
+      264.7
+     ],
+     [
+      349.2,
+      264.7
+     ],
+     [
+      349.2,
+      259.7
+     ],
+     [
+      249.2,
+      259.7
+     ],
+     [
+      249.2,
+      256.7
+     ],
+     [
+      49.2,
+      253.7
+     ],
+     [
+      -151.8,
+      254.7
+     ],
+     [
+      -151.8,
+      256.7
+     ],
+     [
+      -251.8,
+      256.7
+     ],
+     [
+      -251.8,
+      259.7
+     ],
+     [
+      -351.8,
+      259.7
+     ],
+     [
+      -351.8,
+      264.7
+     ],
+     [
+      -451.8,
+      264.7
+     ],
+     [
+      -451.8,
+      269.7
+     ],
+     [
+      -551.8,
+      269.7
+     ],
+     [
+      -551.8,
+      275.7
+     ],
+     [
+      -651.8,
+      275.7
+     ],
+     [
+      -651.8,
+      282.7
+     ],
+     [
+      -751.8,
+      282.7
+     ],
+     [
+      -751.8,
+      291.7
+     ],
+     [
+      -851.8,
+      291.7
+     ],
+     [
+      -851.8,
+      301.7
+     ],
+     [
+      -951.8,
+      301.7
+     ],
+     [
+      -951.8,
+      311.7
+     ],
+     [
+      -1051.8,
+      311.7
+     ],
+     [
+      -1051.8,
+      323.7
+     ],
+     [
+      -1151.8,
+      323.7
+     ],
+     [
+      -1151.8,
+      336.7
+     ],
+     [
+      -1251.8,
+      336.7
+     ],
+     [
+      -1251.8,
+      350.7
+     ],
+     [
+      -1351.8,
+      350.7
+     ],
+     [
+      -1351.8,
+      365.7
+     ],
+     [
+      -1451.8,
+      365.7
+     ],
+     [
+      -1451.8,
+      381.7
+     ],
+     [
+      -1551.8,
+      381.7
+     ],
+     [
+      -1551.8,
+      398.7
+     ],
+     [
+      -1651.8,
+      398.7
+     ],
+     [
+      -1651.8,
+      416.7
+     ],
+     [
+      -1751.8,
+      416.7
+     ],
+     [
+      -1751.8,
+      435.7
+     ],
+     [
+      -1851.8,
+      435.7
+     ],
+     [
+      -1851.8,
+      456.7
+     ],
+     [
+      -1951.8,
+      456.7
+     ],
+     [
+      -1951.8,
+      477.7
+     ],
+     [
+      -2051.8,
+      477.7
+     ],
+     [
+      -2051.8,
+      500.7
+     ],
+     [
+      -2151.8,
+      500.7
+     ],
+     [
+      -2151.8,
+      524.7
+     ],
+     [
+      -2251.8,
+      524.7
+     ],
+     [
+      -2251.8,
+      549.7
+     ],
+     [
+      -2351.8,
+      549.7
+     ],
+     [
+      -2351.8,
+      575.7
+     ],
+     [
+      -2451.8,
+      575.7
+     ],
+     [
+      -2451.8,
+      602.7
+     ],
+     [
+      -2551.8,
+      602.7
+     ],
+     [
+      -2551.8,
+      631.7
+     ],
+     [
+      -2651.8,
+      631.7
+     ],
+     [
+      -2651.8,
+      661.7
+     ],
+     [
+      -2751.8,
+      661.7
+     ],
+     [
+      -2751.8,
+      692.7
+     ],
+     [
+      -2851.8,
+      692.7
+     ],
+     [
+      -2851.8,
+      724.7
+     ],
+     [
+      -2951.8,
+      724.7
+     ],
+     [
+      -2951.8,
+      757.7
+     ],
+     [
+      -3051.8,
+      757.7
+     ],
+     [
+      -3051.8,
+      792.7
+     ],
+     [
+      -3151.8,
+      792.7
+     ],
+     [
+      -3151.8,
+      828.7
+     ],
+     [
+      -3251.8,
+      828.7
+     ],
+     [
+      -3251.8,
+      865.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 6,
+    "puntos": [
+     [
+      -4373.8,
+      1590.7
+     ],
+     [
+      -4373.8,
+      1690.7
+     ],
+     [
+      -3922.8,
+      1690.7
+     ],
+     [
+      -3922.8,
+      1590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 6,
+    "puntos": [
+     [
+      3921.2,
+      1590.7
+     ],
+     [
+      3921.2,
+      1690.7
+     ],
+     [
+      4372.2,
+      1690.7
+     ],
+     [
+      4372.2,
+      1590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 7,
+    "puntos": [
+     [
+      -4373.8,
+      1690.7
+     ],
+     [
+      -4373.8,
+      1790.7
+     ],
+     [
+      -3922.8,
+      1790.7
+     ],
+     [
+      -3922.8,
+      1690.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 7,
+    "puntos": [
+     [
+      3921.2,
+      1690.7
+     ],
+     [
+      3921.2,
+      1790.7
+     ],
+     [
+      4372.2,
+      1790.7
+     ],
+     [
+      4372.2,
+      1690.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 8,
+    "puntos": [
+     [
+      -4373.8,
+      1790.7
+     ],
+     [
+      -4373.8,
+      1890.7
+     ],
+     [
+      -3922.8,
+      1890.7
+     ],
+     [
+      -3922.8,
+      1790.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 8,
+    "puntos": [
+     [
+      3921.2,
+      1790.7
+     ],
+     [
+      3921.2,
+      1890.7
+     ],
+     [
+      4372.2,
+      1890.7
+     ],
+     [
+      4372.2,
+      1790.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 9,
+    "puntos": [
+     [
+      -4373.8,
+      1890.7
+     ],
+     [
+      -4373.8,
+      1990.7
+     ],
+     [
+      -3922.8,
+      1990.7
+     ],
+     [
+      -3922.8,
+      1890.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 9,
+    "puntos": [
+     [
+      3921.2,
+      1890.7
+     ],
+     [
+      3921.2,
+      1990.7
+     ],
+     [
+      4372.2,
+      1990.7
+     ],
+     [
+      4372.2,
+      1890.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 10,
+    "puntos": [
+     [
+      -4373.8,
+      1990.7
+     ],
+     [
+      -4373.8,
+      2090.7
+     ],
+     [
+      -3922.8,
+      2090.7
+     ],
+     [
+      -3922.8,
+      1990.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 10,
+    "puntos": [
+     [
+      3921.2,
+      1990.7
+     ],
+     [
+      3921.2,
+      2090.7
+     ],
+     [
+      4372.2,
+      2090.7
+     ],
+     [
+      4372.2,
+      1990.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 11,
+    "puntos": [
+     [
+      -4373.8,
+      2090.7
+     ],
+     [
+      -4373.8,
+      2190.7
+     ],
+     [
+      -3922.8,
+      2190.7
+     ],
+     [
+      -3922.8,
+      2090.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 11,
+    "puntos": [
+     [
+      3921.2,
+      2090.7
+     ],
+     [
+      3921.2,
+      2190.7
+     ],
+     [
+      4372.2,
+      2190.7
+     ],
+     [
+      4372.2,
+      2090.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 12,
+    "puntos": [
+     [
+      -4373.8,
+      2190.7
+     ],
+     [
+      -4373.8,
+      2290.7
+     ],
+     [
+      -3922.8,
+      2290.7
+     ],
+     [
+      -3922.8,
+      2190.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 12,
+    "puntos": [
+     [
+      3921.2,
+      2190.7
+     ],
+     [
+      3921.2,
+      2290.7
+     ],
+     [
+      4372.2,
+      2290.7
+     ],
+     [
+      4372.2,
+      2190.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 13,
+    "puntos": [
+     [
+      -4373.8,
+      2290.7
+     ],
+     [
+      -4373.8,
+      2390.7
+     ],
+     [
+      -3922.8,
+      2390.7
+     ],
+     [
+      -3922.8,
+      2290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 13,
+    "puntos": [
+     [
+      3921.2,
+      2290.7
+     ],
+     [
+      3921.2,
+      2390.7
+     ],
+     [
+      4372.2,
+      2390.7
+     ],
+     [
+      4372.2,
+      2290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 14,
+    "puntos": [
+     [
+      -4373.8,
+      2390.7
+     ],
+     [
+      -4373.8,
+      2490.7
+     ],
+     [
+      -3922.8,
+      2490.7
+     ],
+     [
+      -3922.8,
+      2390.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 14,
+    "puntos": [
+     [
+      3921.2,
+      2390.7
+     ],
+     [
+      3921.2,
+      2490.7
+     ],
+     [
+      4372.2,
+      2490.7
+     ],
+     [
+      4372.2,
+      2390.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 15,
+    "puntos": [
+     [
+      -4373.8,
+      2490.7
+     ],
+     [
+      -4373.8,
+      2590.7
+     ],
+     [
+      -3922.8,
+      2590.7
+     ],
+     [
+      -3922.8,
+      2490.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 15,
+    "puntos": [
+     [
+      3921.2,
+      2490.7
+     ],
+     [
+      3921.2,
+      2590.7
+     ],
+     [
+      4372.2,
+      2590.7
+     ],
+     [
+      4372.2,
+      2490.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 16,
+    "puntos": [
+     [
+      -4373.8,
+      2590.7
+     ],
+     [
+      -4373.8,
+      2690.7
+     ],
+     [
+      -3922.8,
+      2690.7
+     ],
+     [
+      -3922.8,
+      2590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 16,
+    "puntos": [
+     [
+      3921.2,
+      2590.7
+     ],
+     [
+      3921.2,
+      2690.7
+     ],
+     [
+      4372.2,
+      2690.7
+     ],
+     [
+      4372.2,
+      2590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 17,
+    "puntos": [
+     [
+      -4373.8,
+      2690.7
+     ],
+     [
+      -4373.8,
+      2790.7
+     ],
+     [
+      -3922.8,
+      2790.7
+     ],
+     [
+      -3922.8,
+      2690.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 17,
+    "puntos": [
+     [
+      3921.2,
+      2690.7
+     ],
+     [
+      3921.2,
+      2790.7
+     ],
+     [
+      4372.2,
+      2790.7
+     ],
+     [
+      4372.2,
+      2690.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 18,
+    "puntos": [
+     [
+      -4373.8,
+      2790.7
+     ],
+     [
+      -4373.8,
+      2890.7
+     ],
+     [
+      -3922.8,
+      2890.7
+     ],
+     [
+      -3922.8,
+      2790.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 18,
+    "puntos": [
+     [
+      3921.2,
+      2790.7
+     ],
+     [
+      3921.2,
+      2890.7
+     ],
+     [
+      4372.2,
+      2890.7
+     ],
+     [
+      4372.2,
+      2790.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 19,
+    "puntos": [
+     [
+      -4373.8,
+      2890.7
+     ],
+     [
+      -4373.8,
+      2989.7
+     ],
+     [
+      -3922.8,
+      2989.7
+     ],
+     [
+      -3922.8,
+      2890.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F1E14D",
+    "funcion": null,
+    "color": "#ff7f00",
+    "hilada": 19,
+    "puntos": [
+     [
+      3921.2,
+      2890.7
+     ],
+     [
+      3921.2,
+      2989.7
+     ],
+     [
+      4372.2,
+      2989.7
+     ],
+     [
+      4372.2,
+      2890.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 3,
+    "puntos": [
+     [
+      -4373.8,
+      1290.7
+     ],
+     [
+      -4373.8,
+      1390.7
+     ],
+     [
+      -3922.8,
+      1390.7
+     ],
+     [
+      -3922.8,
+      1290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 3,
+    "puntos": [
+     [
+      3921.2,
+      1290.7
+     ],
+     [
+      3921.2,
+      1390.7
+     ],
+     [
+      4372.2,
+      1390.7
+     ],
+     [
+      4372.2,
+      1290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 4,
+    "puntos": [
+     [
+      -4373.8,
+      1390.7
+     ],
+     [
+      -4373.8,
+      1490.7
+     ],
+     [
+      -3922.8,
+      1490.7
+     ],
+     [
+      -3922.8,
+      1390.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 4,
+    "puntos": [
+     [
+      3921.2,
+      1390.7
+     ],
+     [
+      3921.2,
+      1490.7
+     ],
+     [
+      4372.2,
+      1490.7
+     ],
+     [
+      4372.2,
+      1390.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 5,
+    "puntos": [
+     [
+      -4373.8,
+      1490.7
+     ],
+     [
+      -4373.8,
+      1589.7
+     ],
+     [
+      -3922.8,
+      1589.7
+     ],
+     [
+      -3922.8,
+      1490.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R F6E10",
+    "funcion": null,
+    "color": "#00bfff",
+    "hilada": 5,
+    "puntos": [
+     [
+      3921.2,
+      1490.7
+     ],
+     [
+      3921.2,
+      1589.7
+     ],
+     [
+      4372.2,
+      1589.7
+     ],
+     [
+      4372.2,
+      1490.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 20,
+    "puntos": [
+     [
+      -4373.8,
+      2990.7
+     ],
+     [
+      -4373.8,
+      3090.7
+     ],
+     [
+      -3922.8,
+      3090.7
+     ],
+     [
+      -3922.8,
+      2990.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 20,
+    "puntos": [
+     [
+      3921.2,
+      2990.7
+     ],
+     [
+      3921.2,
+      3090.7
+     ],
+     [
+      4372.2,
+      3090.7
+     ],
+     [
+      4372.2,
+      2990.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 21,
+    "puntos": [
+     [
+      -4373.8,
+      3090.7
+     ],
+     [
+      -4373.8,
+      3190.7
+     ],
+     [
+      -3922.8,
+      3190.7
+     ],
+     [
+      -3922.8,
+      3090.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 21,
+    "puntos": [
+     [
+      3921.2,
+      3090.7
+     ],
+     [
+      3921.2,
+      3190.7
+     ],
+     [
+      4372.2,
+      3190.7
+     ],
+     [
+      4372.2,
+      3090.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 22,
+    "puntos": [
+     [
+      -4475.8,
+      3289.7
+     ],
+     [
+      -3922.8,
+      3290.7
+     ],
+     [
+      -3922.8,
+      3190.7
+     ],
+     [
+      -4373.8,
+      3190.7
+     ],
+     [
+      -4373.8,
+      3289.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 22,
+    "puntos": [
+     [
+      3921.2,
+      3190.7
+     ],
+     [
+      3921.2,
+      3290.7
+     ],
+     [
+      4372.2,
+      3290.7
+     ],
+     [
+      4372.2,
+      3190.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 23,
+    "puntos": [
+     [
+      -4475.8,
+      3290.7
+     ],
+     [
+      -4475.8,
+      3390.7
+     ],
+     [
+      -4024.8,
+      3390.7
+     ],
+     [
+      -4024.8,
+      3290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 24,
+    "puntos": [
+     [
+      -4475.8,
+      3390.7
+     ],
+     [
+      -4475.8,
+      3490.7
+     ],
+     [
+      -4024.8,
+      3490.7
+     ],
+     [
+      -4024.8,
+      3390.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 25,
+    "puntos": [
+     [
+      -4475.8,
+      3490.7
+     ],
+     [
+      -4475.8,
+      3590.7
+     ],
+     [
+      -4024.8,
+      3590.7
+     ],
+     [
+      -4024.8,
+      3490.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 26,
+    "puntos": [
+     [
+      -4475.8,
+      3590.7
+     ],
+     [
+      -4475.8,
+      3690.7
+     ],
+     [
+      -4024.8,
+      3690.7
+     ],
+     [
+      -4024.8,
+      3590.7
+     ]
+    ]
+   },
+   {
+    "material": "ANCARBON R TB256",
+    "funcion": null,
+    "color": "#ff9f7f",
+    "hilada": 27,
+    "puntos": [
+     [
+      -4475.8,
+      3690.7
+     ],
+     [
+      -4475.8,
+      3790.7
+     ],
+     [
+      -4024.8,
+      3790.7
+     ],
+     [
+      -4024.8,
+      3690.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKER 30",
+    "funcion": "seguridad",
+    "color": "#ffff7f",
+    "hilada": null,
+    "puntos": [
+     [
+      -4551.8,
+      3290.7
+     ],
+     [
+      -4551.8,
+      3747.7
+     ],
+     [
+      -4475.8,
+      3747.7
+     ],
+     [
+      -4475.8,
+      3289.7
+     ],
+     [
+      -4373.8,
+      3289.7
+     ],
+     [
+      -4372.8,
+      1246.7
+     ],
+     [
+      -4384.8,
+      1245.7
+     ],
+     [
+      -4335.8,
+      1221.7
+     ],
+     [
+      -4300.8,
+      1289.7
+     ],
+     [
+      -4167.8,
+      1221.7
+     ],
+     [
+      -4035.8,
+      1157.7
+     ],
+     [
+      -4009.8,
+      1147.7
+     ],
+     [
+      -3909.8,
+      1099.7
+     ],
+     [
+      -3763.8,
+      1034.7
+     ],
+     [
+      -3625.8,
+      975.7
+     ],
+     [
+      -3391.8,
+      882.7
+     ],
+     [
+      -3351.8,
+      868.7
+     ],
+     [
+      -3351.8,
+      865.7
+     ],
+     [
+      -3344.8,
+      865.7
+     ],
+     [
+      -3256.8,
+      833.7
+     ],
+     [
+      -3251.8,
+      831.7
+     ],
+     [
+      -3251.8,
+      828.7
+     ],
+     [
+      -3244.8,
+      828.7
+     ],
+     [
+      -3156.8,
+      796.7
+     ],
+     [
+      -3151.8,
+      794.7
+     ],
+     [
+      -3151.8,
+      792.7
+     ],
+     [
+      -3132.8,
+      788.7
+     ],
+     [
+      -3051.8,
+      760.7
+     ],
+     [
+      -3051.8,
+      757.7
+     ],
+     [
+      -3044.8,
+      757.7
+     ],
+     [
+      -2951.8,
+      726.7
+     ],
+     [
+      -2951.8,
+      724.7
+     ],
+     [
+      -2944.8,
+      724.7
+     ],
+     [
+      -2851.8,
+      694.7
+     ],
+     [
+      -2851.8,
+      692.7
+     ],
+     [
+      -2837.8,
+      690.7
+     ],
+     [
+      -2751.8,
+      663.7
+     ],
+     [
+      -2751.8,
+      661.7
+     ],
+     [
+      -2740.8,
+      660.7
+     ],
+     [
+      -2654.8,
+      634.7
+     ],
+     [
+      -2651.8,
+      631.7
+     ],
+     [
+      -2640.8,
+      630.7
+     ],
+     [
+      -2554.8,
+      605.7
+     ],
+     [
+      -2551.8,
+      602.7
+     ],
+     [
+      -2543.8,
+      602.7
+     ],
+     [
+      -2517.8,
+      595.7
+     ],
+     [
+      -2451.8,
+      577.7
+     ],
+     [
+      -2451.8,
+      575.7
+     ],
+     [
+      -2444.8,
+      575.7
+     ],
+     [
+      -2351.8,
+      551.7
+     ],
+     [
+      -2351.8,
+      549.7
+     ],
+     [
+      -2344.8,
+      549.7
+     ],
+     [
+      -2251.8,
+      526.7
+     ],
+     [
+      -2251.8,
+      524.7
+     ],
+     [
+      -2159.8,
+      504.7
+     ],
+     [
+      -2151.8,
+      502.7
+     ],
+     [
+      -2151.8,
+      500.7
+     ],
+     [
+      -2139.8,
+      499.7
+     ],
+     [
+      -2055.8,
+      480.7
+     ],
+     [
+      -2051.8,
+      479.7
+     ],
+     [
+      -2051.8,
+      477.7
+     ],
+     [
+      -1956.8,
+      457.7
+     ],
+     [
+      -1751.8,
+      416.7
+     ],
+     [
+      -1506.8,
+      373.7
+     ],
+     [
+      -1442.8,
+      365.7
+     ],
+     [
+      -1362.8,
+      351.7
+     ],
+     [
+      -1342.8,
+      350.7
+     ],
+     [
+      -1277.8,
+      339.7
+     ],
+     [
+      -1241.8,
+      336.7
+     ],
+     [
+      -1151.8,
+      323.7
+     ],
+     [
+      -945.8,
+      300.7
+     ],
+     [
+      -762.8,
+      284.7
+     ],
+     [
+      -761.8,
+      282.7
+     ],
+     [
+      -488.8,
+      265.7
+     ],
+     [
+      -322.8,
+      258.7
+     ],
+     [
+      -151.8,
+      254.7
+     ],
+     [
+      49.2,
+      253.7
+     ],
+     [
+      290.2,
+      257.7
+     ],
+     [
+      449.2,
+      265.7
+     ],
+     [
+      486.2,
+      265.7
+     ],
+     [
+      655.2,
+      275.7
+     ],
+     [
+      819.2,
+      288.7
+     ],
+     [
+      1049.2,
+      311.7
+     ],
+     [
+      1374.2,
+      353.7
+     ],
+     [
+      1580.2,
+      386.7
+     ],
+     [
+      1850.2,
+      435.7
+     ],
+     [
+      1850.2,
+      437.7
+     ],
+     [
+      1955.2,
+      457.7
+     ],
+     [
+      2042.2,
+      477.7
+     ],
+     [
+      2050.2,
+      477.7
+     ],
+     [
+      2050.2,
+      479.7
+     ],
+     [
+      2138.2,
+      499.7
+     ],
+     [
+      2150.2,
+      500.7
+     ],
+     [
+      2150.2,
+      502.7
+     ],
+     [
+      2243.2,
+      524.7
+     ],
+     [
+      2250.2,
+      524.7
+     ],
+     [
+      2250.2,
+      526.7
+     ],
+     [
+      2343.2,
+      549.7
+     ],
+     [
+      2350.2,
+      549.7
+     ],
+     [
+      2350.2,
+      551.7
+     ],
+     [
+      2443.2,
+      575.7
+     ],
+     [
+      2450.2,
+      575.7
+     ],
+     [
+      2450.2,
+      577.7
+     ],
+     [
+      2542.2,
+      602.7
+     ],
+     [
+      2550.2,
+      602.7
+     ],
+     [
+      2553.2,
+      605.7
+     ],
+     [
+      2639.2,
+      630.7
+     ],
+     [
+      2650.2,
+      631.7
+     ],
+     [
+      2653.2,
+      634.7
+     ],
+     [
+      2739.2,
+      660.7
+     ],
+     [
+      2750.2,
+      661.7
+     ],
+     [
+      2750.2,
+      663.7
+     ],
+     [
+      2836.2,
+      690.7
+     ],
+     [
+      2850.2,
+      692.7
+     ],
+     [
+      2850.2,
+      694.7
+     ],
+     [
+      2943.2,
+      724.7
+     ],
+     [
+      2950.2,
+      724.7
+     ],
+     [
+      2950.2,
+      726.7
+     ],
+     [
+      3042.2,
+      757.7
+     ],
+     [
+      3050.2,
+      757.7
+     ],
+     [
+      3050.2,
+      760.7
+     ],
+     [
+      3133.2,
+      789.7
+     ],
+     [
+      3150.2,
+      792.7
+     ],
+     [
+      3150.2,
+      794.7
+     ],
+     [
+      3155.2,
+      796.7
+     ],
+     [
+      3242.2,
+      828.7
+     ],
+     [
+      3250.2,
+      828.7
+     ],
+     [
+      3250.2,
+      831.7
+     ],
+     [
+      3342.2,
+      865.7
+     ],
+     [
+      3350.2,
+      865.7
+     ],
+     [
+      3350.2,
+      868.7
+     ],
+     [
+      3390.2,
+      882.7
+     ],
+     [
+      3631.2,
+      978.7
+     ],
+     [
+      3897.2,
+      1094.7
+     ],
+     [
+      3962.2,
+      1126.7
+     ],
+     [
+      4031.2,
+      1156.7
+     ],
+     [
+      4160.2,
+      1220.7
+     ],
+     [
+      4168.2,
+      1222.7
+     ],
+     [
+      4298.2,
+      1289.7
+     ],
+     [
+      4300.2,
+      1289.7
+     ],
+     [
+      4335.2,
+      1221.7
+     ],
+     [
+      4383.2,
+      1245.7
+     ],
+     [
+      4371.2,
+      1246.7
+     ],
+     [
+      4372.2,
+      3290.7
+     ],
+     [
+      4523.2,
+      3290.7
+     ],
+     [
+      4523.2,
+      1132.7
+     ],
+     [
+      4448.2,
+      1132.7
+     ],
+     [
+      4457.2,
+      1114.7
+     ],
+     [
+      4455.2,
+      1111.7
+     ],
+     [
+      4343.2,
+      1056.7
+     ],
+     [
+      4322.2,
+      1045.7
+     ],
+     [
+      4320.2,
+      1042.7
+     ],
+     [
+      4302.2,
+      1035.7
+     ],
+     [
+      4115.2,
+      943.7
+     ],
+     [
+      3899.2,
+      844.7
+     ],
+     [
+      3844.2,
+      823.7
+     ],
+     [
+      3794.2,
+      799.7
+     ],
+     [
+      3691.2,
+      758.7
+     ],
+     [
+      3621.2,
+      727.7
+     ],
+     [
+      3527.2,
+      692.7
+     ],
+     [
+      3450.2,
+      660.7
+     ],
+     [
+      3387.2,
+      638.7
+     ],
+     [
+      3379.2,
+      633.7
+     ],
+     [
+      3327.2,
+      616.7
+     ],
+     [
+      3316.2,
+      610.7
+     ],
+     [
+      3250.2,
+      586.7
+     ],
+     [
+      3241.2,
+      585.7
+     ],
+     [
+      3185.2,
+      563.7
+     ],
+     [
+      3132.2,
+      547.7
+     ],
+     [
+      3043.2,
+      515.7
+     ],
+     [
+      2846.2,
+      454.7
+     ],
+     [
+      2842.2,
+      451.7
+     ],
+     [
+      2576.2,
+      373.7
+     ],
+     [
+      2510.2,
+      357.7
+     ],
+     [
+      2452.2,
+      340.7
+     ],
+     [
+      2249.2,
+      289.7
+     ],
+     [
+      2186.2,
+      276.7
+     ],
+     [
+      2144.2,
+      264.7
+     ],
+     [
+      2134.2,
+      264.7
+     ],
+     [
+      2067.2,
+      249.7
+     ],
+     [
+      2067.2,
+      247.7
+     ],
+     [
+      1832.2,
+      199.7
+     ],
+     [
+      1615.2,
+      160.7
+     ],
+     [
+      1431.2,
+      132.7
+     ],
+     [
+      1430.2,
+      130.7
+     ],
+     [
+      1391.2,
+      124.7
+     ],
+     [
+      1377.2,
+      124.7
+     ],
+     [
+      1202.2,
+      99.7
+     ],
+     [
+      934.2,
+      69.7
+     ],
+     [
+      771.2,
+      55.7
+     ],
+     [
+      463.2,
+      35.7
+     ],
+     [
+      308.2,
+      29.7
+     ],
+     [
+      154.2,
+      25.7
+     ],
+     [
+      -155.8,
+      25.7
+     ],
+     [
+      -464.8,
+      35.7
+     ],
+     [
+      -618.8,
+      44.7
+     ],
+     [
+      -926.8,
+      68.7
+     ],
+     [
+      -1105.8,
+      87.7
+     ],
+     [
+      -1212.8,
+      100.7
+     ],
+     [
+      -1222.8,
+      103.7
+     ],
+     [
+      -1268.8,
+      107.7
+     ],
+     [
+      -1379.8,
+      124.7
+     ],
+     [
+      -1392.8,
+      124.7
+     ],
+     [
+      -1432.8,
+      130.7
+     ],
+     [
+      -1432.8,
+      132.7
+     ],
+     [
+      -1521.8,
+      144.7
+     ],
+     [
+      -1565.8,
+      153.7
+     ],
+     [
+      -1622.8,
+      161.7
+     ],
+     [
+      -1833.8,
+      199.7
+     ],
+     [
+      -2068.8,
+      247.7
+     ],
+     [
+      -2069.8,
+      249.7
+     ],
+     [
+      -2087.8,
+      253.7
+     ],
+     [
+      -2145.8,
+      264.7
+     ],
+     [
+      -2187.8,
+      276.7
+     ],
+     [
+      -2243.8,
+      287.7
+     ],
+     [
+      -2578.8,
+      373.7
+     ],
+     [
+      -2626.8,
+      389.7
+     ],
+     [
+      -2647.8,
+      393.7
+     ],
+     [
+      -2776.8,
+      430.7
+     ],
+     [
+      -2796.8,
+      438.7
+     ],
+     [
+      -2844.8,
+      451.7
+     ],
+     [
+      -2847.8,
+      454.7
+     ],
+     [
+      -2977.8,
+      493.7
+     ],
+     [
+      -2978.8,
+      495.7
+     ],
+     [
+      -3029.8,
+      510.7
+     ],
+     [
+      -3179.8,
+      562.7
+     ],
+     [
+      -3187.8,
+      563.7
+     ],
+     [
+      -3242.8,
+      585.7
+     ],
+     [
+      -3254.8,
+      587.7
+     ],
+     [
+      -3326.8,
+      615.7
+     ],
+     [
+      -3380.8,
+      633.7
+     ],
+     [
+      -3388.8,
+      638.7
+     ],
+     [
+      -3477.8,
+      670.7
+     ],
+     [
+      -3564.8,
+      706.7
+     ],
+     [
+      -3608.8,
+      721.7
+     ],
+     [
+      -3645.8,
+      738.7
+     ],
+     [
+      -3652.8,
+      739.7
+     ],
+     [
+      -3655.8,
+      742.7
+     ],
+     [
+      -3717.8,
+      766.7
+     ],
+     [
+      -3762.8,
+      787.7
+     ],
+     [
+      -3819.8,
+      809.7
+     ],
+     [
+      -3855.8,
+      827.7
+     ],
+     [
+      -3900.8,
+      844.7
+     ],
+     [
+      -3975.8,
+      880.7
+     ],
+     [
+      -4039.8,
+      907.7
+     ],
+     [
+      -4099.8,
+      937.7
+     ],
+     [
+      -4121.8,
+      945.7
+     ],
+     [
+      -4303.8,
+      1035.7
+     ],
+     [
+      -4322.8,
+      1042.7
+     ],
+     [
+      -4322.8,
+      1044.7
+     ],
+     [
+      -4355.8,
+      1061.7
+     ],
+     [
+      -4456.8,
+      1111.7
+     ],
+     [
+      -4458.8,
+      1114.7
+     ],
+     [
+      -4449.8,
+      1132.7
+     ],
+     [
+      -4524.8,
+      1132.7
+     ],
+     [
+      -4524.8,
+      3290.7
+     ]
+    ],
+    "huecos": [
+     [
+      [
+       -4448.8,
+       1134.7
+      ],
+      [
+       -4425.8,
+       1181.7
+      ],
+      [
+       -4419.8,
+       1179.7
+      ],
+      [
+       -4386.8,
+       1246.7
+      ],
+      [
+       -4448.8,
+       1246.7
+      ]
+     ],
+     [
+      [
+       4385.2,
+       1244.7
+      ],
+      [
+       4418.2,
+       1179.7
+      ],
+      [
+       4424.2,
+       1180.7
+      ],
+      [
+       4447.2,
+       1134.7
+      ],
+      [
+       4447.2,
+       1246.7
+      ],
+      [
+       4385.2,
+       1246.7
+      ]
+     ],
+     [
+      [
+       1151.2,
+       247.7
+      ],
+      [
+       1160.2,
+       247.7
+      ],
+      [
+       1160.2,
+       249.7
+      ]
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -4300.8,
+      1288.7
+     ],
+     [
+      -3922.8,
+      1289.7
+     ],
+     [
+      -3922.8,
+      1877.7
+     ],
+     [
+      -3786.8,
+      1810.7
+     ],
+     [
+      -3535.8,
+      1694.7
+     ],
+     [
+      -3516.8,
+      1688.7
+     ],
+     [
+      -3393.8,
+      1633.7
+     ],
+     [
+      -3128.8,
+      1527.7
+     ],
+     [
+      -2978.8,
+      1471.7
+     ],
+     [
+      -2705.8,
+      1377.7
+     ],
+     [
+      -2573.8,
+      1335.7
+     ],
+     [
+      -2301.8,
+      1257.7
+     ],
+     [
+      -2165.8,
+      1221.7
+     ],
+     [
+      -1899.8,
+      1157.7
+     ],
+     [
+      -1687.8,
+      1113.7
+     ],
+     [
+      -1451.8,
+      1070.7
+     ],
+     [
+      -1295.8,
+      1045.7
+     ],
+     [
+      -1022.8,
+      1009.7
+     ],
+     [
+      -870.8,
+      992.7
+     ],
+     [
+      -580.8,
+      968.7
+     ],
+     [
+      -363.8,
+      956.7
+     ],
+     [
+      -145.8,
+      950.7
+     ],
+     [
+      144.2,
+      950.7
+     ],
+     [
+      289.2,
+      953.7
+     ],
+     [
+      579.2,
+      968.7
+     ],
+     [
+      868.2,
+      992.7
+     ],
+     [
+      1157.2,
+      1026.7
+     ],
+     [
+      1301.2,
+      1046.7
+     ],
+     [
+      1450.2,
+      1070.7
+     ],
+     [
+      1735.2,
+      1123.7
+     ],
+     [
+      2010.2,
+      1183.7
+     ],
+     [
+      2299.2,
+      1257.7
+     ],
+     [
+      2572.2,
+      1335.7
+     ],
+     [
+      2859.2,
+      1430.7
+     ],
+     [
+      3126.2,
+      1527.7
+     ],
+     [
+      3391.2,
+      1633.7
+     ],
+     [
+      3515.2,
+      1688.7
+     ],
+     [
+      3534.2,
+      1694.7
+     ],
+     [
+      3655.2,
+      1749.7
+     ],
+     [
+      3919.2,
+      1877.7
+     ],
+     [
+      3921.2,
+      1877.7
+     ],
+     [
+      3921.2,
+      1289.7
+     ],
+     [
+      4298.2,
+      1289.7
+     ],
+     [
+      4168.2,
+      1222.7
+     ],
+     [
+      4160.2,
+      1220.7
+     ],
+     [
+      4031.2,
+      1156.7
+     ],
+     [
+      3962.2,
+      1126.7
+     ],
+     [
+      3897.2,
+      1094.7
+     ],
+     [
+      3631.2,
+      978.7
+     ],
+     [
+      3353.2,
+      868.7
+     ],
+     [
+      3350.2,
+      868.7
+     ],
+     [
+      3350.2,
+      1116.7
+     ],
+     [
+      3249.2,
+      1116.7
+     ],
+     [
+      3249.2,
+      1079.7
+     ],
+     [
+      3149.2,
+      1079.7
+     ],
+     [
+      3149.2,
+      1043.7
+     ],
+     [
+      3049.2,
+      1043.7
+     ],
+     [
+      3049.2,
+      1009.7
+     ],
+     [
+      2949.2,
+      1009.7
+     ],
+     [
+      2949.2,
+      975.7
+     ],
+     [
+      2849.2,
+      975.7
+     ],
+     [
+      2849.2,
+      943.7
+     ],
+     [
+      2749.2,
+      943.7
+     ],
+     [
+      2749.2,
+      912.7
+     ],
+     [
+      2649.2,
+      912.7
+     ],
+     [
+      2649.2,
+      882.7
+     ],
+     [
+      2549.2,
+      882.7
+     ],
+     [
+      2549.2,
+      854.7
+     ],
+     [
+      2449.2,
+      854.7
+     ],
+     [
+      2449.2,
+      826.7
+     ],
+     [
+      2349.2,
+      826.7
+     ],
+     [
+      2349.2,
+      800.7
+     ],
+     [
+      2249.2,
+      800.7
+     ],
+     [
+      2249.2,
+      775.7
+     ],
+     [
+      2149.2,
+      775.7
+     ],
+     [
+      2149.2,
+      751.7
+     ],
+     [
+      2049.2,
+      751.7
+     ],
+     [
+      2049.2,
+      729.7
+     ],
+     [
+      1949.2,
+      729.7
+     ],
+     [
+      1949.2,
+      707.7
+     ],
+     [
+      1849.2,
+      707.7
+     ],
+     [
+      1849.2,
+      686.7
+     ],
+     [
+      1749.2,
+      686.7
+     ],
+     [
+      1749.2,
+      667.7
+     ],
+     [
+      1648.2,
+      667.7
+     ],
+     [
+      1648.2,
+      649.7
+     ],
+     [
+      1548.2,
+      649.7
+     ],
+     [
+      1548.2,
+      631.7
+     ],
+     [
+      1448.2,
+      631.7
+     ],
+     [
+      1448.2,
+      615.7
+     ],
+     [
+      1348.2,
+      615.7
+     ],
+     [
+      1348.2,
+      600.7
+     ],
+     [
+      1248.2,
+      600.7
+     ],
+     [
+      1248.2,
+      586.7
+     ],
+     [
+      1148.2,
+      586.7
+     ],
+     [
+      1148.2,
+      574.7
+     ],
+     [
+      1048.2,
+      574.7
+     ],
+     [
+      1048.2,
+      562.7
+     ],
+     [
+      948.2,
+      562.7
+     ],
+     [
+      948.2,
+      551.7
+     ],
+     [
+      848.2,
+      551.7
+     ],
+     [
+      848.2,
+      542.7
+     ],
+     [
+      748.2,
+      542.7
+     ],
+     [
+      748.2,
+      534.7
+     ],
+     [
+      648.2,
+      534.7
+     ],
+     [
+      648.2,
+      526.7
+     ],
+     [
+      548.2,
+      526.7
+     ],
+     [
+      548.2,
+      520.7
+     ],
+     [
+      448.2,
+      520.7
+     ],
+     [
+      448.2,
+      514.7
+     ],
+     [
+      348.2,
+      514.7
+     ],
+     [
+      348.2,
+      510.7
+     ],
+     [
+      248.2,
+      510.7
+     ],
+     [
+      248.2,
+      507.7
+     ],
+     [
+      48.2,
+      504.7
+     ],
+     [
+      -250.8,
+      507.7
+     ],
+     [
+      -250.8,
+      510.7
+     ],
+     [
+      -350.8,
+      510.7
+     ],
+     [
+      -350.8,
+      514.7
+     ],
+     [
+      -450.8,
+      514.7
+     ],
+     [
+      -450.8,
+      520.7
+     ],
+     [
+      -550.8,
+      520.7
+     ],
+     [
+      -550.8,
+      526.7
+     ],
+     [
+      -650.8,
+      526.7
+     ],
+     [
+      -650.8,
+      534.7
+     ],
+     [
+      -750.8,
+      534.7
+     ],
+     [
+      -750.8,
+      542.7
+     ],
+     [
+      -850.8,
+      542.7
+     ],
+     [
+      -850.8,
+      551.7
+     ],
+     [
+      -950.8,
+      551.7
+     ],
+     [
+      -950.8,
+      562.7
+     ],
+     [
+      -1050.8,
+      562.7
+     ],
+     [
+      -1050.8,
+      574.7
+     ],
+     [
+      -1150.8,
+      574.7
+     ],
+     [
+      -1150.8,
+      586.7
+     ],
+     [
+      -1250.8,
+      586.7
+     ],
+     [
+      -1250.8,
+      600.7
+     ],
+     [
+      -1350.8,
+      600.7
+     ],
+     [
+      -1350.8,
+      615.7
+     ],
+     [
+      -1450.8,
+      615.7
+     ],
+     [
+      -1450.8,
+      631.7
+     ],
+     [
+      -1550.8,
+      631.7
+     ],
+     [
+      -1550.8,
+      649.7
+     ],
+     [
+      -1650.8,
+      649.7
+     ],
+     [
+      -1650.8,
+      667.7
+     ],
+     [
+      -1750.8,
+      667.7
+     ],
+     [
+      -1750.8,
+      686.7
+     ],
+     [
+      -1850.8,
+      686.7
+     ],
+     [
+      -1850.8,
+      707.7
+     ],
+     [
+      -1950.8,
+      707.7
+     ],
+     [
+      -1950.8,
+      729.7
+     ],
+     [
+      -2050.8,
+      729.7
+     ],
+     [
+      -2050.8,
+      751.7
+     ],
+     [
+      -2150.8,
+      751.7
+     ],
+     [
+      -2150.8,
+      775.7
+     ],
+     [
+      -2250.8,
+      775.7
+     ],
+     [
+      -2250.8,
+      800.7
+     ],
+     [
+      -2350.8,
+      800.7
+     ],
+     [
+      -2350.8,
+      826.7
+     ],
+     [
+      -2450.8,
+      826.7
+     ],
+     [
+      -2450.8,
+      854.7
+     ],
+     [
+      -2550.8,
+      854.7
+     ],
+     [
+      -2550.8,
+      882.7
+     ],
+     [
+      -2650.8,
+      882.7
+     ],
+     [
+      -2650.8,
+      912.7
+     ],
+     [
+      -2750.8,
+      912.7
+     ],
+     [
+      -2750.8,
+      943.7
+     ],
+     [
+      -2850.8,
+      943.7
+     ],
+     [
+      -2850.8,
+      975.7
+     ],
+     [
+      -2950.8,
+      975.7
+     ],
+     [
+      -2950.8,
+      1009.7
+     ],
+     [
+      -3050.8,
+      1009.7
+     ],
+     [
+      -3050.8,
+      1043.7
+     ],
+     [
+      -3150.8,
+      1043.7
+     ],
+     [
+      -3150.8,
+      1079.7
+     ],
+     [
+      -3250.8,
+      1079.7
+     ],
+     [
+      -3250.8,
+      1116.7
+     ],
+     [
+      -3351.8,
+      1116.7
+     ],
+     [
+      -3351.8,
+      868.7
+     ],
+     [
+      -3354.8,
+      868.7
+     ],
+     [
+      -3625.8,
+      975.7
+     ],
+     [
+      -3763.8,
+      1034.7
+     ],
+     [
+      -3909.8,
+      1099.7
+     ],
+     [
+      -4013.8,
+      1149.7
+     ],
+     [
+      -4035.8,
+      1157.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -3344.8,
+      864.7
+     ],
+     [
+      -3251.8,
+      865.7
+     ],
+     [
+      -3251.8,
+      831.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -3244.8,
+      827.7
+     ],
+     [
+      -3151.8,
+      828.7
+     ],
+     [
+      -3151.8,
+      794.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -3144.8,
+      791.7
+     ],
+     [
+      -3051.8,
+      792.7
+     ],
+     [
+      -3051.8,
+      760.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -3044.8,
+      756.7
+     ],
+     [
+      -2951.8,
+      757.7
+     ],
+     [
+      -2951.8,
+      726.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2944.8,
+      723.7
+     ],
+     [
+      -2851.8,
+      724.7
+     ],
+     [
+      -2851.8,
+      694.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2844.8,
+      691.7
+     ],
+     [
+      -2751.8,
+      692.7
+     ],
+     [
+      -2751.8,
+      663.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2744.8,
+      660.7
+     ],
+     [
+      -2651.8,
+      661.7
+     ],
+     [
+      -2651.8,
+      633.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2644.8,
+      630.7
+     ],
+     [
+      -2551.8,
+      631.7
+     ],
+     [
+      -2551.8,
+      604.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2543.8,
+      601.7
+     ],
+     [
+      -2451.8,
+      602.7
+     ],
+     [
+      -2451.8,
+      577.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2444.8,
+      574.7
+     ],
+     [
+      -2351.8,
+      575.7
+     ],
+     [
+      -2351.8,
+      551.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2344.8,
+      548.7
+     ],
+     [
+      -2251.8,
+      549.7
+     ],
+     [
+      -2251.8,
+      526.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2244.8,
+      523.7
+     ],
+     [
+      -2151.8,
+      524.7
+     ],
+     [
+      -2151.8,
+      502.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2144.8,
+      499.7
+     ],
+     [
+      -2051.8,
+      500.7
+     ],
+     [
+      -2051.8,
+      479.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -2044.8,
+      476.7
+     ],
+     [
+      -1951.8,
+      477.7
+     ],
+     [
+      -1951.8,
+      457.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1944.8,
+      455.7
+     ],
+     [
+      -1851.8,
+      456.7
+     ],
+     [
+      -1851.8,
+      437.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1844.8,
+      434.7
+     ],
+     [
+      -1751.8,
+      435.7
+     ],
+     [
+      -1751.8,
+      417.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1744.8,
+      415.7
+     ],
+     [
+      -1651.8,
+      416.7
+     ],
+     [
+      -1651.8,
+      399.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1643.8,
+      397.7
+     ],
+     [
+      -1551.8,
+      398.7
+     ],
+     [
+      -1551.8,
+      382.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1543.8,
+      380.7
+     ],
+     [
+      -1451.8,
+      381.7
+     ],
+     [
+      -1451.8,
+      366.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1442.8,
+      364.7
+     ],
+     [
+      -1351.8,
+      365.7
+     ],
+     [
+      -1351.8,
+      351.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1342.8,
+      349.7
+     ],
+     [
+      -1251.8,
+      350.7
+     ],
+     [
+      -1251.8,
+      337.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1241.8,
+      335.7
+     ],
+     [
+      -1151.8,
+      336.7
+     ],
+     [
+      -1151.8,
+      324.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1142.8,
+      322.7
+     ],
+     [
+      -1051.8,
+      323.7
+     ],
+     [
+      -1051.8,
+      312.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -1040.8,
+      310.7
+     ],
+     [
+      -951.8,
+      311.7
+     ],
+     [
+      -951.8,
+      302.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -940.8,
+      300.7
+     ],
+     [
+      -851.8,
+      301.7
+     ],
+     [
+      -851.8,
+      292.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -840.8,
+      290.7
+     ],
+     [
+      -751.8,
+      291.7
+     ],
+     [
+      -751.8,
+      282.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      -737.8,
+      281.7
+     ],
+     [
+      -651.8,
+      282.7
+     ],
+     [
+      -651.8,
+      276.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      648.2,
+      275.7
+     ],
+     [
+      648.2,
+      283.7
+     ],
+     [
+      748.2,
+      283.7
+     ],
+     [
+      748.2,
+      292.7
+     ],
+     [
+      848.2,
+      292.7
+     ],
+     [
+      848.2,
+      302.7
+     ],
+     [
+      948.2,
+      302.7
+     ],
+     [
+      948.2,
+      312.7
+     ],
+     [
+      1048.2,
+      312.7
+     ],
+     [
+      1048.2,
+      324.7
+     ],
+     [
+      1148.2,
+      324.7
+     ],
+     [
+      1148.2,
+      337.7
+     ],
+     [
+      1248.2,
+      337.7
+     ],
+     [
+      1248.2,
+      351.7
+     ],
+     [
+      1348.2,
+      351.7
+     ],
+     [
+      1348.2,
+      366.7
+     ],
+     [
+      1448.2,
+      366.7
+     ],
+     [
+      1448.2,
+      382.7
+     ],
+     [
+      1548.2,
+      382.7
+     ],
+     [
+      1548.2,
+      399.7
+     ],
+     [
+      1647.2,
+      399.7
+     ],
+     [
+      1449.2,
+      365.7
+     ],
+     [
+      1141.2,
+      322.7
+     ],
+     [
+      849.2,
+      291.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      1648.2,
+      398.7
+     ],
+     [
+      1648.2,
+      417.7
+     ],
+     [
+      1747.2,
+      417.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      1749.2,
+      416.7
+     ],
+     [
+      1749.2,
+      436.7
+     ],
+     [
+      1847.2,
+      436.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      1849.2,
+      436.7
+     ],
+     [
+      1849.2,
+      457.7
+     ],
+     [
+      1947.2,
+      457.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      1949.2,
+      456.7
+     ],
+     [
+      1949.2,
+      478.7
+     ],
+     [
+      2047.2,
+      478.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2049.2,
+      478.7
+     ],
+     [
+      2049.2,
+      501.7
+     ],
+     [
+      2147.2,
+      501.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2149.2,
+      501.7
+     ],
+     [
+      2149.2,
+      525.7
+     ],
+     [
+      2247.2,
+      525.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2249.2,
+      525.7
+     ],
+     [
+      2249.2,
+      550.7
+     ],
+     [
+      2347.2,
+      550.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2349.2,
+      550.7
+     ],
+     [
+      2349.2,
+      576.7
+     ],
+     [
+      2447.2,
+      576.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2449.2,
+      576.7
+     ],
+     [
+      2449.2,
+      603.7
+     ],
+     [
+      2546.2,
+      603.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2549.2,
+      603.7
+     ],
+     [
+      2549.2,
+      632.7
+     ],
+     [
+      2646.2,
+      632.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2649.2,
+      632.7
+     ],
+     [
+      2649.2,
+      662.7
+     ],
+     [
+      2746.2,
+      662.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2749.2,
+      662.7
+     ],
+     [
+      2749.2,
+      693.7
+     ],
+     [
+      2846.2,
+      693.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2849.2,
+      693.7
+     ],
+     [
+      2849.2,
+      725.7
+     ],
+     [
+      2946.2,
+      725.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      2949.2,
+      725.7
+     ],
+     [
+      2949.2,
+      758.7
+     ],
+     [
+      3045.2,
+      758.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      3049.2,
+      759.7
+     ],
+     [
+      3049.2,
+      793.7
+     ],
+     [
+      3145.2,
+      793.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      3149.2,
+      793.7
+     ],
+     [
+      3149.2,
+      829.7
+     ],
+     [
+      3245.2,
+      829.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERHARTH NN25",
+    "funcion": "monolitico",
+    "color": "#c0c0c0",
+    "hilada": null,
+    "puntos": [
+     [
+      3249.2,
+      830.7
+     ],
+     [
+      3249.2,
+      866.7
+     ],
+     [
+      3345.2,
+      866.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      -4551.8,
+      3747.7
+     ],
+     [
+      -4551.8,
+      3810.7
+     ],
+     [
+      -4336.8,
+      3810.7
+     ],
+     [
+      -4336.8,
+      3850.7
+     ],
+     [
+      -4029.8,
+      3791.7
+     ],
+     [
+      -4475.8,
+      3790.7
+     ],
+     [
+      -4475.8,
+      3747.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      -4494.8,
+      1131.7
+     ],
+     [
+      -4449.8,
+      1132.7
+     ],
+     [
+      -4458.8,
+      1113.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      -4448.8,
+      1134.7
+     ],
+     [
+      -4448.8,
+      1246.7
+     ],
+     [
+      -4386.8,
+      1246.7
+     ],
+     [
+      -4419.8,
+      1179.7
+     ],
+     [
+      -4425.8,
+      1181.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      -4384.8,
+      1245.7
+     ],
+     [
+      -4372.8,
+      1246.7
+     ],
+     [
+      -4372.8,
+      1289.7
+     ],
+     [
+      -4301.8,
+      1289.7
+     ],
+     [
+      -4335.8,
+      1221.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      3921.2,
+      3290.7
+     ],
+     [
+      3921.2,
+      3330.7
+     ],
+     [
+      4405.2,
+      3330.7
+     ],
+     [
+      4405.2,
+      3290.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      4300.2,
+      1287.7
+     ],
+     [
+      4300.2,
+      1289.7
+     ],
+     [
+      4371.2,
+      1289.7
+     ],
+     [
+      4371.2,
+      1246.7
+     ],
+     [
+      4383.2,
+      1245.7
+     ],
+     [
+      4334.2,
+      1221.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      4385.2,
+      1244.7
+     ],
+     [
+      4385.2,
+      1246.7
+     ],
+     [
+      4447.2,
+      1246.7
+     ],
+     [
+      4447.2,
+      1134.7
+     ],
+     [
+      4424.2,
+      1180.7
+     ],
+     [
+      4418.2,
+      1179.7
+     ]
+    ]
+   },
+   {
+    "material": "ANKERMIX NS03-MX",
+    "funcion": null,
+    "color": "#006118",
+    "hilada": null,
+    "puntos": [
+     [
+      4448.2,
+      1130.7
+     ],
+     [
+      4448.2,
+      1132.7
+     ],
+     [
+      4493.2,
+      1132.7
+     ],
+     [
+      4458.2,
+      1113.7
+     ]
+    ]
+   },
+   {
+    "material": "ISOMAG 70 XCO",
+    "funcion": null,
+    "color": "#ff0000",
+    "hilada": null,
+    "puntos": [
+     [
+      -4551.8,
+      1132.7
+     ],
+     [
+      -4551.8,
+      3290.7
+     ],
+     [
+      -4524.8,
+      3290.7
+     ],
+     [
+      -4524.8,
+      1132.7
+     ],
+     [
+      -4494.8,
+      1132.7
+     ],
+     [
+      -4427.8,
+      1096.7
+     ],
+     [
+      -4322.8,
+      1044.7
+     ],
+     [
+      -4322.8,
+      1042.7
+     ],
+     [
+      -4318.8,
+      1042.7
+     ],
+     [
+      -4295.8,
+      1031.7
+     ],
+     [
+      -4217.8,
+      991.7
+     ],
+     [
+      -4189.8,
+      979.7
+     ],
+     [
+      -4187.8,
+      976.7
+     ],
+     [
+      -4183.8,
+      976.7
+     ],
+     [
+      -4138.8,
+      953.7
+     ],
+     [
+      -3995.8,
+      887.7
+     ],
+     [
+      -3962.8,
+      874.7
+     ],
+     [
+      -3900.8,
+      844.7
+     ],
+     [
+      -3855.8,
+      827.7
+     ],
+     [
+      -3819.8,
+      809.7
+     ],
+     [
+      -3762.8,
+      787.7
+     ],
+     [
+      -3623.8,
+      727.7
+     ],
+     [
+      -3279.8,
+      596.7
+     ],
+     [
+      -3053.8,
+      518.7
+     ],
+     [
+      -2978.8,
+      495.7
+     ],
+     [
+      -2977.8,
+      493.7
+     ],
+     [
+      -2845.8,
+      453.7
+     ],
+     [
+      -2844.8,
+      451.7
+     ],
+     [
+      -2796.8,
+      438.7
+     ],
+     [
+      -2776.8,
+      430.7
+     ],
+     [
+      -2610.8,
+      384.7
+     ],
+     [
+      -2578.8,
+      373.7
+     ],
+     [
+      -2320.8,
+      306.7
+     ],
+     [
+      -2243.8,
+      287.7
+     ],
+     [
+      -2187.8,
+      276.7
+     ],
+     [
+      -2145.8,
+      264.7
+     ],
+     [
+      -2110.8,
+      258.7
+     ],
+     [
+      -1983.8,
+      229.7
+     ],
+     [
+      -1752.8,
+      184.7
+     ],
+     [
+      -1558.8,
+      150.7
+     ],
+     [
+      -1432.8,
+      132.7
+     ],
+     [
+      -1432.8,
+      130.7
+     ],
+     [
+      -1392.8,
+      124.7
+     ],
+     [
+      -1379.8,
+      124.7
+     ],
+     [
+      -1268.8,
+      107.7
+     ],
+     [
+      -1105.8,
+      87.7
+     ],
+     [
+      -936.8,
+      69.7
+     ],
+     [
+      -609.8,
+      43.7
+     ],
+     [
+      -348.8,
+      30.7
+     ],
+     [
+      -155.8,
+      25.7
+     ],
+     [
+      154.2,
+      25.7
+     ],
+     [
+      347.2,
+      30.7
+     ],
+     [
+      608.2,
+      43.7
+     ],
+     [
+      934.2,
+      69.7
+     ],
+     [
+      1103.2,
+      87.7
+     ],
+     [
+      1266.2,
+      107.7
+     ],
+     [
+      1377.2,
+      124.7
+     ],
+     [
+      1391.2,
+      124.7
+     ],
+     [
+      1430.2,
+      130.7
+     ],
+     [
+      1431.2,
+      132.7
+     ],
+     [
+      1539.2,
+      147.7
+     ],
+     [
+      1832.2,
+      199.7
+     ],
+     [
+      2067.2,
+      247.7
+     ],
+     [
+      2068.2,
+      249.7
+     ],
+     [
+      2134.2,
+      264.7
+     ],
+     [
+      2144.2,
+      264.7
+     ],
+     [
+      2186.2,
+      276.7
+     ],
+     [
+      2249.2,
+      289.7
+     ],
+     [
+      2452.2,
+      340.7
+     ],
+     [
+      2510.2,
+      357.7
+     ],
+     [
+      2576.2,
+      373.7
+     ],
+     [
+      2774.2,
+      430.7
+     ],
+     [
+      3043.2,
+      515.7
+     ],
+     [
+      3316.2,
+      610.7
+     ],
+     [
+      3327.2,
+      616.7
+     ],
+     [
+      3379.2,
+      633.7
+     ],
+     [
+      3387.2,
+      638.7
+     ],
+     [
+      3450.2,
+      660.7
+     ],
+     [
+      3596.2,
+      719.7
+     ],
+     [
+      3621.2,
+      727.7
+     ],
+     [
+      3691.2,
+      758.7
+     ],
+     [
+      3794.2,
+      799.7
+     ],
+     [
+      3849.2,
+      825.7
+     ],
+     [
+      3899.2,
+      844.7
+     ],
+     [
+      4185.2,
+      976.7
+     ],
+     [
+      4294.2,
+      1031.7
+     ],
+     [
+      4320.2,
+      1042.7
+     ],
+     [
+      4493.2,
+      1132.7
+     ],
+     [
+      4523.2,
+      1132.7
+     ],
+     [
+      4523.2,
+      3290.7
+     ],
+     [
+      4550.2,
+      3290.7
+     ],
+     [
+      4550.2,
+      1132.7
+     ],
+     [
+      4286.2,
+      996.7
+     ],
+     [
+      4279.2,
+      995.7
+     ],
+     [
+      4152.2,
+      932.7
+     ],
+     [
+      4017.2,
+      870.7
+     ],
+     [
+      3896.2,
+      817.7
+     ],
+     [
+      3882.2,
+      809.7
+     ],
+     [
+      3775.2,
+      765.7
+     ],
+     [
+      3746.2,
+      751.7
+     ],
+     [
+      3712.2,
+      739.7
+     ],
+     [
+      3577.2,
+      682.7
+     ],
+     [
+      3440.2,
+      629.7
+     ],
+     [
+      3193.2,
+      539.7
+     ],
+     [
+      2869.2,
+      432.7
+     ],
+     [
+      2617.2,
+      360.7
+     ],
+     [
+      2578.2,
+      347.7
+     ],
+     [
+      2434.2,
+      309.7
+     ],
+     [
+      2328.2,
+      284.7
+     ],
+     [
+      2276.2,
+      269.7
+     ],
+     [
+      1887.2,
+      184.7
+     ],
+     [
+      1676.2,
+      144.7
+     ],
+     [
+      1371.2,
+      96.7
+     ],
+     [
+      1173.2,
+      70.7
+     ],
+     [
+      928.2,
+      43.7
+     ],
+     [
+      899.2,
+      42.7
+     ],
+     [
+      784.2,
+      30.7
+     ],
+     [
+      578.2,
+      16.7
+     ],
+     [
+      513.2,
+      14.7
+     ],
+     [
+      492.2,
+      11.7
+     ],
+     [
+      152.2,
+      0.7
+     ],
+     [
+      -154.8,
+      0.7
+     ],
+     [
+      -306.8,
+      4.7
+     ],
+     [
+      -493.8,
+      11.7
+     ],
+     [
+      -514.8,
+      14.7
+     ],
+     [
+      -580.8,
+      16.7
+     ],
+     [
+      -786.8,
+      30.7
+     ],
+     [
+      -1175.8,
+      70.7
+     ],
+     [
+      -1379.8,
+      97.7
+     ],
+     [
+      -1672.8,
+      143.7
+     ],
+     [
+      -1986.8,
+      204.7
+     ],
+     [
+      -2196.8,
+      250.7
+     ],
+     [
+      -2439.8,
+      310.7
+     ],
+     [
+      -2580.8,
+      347.7
+     ],
+     [
+      -2885.8,
+      437.7
+     ],
+     [
+      -3165.8,
+      529.7
+     ],
+     [
+      -3301.8,
+      577.7
+     ],
+     [
+      -3568.8,
+      678.7
+     ],
+     [
+      -3763.8,
+      758.7
+     ],
+     [
+      -3988.8,
+      856.7
+     ],
+     [
+      -4143.8,
+      927.7
+     ],
+     [
+      -4340.8,
+      1023.7
+     ]
+    ]
+   }
+  ],
+  "etiquetas": [
+   {
+    "texto": "LLAW",
+    "x": -6102.2,
+    "y": 329.6
+   },
+   {
+    "texto": "TRAP",
+    "x": -5925.1,
+    "y": 614.4
+   },
+   {
+    "texto": "REWOL",
+    "x": -6102.2,
+    "y": 839.0
+   },
+   {
+    "texto": "450",
+    "x": -4276.1,
+    "y": 1333.8
+   },
+   {
+    "texto": "450",
+    "x": 4276.1,
+    "y": 1333.8
+   },
+   {
+    "texto": "03",
+    "x": -3982.0,
+    "y": 1334.0
+   },
+   {
+    "texto": "03",
+    "x": 3981.9,
+    "y": 1334.0
+   },
+   {
+    "texto": "450",
+    "x": -4276.1,
+    "y": 1533.8
+   },
+   {
+    "texto": "450",
+    "x": 4276.1,
+    "y": 1533.8
+   },
+   {
+    "texto": "05",
+    "x": -3982.0,
+    "y": 1534.0
+   },
+   {
+    "texto": "05",
+    "x": 3981.9,
+    "y": 1534.0
+   },
+   {
+    "texto": "450",
+    "x": -4276.1,
+    "y": 1633.8
+   },
+   {
+    "texto": "450",
+    "x": 4276.1,
+    "y": 1633.8
+   },
+   {
+    "texto": "06",
+    "x": -3982.0,
+    "y": 1634.0
+   },
+   {
+    "texto": "06",
+    "x": 3981.9,
+    "y": 1634.0
+   },
+   {
+    "texto": "10",
+    "x": -3982.0,
+    "y": 2034.1
+   },
+   {
+    "texto": "10",
+    "x": 3981.9,
+    "y": 2034.1
+   },
+   {
+    "texto": "GALS",
+    "x": -6102.2,
+    "y": 2216.2
+   },
+   {
+    "texto": "15",
+    "x": -3982.0,
+    "y": 2534.2
+   },
+   {
+    "texto": "15",
+    "x": 3981.9,
+    "y": 2534.2
+   },
+   {
+    "texto": "ENOZ",
+    "x": -6102.2,
+    "y": 2656.4
+   },
+   {
+    "texto": "450",
+    "x": -4276.1,
+    "y": 2934.0
+   },
+   {
+    "texto": "450",
+    "x": 4276.1,
+    "y": 2934.0
+   },
+   {
+    "texto": "19",
+    "x": -3982.0,
+    "y": 2934.2
+   },
+   {
+    "texto": "19",
+    "x": 3981.9,
+    "y": 2934.2
+   },
+   {
+    "texto": "450",
+    "x": -4276.1,
+    "y": 3034.0
+   },
+   {
+    "texto": "450",
+    "x": 4276.1,
+    "y": 3034.0
+   },
+   {
+    "texto": "20",
+    "x": -3982.0,
+    "y": 3034.2
+   },
+   {
+    "texto": "20",
+    "x": 3981.9,
+    "y": 3034.2
+   },
+   {
+    "texto": "450",
+    "x": -4276.1,
+    "y": 3234.0
+   },
+   {
+    "texto": "450",
+    "x": 4276.1,
+    "y": 3234.0
+   },
+   {
+    "texto": "22",
+    "x": -3982.0,
+    "y": 3234.2
+   },
+   {
+    "texto": "22",
+    "x": 3981.9,
+    "y": 3234.2
+   },
+   {
+    "texto": "450",
+    "x": -4377.6,
+    "y": 3334.1
+   },
+   {
+    "texto": "23",
+    "x": -4083.5,
+    "y": 3334.3
+   },
+   {
+    "texto": "LLAW",
+    "x": -6102.2,
+    "y": 3496.7
+   },
+   {
+    "texto": "25",
+    "x": -4083.5,
+    "y": 3534.3
+   },
+   {
+    "texto": "V3L-100",
+    "x": 1663.0,
+    "y": 3714.4
+   },
+   {
+    "texto": "450",
+    "x": -4377.6,
+    "y": 3734.1
+   },
+   {
+    "texto": "27",
+    "x": -4083.5,
+    "y": 3734.3
+   },
+   {
+    "texto": "TRAP",
+    "x": -5925.1,
+    "y": 3765.2
+   },
+   {
+    "texto": "REPPU",
+    "x": -6102.2,
+    "y": 3989.8
+   }
+  ]
+ },
+ "desarrollo": {
+  "estado": "medido_a_escala",
+  "vista": "desarrollo de la pared, hoja 2 del plano CS128936 rev. B01",
+  "_nota": "Transcripción de EAF-042 (herramientas/lectura_pesqueria.py, leer_desarrollo): celdas por hilada de los rellenos vectoriales del PDF (el último pintado manda), con su material por el color de la leyenda. La tira no rotula su escala: cada sector se lleva al largo de su arco de cara caliente (ángulos rotulados 226°, 28° y 78°, radios de la planta), lo que da 1:39.9. Por eso su largo es, por construcción, el perímetro del contorno: no sirve para contrastarlo. Los huecos de las hiladas 22 a 29 son las aberturas de los paneles (lanzas y quemadores): ahí no hay ladrillo.",
+  "sentido": "De izquierda a derecha según el dibujo; empieza y termina en el centro de la puerta y la nariz queda en el medio. No se verificó qué mitad de la tira es +Z.",
+  "longitud": 26540.3,
+  "escala": {
+   "pt_por_mm": 0.070971,
+   "estado": "derivado",
+   "nota": "de los ángulos rotulados y los radios de la planta"
+  },
+  "franjas_rotuladas": {
+   "estado": "leido_del_plano",
+   "WALL UPPER PART": [
+    23,
+    29
+   ],
+   "SLAG ZONE": [
+    6,
+    22
+   ],
+   "WALL LOWER PART": [
+    1,
+    5
+   ],
+   "nota": "rótulos del margen derecho de la hoja"
+  },
+  "sectores": [
+   {
+    "id": "S1",
+    "arco": "cuerpo",
+    "s": [
+     0.0,
+     7737.5
+    ],
+    "x_pt": [
+     237.4,
+     787.5
+    ],
+    "angulo_rotulado": "226° (el cuerpo: las dos mitades)",
+    "angulo_de_la_planta": 226.1
+   },
+   {
+    "id": "S2",
+    "arco": "union_izquierda",
+    "s": [
+     7737.5,
+     12340.5
+    ],
+    "x_pt": [
+     787.5,
+     1112.4
+    ],
+    "angulo_rotulado": "28°",
+    "angulo_de_la_planta": 28.1
+   },
+   {
+    "id": "S3",
+    "arco": "nariz",
+    "s": [
+     12340.5,
+     14199.8
+    ],
+    "x_pt": [
+     1112.4,
+     1246.0
+    ],
+    "angulo_rotulado": "78°",
+    "angulo_de_la_planta": 77.6
+   },
+   {
+    "id": "S4",
+    "arco": "union_derecha",
+    "s": [
+     14199.8,
+     18802.8
+    ],
+    "x_pt": [
+     1246.0,
+     1571.0
+    ],
+    "angulo_rotulado": "28°",
+    "angulo_de_la_planta": 28.1
+   },
+   {
+    "id": "S5",
+    "arco": "cuerpo",
+    "s": [
+     18802.8,
+     26540.3
+    ],
+    "x_pt": [
+     1571.0,
+     2121.0
+    ],
+    "angulo_rotulado": "226° (el cuerpo: las dos mitades)",
+    "angulo_de_la_planta": 226.1
+   }
+  ],
+  "series": {
+   "estado": "derivado",
+   "45": 450,
+   "nota": "todas las piezas de la pared llevan serie 45 («(45/0)», «(45/8)», «(45/40)»): 450 mm, el rótulo de A-A y C-C"
+  },
+  "zonas": [
+   {
+    "id": "Z01",
+    "lugar": "sector S1; hiladas 3 a 5",
+    "sector": "S1",
+    "material": "ANCARBON R F6E10",
+    "serie": 45,
+    "rotulos": [
+     "3~5",
+     "(226°)",
+     "(45/40)",
+     "29pc",
+     "(45/8)",
+     "81pc"
+    ],
+    "celdas": [
+     [
+      3,
+      0.0,
+      7737.5
+     ],
+     [
+      4,
+      0.0,
+      7737.5
+     ],
+     [
+      5,
+      0.0,
+      7737.5
+     ]
+    ],
+    "hiladas": [
+     3,
+     5
+    ]
+   },
+   {
+    "id": "Z02",
+    "lugar": "sector S1; hiladas 6 a 19",
+    "sector": "S1",
+    "material": "ANCARBON R F1E14D",
+    "serie": 45,
+    "rotulos": [
+     "6~17",
+     "(226°)",
+     "(45/40)",
+     "29pc",
+     "(45/8)",
+     "81pc",
+     "18~19",
+     "(97°)",
+     "35pc",
+     "&",
+     "12pc"
+    ],
+    "celdas": [
+     [
+      6,
+      0.0,
+      7737.5
+     ],
+     [
+      7,
+      0.0,
+      7737.5
+     ],
+     [
+      8,
+      0.0,
+      7737.5
+     ],
+     [
+      9,
+      0.0,
+      7737.5
+     ],
+     [
+      10,
+      0.0,
+      7737.5
+     ],
+     [
+      11,
+      0.0,
+      7737.5
+     ],
+     [
+      12,
+      0.0,
+      7737.5
+     ],
+     [
+      13,
+      0.0,
+      7737.5
+     ],
+     [
+      14,
+      0.0,
+      7737.5
+     ],
+     [
+      15,
+      0.0,
+      7737.5
+     ],
+     [
+      16,
+      0.0,
+      7737.5
+     ],
+     [
+      17,
+      0.0,
+      7737.5
+     ],
+     [
+      18,
+      924.8,
+      7737.5
+     ],
+     [
+      19,
+      843.9,
+      7737.5
+     ]
+    ],
+    "hiladas": [
+     6,
+     19
+    ]
+   },
+   {
+    "id": "Z03",
+    "lugar": "sector S1; hiladas 18 a 26; marco de la puerta («70/0», «35/0»)",
+    "sector": "S1",
+    "material": "ANCARBON R F1E10D",
+    "serie": null,
+    "rotulos": [],
+    "celdas": [
+     [
+      18,
+      0.0,
+      924.8
+     ],
+     [
+      19,
+      0.0,
+      843.9
+     ],
+     [
+      20,
+      0.0,
+      924.8
+     ],
+     [
+      21,
+      0.0,
+      1023.3
+     ],
+     [
+      22,
+      0.0,
+      1121.7
+     ],
+     [
+      23,
+      0.0,
+      949.4
+     ],
+     [
+      24,
+      0.0,
+      949.4
+     ],
+     [
+      25,
+      0.0,
+      949.4
+     ],
+     [
+      26,
+      847.5,
+      949.4
+     ]
+    ],
+    "hiladas": [
+     18,
+     26
+    ]
+   },
+   {
+    "id": "Z04",
+    "lugar": "sector S1; hiladas 20 a 22",
+    "sector": "S1",
+    "material": "ANCARBON R TB256",
+    "serie": 45,
+    "rotulos": [
+     "20~21",
+     "(97°)",
+     "(45/8)",
+     "35pc",
+     "&",
+     "(45/40)",
+     "12pc",
+     "30pc",
+     "10pc",
+     "(83°)"
+    ],
+    "celdas": [
+     [
+      20,
+      924.8,
+      7737.5
+     ],
+     [
+      21,
+      1023.3,
+      7737.5
+     ],
+     [
+      22,
+      1121.7,
+      1920.0
+     ],
+     [
+      22,
+      2876.4,
+      7737.5
+     ]
+    ],
+    "hiladas": [
+     20,
+     22
+    ]
+   },
+   {
+    "id": "Z05",
+    "lugar": "sector S2; hiladas 1 a 5",
+    "sector": "S2",
+    "material": "ANCARBON R F6E10",
+    "serie": 45,
+    "rotulos": [
+     "(45/0)",
+     "2pc",
+     "&",
+     "(45/8)",
+     "11pc",
+     "(11°)",
+     "3pc",
+     "19pc",
+     "(19°)",
+     "3~5",
+     "(28°)",
+     "28pc",
+     "4pc"
+    ],
+    "celdas": [
+     [
+      1,
+      10530.6,
+      12340.5
+     ],
+     [
+      2,
+      9149.3,
+      12340.5
+     ],
+     [
+      3,
+      7737.5,
+      12340.5
+     ],
+     [
+      4,
+      7737.5,
+      12340.5
+     ],
+     [
+      5,
+      7737.5,
+      12340.5
+     ]
+    ],
+    "hiladas": [
+     1,
+     5
+    ]
+   },
+   {
+    "id": "Z06",
+    "lugar": "sector S2; hiladas 6 a 19",
+    "sector": "S2",
+    "material": "ANCARBON R F1E14D",
+    "serie": 45,
+    "rotulos": [
+     "6~19",
+     "(28°)",
+     "(45/8)",
+     "28pc",
+     "(45/0)",
+     "4pc"
+    ],
+    "celdas": [
+     [
+      6,
+      7737.5,
+      12340.5
+     ],
+     [
+      7,
+      7737.5,
+      12340.5
+     ],
+     [
+      8,
+      7737.5,
+      12340.5
+     ],
+     [
+      9,
+      7737.5,
+      12340.5
+     ],
+     [
+      10,
+      7737.5,
+      12340.5
+     ],
+     [
+      11,
+      7737.5,
+      12340.5
+     ],
+     [
+      12,
+      7737.5,
+      12340.5
+     ],
+     [
+      13,
+      7737.5,
+      12340.5
+     ],
+     [
+      14,
+      7737.5,
+      12340.5
+     ],
+     [
+      15,
+      7737.5,
+      12340.5
+     ],
+     [
+      16,
+      7737.5,
+      12340.5
+     ],
+     [
+      17,
+      7737.5,
+      12340.5
+     ],
+     [
+      18,
+      7737.5,
+      12340.5
+     ],
+     [
+      19,
+      7737.5,
+      12340.5
+     ]
+    ],
+    "hiladas": [
+     6,
+     19
+    ]
+   },
+   {
+    "id": "Z07",
+    "lugar": "sector S2; hiladas 20 a 29",
+    "sector": "S2",
+    "material": "ANCARBON R TB256",
+    "serie": 45,
+    "rotulos": [
+     "20~21",
+     "(28°)",
+     "(45/0)",
+     "4pc",
+     "&",
+     "(45/8)",
+     "28pc",
+     "1pc",
+     "7pc",
+     "(7°)",
+     "10pc",
+     "(10°)",
+     "23~29"
+    ],
+    "celdas": [
+     [
+      20,
+      7737.5,
+      12340.5
+     ],
+     [
+      21,
+      7737.5,
+      12340.5
+     ],
+     [
+      22,
+      8720.7,
+      9875.4
+     ],
+     [
+      22,
+      10693.5,
+      12340.5
+     ],
+     [
+      23,
+      8720.7,
+      9875.4
+     ],
+     [
+      23,
+      10693.5,
+      12340.5
+     ],
+     [
+      24,
+      8720.7,
+      9875.4
+     ],
+     [
+      24,
+      10693.5,
+      12340.5
+     ],
+     [
+      25,
+      8720.7,
+      9875.4
+     ],
+     [
+      25,
+      10693.5,
+      12340.5
+     ],
+     [
+      26,
+      8720.7,
+      9875.4
+     ],
+     [
+      26,
+      10693.5,
+      12340.5
+     ],
+     [
+      27,
+      8720.7,
+      9875.4
+     ],
+     [
+      27,
+      10693.5,
+      12340.5
+     ],
+     [
+      28,
+      8720.7,
+      9875.4
+     ],
+     [
+      28,
+      10693.5,
+      12340.5
+     ],
+     [
+      29,
+      8720.7,
+      9875.4
+     ],
+     [
+      29,
+      10693.5,
+      12340.5
+     ]
+    ],
+    "hiladas": [
+     20,
+     29
+    ]
+   },
+   {
+    "id": "Z08",
+    "lugar": "sector S3; hiladas 1 a 5",
+    "sector": "S3",
+    "material": "ANCARBON R F6E10",
+    "serie": 45,
+    "rotulos": [
+     "1",
+     "2",
+     "3",
+     "1~5",
+     "(78°)",
+     "4",
+     "(45/40)",
+     "16pc",
+     "5"
+    ],
+    "celdas": [
+     [
+      1,
+      12340.5,
+      14199.8
+     ],
+     [
+      2,
+      12340.5,
+      14199.8
+     ],
+     [
+      3,
+      12340.5,
+      14199.8
+     ],
+     [
+      4,
+      12340.5,
+      14199.8
+     ],
+     [
+      5,
+      12340.5,
+      14199.8
+     ]
+    ],
+    "hiladas": [
+     1,
+     5
+    ]
+   },
+   {
+    "id": "Z09",
+    "lugar": "sector S3; hiladas 6 a 19",
+    "sector": "S3",
+    "material": "ANCARBON R F1E14D",
+    "serie": 45,
+    "rotulos": [
+     "6",
+     "7",
+     "8",
+     "9",
+     "10",
+     "11",
+     "12",
+     "6~19",
+     "(78°)",
+     "13",
+     "(45/40)",
+     "16pc",
+     "14",
+     "15",
+     "16",
+     "17",
+     "18",
+     "19"
+    ],
+    "celdas": [
+     [
+      6,
+      12340.5,
+      14199.8
+     ],
+     [
+      7,
+      12340.5,
+      14199.8
+     ],
+     [
+      8,
+      12340.5,
+      14199.8
+     ],
+     [
+      9,
+      12340.5,
+      14199.8
+     ],
+     [
+      10,
+      12340.5,
+      14199.8
+     ],
+     [
+      11,
+      12340.5,
+      14199.8
+     ],
+     [
+      12,
+      12340.5,
+      14199.8
+     ],
+     [
+      13,
+      12340.5,
+      14199.8
+     ],
+     [
+      14,
+      12340.5,
+      14199.8
+     ],
+     [
+      15,
+      12340.5,
+      14199.8
+     ],
+     [
+      16,
+      12340.5,
+      14199.8
+     ],
+     [
+      17,
+      12340.5,
+      14199.8
+     ],
+     [
+      18,
+      12340.5,
+      14199.8
+     ],
+     [
+      19,
+      12340.5,
+      14199.8
+     ]
+    ],
+    "hiladas": [
+     6,
+     19
+    ]
+   },
+   {
+    "id": "Z10",
+    "lugar": "sector S3; hiladas 20 a 22",
+    "sector": "S3",
+    "material": "ANCARBON R TB256",
+    "serie": 45,
+    "rotulos": [
+     "20",
+     "21",
+     "20~22",
+     "(78°)",
+     "22",
+     "(45/40)",
+     "16pc"
+    ],
+    "celdas": [
+     [
+      20,
+      12340.5,
+      14199.8
+     ],
+     [
+      21,
+      12340.5,
+      14199.8
+     ],
+     [
+      22,
+      12340.5,
+      14199.8
+     ]
+    ],
+    "hiladas": [
+     20,
+     22
+    ]
+   },
+   {
+    "id": "Z11",
+    "lugar": "sector S3; hiladas 23 a 29",
+    "sector": "S3",
+    "material": "ANCARBON R F3E14D",
+    "serie": 45,
+    "rotulos": [
+     "23",
+     "24",
+     "25",
+     "26",
+     "23~29",
+     "(78°)",
+     "27",
+     "(45/40)",
+     "16pc",
+     "28",
+     "29"
+    ],
+    "celdas": [
+     [
+      23,
+      12344.0,
+      14198.4
+     ],
+     [
+      24,
+      12344.0,
+      14198.4
+     ],
+     [
+      25,
+      12344.0,
+      14198.4
+     ],
+     [
+      26,
+      12344.0,
+      14198.4
+     ],
+     [
+      27,
+      12344.0,
+      14198.4
+     ],
+     [
+      28,
+      12344.0,
+      14198.4
+     ],
+     [
+      29,
+      12344.0,
+      14198.4
+     ]
+    ],
+    "hiladas": [
+     23,
+     29
+    ]
+   },
+   {
+    "id": "Z12",
+    "lugar": "sector S4; hiladas 1 a 5",
+    "sector": "S4",
+    "material": "ANCARBON R F6E10",
+    "serie": 45,
+    "rotulos": [
+     "(45/0)",
+     "2pc",
+     "&",
+     "(45/8)",
+     "11pc",
+     "(11°)",
+     "3pc",
+     "19pc",
+     "(19°)",
+     "3~5",
+     "(28°)",
+     "28pc",
+     "4pc"
+    ],
+    "celdas": [
+     [
+      1,
+      14199.8,
+      16011.3
+     ],
+     [
+      2,
+      14199.8,
+      17392.2
+     ],
+     [
+      3,
+      14199.8,
+      18802.8
+     ],
+     [
+      4,
+      14199.8,
+      18802.8
+     ],
+     [
+      5,
+      14199.8,
+      18802.8
+     ]
+    ],
+    "hiladas": [
+     1,
+     5
+    ]
+   },
+   {
+    "id": "Z13",
+    "lugar": "sector S4; hiladas 6 a 19",
+    "sector": "S4",
+    "material": "ANCARBON R F1E14D",
+    "serie": 45,
+    "rotulos": [
+     "6~19",
+     "(28°)",
+     "(45/8)",
+     "28pc",
+     "(45/0)",
+     "4pc"
+    ],
+    "celdas": [
+     [
+      6,
+      14199.8,
+      18802.8
+     ],
+     [
+      7,
+      14199.8,
+      18802.8
+     ],
+     [
+      8,
+      14199.8,
+      18802.8
+     ],
+     [
+      9,
+      14199.8,
+      18802.8
+     ],
+     [
+      10,
+      14199.8,
+      18802.8
+     ],
+     [
+      11,
+      14199.8,
+      18802.8
+     ],
+     [
+      12,
+      14199.8,
+      18802.8
+     ],
+     [
+      13,
+      14199.8,
+      18802.8
+     ],
+     [
+      14,
+      14199.8,
+      18802.8
+     ],
+     [
+      15,
+      14199.8,
+      18802.8
+     ],
+     [
+      16,
+      14199.8,
+      18802.8
+     ],
+     [
+      17,
+      14199.8,
+      18802.8
+     ],
+     [
+      18,
+      14199.8,
+      18802.8
+     ],
+     [
+      19,
+      14199.8,
+      18802.8
+     ]
+    ],
+    "hiladas": [
+     6,
+     19
+    ]
+   },
+   {
+    "id": "Z14",
+    "lugar": "sector S4; hiladas 20 a 29",
+    "sector": "S4",
+    "material": "ANCARBON R TB256",
+    "serie": 45,
+    "rotulos": [
+     "20~21",
+     "(28°)",
+     "(45/0)",
+     "4pc",
+     "&",
+     "(45/8)",
+     "28pc",
+     "1pc",
+     "11pc",
+     "(11°)",
+     "23~29",
+     "2pc"
+    ],
+    "celdas": [
+     [
+      20,
+      14199.8,
+      18802.8
+     ],
+     [
+      21,
+      14199.8,
+      18802.8
+     ],
+     [
+      22,
+      14199.8,
+      16011.3
+     ],
+     [
+      22,
+      17979.9,
+      18802.8
+     ],
+     [
+      23,
+      14199.8,
+      16011.3
+     ],
+     [
+      23,
+      17979.9,
+      18802.8
+     ],
+     [
+      24,
+      14199.8,
+      16011.3
+     ],
+     [
+      24,
+      17979.9,
+      18802.8
+     ],
+     [
+      25,
+      14199.8,
+      16011.3
+     ],
+     [
+      25,
+      17979.9,
+      18802.8
+     ],
+     [
+      26,
+      14199.8,
+      16011.3
+     ],
+     [
+      26,
+      17979.9,
+      18802.8
+     ],
+     [
+      27,
+      14199.8,
+      16011.3
+     ],
+     [
+      27,
+      17979.9,
+      18802.8
+     ],
+     [
+      28,
+      14199.8,
+      16011.3
+     ],
+     [
+      28,
+      17979.9,
+      18802.8
+     ],
+     [
+      29,
+      14199.8,
+      16011.3
+     ],
+     [
+      29,
+      17979.9,
+      18802.8
+     ]
+    ],
+    "hiladas": [
+     20,
+     29
+    ]
+   },
+   {
+    "id": "Z15",
+    "lugar": "sector S5; hiladas 3 a 5",
+    "sector": "S5",
+    "material": "ANCARBON R F6E10",
+    "serie": 45,
+    "rotulos": [],
+    "celdas": [
+     [
+      3,
+      18802.8,
+      26540.3
+     ],
+     [
+      4,
+      18802.8,
+      26540.3
+     ],
+     [
+      5,
+      18802.8,
+      26540.3
+     ]
+    ],
+    "hiladas": [
+     3,
+     5
+    ]
+   },
+   {
+    "id": "Z16",
+    "lugar": "sector S5; hiladas 6 a 19",
+    "sector": "S5",
+    "material": "ANCARBON R F1E14D",
+    "serie": 45,
+    "rotulos": [
+     "18~19",
+     "(97°)",
+     "(45/8)",
+     "35pc",
+     "&",
+     "(45/40)",
+     "12pc"
+    ],
+    "celdas": [
+     [
+      6,
+      18802.8,
+      26540.3
+     ],
+     [
+      7,
+      18802.8,
+      26540.3
+     ],
+     [
+      8,
+      18802.8,
+      26540.3
+     ],
+     [
+      9,
+      18802.8,
+      26540.3
+     ],
+     [
+      10,
+      18802.8,
+      26540.3
+     ],
+     [
+      11,
+      18802.8,
+      26540.3
+     ],
+     [
+      12,
+      18802.8,
+      26540.3
+     ],
+     [
+      13,
+      18802.8,
+      26540.3
+     ],
+     [
+      14,
+      18802.8,
+      26540.3
+     ],
+     [
+      15,
+      18802.8,
+      26540.3
+     ],
+     [
+      16,
+      18802.8,
+      26540.3
+     ],
+     [
+      17,
+      18802.8,
+      26540.3
+     ],
+     [
+      18,
+      18802.8,
+      25617.5
+     ],
+     [
+      19,
+      18802.8,
+      25694.8
+     ]
+    ],
+    "hiladas": [
+     6,
+     19
+    ]
+   },
+   {
+    "id": "Z17",
+    "lugar": "sector S5; hiladas 18 a 26; marco de la puerta («70/0», «35/0»)",
+    "sector": "S5",
+    "material": "ANCARBON R F1E10D",
+    "serie": null,
+    "rotulos": [],
+    "celdas": [
+     [
+      18,
+      25617.5,
+      26540.3
+     ],
+     [
+      19,
+      25694.8,
+      26540.3
+     ],
+     [
+      20,
+      25617.5,
+      26540.3
+     ],
+     [
+      21,
+      25519.0,
+      26540.3
+     ],
+     [
+      22,
+      25417.0,
+      26540.3
+     ],
+     [
+      23,
+      25589.3,
+      26540.3
+     ],
+     [
+      24,
+      25589.3,
+      26540.3
+     ],
+     [
+      25,
+      25589.3,
+      26540.3
+     ],
+     [
+      26,
+      25589.3,
+      25694.8
+     ]
+    ],
+    "hiladas": [
+     18,
+     26
+    ]
+   },
+   {
+    "id": "Z18",
+    "lugar": "sector S5; hiladas 20 a 27",
+    "sector": "S5",
+    "material": "ANCARBON R TB256",
+    "serie": 45,
+    "rotulos": [
+     "20~21",
+     "(97°)",
+     "(45/8)",
+     "35pc",
+     "&",
+     "(45/40)",
+     "12pc",
+     "30pc",
+     "10pc",
+     "(83°)",
+     "23~27",
+     "(58°)",
+     "7pc",
+     "22pc"
+    ],
+    "celdas": [
+     [
+      20,
+      18802.8,
+      25617.5
+     ],
+     [
+      21,
+      18802.8,
+      25519.0
+     ],
+     [
+      22,
+      18802.8,
+      23665.5
+     ],
+     [
+      22,
+      24622.1,
+      25417.0
+     ],
+     [
+      23,
+      18802.8,
+      22775.7
+     ],
+     [
+      24,
+      18802.8,
+      22775.7
+     ],
+     [
+      25,
+      18802.8,
+      22775.7
+     ],
+     [
+      26,
+      18802.8,
+      22775.7
+     ],
+     [
+      27,
+      18802.8,
+      22775.7
+     ]
+    ],
+    "hiladas": [
+     20,
+     27
+    ]
+   }
+  ]
+ }
+}

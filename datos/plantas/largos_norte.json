@@ -1,0 +1,377 @@
+{
+  "formato": "lwd_eaf.planta/1",
+  "planta": "Largos Norte",
+  "horno": "EAF tipo EBT",
+  "_nota": "Contrastado el 2026-10-07 contra el plano CS88002904 rev. E (fuentes/). Método y diferencias con el borrador anterior en docs/contraste-plano.md. Todo dato numérico vive en un objeto con 'estado', propio o del objeto que lo contiene.",
+
+  "plano": {
+    "proveedor": "Magnesita (RHI Magnesita)",
+    "numero": "CS88002904",
+    "revision": "E",
+    "fecha_revision": "2023-10-30",
+    "archivo": "fuentes/20231030. CS88002904. EAF.pdf",
+    "escala": "1:25 (vistas A-A, B-B y C-C); desarrollo 1:30; detalle de piquera 1:10",
+    "advertencia_del_plano": "DO NOT SCALE IF IN DOUBT, ASK. Los datos 'medido_a_escala' contradicen esa indicación y deben confirmarse con Magnesita si resultan críticos.",
+    "capacidad_nominal_t": {"valor": 117, "estado": "cota_del_plano", "vista": "cajetín (Unit EBT-EAF 117t)"}
+  },
+
+  "unidades": {"longitud": "mm", "masa": "t", "densidad": "t/m3", "angulo": "grados"},
+
+  "estados": {
+    "cota_del_plano": "Cota o rótulo numérico escrito en el plano.",
+    "leido_del_plano": "Información no numérica leída del plano: material por color de la leyenda, número de hilada, rótulo de pieza.",
+    "medido_a_escala": "Medido sobre la geometría vectorial del PDF a escala 1:25, calibrada contra las cotas escritas; resolución del orden de 1 a 2 mm. Reproducible con herramientas/plano_pdf.py.",
+    "derivado": "Calculado a partir de otros datos de este archivo; la fórmula se indica en la nota.",
+    "supuesto": "Valor provisional sin respaldo en el plano.",
+    "decision_del_usuario": "Valor o regla fijados por el usuario; no vienen del plano ni de una medición.",
+    "tomado_del_lwd": "Copiado del Ladle Wear Diagnosis v1.1 (revisión e19a0b4, referencia/lwd_v1_1/). Para el horno es también un supuesto: no se ha verificado en el EAF.",
+    "heredado_sin_verificar": "Viene del trabajo previo y no se ha vuelto a comprobar.",
+    "por_definir": "Falta el dato."
+  },
+
+  "coordenadas": {
+    "origen": "eje del horno, a nivel del fondo de la coraza en el eje (Y = 0 en A-A y B-B)",
+    "x_positivo": "puerta de escoria",
+    "x_negativo": "nariz EBT (piquera)",
+    "y": "altura desde el fondo de la coraza",
+    "h": "profundidad del baño en el eje; h = y - 679",
+    "inclinacion_positiva": "hacia la piquera",
+    "seccion_a_a": "plano vertical que contiene el eje X",
+    "seccion_b_b": "plano vertical por el eje, perpendicular a A-A; 'izquierdo' y 'derecho' son los lados tal como se ven en el dibujo B-B"
+  },
+
+  "densidades": {
+    "acero_liquido": {"valor": 7.0, "estado": "supuesto", "nota": "reproduce las marcas de 8 t y 117 t del plano en el modelo previo; el LWD usa 6.9"},
+    "escoria": {"valor": 3.0, "estado": "tomado_del_lwd", "fuente": "SLAG_DENSITY de referencia/lwd_v1_1/constantes.py", "nota": "decisión del usuario del 2026-10-07: usar la del LWD (escoria de olla); la escoria del EAF es oxidante y puede ser distinta"},
+    "factor_de_espumado": {"valor": 1.0, "estado": "supuesto", "nota": "factor sobre el volumen de escoria (decisión del usuario del 2026-10-07: factor de volumen). Valor provisional 1.0 = sin espuma, hasta que haya dato; se da por colada"}
+  },
+
+  "inclinacion": {
+    "paso": {"valor": 1, "estado": "decision_del_usuario", "nota": "pasos de −1° y +1° en la interfaz"},
+    "minimo": {"valor": -15, "estado": "supuesto"},
+    "maximo": {"valor": 15, "estado": "supuesto"},
+    "nota": "rango propuesto por el usuario; falta el dato mecánico del horno"
+  },
+
+  "materiales": {
+    "_nota": "Colores RGB exactos de la leyenda del PDF; el material de cada capa se identificó por color. 'grupo' es el bloque de la leyenda en que aparece. La columna 'Mortar' de MAXIAL 210-MX y ANKER 30 dice 'MORTAR'; se copia sin interpretar.",
+    "estado": "leido_del_plano",
+    "MAXIAL 210-MX": {"color": "#ABAB54", "grupo": "Brand/Mortar", "columna_mortar": "MORTAR"},
+    "ANKER 30": {"color": "#D4D4AA", "grupo": "Brand/Mortar", "columna_mortar": "MORTAR"},
+    "ANCARBON R F6E14": {"color": "#FFD9B3", "grupo": "Brand/Mortar"},
+    "ANCARBON R F5E14": {"color": "#FF7F00", "grupo": "Brand/Mortar"},
+    "ANCARBON R F1E10D": {"color": "#007FFF", "grupo": "Brand/Mortar"},
+    "ANCARBON R F3E10D": {"color": "#7FBFFF", "grupo": "Brand/Mortar"},
+    "ANCARBON R F2E10MBU": {"color": "#00DDA5", "grupo": "Brand/Mortar"},
+    "ANKERTAP HAR198": {"color": "#B7916C", "grupo": "Brand/Mortar"},
+    "ANKERTAP HMR173": {"color": "#95704A", "grupo": "Brand/Mortar"},
+    "PERRAMIT MA20": {"color": "#DBDBDB", "grupo": "Monolithic/Mixing liquid"},
+    "DIDURIT M66-5-MX": {"color": "#989898", "grupo": "Monolithic/Mixing liquid"},
+    "ANKERMIX KS13-AT": {"color": "#7F00FF", "grupo": "Monolithic/Mixing liquid"},
+    "PERMASIT GS": {"color": "#DD006E", "grupo": "Monolithic/Mixing liquid"},
+    "MATERIAL RECUPERADO": {"color": "#FFFF7F", "grupo": "Monolithic/Mixing liquid"}
+  },
+
+  "coraza_en_planta": {
+    "_nota": "Contorno de la cara interior de la coraza (la línea acotada Ø5800, donde empieza la capa de 32 mm). El plano dibuja otra línea fina unos 35 mm por fuera, sin acotar.",
+    "radio_cuerpo": {"valor": 2900, "estado": "cota_del_plano", "vista": "B-B (Ø5800)"},
+    "radio_nariz": {"valor": 1700, "estado": "cota_del_plano", "vista": "C-C"},
+    "x_centro_nariz": {"valor": -2741, "estado": "cota_del_plano", "vista": "C-C"},
+    "radio_arcos_de_union": {"valor": 12000, "estado": "cota_del_plano", "vista": "C-C", "nota": "tangentes al cuerpo y a la nariz"},
+    "angulos_de_los_arcos": {
+      "cuerpo": 217, "union": 14.5, "nariz": 114,
+      "estado": "cota_del_plano", "vista": "desarrollo y C-C",
+      "nota": "el plano los marca 'por confirmar'; la tangencia de los radios da 216.9°, 14.6° y 113.9° (prueba en verificacion/test_geometria.py)"
+    },
+    "x_nariz_extremo": {"valor": -4441, "estado": "cota_del_plano", "vista": "A-A (4441)", "nota": "= 2741 + 1700; medido -4441.6"}
+  },
+
+  "pared": {
+    "altura_de_hilada": {"valor": 100, "estado": "cota_del_plano", "vista": "A-A (2100 = 21 hiladas)"},
+    "y_base_hilada_1": {"valor": 750, "estado": "cota_del_plano", "vista": "A-A, B-B"},
+    "_nota_capas": "Capas de la coraza hacia el interior. 'trabajo' es la capa que se desgasta. x_exterior es el límite exterior de las capas modeladas: la cara interior de la coraza salvo en el lado puerta. La cara caliente queda en x_exterior ∓ suma de espesores. La coraza solo es vertical por encima de Y = 856 (B-B; 800 en la nariz de A-A): por debajo dobla hacia el casquete R6500 y las capas de 32 mm y de seguridad de la hilada 1 siguen esa curva, que no se ha levantado.",
+    "lados": {
+      "nariz": {
+        "seccion": "A-A",
+        "lado_de_x": "negativo",
+        "x_exterior": {"valor": -4441, "estado": "cota_del_plano", "vista": "A-A"},
+        "tramos": [
+          {"hiladas": [1, 3], "capas": [{"material": "MAXIAL 210-MX", "espesor": 32}, {"material": "ANKER 30", "espesor": 76}, {"material": "ANCARBON R F5E14", "espesor": 400, "funcion": "trabajo"}],
+           "estado": "cota_del_plano", "vista": "A-A (400) y B-B (32+76+400)", "nota": "cara caliente medida en -3933.6"},
+          {"hiladas": [4, 11], "capas": [{"material": "MAXIAL 210-MX", "espesor": 32}, {"material": "ANKER 30", "espesor": 76}, {"material": "ANCARBON R F1E10D", "espesor": 450, "funcion": "trabajo"}],
+           "estado": "cota_del_plano", "vista": "A-A (450)", "nota": "cara caliente medida en -3883.3; las hiladas 4 y 5 quedan cubiertas por el talud de apisonado"},
+          {"hiladas": [12, 21], "capas": [{"material": "MAXIAL 210-MX", "espesor": 32}, {"material": "ANCARBON R F5E14", "espesor": 400, "funcion": "trabajo"}],
+           "estado": "medido_a_escala", "vista": "A-A",
+           "nota": "sin capa de seguridad: el ladrillo arranca en la capa de 32 mm y la cara caliente queda en -4009.8. El rótulo junto a la hilada 21 dice '450', pero la geometría mide 400 y el desarrollo usa piezas de la serie 40 en 12~21 (114°). Confirmar con Magnesita."}
+        ]
+      },
+      "puerta": {
+        "seccion": "A-A",
+        "lado_de_x": "positivo",
+        "x_exterior": {"valor": 2868, "estado": "medido_a_escala", "vista": "A-A",
+          "nota": "cara exterior del ANKER 30. En el lado puerta no hay capa de 32 mm: entre X = 2868 y la coraza hay relleno de DIDURIT M66-5-MX. La coraza (cota 2900) es vertical solo entre Y = 856 y 870 y luego se abre a 45° hacia la puerta hasta (3221, 1191); el relleno se ensancha con ella."},
+        "tramos": [
+          {"hiladas": [1, 3], "capas": [{"material": "ANKER 30", "espesor": 76}, {"material": "ANCARBON R F5E14", "espesor": 400, "funcion": "trabajo"}],
+           "estado": "medido_a_escala", "vista": "A-A", "nota": "400 rotulado; cara caliente 2392. Las hiladas 1 a 3 quedan cubiertas por el talud."},
+          {"hiladas": [4, 5], "capas": [{"material": "ANKER 30", "espesor": 76, "y_superior": 1207}, {"material": "ANCARBON R F1E10D", "espesor": 450, "funcion": "trabajo"}],
+           "estado": "medido_a_escala", "vista": "A-A", "nota": "450 rotulado; cara caliente 2342. El ANKER 30 termina en Y = 1207: los 43 mm superiores de la hilada 5 se apoyan en el DIDURIT. La hilada 4 queda cubierta por el talud."}
+        ],
+        "umbral": {
+          "_nota": "Por encima de la hilada 5 el lado puerta es el umbral: filas de piezas F3E10D rotuladas '70/0' (700 mm de largo). La cara de cada fila es la cara caliente; el respaldo (ANKER 30 y DIDURIT bajo el túnel) no se ha levantado.",
+          "material": "ANCARBON R F3E10D",
+          "largo_de_pieza": 700,
+          "estado": "medido_a_escala", "vista": "A-A",
+          "filas": [
+            {"y_inferior": 1250, "y_superior": 1450, "x_cara": 2342, "nota": "dos filas de 100 mm"},
+            {"y_inferior": 1450, "y_superior": 1550, "x_cara": 2452},
+            {"y_inferior": 1550, "y_superior": 1700, "x_cara": 2612},
+            {"y_inferior": 1700, "y_superior": 1850, "x_cara": 2772}
+          ],
+          "x_fin_ladrillo_superior": 3466
+        }
+      },
+      "b_izquierdo": {
+        "seccion": "B-B",
+        "lado_de_x": "negativo",
+        "x_exterior": {"valor": -2900, "estado": "cota_del_plano", "vista": "B-B (Ø5800)"},
+        "tramos": [
+          {"hiladas": [1, 3], "capas": [{"material": "MAXIAL 210-MX", "espesor": 32}, {"material": "ANKER 30", "espesor": 76}, {"material": "ANCARBON R F5E14", "espesor": 400, "funcion": "trabajo"}], "estado": "cota_del_plano", "vista": "B-B (32+76+400)"},
+          {"hiladas": [4, 8], "capas": [{"material": "MAXIAL 210-MX", "espesor": 32}, {"material": "ANKER 30", "espesor": 76}, {"material": "ANCARBON R F1E10D", "espesor": 450, "funcion": "trabajo"}], "estado": "cota_del_plano", "vista": "B-B (450)"},
+          {"hiladas": [9, 11], "capas": [{"material": "MAXIAL 210-MX", "espesor": 32}, {"material": "ANKER 30", "espesor": 76}, {"material": "ANCARBON R F2E10MBU", "espesor": 450, "funcion": "trabajo"}], "estado": "cota_del_plano", "vista": "B-B (450)"},
+          {"hiladas": [12, 13], "capas": [{"material": "MAXIAL 210-MX", "espesor": 32}, {"material": "ANKER 30", "espesor": 76}, {"material": "ANCARBON R F2E10MBU", "espesor": 400, "funcion": "trabajo"}], "estado": "cota_del_plano", "vista": "B-B (400)"},
+          {"hiladas": [14, 14], "capas": [{"material": "ANCARBON R F5E14", "espesor": 400, "funcion": "trabajo"}], "estado": "medido_a_escala", "vista": "B-B", "nota": "rotulado 400; sin capa de 32 ni de seguridad, apoyado en la coraza"},
+          {"hiladas": [15, 15], "capas": [{"material": "MATERIAL RECUPERADO", "espesor": 400, "funcion": "trabajo"}], "estado": "medido_a_escala", "vista": "B-B", "nota": "tope en Y = 2250 (cota 750 + 1400 + 100)"}
+        ]
+      },
+      "b_derecho": {
+        "seccion": "B-B",
+        "lado_de_x": "positivo",
+        "x_exterior": {"valor": 2900, "estado": "cota_del_plano", "vista": "B-B (Ø5800)"},
+        "tramos": [
+          {"hiladas": [1, 3], "capas": [{"material": "MAXIAL 210-MX", "espesor": 32}, {"material": "ANKER 30", "espesor": 76}, {"material": "ANCARBON R F5E14", "espesor": 400, "funcion": "trabajo"}], "estado": "cota_del_plano", "vista": "B-B (400+76+32)"},
+          {"hiladas": [4, 13], "capas": [{"material": "MAXIAL 210-MX", "espesor": 32}, {"material": "ANKER 30", "espesor": 76}, {"material": "ANCARBON R F1E10D", "espesor": 450, "funcion": "trabajo"}], "estado": "medido_a_escala", "vista": "B-B", "nota": "450 rotulado en la hilada 4; la cara 2342 sigue sin escalón hasta la hilada 13"},
+          {"hiladas": [14, 14], "capas": [{"material": "ANCARBON R F1E10D", "espesor": 450, "funcion": "trabajo"}], "estado": "cota_del_plano", "vista": "B-B (450)", "nota": "sin capa de 32 ni de seguridad, apoyado en la coraza"},
+          {"hiladas": [15, 15], "capas": [{"material": "MATERIAL RECUPERADO", "espesor": 450, "funcion": "trabajo"}], "estado": "medido_a_escala", "vista": "B-B"}
+        ]
+      }
+    },
+    "ultima_hilada_cuerpo": {"valor": 15, "y_tope": 2250, "estado": "cota_del_plano", "vista": "B-B (750 + 1400 + 100)", "nota": "la hilada 15 es de material recuperado; el ladrillo nuevo termina en la 14 (Y = 2150)"},
+    "ultima_hilada_nariz": {"valor": 21, "y_tope": 2850, "estado": "cota_del_plano", "vista": "A-A (2850)"},
+    "por_encima": {
+      "estado": "supuesto",
+      "regla": "limite_y_supuesto",
+      "contorno_paneles": "coraza",
+      "y_superior_paneles": null,
+      "nota": "Paneles enfriados por agua. El plano no los dibuja y el usuario confirmó el 2026-10-07 que no hay datos de su geometría. Decisión del usuario: el baño que alcanza el fin del refractario (Y = 2250 en el cuerpo, 2850 en la nariz) es un suceso y marca la capacidad segura; por encima, el volumen se calcula con la cara de los paneles a paño de la cara interior de la coraza (R2900, R1700, R12000), marcado como supuesto en gráficas y reportes. Altura de los paneles desconocida. Solo influye inclinando hacia la piquera: hacia la puerta el baño derrama antes por el umbral (Y = 1850)."
+    },
+    "desarrollo": {
+      "estado": "medido_a_escala", "vista": "DEVELOPMENT 1:30",
+      "_nota": "Transcripción completa del desarrollo, 2026-10-07 (EAF-003). s es la posición a lo largo del desarrollo en mm a escala 1:30, desde el extremo izquierdo; los límites de cada celda se leyeron de los rellenos vectoriales del PDF (herramientas/plano_pdf.py, celdas_desarrollo) y el material por su color. Los rótulos se copian tal cual: (45/8) 12pc = 12 piezas de la referencia 45/8. Ver docs/desarrollo-plano.md.",
+      "sentido": "De izquierda a derecha: centro de la puerta, cuerpo del lado -Z, arco de unión -Z, nariz, arco de unión +Z, cuerpo del lado +Z y otra vez el centro de la puerta. +Z es hacia arriba en la vista C-C y es el lado izquierdo de B-B. En planta, sentido horario visto desde arriba (de +X hacia -Z).",
+      "longitud": 16956,
+      "sectores": [
+        {"arco": "cuerpo", "lado": "-Z", "s": [0, 4387], "angulo_rotulado": "217° (todo el cuerpo)"},
+        {"arco": "union_inferior", "lado": "-Z", "s": [4387, 7297], "angulo_rotulado": "14,5°"},
+        {"arco": "nariz", "s": [7297, 9660], "angulo_rotulado": "114°"},
+        {"arco": "union_superior", "lado": "+Z", "s": [9660, 12569], "angulo_rotulado": "14,5°"},
+        {"arco": "cuerpo", "lado": "+Z", "s": [12569, 16956], "angulo_rotulado": "217° (todo el cuerpo)"}
+      ],
+      "s_en_a_a": {"nariz": 8478, "puerta": [0, 16956], "nota": "centro del sector de la nariz y extremos de la tira"},
+      "series": {"40": 400, "45": 450, "70": 700, "estado": "derivado", "nota": "la serie de la pieza coincide con el espesor de trabajo dibujado en A-A y B-B (40 → 400, 45 → 450, 70/0 → 700 en el umbral); se usa como espesor de trabajo de cada zona"},
+      "zonas": [
+        {"id": "Z01", "lugar": "puerta, lado -Z", "hiladas": [6, 15], "material": "ANCARBON R F3E10D", "serie": null, "rotulos": ["70/0", "P9", "V3L-100"], "celdas": [[6, 0, 900], [7, 0, 825], [8, 0, 750], [9, 0, 750], [10, 0, 818], [11, 0, 950], [12, 550, 918], [13, 550, 950], [14, 650, 918], [15, 750, 950]], "nota": "piezas del marco de la puerta: 70/0 en las hiladas 6 a 11 (700 mm, ver el umbral en A-A); P9 y V3L-100 en el borde del hueco, espesor por definir"},
+        {"id": "Z02", "lugar": "cuerpo, ambos lados", "hiladas": [1, 3], "material": "ANCARBON R F5E14", "serie": 40, "rotulos": ["(40/8) 35pc", "(40/40) 31pc", "1~3 (217°)"], "celdas": [[1, 0, 4387], [1, 12569, 16956], [2, 0, 4387], [2, 12569, 16956], [3, 0, 4387], [3, 12569, 16956]]},
+        {"id": "Z03", "lugar": "cuerpo, ambos lados", "hiladas": [4, 5], "material": "ANCARBON R F1E10D", "serie": 45, "rotulos": ["(45/8) 28pc & (45/40) 37pc", "4~5 (217°)"], "celdas": [[4, 0, 4387], [4, 12569, 16956], [5, 0, 4387], [5, 12569, 16956]]},
+        {"id": "Z04", "lugar": "cuerpo, lado -Z", "hiladas": [6, 11], "material": "ANCARBON R F1E10D", "serie": 45, "rotulos": ["(45/8) 12pc", "(45/40) 16pc", "6~11 (93°)"], "celdas": [[6, 900, 4387], [7, 825, 4387], [8, 750, 4387], [9, 750, 4387], [10, 818, 4387], [11, 950, 4387]]},
+        {"id": "Z05", "lugar": "cuerpo, lado -Z", "hiladas": [12, 13], "material": "ANCARBON R F5E14", "serie": 40, "rotulos": ["(40/8) 11pc & (40/40) 10pc", "12~13 (68°)"], "celdas": [[12, 918, 3617], [13, 950, 3617]]},
+        {"id": "Z06", "lugar": "cuerpo, lado -Z", "hiladas": [14, 14], "material": "ANCARBON R F5E14", "serie": 40, "rotulos": ["(40/8) 12pc & (40/40) 10pc (68°)"], "celdas": [[14, 918, 3617]]},
+        {"id": "Z07", "lugar": "cuerpo, lado -Z", "hiladas": [12, 13], "material": "ANCARBON R F1E10D", "serie": 45, "rotulos": ["(45/8) 2pc", "(45/40) 3pc", "12~13 (19°)"], "celdas": [[12, 3617, 4387], [13, 3617, 4387]], "nota": "la cota de 19° del plano está trazada desde el borde de la puerta hasta el arco de unión, pero la proporción del dibujo corresponde a esta zona sola"},
+        {"id": "Z08", "lugar": "cuerpo, lado -Z", "hiladas": [14, 14], "material": "ANCARBON R F1E10D", "serie": 45, "rotulos": ["(45/8) 3pc", "(45/40) 3pc", "(19°)"], "celdas": [[14, 3617, 4387]]},
+        {"id": "Z09", "lugar": "cuerpo y unión, lado -Z", "hiladas": [15, 15], "material": "MATERIAL RECUPERADO", "serie": null, "rotulos": [], "celdas": [[15, 950, 4387], [15, 4387, 5347]], "nota": "sin rótulo de piezas"},
+        {"id": "Z10", "lugar": "unión, lado -Z", "hiladas": [1, 3], "material": "ANCARBON R F5E14", "serie": 40, "rotulos": ["(40/0) 7pc", "(40/8) 13pc", "1~3 (15°)"], "celdas": [[1, 4387, 7297], [2, 4387, 7297], [3, 4387, 7297]]},
+        {"id": "Z11", "lugar": "unión, lado -Z", "hiladas": [4, 11], "material": "ANCARBON R F1E10D", "serie": 45, "rotulos": ["(45/0) 6pc", "(45/8) 14pc", "4~11 (15°)"], "celdas": [[4, 4387, 7297], [5, 4387, 7297], [6, 4387, 7297], [7, 4387, 7297], [8, 4387, 7297], [9, 4387, 7297], [10, 4387, 7297], [11, 4387, 7297]]},
+        {"id": "Z12", "lugar": "unión, lado -Z", "hiladas": [12, 14], "material": "ANCARBON R F1E10D", "serie": 40, "rotulos": ["(40/0) 3pc", "(40/8) 6pc", "12~14 (7°)"], "celdas": [[12, 4387, 5747], [13, 4387, 5447], [13, 5547, 5747], [14, 4387, 5447], [14, 5547, 5747]], "nota": "del color de F1E10D con piezas de la serie 40; en el lado +Z la zona equivalente (Z21) es F5E14"},
+        {"id": "Z13", "lugar": "unión, lado -Z", "hiladas": [13, 21], "material": "ANCARBON R F3E10D", "serie": null, "rotulos": ["45/0", "P9"], "celdas": [[13, 5447, 5547], [14, 5447, 5547], [15, 5347, 5647], [16, 5347, 5647], [17, 5447, 5747], [18, 5547, 5747], [19, 5547, 5747], [20, 5647, 5747], [21, 5647, 5747]], "nota": "piezas del escalón entre el cuerpo y la nariz; espesor por definir"},
+        {"id": "Z14", "lugar": "unión, lado -Z", "hiladas": [12, 21], "material": "ANCARBON R F5E14", "serie": 40, "rotulos": ["(40/0) 4pc", "(40/8) 7pc", "12~21 (8°)"], "celdas": [[12, 5747, 7297], [13, 5747, 7297], [14, 5747, 7297], [15, 5647, 7297], [16, 5647, 7297], [17, 5747, 7297], [18, 5747, 7297], [19, 5747, 7297], [20, 5747, 7297], [21, 5747, 7297]]},
+        {"id": "Z15", "lugar": "nariz", "hiladas": [1, 3], "material": "ANCARBON R F5E14", "serie": 40, "rotulos": ["(40/8) 11pc", "(40/90) 8pc", "1~3 (114°)"], "celdas": [[1, 7297, 9660], [2, 7297, 9660], [3, 7297, 9660]]},
+        {"id": "Z16", "lugar": "nariz", "hiladas": [4, 11], "material": "ANCARBON R F1E10D", "serie": 45, "rotulos": ["(45/8) 9pc", "(45/90) 9pc", "4~11 (114°)"], "celdas": [[4, 7297, 9660], [5, 7297, 9660], [6, 7297, 9660], [7, 7297, 9660], [8, 7297, 9660], [9, 7297, 9660], [10, 7297, 9660], [11, 7297, 9660]]},
+        {"id": "Z17", "lugar": "nariz", "hiladas": [12, 21], "material": "ANCARBON R F5E14", "serie": 40, "rotulos": ["(40/8) 12pc", "(40/90) 8pc", "12~21 (114°)"], "celdas": [[12, 7297, 9660], [13, 7297, 9660], [14, 7297, 9660], [15, 7297, 9660], [16, 7297, 9660], [17, 7297, 9660], [18, 7297, 9660], [19, 7297, 9660], [20, 7297, 9660], [21, 7297, 9660]]},
+        {"id": "Z18", "lugar": "unión, lado +Z", "hiladas": [1, 3], "material": "ANCARBON R F5E14", "serie": 40, "rotulos": ["(40/0) 7pc", "(40/8) 13pc", "1~3 (15°)"], "celdas": [[1, 9660, 12569], [2, 9660, 12569], [3, 9660, 12569]]},
+        {"id": "Z19", "lugar": "unión, lado +Z", "hiladas": [4, 11], "material": "ANCARBON R F1E10D", "serie": 45, "rotulos": ["(45/0) 6pc", "(45/8) 14pc", "4~11 (15°)"], "celdas": [[4, 9660, 12569], [5, 9660, 12569], [6, 9660, 12569], [7, 9660, 12569], [8, 9660, 12569], [9, 9660, 12569], [10, 9660, 12569], [11, 9660, 12569]]},
+        {"id": "Z20", "lugar": "unión, lado +Z", "hiladas": [12, 21], "material": "ANCARBON R F5E14", "serie": 40, "rotulos": ["(40/0) 4pc", "(40/8) 7pc", "12~21 (8°)"], "celdas": [[12, 9660, 11209], [13, 9660, 11209], [14, 9660, 11209], [15, 9660, 11309], [16, 9660, 11309], [17, 9660, 11209], [18, 9660, 11209], [19, 9660, 11209], [20, 9660, 11209], [21, 9660, 11209]]},
+        {"id": "Z21", "lugar": "unión, lado +Z", "hiladas": [12, 14], "material": "ANCARBON R F5E14", "serie": 40, "rotulos": ["(40/0) 3pc", "(40/8) 6pc", "12~14 (7°)"], "celdas": [[12, 11209, 12569], [13, 11209, 11409], [13, 11509, 12569], [14, 11209, 11409], [14, 11509, 12569]]},
+        {"id": "Z22", "lugar": "unión, lado +Z", "hiladas": [13, 21], "material": "ANCARBON R F3E10D", "serie": null, "rotulos": ["45/0", "P9"], "celdas": [[13, 11409, 11509], [14, 11409, 11509], [15, 11309, 11609], [16, 11309, 11609], [17, 11209, 11509], [18, 11209, 11409], [19, 11209, 11409], [20, 11209, 11309], [21, 11209, 11309]], "nota": "piezas del escalón entre la nariz y el cuerpo; espesor por definir"},
+        {"id": "Z23", "lugar": "unión y cuerpo, lado +Z", "hiladas": [15, 15], "material": "MATERIAL RECUPERADO", "serie": null, "rotulos": [], "celdas": [[15, 11609, 12569], [15, 12569, 15229]], "nota": "sin rótulo de piezas"},
+        {"id": "Z24", "lugar": "cuerpo, lado +Z", "hiladas": [12, 14], "material": "ANCARBON R F5E14", "serie": 40, "rotulos": ["(40/8) 1pc", "(40/40) 1pc", "(6°)"], "celdas": [[12, 12569, 12862], [13, 12569, 12862], [14, 12569, 12862]], "nota": "la cota del plano encima de esta zona dice 7°"},
+        {"id": "Z25", "lugar": "cuerpo, lado +Z", "hiladas": [6, 8], "material": "ANCARBON R F1E10D", "serie": 45, "rotulos": ["(45/8) 12pc", "(45/40) 16pc", "6~9 (93°)"], "celdas": [[6, 12569, 16057], [7, 12569, 16132], [8, 12569, 16206]], "nota": "el rótulo dice 6~9, pero la hilada 9 es del color de F2E10MBU (zona Z26)"},
+        {"id": "Z26", "lugar": "cuerpo, lado +Z", "hiladas": [9, 11], "material": "ANCARBON R F2E10MBU", "serie": 45, "rotulos": ["(45/8) 12pc", "(45/40) 16pc", "9~11 (93°)"], "celdas": [[9, 12569, 16206], [10, 12569, 16139], [11, 12569, 16006]]},
+        {"id": "Z27", "lugar": "cuerpo, lado +Z", "hiladas": [12, 13], "material": "ANCARBON R F2E10MBU", "serie": 45, "rotulos": ["(45/8) 10pc & (45/40) 14pc", "12~13 (82°)"], "celdas": [[12, 12862, 16039], [13, 12862, 16006]]},
+        {"id": "Z28", "lugar": "cuerpo, lado +Z", "hiladas": [14, 14], "material": "ANCARBON R F1E10D", "serie": 45, "rotulos": ["(45/8) 12pc & (45/40) 14pc (82°)"], "celdas": [[14, 12862, 16039]]},
+        {"id": "Z29", "lugar": "cuerpo, lado +Z", "hiladas": [15, 15], "material": "ANCARBON R F1E10D", "serie": 45, "rotulos": ["(45/8) 3pc", "(45/40) 4pc", "(23°)"], "celdas": [[15, 15229, 16006]]},
+        {"id": "Z30", "lugar": "puerta, lado +Z", "hiladas": [6, 15], "material": "ANCARBON R F3E10D", "serie": null, "rotulos": ["70/0", "P9", "V3L-100"], "celdas": [[6, 16057, 16956], [7, 16132, 16956], [8, 16206, 16956], [9, 16206, 16956], [10, 16139, 16956], [11, 16006, 16956], [12, 16039, 16406], [13, 16006, 16406], [14, 16039, 16306], [15, 16006, 16206]], "nota": "como Z01"}
+      ]
+    }
+  },
+
+  "fondo": {
+    "_nota": "Casquete esférico con centro en el eje, en Y = 6500. Capas de la coraza hacia el interior.",
+    "y_centro_esfera": {"valor": 6500, "estado": "derivado", "nota": "= radio de la coraza del fondo (R6500, Y = 0 en el eje); coincide con 679 + 5821"},
+    "radio_coraza": {"valor": 6500, "estado": "cota_del_plano", "vista": "B-B (R6500)"},
+    "radio_cara_caliente": {"valor": 5821, "estado": "cota_del_plano", "vista": "B-B (R5821)", "nota": "el arco del PDF se aparta menos de 1 mm de esta esfera"},
+    "y_punto_mas_bajo": {"valor": 679, "estado": "cota_del_plano", "vista": "A-A (679)"},
+    "capas": {
+      "estado": "cota_del_plano", "vista": "B-B (3x76 = 228, 450)",
+      "lista": [
+        {"material": "ANKER 30", "espesor": 228, "nota": "tres capas de 76; rótulo S9X41/2X3"},
+        {"material": "PERRAMIT MA20", "espesor": 450, "funcion": "trabajo", "nota": "apisonado; 6500 - 228 - 450 = 5822, 1 mm más que R5821"}
+      ]
+    },
+    "perfil_a_a": {
+      "_nota": "Cara caliente del fondo en A-A, de la nariz a la puerta, a refractario nuevo. Fuera de estos tramos manda la pared.",
+      "estado": "medido_a_escala", "vista": "A-A",
+      "tramos": [
+        {"tipo": "recta", "desde": [-3883, 1350], "hasta": [-3625, 1150], "nombre": "talud de la nariz", "nota": "borrador: arranque -3629, pendiente 201/254; vector: 200/258"},
+        {"tipo": "recta", "desde": [-3625, 1150], "hasta": [-3600, 1150], "nombre": "plataforma de piquera"},
+        {"tipo": "poligonal", "puntos": [[-3600, 1150], [-3569, 1119], [-3131, 1119], [-3100, 1150]], "nombre": "boca de la piquera", "nota": "chaflanes hasta Y = 1119; el canal de la piquera (centro X = -3350) no se cuenta como cavidad, como en el modelo previo"},
+        {"tipo": "recta", "desde": [-3100, 1150], "hasta": [-2129, 1150], "nombre": "plataforma de piquera"},
+        {"tipo": "recta", "desde": [-2129, 1150], "hasta": [-743, 726.6], "nombre": "rampa", "nota": "borrador: de (-758, 722) a (-2127, 1150); el pie está sobre la esfera"},
+        {"tipo": "arco", "x_desde": -743, "x_hasta": 1900, "nombre": "casquete"},
+        {"tipo": "recta", "desde": [1900, 997.8], "hasta": [2342, 1150], "nombre": "talud de la puerta"}
+      ]
+    },
+    "perfil_b_b": {
+      "estado": "medido_a_escala", "vista": "B-B",
+      "tramos": [
+        {"tipo": "recta", "desde": [-2342, 1150], "hasta": [-1900, 997.8], "nombre": "talud"},
+        {"tipo": "arco", "x_desde": -1900, "x_hasta": 1900, "nombre": "casquete"},
+        {"tipo": "recta", "desde": [1900, 997.8], "hasta": [2342, 1150], "nombre": "talud"}
+      ]
+    },
+    "bajo_la_nariz": {"estado": "por_definir", "nota": "bajo la rampa, la plataforma y la piquera las capas no siguen la esfera (losas rectas de ANKER 30 y bloques ANCARBON R F6E14); no se ha levantado"},
+    "y_tope_apisonado": {"valor": 1150, "estado": "cota_del_plano", "vista": "A-A, B-B", "nota": "tope de la hilada 4; plataforma de piquera y tope de los taludes"}
+  },
+
+  "piquera": {
+    "estado": "cota_del_plano", "vista": "A-A (3350) y detalle TAPHOLE 1:10",
+    "x_centro": -3350,
+    "detalle": {"diametro_interior": 180, "diametro_exterior_inferior": 457, "lado_bloque_superior": 550, "diametro_superior": 350, "largo": 1210},
+    "materiales": ["ANKERTAP HAR198", "ANKERTAP HMR173", "ANKERMIX KS13-AT", "PERMASIT GS", "ANCARBON R F6E14 (bloque alrededor)"],
+    "rotulos": ["RW18Z", "KRW/S18"],
+    "nota": "la asignación de cada material a cada pieza del detalle no se ha levantado"
+  },
+
+  "puerta": {
+    "y_umbral": {"valor": 1850, "estado": "cota_del_plano", "vista": "A-A (679 + 254 + 917 = 1850; 1740 + 110)"},
+    "ancho": {"valor": 1100, "estado": "cota_del_plano", "vista": "C-C"},
+    "ancho_exterior": {"valor": 1600, "estado": "cota_del_plano", "vista": "C-C (1600 = 250 + 1100 + 250)", "nota": "qué elemento limita esta cota está por confirmar"},
+    "x_extremo": {"valor": 3800, "estado": "cota_del_plano", "vista": "A-A (2900 + 900)"}
+  },
+
+  "escoria": {
+    "estado": "tomado_del_lwd",
+    "regla": "la línea de escoria es el plano que contiene el volumen de acero más el de escoria: acero / densidad del acero + escoria / densidad de la escoria × factor de espumado",
+    "fuente": "calculo.py del LWD v1.1 (vol_con_escoria = vol_acero + vol_esc); el factor de espumado es propio de este proyecto y reemplaza al 1.3 del LWD para coladas con vacío",
+    "toneladas": {"valor": null, "estado": "por_definir", "nota": "las da el usuario por colada (decisión de alcance); no hay valor por omisión"}
+  },
+
+  "desgaste_manual": {
+    "estado": "decision_del_usuario",
+    "_nota": "Fase 3. Decisiones del usuario del 2026-10-07 (pendientes 1, 5 y 6). El estado de desgaste (% de pared y % de piso) es una entrada, no un dato de planta.",
+    "pared": "% del espesor de trabajo consumido, uniforme en toda la altura (decisión 1) e igual en todo el contorno, aplicado al espesor de trabajo de cada zona del desarrollo y de A-A (decisión 6); incluye las filas del umbral",
+    "piso": "% del espesor de trabajo del fondo (450 mm de PERRAMIT MA20), con retroceso normal a la superficie (decisión 5): el casquete crece de radio y los taludes, la rampa y la plataforma bajan según su normal",
+    "piso_bajo_la_nariz": {"estado": "supuesto", "nota": "bajo la rampa, la plataforma y el talud de la nariz el plano no da las capas (fondo.bajo_la_nariz); se toma el mismo espesor de trabajo de 450 mm"},
+    "aristas": {"estado": "supuesto", "nota": "en las aristas del piso (unión de plataforma y rampa, tope de los taludes) las piezas desplazadas se cortan sin redondear; sobrestima un poco el volumen ganado"},
+    "talud_de_la_nariz": {"estado": "supuesto", "nota": "el talud de la nariz conserva su posición respecto a la cara nueva de la pared; solo baja por el desgaste de piso"}
+  },
+
+  "modelo_3d": {
+    "estado": "supuesto",
+    "_nota": "Reglas para construir la cavidad en 3D a partir de lo que el plano sí define (secciones A-A y B-B, planta y desarrollo). Aprobadas por el usuario el 2026-10-07 como provisionales (rampa extruida, paneles). Ver docs/niveles.md.",
+    "paso_malla": {"valor": 10, "nota": "mm en X, Z y Y (decisión 7: líneas de 10 mm)"},
+    "fondo": {
+      "cuerpo": "casquete esférico hasta r = 1900; de r = 1900 a 2342 un cono (talud) hasta Y = 1150, como en A-A y B-B; tope en 1150",
+      "rampa_y_plataforma": "el perfil de A-A para X < -743 (rampa hasta X = -2129, luego plataforma a 1150) se extruye en Z; el piso es el más alto entre el cuerpo y la rampa extruida",
+      "talud_nariz": {"ancho": 258, "alto": 200, "x_desde": -2129, "nota": "en la zona de la plataforma (X < -2129) el piso sube 200 mm en los últimos 258 mm antes de la cara de la pared, como en A-A (de 1150 a 1350)"},
+      "boca_de_piquera": "no se cuenta: el piso se cierra a 1150 (los chaflanes suman del orden de litros)"
+    },
+    "pared": {
+      "espesor": "capa de trabajo de la zona del desarrollo (serie de la pieza) más el respaldo de esta tabla",
+      "respaldo": {"columnas_de_nariz": 32, "hiladas_1_a_13": 108, "hiladas_14_y_15": 0, "nota": "columnas_de_nariz = zonas del desarrollo que llegan a la hilada 16 o más (nariz y arcos de unión); 108 = 32 + 76. Reproduce A-A y B-B; en los arcos de unión no hay sección que lo confirme"},
+      "piezas_sin_serie": "P9, V3L-100, 45/0 y material recuperado: el mismo espesor de trabajo que la hilada de abajo en la misma posición",
+      "sin_celda": "donde el desarrollo no tiene celda (cuerpo por encima de la hilada 15) rige pared.por_encima: paneles a paño de la coraza (espesor 0)"
+    },
+    "puerta": {
+      "media_anchura": 550,
+      "regla": "para |Z| < 550 y X > 0 la cara es la del lado puerta de A-A (hiladas 1 a 5 y filas del umbral); por encima de Y = 1850 la puerta se toma cerrada en X = 2772 (a esa altura el baño ya derrama)"
+    },
+    "y_fin_refractario": {"cuerpo": 2250, "columnas_de_nariz": 2850, "nota": "tope de la hilada 15 (material recuperado) en el cuerpo y de la 21 en la nariz y los arcos de unión. Que la hilada 15 cuente como refractario lo decidió el usuario el 2026-10-07"},
+    "canal_de_piquera": "no se cuenta, como en el modelo previo"
+  },
+
+  "desgaste_por_colada": {
+    "_nota": "Fase 5 (EAF-012), motor por colada: la ley del LWD aplicada por líneas de 10 mm a la cavidad 3D (lwd_eaf/ley.py, lwd_eaf/campana.py, docs/campana.md). Sin mediciones de espesor TODA tasa es preliminar: las tasas son una entrada de la campaña, no un dato de planta. Las decisiones 2, 4, 8 y 9 de docs/pendientes.md las confirmó el usuario el 2026-10-09 (se aplicaron antes como propuesta).",
+    "linea": {"estado": "derivado", "paso": 10, "nota": "altura de la línea de cálculo en mm: la del LWD (1 cm) y la fila de la malla 3D; 10 líneas por hilada de 100 mm"},
+    "tasas": {"estado": "por_definir", "unidad": "mm por colada", "nota": "sin mediciones de planta (pendiente C): las escribe el usuario por material de la capa de trabajo y lado, más el plus de la banda de escoria y el piso; toda tasa es preliminar en el archivo de campaña, en la interfaz y en los reportes"},
+    "ley": {"estado": "tomado_del_lwd", "fuente": "calculo.py del LWD v1.1: tasa por línea, plus de escoria entre el nivel de acero y el de escoria, solo la pared sobre el piso, el piso baja su tasa, reparación, perforación", "nota": "Es la ley de una olla (tasa fija por colada). No modela arco, lanzas ni impacto de chatarra; esos efectos solo entran por las tasas calibradas. Verificada contra calcular() del LWD en un recipiente de revolución (verificacion/test_equivalencia_lwd.py)"},
+    "banda_de_escoria": {"estado": "tomado_del_lwd", "fuente": "D4 del LWD: la banda se decide con los niveles de la colada anterior", "nota": "En el horno la banda de cada lado se toma a la altura que el plano inclinado tiene en ese lado, con la línea que contiene cada nivel"},
+    "perforacion": {"estado": "supuesto", "nota": "perforar es perder más que la capa de trabajo en alguna línea; el espesor de trabajo de cada categoría es el mínimo de sus columnas del desarrollo (el primero que se agota). La capa de seguridad no se erosiona en la cavidad"},
+    "cuerpo_como_puerta": {"estado": "supuesto", "nota": "el lado puerta de A-A y todo el cuerpo (columnas que no son de la nariz) comparten un perfil de pérdida por línea; la nariz tiene el suyo. En el horno real el desgaste varía alrededor del contorno (electrodos, chorros)"},
+    "material_de_referencia": {"estado": "supuesto", "nota": "el material de la capa de trabajo del lado puerta es el de A-A en las hiladas 1 a 5 y el del flanco derecho de B-B en la 6 a la 15; el de la nariz, el de A-A. El lado de B-B izquierdo (que se contradice con el desarrollo) no se usa"},
+    "contacto_piso_pared": {"estado": "supuesto", "nota": "la pared queda cubierta por el piso bajo fondo.y_tope_apisonado (Y = 1 150 mm) y ese contacto baja lo que retrocede el piso; las líneas de abajo no se desgastan"},
+    "umbral": {"estado": "supuesto", "nota": "las filas del umbral pierden la media de las líneas del lado puerta que ocupan, en mm"},
+    "estado_inicial_sin_medir": {"estado": "supuesto", "nota": "EAF-015: con un estado inicial, lo que no se mide o no se da queda como refractario nuevo (subestima el desgaste), y la colada 1 se cuela en el estado dado: el desgaste se aplica desde la 2 (convención del LWD). Cada zona es un valor por hilada y lado: hay que dar el mínimo medido en la hilada"},
+    "criterio_de_retiro": {"estado": "por_definir", "nota": "EAF-015: el espesor residual mínimo por zona con que la planta retira la cuba no se sabe (docs/faltante.md, dato A2). El programa no trae ningún valor: lo escribe el usuario en la campaña. Sin criterio solo corta la perforación, el derrame o el fin de la campaña"},
+    "banda_congelada_en_sensibilidad": {"estado": "supuesto", "nota": "EAF-015: la sensibilidad de las tasas corre solo la ley de desgaste con la banda de escoria de la corrida base y no evalúa el derrame; error medido contra el motor completo en docs/sensibilidad.md"},
+    "calibracion_tasa_equivalente": {"estado": "supuesto", "nota": "EAF-016: una tasa ajustada a mediciones es una tasa equivalente del modelo, no una medida física: absorbe lo que el modelo no representa (desgaste distinto alrededor del contorno, electrodos, cuerpo como puerta). Se rotula «ajustada» y lleva su origen; con datos de una sola campaña vale para lo que esos datos cubren (docs/calibracion.md)"},
+    "inclinacion_constante": {"estado": "decision_del_usuario", "pendiente": 2, "confirmada": "2026-10-09", "nota": "la campaña corre con una inclinación constante (0° por omisión); decisión 2, confirmada por el usuario hasta que el usuario decida si la banda de escoria se toma a 0° o con tiempos por ángulo"},
+    "reparaciones": {"estado": "decision_del_usuario", "pendiente": 4, "confirmada": "2026-10-09", "nota": "lista de reparaciones por colada: hiladas, lado, mm que se reponen (o todo, como la reparación parcial del LWD) y mm de piso; decisión 4, confirmada por el usuario"},
+    "zonas_por_material": {"estado": "decision_del_usuario", "pendiente": 8, "confirmada": "2026-10-09", "nota": "la calidad del LWD (LM, LE, FB) es aquí el material de la capa de trabajo de cada hilada y lado, tal como lo da el plano, más el plus de la banda de escoria y el piso; decisión 8, confirmada por el usuario"},
+    "comportamientos_del_lwd": {"estado": "decision_del_usuario", "pendiente": 9, "confirmada": "2026-10-09", "nota": "D4 (banda con los niveles anteriores) se reproduce; D3, D5 y D6 no aplican a esta ley; D7 se corrige: el derrame se evalúa en cada colada contra el umbral y no solo en la última línea. Decisión 9, confirmada por el usuario"}
+  },
+
+  "valores_de_control": {
+    "densidad_usada": 7.0,
+    "estado": "heredado_sin_verificar",
+    "nota": "las marcas h = 254 (8 t) y h = 1061 ((109+8) t) son cotas del plano; las toneladas del modelo previo y el volumen se validan en la fase 2",
+    "volumen_cavidad_m3": 32.33,
+    "marcas_del_plano": [
+      {"h": 254, "toneladas_plano": 8, "toneladas_modelo_previo": 7.9},
+      {"h": 1061, "toneladas_plano": 117, "toneladas_modelo_previo": 115.8}
+    ],
+    "nivel_109_t": [
+      {"inclinacion": 0, "h": 1016.3, "derrama": false, "capacidad_maxima_t": 132.7, "fuente": "libros de capacidad (fuentes/)"},
+      {"inclinacion": 3, "h": 990.1, "derrama": false, "capacidad_maxima_t": 159.8, "fuente": "libros de capacidad; la conversación previa citaba 156 t limitadas por la hilada 14 en los arcos de la nariz"},
+      {"inclinacion": -3, "h": 1041.3, "derrama": true, "capacidad_maxima_t": 106.6, "fuente": "libros de capacidad"},
+      {"inclinacion": 7, "h": 951, "derrama": false, "capacidad_maxima_t": 124.8, "fuente": "solo conversaciones previas; el libro de 7° no trae estos datos"},
+      {"inclinacion": -7, "h": 1077, "derrama": true, "capacidad_maxima_t": 72.3, "fuente": "solo conversaciones previas; el libro de 7° no trae estos datos"}
+    ]
+  },
+
+  "modelo_previo": {
+    "estado": "heredado_sin_verificar",
+    "nota": "Bloque de parámetros del script de CadQuery del modelo 3D (septiembre de 2026), conservado para comparar en la fase 2. En ese script el eje vertical se llamaba z. Diferencias con el plano en docs/contraste-plano.md.",
+    "R_SHELL": 2900.0,
+    "R_NOSE": 1700.0,
+    "R_ARC": 12000.0,
+    "X_NOSE": -2741.0,
+    "T_LOW": 508.0,
+    "T_MID": 558.0,
+    "T_TOP": 508.0,
+    "Z_ROW1": 750.0,
+    "ROW_H": 100.0,
+    "Z_SILL": 1850.0,
+    "Z_TOP": 2150.0,
+    "R_HEARTH": 5821.0,
+    "Z_BOTTOM": 679.0,
+    "Z_TAP": 1150.0,
+    "X_RAMP_TOP": -2127.0,
+    "X_RAMP_LOW": -758.0,
+    "Z_RAMP_LOW": 722.0,
+    "X_BANK": -3629.0,
+    "BANK_SLOPE": "201/254",
+    "DOOR_HALF_W": 550.0,
+    "DOOR_STEPS": [[1448.0, 1549.0, 2450.0], [1549.0, 1698.0, 2613.0], [1698.0, 1850.0, 2772.0]],
+    "espesor_de_pared_por_altura": "558 si 1050 <= z < 1850; 508 en el resto",
+    "centro_de_los_arcos": "ARC_CX = ((R_ARC - R_NOSE)^2 - (R_ARC - R_SHELL)^2 - X_NOSE^2) / (-2 * X_NOSE); ARC_CY = sqrt((R_ARC - R_SHELL)^2 - ARC_CX^2); centros en (ARC_CX, -ARC_CY) y (ARC_CX, +ARC_CY)"
+  }
+}
