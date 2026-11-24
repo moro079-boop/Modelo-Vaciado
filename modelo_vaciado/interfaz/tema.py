@@ -1,4 +1,4 @@
-"""El diseño de la ventana: **VaciaT**, claro, con la paleta de plano técnico (blanco, azul y tinta) y el acero en ámbar.
+"""El diseño de la ventana: **TapFlow**, claro, con la paleta de plano técnico (blanco, azul y tinta) y el acero en ámbar.
 
 Una paleta es un diccionario de roles (``ACENTO``, ``ACERO_LIQUIDO``, ``TINTA``…): la ventana y las gráficas no hablan de
 colores sino de roles. Los roles y las marcas de estado vienen del diseño Magnesita de LWD-EAF; los colores, del diseño «Plano»
@@ -9,7 +9,7 @@ la rama ``archivo/disenos-iniciales`` y en ``docs/historial/disenos-iniciales/``
 from __future__ import annotations
 
 DISENO = "vaciat"
-ETIQUETA = "VaciaT"
+ETIQUETA = "TapFlow"
 
 PALETA = dict(
     FONDO="#EDF1F6", SUPERFICIE="#FFFFFF", SUPERFICIE_2="#E2E8F0", SUPERFICIE_3="#D7E4F6",

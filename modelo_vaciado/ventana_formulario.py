@@ -1,4 +1,4 @@
-"""Piezas de interfaz comunes a las páginas de VaciaT, sobre los componentes Qt de LWD-EAF."""
+"""Piezas de interfaz comunes a las páginas de TapFlow, sobre los componentes Qt de LWD-EAF."""
 
 from __future__ import annotations
 

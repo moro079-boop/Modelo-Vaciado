@@ -1,9 +1,9 @@
 # Diseño de la ventana, icono y nombre
 
-Este documento describe el aspecto de la ventana de VaciaT, su icono y su nombre, y conserva como historial la primera propuesta
+Este documento describe el aspecto de la ventana de TapFlow, su icono y su nombre, y conserva como historial la primera propuesta
 de la que salieron.
 
-## 1. Diseño VaciaT
+## 1. Diseño TapFlow
 
 El diseño combina la paleta del diseño «Plano» de la primera propuesta con el acomodo del diseño «Turno». Usa Qt (PySide6, estilo
 Fusion) y los componentes heredados de LWD-EAF: tarjetas con el estado de cada dato, selectores, campos numéricos y gráficas de
@@ -31,7 +31,7 @@ Capturas (sin pantalla; se regeneran con `python -m herramientas.capturas`):
 | Olla → distribuidor | [captura](figuras/ventana/olla_1440x880.png) | [captura](figuras/ventana/olla_1280x720.png) |
 | Horno con la cavidad 3D | [captura](figuras/ventana/horno_cavidad_3d_1440x880.png) | |
 
-![VaciaT, horno a la olla](figuras/ventana/horno_1440x880.png)
+![TapFlow, horno a la olla](figuras/ventana/horno_1440x880.png)
 
 ## 2. Icono
 
@@ -39,18 +39,20 @@ El icono es un reloj de arena con acero fundido, que representa el tiempo de vac
 (`python -m herramientas.iconos`), con los colores del diseño: fondo de la tinta oscura de la cabecera, marco claro, tapas en azul
 y acero en ámbar. Está en `modelo_vaciado/interfaz/recursos/icono.png` (256 px) e `icono.ico` (16 a 256 px, el del ejecutable).
 
-![Icono de VaciaT](figuras/icono.png)
+![Icono de TapFlow](figuras/icono.png)
 
 ## 3. Nombre
 
-El programa se llama **VaciaT** (de «vaciado» y «t», el tiempo). Es el nombre de la ventana y del ejecutable; el repositorio
+El programa se llama **TapFlow**: *tap* es el vaciado del horno por la piquera y *flow*, el flujo que el programa integra. Es el
+nombre de la ventana y del ejecutable; el repositorio
 (Modelo-Vaciado) y el paquete de Python (`modelo_vaciado`) conservan los suyos.
 
 ## 4. Historial: primera propuesta
 
 La primera propuesta tenía cuatro diseños (Magnesita, heredado de LWD-EAF; Colada, oscuro con navegación lateral; Plano,
 técnico con pestañas; y Turno, de alto contraste con tablero), cuatro iconos (Chorro, Torricelli, Reloj y Piquera) y seis opciones
-de nombre (Modelo-Vaciado, Torricelli, Caudal, VaciaT, Colada-T y Piquera). El código de esa propuesta, con el selector de diseño,
+de nombre (Modelo-Vaciado, Torricelli, Caudal, VaciaT, Colada-T y Piquera); de ellas se eligió primero VaciaT, que se
+sustituyó por TapFlow antes de publicar la versión 0.2.0-preliminar. El código de esa propuesta, con el selector de diseño,
 está en la rama `archivo/disenos-iniciales` (commit `f78fadf`), que no se desarrolla. Las capturas y la lámina de iconos se
 conservan en `docs/historial/disenos-iniciales/`:
 

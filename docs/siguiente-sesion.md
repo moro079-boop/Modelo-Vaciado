@@ -2,7 +2,7 @@
 
 Estado al 2026-11-24 (MV-004, versión 0.2.0-preliminar). Este documento se actualiza al final de cada sesión.
 
-**En corto:** VaciaT estima el tiempo de vaciado en dos escenarios, horno (EAF) → olla y olla → distribuidor, con un cálculo
+**En corto:** TapFlow estima el tiempo de vaciado en dos escenarios, horno (EAF) → olla y olla → distribuidor, con un cálculo
 directo a partir de las variables del usuario y, en el horno, el cálculo detallado con la cavidad 3D. Diseño, icono y nombre
 están elegidos ([disenos.md](disenos.md)); la primera propuesta está archivada en la rama `archivo/disenos-iniciales`.
 

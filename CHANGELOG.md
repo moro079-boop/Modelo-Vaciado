@@ -4,6 +4,19 @@ Cada modificación agrega una entrada (`MV-NNN`) con motivo, resultado, evidenci
 
 ## 2026-11-24
 
+### MV-005: El programa pasa a llamarse TapFlow
+
+- Motivo: decisión del usuario del 2026-11-24, antes de fusionar la rama: el nombre del programa es TapFlow en lugar de VaciaT.
+- Resultado: TapFlow en la ventana (título, cabecera, «Acerca de», resumen copiado), el ejecutable (`dist/TapFlow/`, artefacto
+  `TapFlow-windows` de la CI), los ajustes recordados entre sesiones, la muestra del icono y los documentos. El repositorio
+  (Modelo-Vaciado), el paquete de Python (`modelo_vaciado`) y los formatos de archivo no cambian. Las entradas MV-004 y
+  anteriores conservan el nombre que tenían.
+- Versión: sigue en 0.2.0-preliminar, que no se había publicado.
+- Impacto numérico: ninguno.
+- Verificación (Linux, Python 3.13.18, PySide6 sin pantalla): `python -m pytest verificacion -q -p no:cacheprovider`:
+  `45 passed`; `ruff check .`: limpio; `python vaciado.py --probar-ventana`: «ok»; `python vaciado.py --version`: «TapFlow
+  0.2.0-preliminar». Icono, muestra y capturas regeneradas.
+
 ### MV-004: VaciaT 0.2.0-preliminar: diseño, icono y nombre elegidos; optimizaciones de la ventana y del ejecutable
 
 - Motivo: decisiones del usuario del 2026-11-24 sobre la primera propuesta (MV-003): diseño «Plano» con la estructura del diseño

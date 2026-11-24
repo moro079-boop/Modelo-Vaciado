@@ -1,4 +1,4 @@
-# VaciaT: tiempos de vaciado del horno y de la olla
+# TapFlow: tiempos de vaciado del horno y de la olla
 
 Documento de proyecto. Estado al 2026-11-24: versión 0.2.0-preliminar. El alcance actual son dos escenarios: horno (EAF) → olla y
 olla → distribuidor.
@@ -38,7 +38,7 @@ El plan ordena el trabajo de modo que cada fase entregue algo utilizable. Las fa
 | 1 | Modelo del horno: nivel por masa y ángulo, hidráulica del canal, basculado e integración en el tiempo | Hecha |
 | 2 | Aplicación propia con ventana, exportación a Excel, PDF y CSV, y ejecutable | Hecha |
 | 3 | Mapas del horno (tiempo por ángulo fijo y por vida de la piquera), olla con válvula deslizante, tundish con control de nivel, moldes y secuencia de ollas | Hecha, con datos supuestos fuera del horno y de la olla |
-| 4 | Interfaz Qt con los componentes de LWD-EAF: tarjetas, etiquetas de estado de cada dato, selectores y botones | Hecha: diseño VaciaT, indicadores, recálculo en vivo, barra de las gráficas, atajos y ajuste a 1 280 × 720; falta la prueba en un escritorio de Windows |
+| 4 | Interfaz Qt con los componentes de LWD-EAF: tarjetas, etiquetas de estado de cada dato, selectores y botones | Hecha: diseño TapFlow, indicadores, recálculo en vivo, barra de las gráficas, atajos y ajuste a 1 280 × 720; falta la prueba en un escritorio de Windows |
 | 4b | Cálculo directo con las variables del usuario y reducción del alcance a horno → olla y olla → distribuidor | Hecha (MV-002) |
 | 5 | Datos de planta: tiempos de vaciado medidos, diámetros de piquera y de válvula, geometría del tundish y de la máquina | Pendiente de datos |
 | 6 | Calibración: coeficiente de descarga del horno y de la válvula con tiempos medidos; ley de crecimiento de la piquera | Pendiente de la fase 5 |
@@ -294,4 +294,4 @@ las páginas, cuatro indicadores muestran el resultado de la página activa. El 
 | 2026-11-24 | MV-001: traslado del modelo a este repositorio |
 | 2026-11-24 | MV-002: cálculo directo con las variables del usuario; alcance reducido a horno → olla y olla → distribuidor |
 | 2026-11-24 | MV-003: tres diseños nuevos de la ventana, opciones de icono y de nombre |
-| 2026-11-24 | MV-004: VaciaT 0.2.0-preliminar: diseño, icono y nombre elegidos; optimizaciones de la ventana y del ejecutable |
+| 2026-11-24 | MV-004: TapFlow 0.2.0-preliminar: diseño, icono y nombre elegidos; optimizaciones de la ventana y del ejecutable |

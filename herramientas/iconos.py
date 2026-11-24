@@ -1,4 +1,4 @@
-"""Dibuja el icono de VaciaT con Qt (sin imágenes externas): ``python -m herramientas.iconos``.
+"""Dibuja el icono de TapFlow con Qt (sin imágenes externas): ``python -m herramientas.iconos``.
 
 El icono es un reloj de arena con acero fundido (el tiempo de vaciado), en la paleta del diseño: fondo de tinta oscura, marco
 claro, tapas en azul y acero en ámbar. Escribe ``modelo_vaciado/interfaz/recursos/icono.png`` (256 px) e ``icono.ico`` (16 a
@@ -22,7 +22,7 @@ from PySide6.QtGui import (QBrush, QColor, QFont, QGuiApplication, QImage, QLine
 RAIZ = Path(__file__).resolve().parent.parent
 CARPETA = RAIZ / "modelo_vaciado" / "interfaz" / "recursos"
 MUESTRA = RAIZ / "docs" / "figuras" / "icono.png"
-NARANJA, AMARILLO = QColor("#F3A847"), QColor("#FFD27A")      # acero de la paleta VaciaT (ACERO_LIQUIDO) y su brillo
+NARANJA, AMARILLO = QColor("#F3A847"), QColor("#FFD27A")      # acero de la paleta TapFlow (ACERO_LIQUIDO) y su brillo
 TINTA, CLARO, AZUL = "#13203B", "#DCE6FA", "#5B8DEF"          # fondo (TINTA), marco (ACENTO_SUAVE) y tapas (azul del acento, aclarado)
 
 
@@ -106,7 +106,7 @@ def muestra(ruta: Path):
     fuente.setBold(True)
     p.setFont(fuente)
     p.setPen(QColor(TINTA))
-    p.drawText(QRectF(290, 200, 160, 40), Qt.AlignmentFlag.AlignCenter, "VaciaT")
+    p.drawText(QRectF(290, 200, 160, 40), Qt.AlignmentFlag.AlignCenter, "TapFlow")
     p.end()
     ruta.parent.mkdir(parents=True, exist_ok=True)
     imagen.save(str(ruta))

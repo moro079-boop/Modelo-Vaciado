@@ -1,6 +1,6 @@
 # Pendientes y decisiones abiertas
 
-Actualizado el 2026-11-24 (MV-004). Las decisiones son del usuario; las propuestas de esta lista no están aprobadas mientras no
+Actualizado el 2026-11-24 (MV-005). Las decisiones son del usuario; las propuestas de esta lista no están aprobadas mientras no
 se diga lo contrario.
 
 ## Decisiones tomadas por el usuario
@@ -12,7 +12,7 @@ se diga lo contrario.
 | Motor de la interfaz | Qt (2026-11-24) |
 | Escenarios del alcance actual | Horno (EAF) → olla y olla → distribuidor; el distribuidor → moldes, más adelante (2026-11-24) |
 | Variables del usuario | Área de paso (diámetro o área), altura metalostática, tonelaje y demás datos del vaciado (2026-11-24) |
-| Nombre (N1) | VaciaT (2026-11-24) |
+| Nombre (N1) | TapFlow (2026-11-24; sustituye a VaciaT, elegido el mismo día) |
 | Diseño (N2) | El diseño «Plano» con la estructura del diseño «Turno»; los demás, archivados como historial (2026-11-24) |
 | Icono (N3) | El reloj de arena, en la paleta de «Plano» con fondo oscuro; los demás, archivados (2026-11-24) |
 | Versión (N4) | 0.2.0-preliminar; en adelante se sube según los cambios, sin consulta (2026-11-24) |

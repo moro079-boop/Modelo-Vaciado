@@ -40,7 +40,7 @@ from .escenario import abrir, correr, planta_de
 from .reporte import AVISO, escribir_csv, escribir_excel, escribir_pdf, filas_de_resultado
 from .ventana_tiempo import PaginaTiempo, colores
 
-NOMBRE_APP = "VaciaT"          # nombre del programa (decisión del usuario del 2026-11-24)
+NOMBRE_APP = "TapFlow"          # nombre del programa (decisión del usuario del 2026-11-24)
 RAIZ = raiz()
 RECURSOS = RAIZ / "modelo_vaciado" / "interfaz" / "recursos"
 P = tema.PALETA

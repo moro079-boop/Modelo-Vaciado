@@ -1,6 +1,6 @@
 # Versiones
 
-Este documento describe cómo se numeran las versiones de VaciaT y registra cada una.
+Este documento describe cómo se numeran las versiones de TapFlow y registra cada una.
 
 ## Esquema
 
@@ -18,4 +18,4 @@ La versión se sube con cada cambio que lo amerite según este esquema (decisió
 | Versión | Cambio | Contenido |
 |---|---|---|
 | 0.1.0-preliminar | EAF-065 a EAF-069 (LWD-EAF), MV-001 | Modelo del horno con cavidad 3D, olla, válvula, distribuidor, moldes y secuencia; trasladado a este repositorio |
-| 0.2.0-preliminar | MV-002 a MV-004 | Cálculo directo con las variables del usuario; dos escenarios (horno → olla y olla → distribuidor); formato de escenario `modelo_vaciado.escenario/1`; programa VaciaT con su diseño, icono y optimizaciones de la ventana |
+| 0.2.0-preliminar | MV-002 a MV-005 | Cálculo directo con las variables del usuario; dos escenarios (horno → olla y olla → distribuidor); formato de escenario `modelo_vaciado.escenario/1`; programa TapFlow con su diseño, icono y optimizaciones de la ventana |

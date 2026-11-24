@@ -1,6 +1,6 @@
 # Ejecutable
 
-`python empaquetado/construir.py` hace el ejecutable de VaciaT (con su icono) con PyInstaller (`pip install -r requirements.txt pyinstaller`). Corre en la
+`python empaquetado/construir.py` hace el ejecutable de TapFlow (con su icono) con PyInstaller (`pip install -r requirements.txt pyinstaller`). Corre en la
 máquina donde se va a usar: un ejecutable de Windows se hace en Windows. Sale en `dist/<nombre>/` y en
 `dist/<nombre>-<versión>-<sistema>.zip`; al terminar corre `--probar-ventana` con el ejecutable recién hecho. La CI de Windows lo
 deja como artefacto.

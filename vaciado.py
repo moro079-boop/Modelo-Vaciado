@@ -1,4 +1,4 @@
-"""VaciaT: tiempo de vaciado del horno (EAF) a la olla y de la olla al distribuidor. Preliminar.
+"""TapFlow: tiempo de vaciado del horno (EAF) a la olla y de la olla al distribuidor. Preliminar.
 
     python vaciado.py                      abre la ventana
     python vaciado.py escenario.json       abre la ventana con ese escenario
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     if args[:1] == ["--version"]:
         from modelo_vaciado import VERSION_MODELO
 
-        print(f"VaciaT {VERSION_MODELO}")
+        print(f"TapFlow {VERSION_MODELO}")
         sys.exit(0)
     if args[:1] == ["--probar-ventana"]:
         from modelo_vaciado.ventana import probar_ventana

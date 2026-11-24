@@ -22,7 +22,7 @@ sys.path.insert(0, str(RAIZ))
 
 from modelo_vaciado import VERSION_MODELO  # noqa: E402
 
-NOMBRE = "VaciaT"
+NOMBRE = "TapFlow"
 # Módulos que el programa no usa y que otras bibliotecas arrastran si están instalados (adelgazan el ejecutable; medido en Linux:
 # ver CHANGELOG, MV-004). Matplotlib necesita Pillow y fontTools (PDF), que se quedan.
 EXCLUIDOS = ("scipy", "pandas", "lxml", "IPython", "PySide6.QtQml", "PySide6.QtQuick", "PySide6.QtNetwork", "PySide6.QtPdf",

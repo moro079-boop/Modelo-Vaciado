@@ -1,4 +1,4 @@
-# VaciaT
+# TapFlow
 
 Repositorio Modelo-Vaciado. Estimación del tiempo de vaciado del acero líquido con las ecuaciones de flujo (balance de masa, Bernoulli y Torricelli). El
 alcance actual son dos escenarios:
@@ -8,7 +8,7 @@ alcance actual son dos escenarios:
 - **Olla → distribuidor**, por la válvula deslizante: con la olla de una planta o un recipiente que define el usuario, y con el
   distribuidor a nivel constante, llenándose o sin contrapresión.
 
-![VaciaT](docs/figuras/ventana/horno_1440x880.png)
+![TapFlow](docs/figuras/ventana/horno_1440x880.png)
 
 **Preliminar:** ningún parámetro hidráulico está validado con tiempos de vaciado medidos en planta. Cada dato lleva su estado
 (cota del plano, cálculo del proveedor, supuesto, ejemplo, dato del usuario) en la ventana y en los reportes.

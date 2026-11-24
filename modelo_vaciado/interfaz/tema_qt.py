@@ -1,4 +1,4 @@
-"""El diseño VaciaT vestido con Qt: la paleta y los roles son los de ``tema.py``; aquí está la hoja de estilo.
+"""El diseño TapFlow vestido con Qt: la paleta y los roles son los de ``tema.py``; aquí está la hoja de estilo.
 
 Tarjetas con esquinas redondeadas, botones y campos con estados (sobre, foco, inhabilitado), deslizadores y barras de
 desplazamiento finos, pestañas con subrayado y tablas con filas alternas. Qt escala solo en pantallas de 125 a 200 %.

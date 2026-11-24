@@ -144,7 +144,7 @@ def test_ventana(tmp_path):
 
     qapp = aplicacion_qt()
     preparar(qapp)
-    assert tema.DISENO == "vaciat" and NOMBRE_APP == "VaciaT"
+    assert tema.DISENO == "vaciat" and NOMBRE_APP == "TapFlow"
     v = Ventana()
     assert v.icono_cargado and v.horno._detallado is None       # la vista con la cavidad 3D se arma al primer uso
     o = v.olla
@@ -163,7 +163,7 @@ def test_ventana(tmp_path):
     assert v.kpis[0].valor.text() == o.tiempo_texto()
     assert "Tiempo de vaciado" in v.resumen_texto()
     v.copiar_resumen()
-    assert "VaciaT" in qapp.clipboard().text()
+    assert "TapFlow" in qapp.clipboard().text()
     from PySide6.QtCore import QSettings
 
     ajustes = QSettings(str(tmp_path / "ajustes.ini"), QSettings.Format.IniFormat)

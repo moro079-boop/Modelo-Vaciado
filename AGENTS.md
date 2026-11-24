@@ -35,5 +35,5 @@ Programa que estima el tiempo que tarda un recipiente de acero líquido en vacia
 - No incluyas cachés, credenciales, entornos ni reportes generados en commits. Las figuras de `docs/figuras/` sí se versionan.
 - La versión vive sólo en `modelo_vaciado/__init__.py` y se sube con cada cambio que lo amerite, según `docs/versiones.md`
   (decisión del usuario del 2026-11-24). No cambies la visibilidad del repositorio por iniciativa propia.
-- El programa se llama VaciaT y tiene un solo diseño (`docs/disenos.md`). La rama `archivo/disenos-iniciales` guarda la
+- El programa se llama TapFlow y tiene un solo diseño (`docs/disenos.md`). La rama `archivo/disenos-iniciales` guarda la
   primera propuesta como historial: no se fusiona ni se desarrolla.
