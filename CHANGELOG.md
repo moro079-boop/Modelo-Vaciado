@@ -4,6 +4,61 @@ Cada modificación agrega una entrada (`MV-NNN`) con motivo, resultado, evidenci
 
 ## 2026-11-24
 
+### MV-003: Tres diseños nuevos de la ventana, opciones de icono y de nombre
+
+- Motivo: el usuario pidió tres diseños nuevos de interfaz con Qt como motor, y opciones de iconos y de nombres.
+- Resultado:
+  - `modelo_vaciado/interfaz/disenos.py`: diseños **Colada** (oscuro, navegación lateral e indicadores), **Plano** (técnico,
+    barra de marca y pestañas planas) y **Turno** (alto contraste, letra grande, tablero con pasos e indicadores), además de
+    **Magnesita** (el heredado). Un diseño es una paleta de roles, un tamaño de letra, una hoja de estilo adicional, un acomodo y
+    un icono; se aplica antes de construir la ventana y lo siguen los widgets y las gráficas.
+  - La ventana cambia de diseño desde «Ver → Diseño de la ventana» (el escenario en pantalla pasa al diseño nuevo) o con
+    `python vaciado.py --diseno <nombre>`.
+  - `herramientas/iconos.py`: cuatro opciones de icono dibujadas con Qt (Chorro, Torricelli, Reloj, Piquera), en PNG e ICO.
+  - `herramientas/capturas.py`: capturas de cada diseño en `docs/figuras/disenos/`.
+  - `docs/disenos.md`: diseños, iconos y seis opciones de nombre. Nada está elegido (decisiones N1 a N3).
+  - `tema.estilo_matplotlib` fija 100 ppp en las figuras: un `matplotlibrc` del sistema con otra resolución duplicaba la letra de
+    las gráficas en la ventana.
+- Verificación: ver MV-002 (las mismas corridas cubren los cuatro diseños: `test_ventana_y_disenos` y
+  `python vaciado.py --probar-ventana --diseno <nombre>` con los cuatro, «ok»). Las capturas se tomaron sin pantalla
+  (plataforma `offscreen`): **nadie ha visto los diseños en un escritorio de Windows**.
+- Pendientes: elegir diseño, icono y nombre (N1 a N3).
+
+### MV-002: Cálculo directo del tiempo de vaciado con las variables del usuario; alcance de dos escenarios
+
+- Motivo: el usuario pidió que el fin principal del programa sea estimar tiempos de vaciado, con variables definidas por el
+  usuario (área de paso, altura metalostática, tonelaje…), y que los escenarios posibles sean sólo horno (EAF) → olla y olla →
+  distribuidor, sin quitar nada fundamental.
+- Resultado:
+  - `modelo_vaciado/flujo.py` (nuevo): recipiente prismático (dimensionado con el tonelaje y la altura metalostática),
+    troncocónico (con la relación de diámetros) o tabulado (la olla de una planta); área de paso por diámetro o por área;
+    coeficiente de descarga o pérdidas explícitas (entrada y fricción de Darcy); caída bajo el orificio; fracción abierta de la
+    válvula; destino libre, a nivel constante o que se llena. Integración de Heun y solución cerrada de Torricelli.
+  - `modelo_vaciado/escenarios.py` (nuevo): los dos escenarios, formato `modelo_vaciado.escenario/1`, valores por omisión con su
+    estado y procedencia. `abrir` reconoce también los formatos heredados.
+  - `modelo_vaciado/reporte_tiempo.py` (nuevo): texto, CSV, Excel con gráficas nativas y PDF.
+  - `modelo_vaciado/ventana_tiempo.py` (nuevo): página del cálculo directo con las pestañas Vaciado, Esquema, Sensibilidad
+    (diámetro y C_d) y Comparar, y el estado de cada dato.
+  - `modelo_vaciado/ventana.py`: dos páginas, «Horno (EAF) → olla» (conmutador entre el cálculo directo y la cavidad 3D con
+    basculado, que se conserva entera) y «Olla → distribuidor». La secuencia olla → distribuidor → moldes sale de la ventana pero
+    se conserva en el código, en sus pruebas y por consola (`--colada`); un escenario de ese tipo se rechaza con un aviso.
+  - `python vaciado.py --tiempo`: los dos escenarios por consola. Once ejemplos nuevos en `ejemplos/horno_olla/` y
+    `ejemplos/olla_distribuidor/`. Los ejemplos heredados pasaron a `ejemplos/horno_cavidad_3d/` y
+    `ejemplos/distribuidor_moldes/`.
+  - Nombre provisional de la ventana y del ejecutable: «Modelo-Vaciado» (antes «Vaciado-EAF»; decisión N1).
+  - Estados nuevos en la interfaz: «cálculo del proveedor» (◇) y «ejemplo» (□).
+- Impacto numérico: ninguno en los cálculos heredados (horno con cavidad 3D y secuencia); las 30 pruebas heredadas siguen
+  pasando. `test_ventana` se adaptó a la ventana nueva sin cambiar lo que comprueba del horno ni de la página de la secuencia.
+- Evidencia (cálculo directo):
+  - Prisma contra la solución cerrada de Torricelli, con caída, contrapresión y válvula: a una parte en 10 000.
+  - Olla de Pesquería con el distribuidor a 1 100 mm: 4 664,1 s, igual que `colada_continua.vaciado_libre_olla`.
+  - Horno de Pesquería como prisma (450 t, 969 mm y 94,5 t de talón, tomados de la cavidad a 0°): 622 s, contra 613,5 s de la
+    cavidad 3D a ángulo fijo 0° (+1,5 %).
+  - Llenado del distribuidor: la masa recibida coincide con la vaciada a 0,2 %.
+- Verificación (Linux, Python 3.13.18, PySide6 sin pantalla): `python -m pytest verificacion -q -p no:cacheprovider`:
+  `43 passed`; `ruff check .`: limpio; `python vaciado.py --probar-ventana` con los cuatro diseños: «ok».
+- Pendientes: datos medidos de tiempos de vaciado; la densidad de 7,0 t/m³ que se usa si un escenario no la trae es un supuesto.
+
 ### MV-001: Traslado del modelo de vaciado desde LWD-EAF
 
 - Motivo: el modelo de vaciado nació como proyecto paralelo dentro de LWD-EAF (EAF-064 a EAF-069). Se abre este repositorio para

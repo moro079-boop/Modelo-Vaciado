@@ -16,7 +16,7 @@ from modelo_vaciado.valvula import Orificio, abertura_para, fraccion_abierta
 from modelo_vaciado import escenario as ve
 from pathlib import Path
 
-EJEMPLOS = Path(__file__).resolve().parent.parent / "ejemplos" / "vaciado"
+EJEMPLOS = Path(__file__).resolve().parent.parent / "ejemplos" / "horno_cavidad_3d"
 
 
 @pytest.fixture(scope="module")

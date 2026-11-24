@@ -1,6 +1,6 @@
 # Pendientes y decisiones abiertas
 
-Actualizado el 2026-11-24 (MV-001). Las decisiones son del usuario; las propuestas de esta lista no están aprobadas mientras no
+Actualizado el 2026-11-24 (MV-003). Las decisiones son del usuario; las propuestas de esta lista no están aprobadas mientras no
 se diga lo contrario.
 
 ## Decisiones tomadas por el usuario
@@ -10,6 +10,24 @@ se diga lo contrario.
 | Repositorio | Este (`moro079-boop/Modelo-Vaciado`), separado de LWD-EAF (2026-11-24) |
 | Objetivo | Estimar tiempos de vaciado con las ecuaciones de flujo (Bernoulli, Torricelli…) y refinar el programa con el tiempo (2026-11-24) |
 | Motor de la interfaz | Qt (2026-11-24) |
+| Escenarios del alcance actual | Horno (EAF) → olla y olla → distribuidor; el distribuidor → moldes, más adelante (2026-11-24) |
+| Variables del usuario | Área de paso (diámetro o área), altura metalostática, tonelaje y demás datos del vaciado (2026-11-24) |
+
+## Decisiones abiertas de este repositorio
+
+- **N1. Nombre del programa.** Provisional: «Modelo-Vaciado» (el del repositorio), en la ventana y en el ejecutable. Opciones en
+  [disenos.md](disenos.md) §3.
+- **N2. Diseño de la ventana.** Cuatro diseños disponibles (Magnesita, Colada, Plano y Turno); abre con Magnesita mientras no se
+  elija. Falta verlos en un escritorio de Windows. Detalle en [disenos.md](disenos.md) §1.
+- **N3. Icono.** Cuatro opciones (Chorro, Torricelli, Reloj y Piquera); cada diseño nuevo usa una. El ejecutable usa todavía el
+  icono de LWD-EAF. Detalle en [disenos.md](disenos.md) §2.
+- **N4. Versión.** El modelo sigue en 0.1.0-preliminar. Se propone 0.2.0-preliminar por el cálculo directo, el formato de
+  escenario nuevo y la reducción del alcance; no se cambió.
+- **N5. Estilo de documentos.** `docs/estilo-de-documentos.md` se copió sin cambios; nombra cuatro proyectos y dice que el texto
+  es el mismo en los cuatro. Falta decidir si este repositorio se suma a la lista (habría que cambiarlo en los cinco).
+- **N6. Valores por omisión del cálculo directo.** Los escenarios abren con Pesquería: el horno como prisma con la altura y el
+  talón derivados de su cavidad a 0°, y la olla de Pesquería con la válvula del SGW y un distribuidor de ejemplo. La densidad de
+  7,0 t/m³ que se usa si un escenario no la trae es un supuesto.
 
 ## Heredadas de LWD-EAF
 

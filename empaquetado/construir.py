@@ -1,10 +1,10 @@
-"""Hace el ejecutable de Vaciado-EAF (la aplicación de vaciado por la piquera) con PyInstaller:
-``python empaquetado/construir_vaciado.py``.
+"""Hace el ejecutable del modelo de vaciado con PyInstaller:
+``python empaquetado/construir.py``.
 
-Como ``construir.py``: corre en la máquina donde se va a usar (**un ejecutable de Windows se hace en Windows**), necesita
+Corre en la máquina donde se va a usar (**un ejecutable de Windows se hace en Windows**), necesita
 ``requirements.txt`` y ``pip install pyinstaller``, y no pide permisos de administrador.
 
-Salida: ``dist/Vaciado-EAF/`` (carpeta con ``Vaciado-EAF.exe``) y ``dist/Vaciado-EAF-<versión>-<sistema>.zip``. Incluye los datos de
+Salida: ``dist/<nombre>/`` (carpeta con el ejecutable) y ``dist/<nombre>-<versión>-<sistema>.zip``. Incluye los datos de
 planta, los datos de vaciado y los escenarios de ejemplo. Al terminar corre ``--probar-ventana`` con el ejecutable recién hecho.
 """
 
@@ -22,7 +22,7 @@ sys.path.insert(0, str(RAIZ))
 
 from modelo_vaciado import VERSION_MODELO  # noqa: E402
 
-NOMBRE = "Vaciado-EAF"
+NOMBRE = "Modelo-Vaciado"   # provisional (decisión N1 de docs/pendientes.md)
 
 
 def construir() -> Path:
@@ -33,7 +33,7 @@ def construir() -> Path:
         sys.exit(f"Falta {error.name}: pip install -r requirements.txt pyinstaller")
     sep = os.pathsep
     datos = [(RAIZ / "datos" / "plantas", "datos/plantas"), (RAIZ / "datos" / "vaciado", "datos/vaciado"), (RAIZ / "datos" / "estudios", "datos/estudios"),
-             (RAIZ / "ejemplos" / "vaciado", "ejemplos/vaciado"), (RAIZ / "modelo_vaciado" / "interfaz" / "recursos", "modelo_vaciado/interfaz/recursos")]
+             (RAIZ / "ejemplos", "ejemplos"), (RAIZ / "modelo_vaciado" / "interfaz" / "recursos", "modelo_vaciado/interfaz/recursos")]
     comando = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean", "--onedir", "--windowed",
                "--name", NOMBRE, "--icon", str(RAIZ / "modelo_vaciado" / "interfaz" / "recursos" / "icono.ico"),
                "--distpath", str(RAIZ / "dist"), "--workpath", str(RAIZ / "build"), "--specpath", str(RAIZ / "build"),

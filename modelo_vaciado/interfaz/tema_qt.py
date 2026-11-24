@@ -27,12 +27,14 @@ def resolver_familias() -> str:
     return _primera(_LETRA, instaladas)
 
 
-def aplicar(aplicacion) -> str:
+def aplicar(aplicacion, tamano: float = 10.0) -> str:
     """Estilo Fusion (igual en Windows, Linux y macOS), paleta y letra; devuelve la hoja de estilo para la ventana."""
     P = tema.PALETA
     aplicacion.setStyle("Fusion")
     letra = resolver_familias()
-    aplicacion.setFont(QFont(letra, 10))
+    fuente = QFont(letra)
+    fuente.setPointSizeF(tamano)
+    aplicacion.setFont(fuente)
     paleta = QPalette()
     for rol, color in ((QPalette.ColorRole.Window, "FONDO"), (QPalette.ColorRole.WindowText, "TEXTO"),
                        (QPalette.ColorRole.Base, "PAPEL"), (QPalette.ColorRole.AlternateBase, "SUPERFICIE"),
@@ -46,7 +48,8 @@ def aplicar(aplicacion) -> str:
 
 
 def hoja_de_estilo() -> str:
-    P = dict(tema.PALETA, MONO=tema.FAMILIA_MONO, ACENTO_OSCURO="#3B5019", PELIGRO_SUAVE="#F3DCD8", FLECHA=_flecha())
+    P = dict(ACENTO_OSCURO="#3B5019", PELIGRO_SUAVE="#F3DCD8", ENFOQUE="#FFFFFF")
+    P.update(tema.PALETA, MONO=tema.FAMILIA_MONO, FLECHA=_flecha())
     return _HOJA % P
 
 
@@ -78,7 +81,7 @@ QWidget#Barra, QWidget#Pie { background: %(SUPERFICIE)s; }
 QFrame#Linea { background: %(BORDE)s; border: none; }
 QLabel { color: %(TEXTO)s; background: transparent; }
 QLabel#Marca { font-size: 15pt; font-weight: 700; color: %(TEXTO)s; }
-QLabel#MarcaAcento { font-size: 15pt; font-weight: 700; color: %(ACENTO)s; }
+QLabel#MarcaAcento { font-size: 13pt; font-weight: 700; color: %(ACENTO)s; }
 
 /* tarjetas */
 QFrame#Tarjeta { background: %(SUPERFICIE)s; border: 1px solid %(BORDE)s; border-radius: 10px; }
@@ -140,7 +143,7 @@ QPushButton[clase="peligro"]:hover { background: %(PELIGRO_SUAVE)s; border-color
 QLineEdit { background: %(PAPEL)s; color: %(TEXTO)s; border: 1px solid %(BORDE)s; border-radius: 6px; padding: 4px 7px;
     selection-background-color: %(ACENTO)s; selection-color: %(SOBRE_ACENTO)s; }
 QLineEdit:hover { border-color: %(TEXTO_3)s; }
-QLineEdit:focus { border: 1px solid %(ACENTO)s; background: #FFFFFF; }
+QLineEdit:focus { border: 1px solid %(ACENTO)s; background: %(ENFOQUE)s; }
 QLineEdit:disabled { background: %(SUPERFICIE_2)s; color: %(TEXTO_3)s; }
 QLineEdit#Inclinacion { font-size: 14pt; font-weight: 600; padding: 3px 6px; }
 QComboBox { background: %(PAPEL)s; color: %(TEXTO)s; border: 1px solid %(BORDE)s; border-radius: 6px; padding: 5px 9px; }
@@ -151,6 +154,20 @@ QComboBox::down-arrow { image: url("%(FLECHA)s"); width: 12px; height: 12px; mar
 QComboBox QAbstractItemView { background: %(PAPEL)s; color: %(TEXTO)s; border: 1px solid %(BORDE)s; outline: 0;
     selection-background-color: %(ACENTO)s; selection-color: %(SOBRE_ACENTO)s; padding: 3px; }
 QCheckBox { color: %(TEXTO_2)s; font-size: 9pt; spacing: 7px; background: transparent; }
+QDoubleSpinBox, QSpinBox { background: %(PAPEL)s; color: %(TEXTO)s; border: 1px solid %(BORDE)s; border-radius: 6px; padding: 3px 6px;
+    selection-background-color: %(ACENTO)s; selection-color: %(SOBRE_ACENTO)s; }
+QDoubleSpinBox:focus, QSpinBox:focus { border-color: %(ACENTO)s; background: %(ENFOQUE)s; }
+QDoubleSpinBox:disabled { background: %(SUPERFICIE_2)s; color: %(TEXTO_3)s; }
+
+/* pestañas de Qt */
+QTabWidget::pane { border: 1px solid %(BORDE)s; border-radius: 8px; background: %(PAPEL)s; top: -1px; }
+QTabBar::tab { background: transparent; color: %(TEXTO_2)s; padding: 8px 14px; border: none; border-bottom: 3px solid transparent; }
+QTabBar::tab:hover { color: %(TEXTO)s; background: %(SUPERFICIE_2)s; }
+QTabBar::tab:selected { color: %(ACENTO)s; border-bottom: 3px solid %(ACENTO)s; font-weight: 700; }
+QMenuBar { background: %(SUPERFICIE)s; color: %(TEXTO)s; }
+QMenuBar::item:selected { background: %(SUPERFICIE_2)s; }
+QMenu { background: %(PAPEL)s; color: %(TEXTO)s; border: 1px solid %(BORDE)s; }
+QMenu::item:selected { background: %(ACENTO)s; color: %(SOBRE_ACENTO)s; }
 
 /* deslizadores */
 QSlider::groove:horizontal { height: 6px; background: %(SUPERFICIE_2)s; border: 1px solid %(BORDE)s; border-radius: 4px; }

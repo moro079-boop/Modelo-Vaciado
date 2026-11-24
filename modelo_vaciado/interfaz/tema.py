@@ -41,13 +41,14 @@ MARCAS = {
     "cota_del_plano": "●", "leido_del_plano": "●", "medido_a_escala": "◆", "derivado": "●",
     "supuesto": "■", "heredado_sin_verificar": "▼", "heredado": "▼", "por_definir": "○",
     "tomado_del_lwd": "▲", "decision_del_usuario": "▶", "dato_del_usuario": "●", "modificado": "◐", "ajustado": "◈",
+    "calculo_del_proveedor": "◇", "ejemplo": "□",
 }
 _COLOR_ESTADO = {
     "cota_del_plano": "E_COTA", "leido_del_plano": "E_LEIDO", "medido_a_escala": "E_ESCALA",
     "derivado": "E_DERIVADO", "supuesto": "E_SUPUESTO", "heredado_sin_verificar": "E_HEREDADO",
     "heredado": "E_HEREDADO", "por_definir": "E_PENDIENTE", "tomado_del_lwd": "E_LWD",
     "decision_del_usuario": "E_DECISION", "dato_del_usuario": "E_USUARIO", "modificado": "E_MODIFICADO",
-    "ajustado": "E_LEIDO",
+    "ajustado": "E_LEIDO", "calculo_del_proveedor": "E_ESCALA", "ejemplo": "E_SUPUESTO",
 }
 TEXTO_ESTADO = {
     "cota_del_plano": "cota del plano", "leido_del_plano": "leído del plano",
@@ -56,6 +57,7 @@ TEXTO_ESTADO = {
     "por_definir": "por definir", "tomado_del_lwd": "tomado del LWD",
     "decision_del_usuario": "decisión del usuario", "dato_del_usuario": "dato del usuario",
     "modificado": "modificado", "ajustado": "ajustado a mediciones",
+    "calculo_del_proveedor": "cálculo del proveedor", "ejemplo": "ejemplo",
 }
 
 FAMILIA_SANS = _SANS[0]
@@ -126,4 +128,5 @@ def estilo_matplotlib() -> dict:
         "axes.labelsize": 9, "legend.facecolor": P["PAPEL"], "legend.edgecolor": P["BORDE"],
         "legend.labelcolor": P["TEXTO_2"], "legend.fontsize": 8, "figure.autolayout": False,
         "hatch.color": P["HACHURA"], "hatch.linewidth": 0.7,
+        "figure.dpi": 100,          # Qt escala el lienzo en pantallas de alta densidad; un matplotlibrc del sistema no debe hacerlo dos veces
     }

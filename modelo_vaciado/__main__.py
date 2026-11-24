@@ -1,9 +1,12 @@
-"""Modelo de vaciado por la piquera, por consola.
+"""El modelo de vaciado por consola.
 
-    python -m modelo_vaciado                         corre los escenarios de ejemplos/vaciado/ y escribe en reportes/vaciado/
+    python -m modelo_vaciado --tiempo [a.json ...]   cálculo directo de los dos escenarios (por omisión, ejemplos/horno_olla/ y
+                                                     ejemplos/olla_distribuidor/)
+    python -m modelo_vaciado                         horno con cavidad 3D: corre ejemplos/horno_cavidad_3d/ y escribe en reportes/vaciado/
     python -m modelo_vaciado a.json b.json           corre esos escenarios
     python -m modelo_vaciado --curvas pesqueria      carga segura, carga mínima y acero no drenable por ángulo
-    python -m modelo_vaciado --colada [a.json ...]   olla → tundish → moldes (por omisión, ejemplos/vaciado/colada_continua/)
+    python -m modelo_vaciado --colada [a.json ...]   secuencia olla → distribuidor → moldes (etapa posterior al alcance actual;
+                                                     por omisión, ejemplos/distribuidor_moldes/)
     python -m modelo_vaciado --salida CARPETA ...    otra carpeta de salida
     python -m modelo_vaciado --sin-archivos ...      solo el texto
 
@@ -42,12 +45,25 @@ def main(argv: list[str] | None = None) -> int:
     if "-h" in argv or "--help" in argv:
         print(__doc__)
         return 0
-    print(f"Modelo de vaciado por la piquera {VERSION_MODELO}. {AVISO}\n")
+    print(f"Modelo de vaciado {VERSION_MODELO}. {AVISO}\n")
+    if "--tiempo" in argv:
+        from . import escenarios as es
+        from .reporte_tiempo import texto
+
+        rutas = [Path(a) for a in argv if not a.startswith("--")] or (
+            sorted((RAIZ / "ejemplos" / "horno_olla").glob("*.json")) + sorted((RAIZ / "ejemplos" / "olla_distribuidor").glob("*.json")))
+        for ruta in rutas:
+            e = es.abrir(ruta)
+            if e.get("formato") != es.FORMATO:
+                print(f"{ruta.name}: es un escenario del horno con cavidad 3D o de la secuencia; se corre sin --tiempo o con --colada\n")
+                continue
+            print(texto(e, es.correr(e)) + "\n")
+        return 0
     if "--colada" in argv:
         from . import colada_continua as cc
         from .reporte_colada import filas_de_resultado
 
-        rutas = [Path(a) for a in argv if not a.startswith("--")] or sorted((RAIZ / "ejemplos" / "vaciado" / "colada_continua").glob("*.json"))
+        rutas = [Path(a) for a in argv if not a.startswith("--")] or sorted((RAIZ / "ejemplos" / "distribuidor_moldes").glob("*.json"))
         for ruta in rutas:
             r = cc.correr(cc.abrir(ruta))
             print(r.nombre)
@@ -66,7 +82,7 @@ def main(argv: list[str] | None = None) -> int:
         salida = Path(argv[i + 1])
         del argv[i:i + 2]
     archivos = "--sin-archivos" not in argv
-    rutas = [Path(a) for a in argv if not a.startswith("--")] or sorted((RAIZ / "ejemplos" / "vaciado").glob("*.json"))
+    rutas = [Path(a) for a in argv if not a.startswith("--")] or sorted((RAIZ / "ejemplos" / "horno_cavidad_3d").glob("*.json"))
     resultados = []
     for ruta in rutas:
         e = abrir(ruta)
