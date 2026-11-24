@@ -4,9 +4,9 @@ Copiados de `lwd_eaf/interfaz/` del repositorio LWD-EAF (commit `d3c7ad23dbb6794
 
 | Archivo | Origen | Cambio |
 |---|---|---|
-| `tema.py` | `lwd_eaf/interfaz/tema.py` | Ninguno (paleta Magnesita, clara) |
-| `tema_qt.py` | `lwd_eaf/interfaz/tema_qt.py` | Nombre del archivo temporal de la flecha del selector |
+| `tema.py` | `lwd_eaf/interfaz/tema.py` | Mismos roles y marcas de estado; paleta TapFlow en lugar de Magnesita (MV-004); estados «cálculo del proveedor» y «ejemplo»; 100 ppp en las figuras |
+| `tema_qt.py` | `lwd_eaf/interfaz/tema_qt.py` | Flechas propias, tamaño de letra, color de foco, campos numéricos, pestañas, menús, barra de estado y el acomodo de tablero (cabecera, pasos e indicadores) en la hoja de estilo (MV-003, MV-004) |
 | `widgets.py`, `formato.py` | `lwd_eaf/interfaz/` | Ninguno |
-| `recursos/icono.png`, `recursos/icono.ico` | `lwd_eaf/interfaz/recursos/` | Ninguno: es el icono de LWD-EAF, provisional |
+| `recursos/icono.png`, `recursos/icono.ico` | Nuevos (MV-004) | Icono de TapFlow, dibujado con `herramientas/iconos.py`; reemplaza al de LWD-EAF |
 
 Estos componentes pueden evolucionar en este repositorio; a diferencia de `horno3d/`, no son una copia de solo lectura.

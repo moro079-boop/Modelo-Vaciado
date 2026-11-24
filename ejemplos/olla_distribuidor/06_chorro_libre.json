@@ -1,0 +1,44 @@
+{
+ "formato": "modelo_vaciado.escenario/1",
+ "tipo": "olla_distribuidor",
+ "nombre": "6 · Chorro libre (sin contrapresión del distribuidor)",
+ "recipiente": {
+  "geometria": "olla_de_planta",
+  "planta": "pesqueria",
+  "pared_gastada_mm": 0.0,
+  "piso_gastado_mm": 0.0,
+  "forma": "troncoconica",
+  "altura_metalostatica_mm": 3600.0,
+  "talon_t": 0.0,
+  "relacion_diametros": 0.95
+ },
+ "acero_inicial_t": 300.0,
+ "acero_final_t": 3.0,
+ "densidad": 6.9,
+ "paso": {
+  "diametro_mm": 55.0
+ },
+ "hidraulica": {
+  "modo": "cd",
+  "cd": 0.75,
+  "caida_mm": 900.0,
+  "largo_mm": 900.0,
+  "k_entrada": 0.5,
+  "rugosidad_mm": 1.0,
+  "viscosidad": 0.006
+ },
+ "valvula": {
+  "abertura_pct": 100.0,
+  "carrera_mm": 0.0
+ },
+ "destino": {
+  "tipo": "libre",
+  "nivel_mm": 1100.0,
+  "altura_salida_mm": 300.0,
+  "masa_inicial_t": 0.0,
+  "largo_mm": 7000.0,
+  "ancho_mm": 1000.0,
+  "talud_grados": 10.0,
+  "nivel_maximo_mm": 1300.0
+ }
+}

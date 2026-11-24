@@ -1,10 +1,10 @@
 # Estilo de los documentos
 
 Reglas de estilo y de redacción que se aplican a **todos los documentos** que se generan o se editan en este
-repositorio y en los demás proyectos del mismo autor (Slide-Gate-Wear-Model, Ladle-Wear-Diagnosis-, LWD-EAF y
-Modelo-1D-TT): documentos técnicos, guías, informes, README, notas de `docs/` y documentos de Word. Son
+repositorio y en los demás proyectos del mismo autor (Slide-Gate-Wear-Model, Ladle-Wear-Diagnosis-, LWD-EAF,
+Modelo-1D-TT y Modelo-Vaciado): documentos técnicos, guías, informes, README, notas de `docs/` y documentos de Word. Son
 permanentes: no caducan con el uso ni con el tiempo, y mandan sobre cualquier costumbre de redacción anterior.
-El mismo texto está en `docs/estilo-de-documentos.md` de cada repositorio; si cambia, se cambia en los cuatro.
+El mismo texto está en `docs/estilo-de-documentos.md` de cada repositorio; si cambia, se cambia en los cinco.
 
 **Papel.** Se actúa como editor técnico de documentos de ingeniería en español (formal, impersonal). La tarea es
 uniformizar el estilo y la redacción de cada documento según las reglas siguientes. Se edita el texto, no el

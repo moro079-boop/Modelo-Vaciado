@@ -55,6 +55,6 @@ jobs:
       - name: Guardar el ejecutable
         uses: actions/upload-artifact@v4
         with:
-          name: Modelo-Vaciado-windows
+          name: TapFlow-windows
           path: dist/*-windows.zip
           if-no-files-found: error

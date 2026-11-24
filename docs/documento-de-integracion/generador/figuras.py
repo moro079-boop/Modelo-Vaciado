@@ -27,7 +27,7 @@ plt.rcParams.update({"font.size": 9, "axes.grid": True, "grid.alpha": 0.35})
 
 
 def mapas():
-    e = ve.abrir(RAIZ / "ejemplos" / "vaciado" / "03_seguir_carga_segura.json")
+    e = ve.abrir(RAIZ / "ejemplos" / "horno_cavidad_3d" / "03_seguir_carga_segura.json")
     filas = mapa.por_angulo(e, dt=1.0)
     col = mapa.por_colada(e, 150, 0.3, diametro_maximo=260, cada=5, dt=1.0)
     fig, (a, b) = plt.subplots(1, 2, figsize=(10, 3.8))
@@ -52,7 +52,7 @@ def mapas():
 
 
 def secuencia():
-    r = cc.correr(cc.abrir(RAIZ / "ejemplos" / "vaciado" / "colada_continua" / "02_valvula_de_80.json"))
+    r = cc.correr(cc.abrir(RAIZ / "ejemplos" / "distribuidor_moldes" / "02_valvula_de_80.json"))
     fig, _ = plt.subplots(2, 2, figsize=(10, 6), sharex=True)
     figura_secuencia(r, fig)
     fig.tight_layout()

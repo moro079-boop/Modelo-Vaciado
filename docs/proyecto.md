@@ -1,18 +1,30 @@
-# Vaciado-EAF: tiempos de vaciado del horno, la olla y el tundish
+# TapFlow: tiempos de vaciado del horno y de la olla
 
-Documento de proyecto. Estado al 2026-11-20: versión del modelo 0.1.0-preliminar, con las etapas de horno, olla, tundish y moldes.
+Documento de proyecto. Estado al 2026-11-24: versión 0.2.0-preliminar. El alcance actual son dos escenarios: horno (EAF) → olla y
+olla → distribuidor.
 
 **Aviso general:** ningún parámetro hidráulico está validado con tiempos de vaciado medidos en planta. La geometría del horno y la de la olla proceden de planos; la válvula de la olla, el tundish y la máquina de colada continua se describen con valores supuestos o de ejemplo. Los resultados son escenarios, no pronósticos.
 
 ## 1. Objetivo y alcance
 
-El proyecto persigue un programa que estime el tiempo de vaciado del acero líquido en las tres etapas de la acería:
+El objetivo del proyecto es un programa que estime el tiempo que tarda un recipiente de acero líquido en vaciar su contenido,
+basado en las ecuaciones de flujo (balance de masa, ecuación de Bernoulli y ley de Torricelli), y que se refine con el tiempo a
+medida que haya datos de planta. El alcance actual son dos escenarios:
 
-- **Horno:** del horno de arco eléctrico (EAF) a la olla, por la piquera excéntrica de fondo (EBT) o por un canal de vaciado (OBT), según el ángulo de inclinación.
-- **Olla:** de la olla al tundish de la máquina de colada continua (MCC), por la válvula deslizante.
-- **Tundish:** del tundish a los moldes, por las buzas sumergidas, con la demanda que fija la velocidad de colada.
+- **Horno (EAF) → olla:** el horno de arco eléctrico se vacía por la piquera excéntrica de fondo (EBT) o por un canal de vaciado
+  (OBT). Se calcula de dos formas: con las variables que define el usuario (cálculo directo) o con la cavidad tridimensional del
+  horno, el ángulo de basculado y los límites del panel refrigerado (cálculo detallado).
+- **Olla → distribuidor:** la olla se vacía por la válvula deslizante hacia el distribuidor (tundish), con la olla de una planta o
+  un recipiente que define el usuario, y con el distribuidor a nivel constante, llenándose o sin contrapresión.
 
-El programa debe servir para cualquier horno y máquina cuya geometría se describa en un archivo de datos, y debe permitir estudiar el efecto de la inclinación, del desgaste del revestimiento, del diámetro de los orificios, de la velocidad de colada y del cambio de olla.
+El vaciado del distribuidor a los moldes queda para una etapa posterior. El modelo de esa etapa (demanda de la máquina, buzas
+sumergidas, control de nivel y secuencia de ollas) se conserva en el código y se puede correr por consola, pero no forma parte
+de la ventana.
+
+En el cálculo directo el usuario define, entre otras variables, el tonelaje inicial y final, la altura metalostática sobre el
+orificio, el talón que queda por debajo del orificio, la forma del recipiente, el área de paso (por el diámetro o por el área), el
+coeficiente de descarga o las pérdidas del canal, la caída bajo el orificio y, en la olla, la abertura de la válvula y la
+condición del distribuidor.
 
 El origen del proyecto es el estudio de vaciado por el EBT que el proveedor de refractarios dibujó en el plano AV00025170 del horno de Pesquería; su análisis y reproducción se describen en [../vaciado-ebt.md](vaciado-ebt.md).
 
@@ -26,7 +38,8 @@ El plan ordena el trabajo de modo que cada fase entregue algo utilizable. Las fa
 | 1 | Modelo del horno: nivel por masa y ángulo, hidráulica del canal, basculado e integración en el tiempo | Hecha |
 | 2 | Aplicación propia con ventana, exportación a Excel, PDF y CSV, y ejecutable | Hecha |
 | 3 | Mapas del horno (tiempo por ángulo fijo y por vida de la piquera), olla con válvula deslizante, tundish con control de nivel, moldes y secuencia de ollas | Hecha, con datos supuestos fuera del horno y de la olla |
-| 4 | Interfaz Qt con los componentes de LWD-EAF: tarjetas, etiquetas de estado de cada dato, selectores y botones con la hoja de estilo Magnesita | En curso: las dos páginas usan tarjetas, estados y selectores; faltan los indicadores, la barra de herramientas de las gráficas, el escalado de pantalla y la prueba en un escritorio de Windows |
+| 4 | Interfaz Qt con los componentes de LWD-EAF: tarjetas, etiquetas de estado de cada dato, selectores y botones | Hecha: diseño TapFlow, indicadores, recálculo en vivo, barra de las gráficas, atajos y ajuste a 1 280 × 720; falta la prueba en un escritorio de Windows |
+| 4b | Cálculo directo con las variables del usuario y reducción del alcance a horno → olla y olla → distribuidor | Hecha (MV-002) |
 | 5 | Datos de planta: tiempos de vaciado medidos, diámetros de piquera y de válvula, geometría del tundish y de la máquina | Pendiente de datos |
 | 6 | Calibración: coeficiente de descarga del horno y de la válvula con tiempos medidos; ley de crecimiento de la piquera | Pendiente de la fase 5 |
 | 7 | Otras plantas y un horno con canal de vaciado (OBT) | Pendiente de datos |
@@ -34,7 +47,7 @@ El plan ordena el trabajo de modo que cada fase entregue algo utilizable. Las fa
 
 ## 3. Fundamentos del modelo
 
-Las tres etapas comparten el mismo principio: un recipiente que se vacía por un orificio. El caudal se obtiene de la ecuación de energía entre la superficie libre del recipiente y la salida del orificio, y la masa se integra en el tiempo.
+Las etapas comparten el mismo principio: un recipiente que se vacía por un orificio. El caudal se obtiene de la ecuación de energía entre la superficie libre del recipiente y la salida del orificio, y la masa se integra en el tiempo.
 
 ### Balance de masa
 
@@ -51,6 +64,28 @@ Q = ρ · C_d · f_A · A · √(2 · g · H)
 donde ρ es la densidad del acero líquido, C_d el coeficiente de descarga, f_A la fracción de área abierta (1 sin válvula), A el área del orificio y H la carga de acero, es decir, la diferencia de altura entre la superficie libre y la salida, descontada la contrapresión del recipiente de destino.
 
 Cuando se conocen las pérdidas por separado, la velocidad se escribe como v = √(2·g·H / (1 + K + f·L/D)), con K la pérdida de entrada y f el factor de fricción de Darcy del canal de largo L y diámetro D. Ambas formas son equivalentes; la primera agrupa todas las pérdidas en C_d.
+
+### Cálculo directo
+
+El cálculo directo describe el recipiente sin su geometría de planta. Con un tonelaje M₀ sobre el orificio (tonelaje inicial menos
+el talón) y una altura metalostática inicial H₀ sobre el orificio, el recipiente se representa de una de dos formas:
+
+- **Prismático:** el área de la superficie libre es constante, A_s = M₀ / (ρ · H₀). Es el caso de la ley de Torricelli.
+- **Troncocónico:** el diámetro varía linealmente con la altura, con una relación r = D_fondo / D_superficie fijada por el
+  usuario; el diámetro de la superficie sale del volumen del tronco de cono, V = π·H₀·(D_f² + D_f·D_s + D_s²)/12.
+
+La carga motriz es H = h(M) + caída − contrapresión. La caída es el tramo vertical que el chorro recorre lleno por debajo del
+orificio (canal de la piquera o tubo largo), y la contrapresión, la altura del acero del recipiente de destino sobre la salida. Con un recipiente
+prismático, el modelo de coeficiente de descarga y una contrapresión constante, el tiempo tiene solución cerrada:
+
+t = A_s / (C_d · f_A · a) · √(2/g) · (√H₀ − √H_f)
+
+El programa la muestra junto al resultado del integrador como comprobación. El área de paso se puede dar por el diámetro o por el
+área; en el segundo caso se usa el diámetro del círculo de la misma área para la fricción.
+
+En la olla, el distribuidor fija la contrapresión de tres formas: a nivel constante (nivel del distribuidor menos la altura de la
+salida del tubo largo), llenándose (el distribuidor recibe el acero sin entregar, con la geometría de la sección «Tundish y
+moldes») o sin contrapresión (chorro libre). Si los niveles se igualan, el vaciado se detiene y se avisa.
 
 ### Horno
 
@@ -110,13 +145,35 @@ Cada valor lleva su estado en el archivo de datos, en la ventana (con una marca 
 | Olla cilíndrica con la válvula abierta contra Torricelli | A 0,2 % |
 | Volumen del tundish, forma cerrada contra integración numérica | A una parte en un millón |
 | Conservación de masa en la secuencia de ollas | A 1 % (por el muestreo de la serie) |
-| Mapa por vida de la piquera contra el cálculo directo | A 0,2 % |
+| Mapa por vida de la piquera contra el cálculo de cada colada | A 0,2 % |
+| Cálculo directo, recipiente prismático contra la solución cerrada de Torricelli (con caída, contrapresión y válvula) | A una parte en 10 000 |
+| Cálculo directo de la olla de Pesquería contra el vaciado de la olla del módulo de la colada continua | 4 664 s contra 4 664 s |
+| Horno de Pesquería como prisma (tonelaje, altura y talón de la cavidad a 0°) contra la cavidad 3D a 0° | 622 s contra 613,5 s (+1,5 %) |
+| Llenado del distribuidor: masa recibida contra masa vaciada | A 0,2 % |
 
 Reproducir el estudio del proveedor comprueba que el modelo hace bien la misma cuenta, pero no que la cuenta sea cierta.
 
 ## 6. Resultados de ejemplo
 
-### Horno de Pesquería (450 → 150 t, revestimiento nuevo)
+### Cálculo directo
+
+| Escenario | Tiempo |
+|---|---|
+| Horno de Pesquería como prisma, Ø200 mm, C_d 0,731 (450 → 150 t) | 622 s (10,4 min) |
+| Igual, con el baño troncocónico (fondo / superficie 0,6) | 559 s |
+| Igual, con la piquera en Ø240 mm | 432 s |
+| Igual, con pérdidas explícitas y la caída del canal (1 359 mm) | 296 s |
+| Olla de Pesquería, válvula de 55 mm, distribuidor a 1 100 mm (300 → 3 t) | 77,7 min |
+| Igual, válvula de 80 mm | 36,7 min |
+| Válvula de 80 mm abierta al 60 % de la carrera | 72,8 min |
+| Olla definida por el usuario (tronco de cono de 300 t y 3 600 mm), válvula de 55 mm | 78,3 min |
+| Olla de Pesquería con chorro libre (sin contrapresión del distribuidor) | 58,2 min |
+
+El cálculo directo con el horno como prisma ignora el basculado y la forma del baño; por ello sirve para estimaciones rápidas y
+para estudiar el efecto del área de paso y del coeficiente de descarga, mientras que el cálculo detallado da los límites del
+panel y de la carga mínima.
+
+### Horno de Pesquería con la cavidad 3D (450 → 150 t, revestimiento nuevo)
 
 | Escenario | Tiempo | Caudal medio |
 |---|---|---|
@@ -143,6 +200,8 @@ Con la máquina a velocidad constante, el colado de una olla lo fija la demanda 
 ## 7. Límites
 
 - **Validación:** ninguna cifra se ha contrastado con tiempos medidos.
+- **Cálculo directo:** el recipiente se reduce a un prisma o a un tronco de cono con el orificio en el fondo; no representa el
+  basculado ni la forma real del baño del horno.
 - **Flujo:** el canal se supone lleno y el chorro libre; no se modelan el vórtice ni la entrada de aire.
 - **Escoria:** el arrastre sólo se señala; no se calcula cuánta escoria pasa. En la olla y el tundish no se modela la escoria.
 - **Desgaste de los orificios:** el diámetro es constante dentro de una colada; su crecimiento entre coladas sólo se estudia con una tasa supuesta.
@@ -168,6 +227,10 @@ Con la máquina a velocidad constante, el colado de una olla lo fija la demanda 
 
 | Módulo | Contenido |
 |---|---|
+| `flujo.py` | Cálculo directo: recipientes (prismático, troncocónico, tabulado), área de paso, pérdidas, condición aguas abajo, integración y solución cerrada |
+| `escenarios.py` | Los dos escenarios con las variables del usuario, sus valores por omisión con su estado y su archivo |
+| `reporte_tiempo.py` | Reportes del cálculo directo en texto, CSV, Excel y PDF |
+| `ventana_tiempo.py` | Página de la ventana del cálculo directo, común a los dos escenarios |
 | `tabla.py` | Nivel del baño del horno por masa y ángulo, tabulado desde la cavidad tridimensional |
 | `hidraulica.py` | Velocidad y caudal por el canal del horno |
 | `basculado.py` | Formas de bascular el horno |
@@ -176,35 +239,49 @@ Con la máquina a velocidad constante, el colado de una olla lo fija la demanda 
 | `olla.py` | Geometría de la olla con la regla del LWD y nivel por masa |
 | `valvula.py` | Fracción abierta de la válvula deslizante y caudal por un orificio |
 | `artesa.py` | Tundish y moldes |
-| `colada_continua.py` | Configuración, secuencia acoplada olla–tundish–moldes y cálculos de una sola pieza |
-| `escenario.py`, `reporte.py`, `reporte_colada.py` | Escenarios en JSON y reportes en texto, CSV, Excel y PDF |
-| `ventana.py`, `ventana_colada.py`, `ventana_formulario.py` | Ventana de PySide6 con las páginas del horno y de la colada continua |
+| `colada_continua.py` | Secuencia acoplada olla–distribuidor–moldes (etapa posterior; sólo por consola) |
+| `escenario.py`, `reporte.py`, `reporte_colada.py` | Escenarios del horno con cavidad 3D y de la secuencia, y sus reportes |
+| `ventana.py`, `ventana_colada.py`, `ventana_formulario.py` | Ventana de PySide6 (cabecera, indicadores, atajos), página del horno con cavidad 3D, página de la secuencia (fuera de la ventana) y piezas comunes |
+| `horno3d/` | Motor geométrico del horno copiado de LWD-EAF (cavidad 3D y niveles) |
+| `interfaz/` | Paleta, hoja de estilo, componentes e icono de la ventana |
 
-Los datos viven en `datos/vaciado/<planta>.json` (horno) y `datos/vaciado/colada_continua/<planta>.json` (olla, válvula, tundish y moldes); los escenarios de ejemplo, en `ejemplos/vaciado/` y `ejemplos/vaciado/colada_continua/`.
+Los datos viven en `datos/plantas/` (geometría del horno), `datos/vaciado/<planta>.json` (piquera y panel del horno) y
+`datos/vaciado/colada_continua/<planta>.json` (olla, válvula, distribuidor y moldes). Los escenarios de ejemplo están en
+`ejemplos/horno_olla/`, `ejemplos/olla_distribuidor/`, `ejemplos/horno_cavidad_3d/` y `ejemplos/distribuidor_moldes/`.
 
 ### Uso
 
 ```text
 python vaciado.py                          ventana
-python vaciado.py escenario.json           ventana con ese escenario (de horno o de colada continua)
-python vaciado.py --consola [a.json ...]   horno, sin ventana: CSV y figura en reportes/vaciado/
-python vaciado.py --colada [a.json ...]    colada continua, sin ventana
+python vaciado.py escenario.json           ventana con ese escenario
+python vaciado.py --tiempo [a.json ...]    cálculo directo de los dos escenarios, en texto
+python vaciado.py --consola [a.json ...]   horno con cavidad 3D, sin ventana: CSV y figura en reportes/vaciado/
 python vaciado.py --curvas pesqueria       límites del horno por ángulo
+python vaciado.py --colada [a.json ...]    secuencia olla → distribuidor → moldes (etapa posterior), en texto
 python vaciado.py --probar-ventana         comprobación de la ventana y las exportaciones
-python empaquetado/construir_vaciado.py    ejecutable sin Python
+python empaquetado/construir.py            ejecutable sin Python
 ```
 
-La ventana tiene dos páginas. «Horno (EAF) → olla» contiene el escenario del horno y las pestañas Colada, Corte, Límites, Comparar y Mapas. «Olla → tundish → moldes» contiene los datos de la máquina, cada uno con su estado, y las pestañas Secuencia, Olla y Tundish y moldes. En las dos, la columna derecha muestra el resultado, los avisos y los botones para abrir, guardar y exportar.
+La ventana tiene dos páginas, una por escenario. «Horno (EAF) → olla» tiene un conmutador entre el cálculo directo y la cavidad
+3D de la planta con basculado (pestañas Colada, Corte, Límites, Comparar y Mapas). «Olla → distribuidor» tiene el cálculo
+directo. Las páginas del cálculo directo tienen las pestañas Vaciado, Esquema, Sensibilidad y Comparar, y recalculan solas
+250 ms después del último cambio. La vista con la cavidad 3D se arma al primer uso (un hilo la prepara en segundo plano al abrir
+la ventana) y, como tarda unos 0,6 s por cálculo, marca el resultado como desactualizado hasta pulsar «Calcular» (F5). Sobre
+las páginas, cuatro indicadores muestran el resultado de la página activa. El diseño y los atajos de teclado se describen en
+[disenos.md](disenos.md).
 
 ### Agregar una planta
 
 1. La geometría del horno debe existir en `datos/plantas/`.
-2. Los datos de vaciado del horno se agregan en `datos/vaciado/<planta>.json`. En un horno con canal de vaciado, el tipo es `OBT` y la inclinación del canal es distinta de cero.
-3. La olla, la válvula, el tundish y los moldes se agregan en `datos/vaciado/colada_continua/<planta>.json`. La geometría de la olla tiene el formato del LWD.
+2. Los datos de vaciado del horno se agregan en `datos/vaciado/<planta>.json`. En un horno con canal de vaciado, el tipo es `OBT`
+   y la inclinación del canal es distinta de cero.
+3. La olla, la válvula, el distribuidor y los moldes se agregan en `datos/vaciado/colada_continua/<planta>.json`. La geometría de
+   la olla tiene el formato del LWD.
 
 ### Pruebas
 
-`verificacion/test_vaciado_ebt.py`, `verificacion/test_vaciado_modelo.py` y `verificacion/test_vaciado_colada_continua.py` (30 pruebas en total).
+`verificacion/test_tiempo_vaciado.py` (cálculo directo, ventana y diseños), `verificacion/test_vaciado_ebt.py`,
+`verificacion/test_vaciado_modelo.py` y `verificacion/test_vaciado_colada_continua.py`: 45 pruebas en total.
 
 ## 10. Bitácora del proyecto
 
@@ -214,3 +291,7 @@ La ventana tiene dos páginas. «Horno (EAF) → olla» contiene el escenario de
 | 2026-11-15 | EAF-065: primera versión del modelo del horno |
 | 2026-11-16 | EAF-066: aplicación propia, con ventana y ejecutable |
 | 2026-11-20 | EAF-069: mapas del horno, olla, válvula deslizante, tundish, moldes y secuencia de ollas; página de colada continua; primera parte de la interfaz Qt con los componentes de LWD-EAF; documento de integración del proyecto |
+| 2026-11-24 | MV-001: traslado del modelo a este repositorio |
+| 2026-11-24 | MV-002: cálculo directo con las variables del usuario; alcance reducido a horno → olla y olla → distribuidor |
+| 2026-11-24 | MV-003: tres diseños nuevos de la ventana, opciones de icono y de nombre |
+| 2026-11-24 | MV-004: TapFlow 0.2.0-preliminar: diseño, icono y nombre elegidos; optimizaciones de la ventana y del ejecutable |

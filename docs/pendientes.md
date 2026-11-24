@@ -1,6 +1,6 @@
 # Pendientes y decisiones abiertas
 
-Actualizado el 2026-11-24 (MV-001). Las decisiones son del usuario; las propuestas de esta lista no están aprobadas mientras no
+Actualizado el 2026-11-24 (MV-005). Las decisiones son del usuario; las propuestas de esta lista no están aprobadas mientras no
 se diga lo contrario.
 
 ## Decisiones tomadas por el usuario
@@ -10,6 +10,22 @@ se diga lo contrario.
 | Repositorio | Este (`moro079-boop/Modelo-Vaciado`), separado de LWD-EAF (2026-11-24) |
 | Objetivo | Estimar tiempos de vaciado con las ecuaciones de flujo (Bernoulli, Torricelli…) y refinar el programa con el tiempo (2026-11-24) |
 | Motor de la interfaz | Qt (2026-11-24) |
+| Escenarios del alcance actual | Horno (EAF) → olla y olla → distribuidor; el distribuidor → moldes, más adelante (2026-11-24) |
+| Variables del usuario | Área de paso (diámetro o área), altura metalostática, tonelaje y demás datos del vaciado (2026-11-24) |
+| Nombre (N1) | TapFlow (2026-11-24; sustituye a VaciaT, elegido el mismo día) |
+| Diseño (N2) | El diseño «Plano» con la estructura del diseño «Turno»; los demás, archivados como historial (2026-11-24) |
+| Icono (N3) | El reloj de arena, en la paleta de «Plano» con fondo oscuro; los demás, archivados (2026-11-24) |
+| Versión (N4) | 0.2.0-preliminar; en adelante se sube según los cambios, sin consulta (2026-11-24) |
+| Estilo de documentos (N5) | Este repositorio se suma a la lista de proyectos (2026-11-24) |
+
+## Decisiones abiertas de este repositorio
+
+- **N6. Valores por omisión del cálculo directo.** Los escenarios abren con Pesquería: el horno como prisma con la altura y el
+  talón derivados de su cavidad a 0°, y la olla de Pesquería con la válvula del SGW y un distribuidor de ejemplo. La densidad de
+  7,0 t/m³ que se usa si un escenario no la trae es un supuesto.
+- **N7. Estilo de documentos en los demás repositorios.** Este repositorio ya figura en la lista de
+  `docs/estilo-de-documentos.md`; falta el mismo cambio en Slide-Gate-Wear-Model, Ladle-Wear-Diagnosis-, LWD-EAF y Modelo-1D-TT,
+  que no se modifican desde aquí.
 
 ## Heredadas de LWD-EAF
 

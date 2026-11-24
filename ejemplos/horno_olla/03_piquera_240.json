@@ -1,0 +1,27 @@
+{
+ "formato": "modelo_vaciado.escenario/1",
+ "tipo": "horno_olla",
+ "nombre": "3 · Piquera gastada: Ø240 mm",
+ "recipiente": {
+  "geometria": "simple",
+  "forma": "prismatica",
+  "altura_metalostatica_mm": 969.0,
+  "talon_t": 94.5,
+  "relacion_diametros": 1.0
+ },
+ "acero_inicial_t": 450.0,
+ "acero_final_t": 150.0,
+ "densidad": 6.9,
+ "paso": {
+  "diametro_mm": 240.0
+ },
+ "hidraulica": {
+  "modo": "cd",
+  "cd": 0.731,
+  "caida_mm": 0.0,
+  "largo_mm": 1359.0,
+  "k_entrada": 0.5,
+  "rugosidad_mm": 1.0,
+  "viscosidad": 0.006
+ }
+}

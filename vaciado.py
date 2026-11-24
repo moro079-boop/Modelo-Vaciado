@@ -1,10 +1,11 @@
-"""Vaciado-EAF: modelo de vaciado del acero por la piquera (EBT / OBT). Proyecto paralelo a LWD-EAF; preliminar.
+"""TapFlow: tiempo de vaciado del horno (EAF) a la olla y de la olla al distribuidor. Preliminar.
 
     python vaciado.py                      abre la ventana
     python vaciado.py escenario.json       abre la ventana con ese escenario
-    python vaciado.py --consola [...]      sin ventana: corre escenarios y escribe CSV y figura (ver --consola --help)
-    python vaciado.py --curvas PLANTA      toneladas límite por ángulo, en texto
-    python vaciado.py --colada [a.json]    olla → tundish → moldes, en texto
+    python vaciado.py --tiempo [a.json]    cálculo directo de los dos escenarios, en texto
+    python vaciado.py --consola [...]      horno con cavidad 3D, sin ventana: CSV y figura (ver --consola --help)
+    python vaciado.py --curvas PLANTA      toneladas límite por ángulo del horno, en texto
+    python vaciado.py --colada [a.json]    secuencia olla → distribuidor → moldes (etapa posterior), en texto
     python vaciado.py --probar-ventana     abre la ventana, calcula, exporta y la cierra (comprueba Qt y las gráficas)
     python vaciado.py --version
 """
@@ -19,13 +20,13 @@ if __name__ == "__main__":
     if args[:1] == ["--version"]:
         from modelo_vaciado import VERSION_MODELO
 
-        print(f"Vaciado-EAF {VERSION_MODELO}")
+        print(f"TapFlow {VERSION_MODELO}")
         sys.exit(0)
     if args[:1] == ["--probar-ventana"]:
         from modelo_vaciado.ventana import probar_ventana
 
         sys.exit(probar_ventana())
-    if args[:1] in (["--consola"], ["--curvas"], ["--colada"], ["-h"], ["--help"]):
+    if args[:1] in (["--consola"], ["--curvas"], ["--colada"], ["--tiempo"], ["-h"], ["--help"]):
         if args[0] in ("-h", "--help"):
             print(__doc__)
             sys.exit(0)

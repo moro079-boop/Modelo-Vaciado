@@ -17,7 +17,7 @@ from modelo_vaciado.simulacion import Contexto, simular
 from modelo_vaciado.tabla import NivelAnalitico
 
 RAIZ = Path(__file__).resolve().parent.parent
-EJEMPLOS = RAIZ / "ejemplos" / "vaciado"
+EJEMPLOS = RAIZ / "ejemplos" / "horno_cavidad_3d"
 PIQUERA = vd.Piquera("EBT", 0.0, 0.0, -1000.0, 200.0)
 
 
@@ -151,7 +151,8 @@ def test_ventana(tmp_path):
     qapp = aplicacion_qt()
     tema_qt.aplicar(qapp)
     v = Ventana(EJEMPLOS / "01_magnesita_escalones.json")
-    h = v.horno
+    assert v.horno.actual is v.horno.detallado            # un escenario del horno con cavidad 3D abre en la vista detallada
+    h = v.horno.detallado
     assert h.resultado.tiempo == pytest.approx(413.4, abs=1.0)
     assert h.escenario()["basculado"]["pasos"][0] == [2.0, 380.0]
     h.tipo.setCurrentIndex(h.tipo.findData("carga_segura"))
@@ -175,8 +176,12 @@ def test_ventana(tmp_path):
     h.pasos.setText("esto no")
     h.tipo.setCurrentIndex(h.tipo.findData("escalones"))
     assert not h.calcular()
-    # la página de la colada continua
-    c = v.colada
+    v.close()
+    # la página de la secuencia olla → distribuidor → moldes queda fuera de la ventana, pero se conserva y funciona
+    from modelo_vaciado.ventana import Lienzo
+    from modelo_vaciado.ventana_colada import PaginaColada
+
+    c = PaginaColada(Lienzo)
     assert c.resultado is not None and len(c.resultado.ollas) == 4
     c.campos["valvula_diametro_mm"].setValue(100.0)
     assert c.estados["valvula_diametro_mm"].text().endswith("dato del usuario")      # la marca del estado va delante
@@ -189,7 +194,6 @@ def test_ventana(tmp_path):
         assert (tmp_path / f"c.{ext}").stat().st_size > 500
     c.campos["nivel_minimo_mm"].setValue(1200.0)
     assert not c.calcular() and "No se pudo calcular" in c.avisos.text()
-    v.close()
-    w = Ventana(EJEMPLOS / "colada_continua" / "03_mas_velocidad.json")   # un escenario de colada abre en su página
-    assert w.paginas.currentIndex() == 1 and w.colada.campos["velocidad_m_min"].value() == 1.6
-    w.close()
+    c.close()
+    with pytest.raises(ValueError, match="fuera del alcance"):          # la ventana no la abre: avisa
+        Ventana(EJEMPLOS.parent / "distribuidor_moldes" / "03_mas_velocidad.json")
